@@ -5,8 +5,6 @@ import com.zhuzichu.android.shared.storage.GlobalStorage
 import com.zhuzichu.android.wan.ApplicationWan
 import dagger.Module
 import dagger.Provides
-import retrofit2.Retrofit
-import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
