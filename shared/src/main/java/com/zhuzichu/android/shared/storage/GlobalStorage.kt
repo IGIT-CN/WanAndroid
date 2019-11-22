@@ -16,7 +16,7 @@ class GlobalStorage {
         )
     }
 
-    var token by StringPreference(prefs, null)
+    var cookies by StringPreference(prefs, null)
     var locale by StringPreference(prefs, "zh")
     var uiMode by IntPreference(prefs, defaultValue = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
 

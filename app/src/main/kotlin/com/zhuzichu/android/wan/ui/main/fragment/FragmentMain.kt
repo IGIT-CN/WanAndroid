@@ -12,4 +12,8 @@ class FragmentMain : FragmentAnalyticsBase<FragmentMainBinding, ViewModelMain>()
 
     override fun bindVariableId(): Int = BR.viewModel
 
+    override fun initFirstData() {
+        viewModel.loadCoinsData()
+    }
+
 }

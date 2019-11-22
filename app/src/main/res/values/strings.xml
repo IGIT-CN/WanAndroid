@@ -1,3 +1,38 @@
 <resources>
     <string name="app_name">WanAndroid</string>
+    <string name="press_again_to_exit">Press once again to exit</string>
+
+    <string name="feeds">feeds</string>
+    <string name="profile">profile</string>
+    <string name="setting">Settings</string>
+
+    <string name="login_title">NiceHub</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+
+    <string name="languages">Languages</string>
+    <string name="theme">Theme</string>
+    <string name="animation">Animation</string>
+    <string name="fade">Fade</string>
+    <string name="slide">Slide</string>
+
+    <string name="settings_theme_title">Choose theme</string>
+    <string name="settings_theme_system">System default</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_theme_battery">Set by Battery Saver</string>
+
+    <string name="contributions">Contributions</string>
+    <string name="repositories_search">Repositories Search</string>
+
+    <string name="no_data">No Data</string>
+
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+
+    <string name="follow">Follow</string>
+    <string name="unfollow">Unfollow</string>
+
 </resources>
