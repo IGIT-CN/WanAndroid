@@ -1,4 +1,4 @@
-package com.zhuzichu.android.wan.repository.entity
+package com.zhuzichu.android.shared.entity
 
 import com.google.gson.annotations.SerializedName
 

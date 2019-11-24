@@ -1,6 +1,6 @@
 package com.zhuzichu.android.wan.repository
 
-import com.zhuzichu.android.wan.repository.entity.BeanBase
+import com.zhuzichu.android.shared.entity.BeanBase
 import com.zhuzichu.android.wan.repository.entity.BeanCoin
 import com.zhuzichu.android.wan.repository.entity.BeanLogin
 import com.zhuzichu.android.wan.repository.entity.BeanPage

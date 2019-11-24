@@ -1,9 +1,9 @@
 package com.zhuzichu.android.shared.extension
 
 import com.zhuzichu.android.mvvm.base.BaseViewModel
+import com.zhuzichu.android.shared.http.exception.ExceptionManager.handleException
 import io.reactivex.Flowable
 import io.reactivex.FlowableTransformer
-import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
@@ -16,13 +16,13 @@ fun <T> schedulersTransformer(): FlowableTransformer<T, T> {
 
 fun <T> exceptionTransformer(): FlowableTransformer<T, T> {
     return FlowableTransformer { observable ->
-        observable.onErrorResumeNext(HttpResponseFunc())
+        observable.onErrorResumeNext(HttpResponseFunc<T>())
     }
 }
 
 private class HttpResponseFunc<T> : Function<Throwable, Flowable<T>> {
     override fun apply(t: Throwable): Flowable<T> {
-        return Flowable.error(t.handleException())
+        return Flowable.error(handleException(t))
     }
 }
 
@@ -45,7 +45,7 @@ fun <T> Flowable<T>.autoLoading(
 
 fun <T> Flowable<T>.bindToException(): Flowable<T> =
     this.compose<T> {
-        it.onErrorResumeNext(HttpResponseFunc())
+        it.onErrorResumeNext(HttpResponseFunc<T>())
     }
 
 fun <T> Flowable<T>.bindToSchedulers(): Flowable<T> =

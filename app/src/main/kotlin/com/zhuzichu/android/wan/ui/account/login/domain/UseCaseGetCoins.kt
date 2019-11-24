@@ -4,7 +4,7 @@ import com.zhuzichu.android.mvvm.domain.UseCase
 import com.zhuzichu.android.shared.extension.bindToException
 import com.zhuzichu.android.shared.extension.bindToSchedulers
 import com.zhuzichu.android.wan.repository.RemoteRepository
-import com.zhuzichu.android.wan.repository.entity.BeanBase
+import com.zhuzichu.android.shared.entity.BeanBase
 import com.zhuzichu.android.wan.repository.entity.BeanCoin
 import com.zhuzichu.android.wan.repository.entity.BeanPage
 import io.reactivex.Flowable

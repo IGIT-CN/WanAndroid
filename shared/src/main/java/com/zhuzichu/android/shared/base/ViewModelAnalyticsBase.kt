@@ -5,11 +5,12 @@ import com.uber.autodispose.lifecycle.LifecycleEndedException
 import com.uber.autodispose.lifecycle.LifecycleScopeProvider
 import com.zhuzichu.android.mvvm.base.BaseViewModel
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
-import com.zhuzichu.android.shared.extension.ResponseThrowable
+import com.zhuzichu.android.mvvm.event.SingleLiveEvent
 import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase.ViewModelEvent.CREATED
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase.ViewModelEvent.CLEARED
+import com.zhuzichu.android.shared.http.exception.ResponseThrowable
 
 open class ViewModelAnalyticsBase : BaseViewModel(),
     LifecycleScopeProvider<ViewModelAnalyticsBase.ViewModelEvent> {
@@ -31,6 +32,8 @@ open class ViewModelAnalyticsBase : BaseViewModel(),
     val onBackCommand = BindingCommand<Any>({
         back()
     })
+
+    internal val handleThrowableEvent: SingleLiveEvent<Payload.PayloadThrowable> = SingleLiveEvent()
 
     override fun lifecycle(): Observable<ViewModelEvent> {
         return lifecycleEvents.hide()
@@ -59,14 +62,7 @@ open class ViewModelAnalyticsBase : BaseViewModel(),
         isToast: Boolean? = null,
         closure: (ResponseThrowable.() -> Unit)? = null
     ) {
-        when (throwable) {
-            is ResponseThrowable -> {
-                if (isToast != false)
-                    toast(throwable.message)
-                closure?.invoke(throwable)
-            }
-        }
-        throwable.printStackTrace()
+        handleThrowableEvent.value = Payload.PayloadThrowable(throwable, isToast, closure)
     }
 
 }

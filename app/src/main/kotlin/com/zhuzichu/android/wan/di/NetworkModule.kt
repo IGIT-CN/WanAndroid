@@ -2,6 +2,7 @@ package com.zhuzichu.android.wan.di
 
 import com.zhuzichu.android.shared.storage.GlobalStorage
 import com.zhuzichu.android.wan.BuildConfig
+import com.zhuzichu.android.shared.http.converter.WanGsonConverterFactory
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
@@ -9,7 +10,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
@@ -40,7 +40,7 @@ class NetworkModule {
         return Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl(BuildConfig.HOST_APP2)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(WanGsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
     }
@@ -64,7 +64,7 @@ class NetworkModule {
         return Interceptor {
             var request = it.request()
             globalStorage.cookies?.apply {
-                request=request.newBuilder().header("Cookie",this).build()
+                request = request.newBuilder().header("Cookie", this).build()
             }
             it.proceed(request)
         }

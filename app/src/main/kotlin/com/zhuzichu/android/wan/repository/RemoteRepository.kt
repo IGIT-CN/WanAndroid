@@ -1,13 +1,12 @@
 package com.zhuzichu.android.wan.repository
 
-import com.zhuzichu.android.wan.repository.entity.BeanBase
+import com.zhuzichu.android.shared.entity.BeanBase
 import com.zhuzichu.android.wan.repository.entity.BeanCoin
 import com.zhuzichu.android.wan.repository.entity.BeanLogin
 import com.zhuzichu.android.wan.repository.entity.BeanPage
 import io.reactivex.Flowable
 import retrofit2.Response
 import retrofit2.Retrofit
-import retrofit2.http.Path
 import javax.inject.Named
 
 interface RemoteRepository {
