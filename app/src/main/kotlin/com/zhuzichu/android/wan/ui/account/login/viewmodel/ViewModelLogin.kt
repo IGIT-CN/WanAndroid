@@ -35,7 +35,6 @@ class ViewModelLogin @Inject constructor(
                         cookies.replace(cookies.length, cookies.length + 1, "")
                     }
                     globalStorage.cookies = cookies.toString()
-                    cookies.toString().logi("hahaha")
                     startActivity(ActivityMain::class.java, isPop = true)
                 }
             }, {

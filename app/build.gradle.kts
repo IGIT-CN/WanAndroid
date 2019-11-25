@@ -9,7 +9,7 @@ plugins {
 
 Config.initJenkinsProperties(project)
 
-project.android {
+android {
     
     compileSdkVersion(Config.compileSdkVersion())
 

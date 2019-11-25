@@ -3,9 +3,12 @@
     <string name="app_name">WanAndroid</string>
     <string name="press_again_to_exit">اضغط مرة أخرى للخروج</string>
 
-    <string name="feeds">التغذية</string>
-    <string name="profile">الملف الشخصي</string>
+    <string name="home">Home</string>
+    <string name="me">Me</string>
     <string name="setting">الإعدادات</string>
+
+    <string name="home_article">最新博文</string>
+    <string name="home_project">最新项目</string>
 
     <string name="login_title">NiceHub</string>
     <string name="username">اسم المستخدم</string>

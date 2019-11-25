@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="languages">
-        <item>Kotlin</item>
-        <item>Java</item>
+        <item>最新博文</item>
+        <item>最新项目</item>
     </string-array>
 </resources>

@@ -1,6 +1,7 @@
 package com.zhuzichu.android.wan.repository
 
 import com.zhuzichu.android.shared.entity.BeanBase
+import com.zhuzichu.android.wan.repository.entity.BeanArticle
 import com.zhuzichu.android.wan.repository.entity.BeanCoin
 import com.zhuzichu.android.wan.repository.entity.BeanLogin
 import com.zhuzichu.android.wan.repository.entity.BeanPage
@@ -13,6 +14,8 @@ interface RemoteRepository {
     fun login(username: String, password: String): Flowable<Response<BeanBase<BeanLogin>>>
 
     fun getCoins(page: Int): Flowable<BeanBase<BeanPage<BeanCoin>>>
+
+    fun getArticles(page: Int): Flowable<BeanBase<BeanPage<BeanArticle>>>
 }
 
 class RemoteRepositoryImpl(
@@ -31,6 +34,10 @@ class RemoteRepositoryImpl(
 
     override fun getCoins(page: Int): Flowable<BeanBase<BeanPage<BeanCoin>>> {
         return app.getCoins(page)
+    }
+
+    override fun getArticles(page: Int): Flowable<BeanBase<BeanPage<BeanArticle>>> {
+        return app.getArticles(page)
     }
 
     private val app by lazy { gsonRetrofit.create(WanApi::class.java) }

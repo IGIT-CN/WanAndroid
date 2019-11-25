@@ -10,12 +10,6 @@ import com.zhuzichu.android.wan.repository.entity.BeanPage
 import io.reactivex.Flowable
 import javax.inject.Inject
 
-/**
- * desc:  <br/>
- * time: 2019/11/22 17:58 <br/>
- * author: Coffee <br/>
- * since V 1.2 <br/>
- */
 class UseCaseGetCoins @Inject constructor(
     private val remoteRepository: RemoteRepository
 ) : UseCase<Int, Flowable<BeanBase<BeanPage<BeanCoin>>>>() {

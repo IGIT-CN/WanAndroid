@@ -1,5 +1,6 @@
 package com.zhuzichu.android.shared.base
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.ViewDataBinding
@@ -26,17 +27,22 @@ abstract class FragmentAnalyticsBase<TBinding : ViewDataBinding, TViewModel : Vi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.handleThrowableEvent.observe(this, Observer {
+            //todo 添加设计模式去掉if else
             val throwable = it.throwable
             if (throwable is ResponseThrowable) {
                 when (throwable.code) {
                     -1001 -> {
                         startActivity2(activityCtx, AppGlobal.loginClazz) {
+                            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         }
                     }
                     else -> {
                     }
                 }
-
+                if (it.isToast != false)
+                    toast(throwable.message)
+                it.closure?.invoke(throwable)
             } else {
                 toast("未知错误")
             }

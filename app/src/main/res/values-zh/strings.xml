@@ -3,9 +3,12 @@
     <string name="app_name">WanAndroid</string>
     <string name="press_again_to_exit">再按一次退出</string>
 
-    <string name="feeds">动态</string>
-    <string name="profile">资料</string>
+    <string name="home">Home</string>
+    <string name="me">Me</string>
     <string name="setting">设置</string>
+
+    <string name="home_article">最新博文</string>
+    <string name="home_project">最新项目</string>
 
     <string name="login_title">NiceHub</string>
     <string name="username">用户名</string>

@@ -34,3 +34,4 @@ fun bindImageViewShap(
         Sharp.loadString(it).into(imageView)
     }
 }
+

@@ -4,7 +4,11 @@ import com.zhuzichu.android.mvvm.di.ActivityScoped
 import com.zhuzichu.android.wan.ActivityMain
 import com.zhuzichu.android.wan.ui.account.ActivityAccount
 import com.zhuzichu.android.wan.ui.account.login.module.ModuleLogin
+import com.zhuzichu.android.wan.ui.home.module.ModuleHome
+import com.zhuzichu.android.wan.ui.home.module.ModuleHomeArticle
+import com.zhuzichu.android.wan.ui.home.module.ModuleHomeProject
 import com.zhuzichu.android.wan.ui.main.module.ModuleMain
+import com.zhuzichu.android.wan.ui.me.module.ModuleMe
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -15,7 +19,11 @@ abstract class ActivityBindingModule {
     @ContributesAndroidInjector(
         modules = [
             //fragments
-            ModuleMain::class
+            ModuleMain::class,
+            ModuleHome::class,
+            ModuleMe::class,
+            ModuleHomeArticle::class,
+            ModuleHomeProject::class
         ]
     )
     internal abstract fun mainActivity(): ActivityMain

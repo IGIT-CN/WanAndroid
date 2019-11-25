@@ -6,7 +6,7 @@ data class BeanPage<T>(
     @SerializedName("curPage")
     var curPage: Int? = null,
     @SerializedName("datas")
-    var datas: List<T?>? = null,
+    var datas: List<T>? = null,
     @SerializedName("offset")
     var offset: Int? = null,
     @SerializedName("over")

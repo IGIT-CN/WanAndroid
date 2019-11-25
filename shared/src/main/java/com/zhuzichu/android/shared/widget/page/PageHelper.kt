@@ -19,7 +19,7 @@ class PageHelper(
     private var isFirstLoad: Boolean = true,
     private val onLoadMore: ((parameter: Int) -> Unit)? = null
 ) {
-    var page = 1
+    var page = 0
     private var isLoading = false
     private var weakRefresh: WeakReference<SwipeRefreshLayout?>? = null
 
@@ -53,9 +53,9 @@ class PageHelper(
     })
 
     val onRefresh = BindingCommand<SwipeRefreshLayout>(consumer = {
-        weakRefresh = WeakReference(it)
+        weakRefresh = WeakReference(this)
         if (!isLoading) {
-            page = 1
+            page = 0
             onLoadMore?.invoke(page)
         } else {
             viewModel.toast("数据正在加载中")
@@ -70,7 +70,7 @@ class PageHelper(
             showEnd()
             return
         }
-        if (page == 1) {
+        if (page == 0) {
             items.update(list)
         } else {
             items.update(items.plus(list))

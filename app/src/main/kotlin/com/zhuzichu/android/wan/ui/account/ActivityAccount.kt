@@ -16,9 +16,9 @@ class ActivityAccount : ActivityAnalyticsBase() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        globalStorage.cookies?.let {
+        globalStorage.cookies?.let {
             startActivity(ActivityMain::class.java, isPop = true)
-//        }
+        }
     }
 
 }
