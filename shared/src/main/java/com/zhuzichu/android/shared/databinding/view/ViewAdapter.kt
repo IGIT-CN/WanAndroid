@@ -47,4 +47,8 @@ fun bindViewVisibility(view: View, visibility: Int) {
     view.visibility = visibility
 }
 
+@BindingAdapter(value = ["currentView"], requireAll = false)
+fun replyCurrentView(currentView: View, bindingCommand: BindingCommand<*>?) {
+    bindingCommand?.execute(currentView)
+}
 

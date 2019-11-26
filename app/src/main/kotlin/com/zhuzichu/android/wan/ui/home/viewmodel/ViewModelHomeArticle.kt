@@ -9,12 +9,15 @@ import com.zhuzichu.android.shared.widget.page.PageHelper
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.ui.home.domain.UseCaseGetArticles
+import com.zhuzichu.android.wan.ui.home.domain.UseCaseGetBanner
 import me.tatarka.bindingcollectionadapter2.collections.AsyncDiffObservableList
 import me.tatarka.bindingcollectionadapter2.collections.DiffObservableList
+import me.tatarka.bindingcollectionadapter2.collections.MergeObservableList
 import javax.inject.Inject
 
 class ViewModelHomeArticle @Inject constructor(
-    private val useCaseGetArticles: UseCaseGetArticles
+    private val useCaseGetArticles: UseCaseGetArticles,
+    private val useCaseGetBanner: UseCaseGetBanner
 ) : ViewModelAnalyticsBase() {
 
     private val pageHelper = PageHelper(
@@ -25,13 +28,19 @@ class ViewModelHomeArticle @Inject constructor(
         }
     )
 
-    val items = pageHelper.pageItems
+    private val itemsBanner =
+        DiffObservableList(itemDiffOf<ItemViewModelBanner> { oldItem, newItem -> oldItem.id == newItem.id })
+
+    val items: List<Any> = MergeObservableList<Any>()
+        .insertItem(ItemViewModelHomeBanner(this, itemsBanner))
+        .insertList(pageHelper.pageItems)
 
     val onScrollBottom = pageHelper.onScrollBottom
 
     val onRefresh = pageHelper.onRefresh
 
     val itemBinding = pageHelper.itemBinding.apply {
+        map<ItemViewModelHomeBanner>(BR.item, R.layout.item_home_banner)
         map<ItemViewModelHomeArticle>(BR.item, R.layout.item_home_article)
     }
 
@@ -44,11 +53,28 @@ class ViewModelHomeArticle @Inject constructor(
             .autoDispose(this)
             .subscribe({
                 pageHelper.put(it.data) {
-                        ItemViewModelHomeArticle(this@ViewModelHomeArticle, this)
+                    ItemViewModelHomeArticle(this@ViewModelHomeArticle, this)
                 }
             }, {
                 pageHelper.showError()
                 handleThrowable(it)
             })
+    }
+
+    fun updateBanner() {
+        useCaseGetBanner.execute(Unit)
+            .autoDispose(this)
+            .subscribe(
+                {
+                    it.data?.apply {
+                        itemsBanner.update(this.map { item ->
+                            ItemViewModelBanner(this@ViewModelHomeArticle, item)
+                        })
+                    }
+                },
+                {
+                    handleThrowable(it)
+                }
+            )
     }
 }

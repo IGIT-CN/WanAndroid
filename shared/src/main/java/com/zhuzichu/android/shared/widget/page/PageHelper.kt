@@ -28,7 +28,7 @@ class PageHelper(
 
     private val networkViewModel = ItemViewModelNetwork(viewModel, onClickRetry)
 
-    val pageItems: List<Any> = MergeObservableList<Any>()
+    val pageItems: MergeObservableList<Any> = MergeObservableList<Any>()
         .insertItem(ItemViewModelNull(viewModel))
         .insertList(items)
         .insertItem(networkViewModel)

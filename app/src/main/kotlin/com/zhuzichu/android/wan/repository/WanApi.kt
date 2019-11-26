@@ -5,6 +5,7 @@ import com.zhuzichu.android.wan.repository.entity.BeanArticle
 import com.zhuzichu.android.wan.repository.entity.BeanCoin
 import com.zhuzichu.android.wan.repository.entity.BeanLogin
 import com.zhuzichu.android.shared.entity.BeanPage
+import com.zhuzichu.android.wan.repository.entity.BeanBanner
 import io.reactivex.Flowable
 import retrofit2.Response
 import retrofit2.http.*
@@ -30,4 +31,7 @@ interface WanApi {
 
     @GET("/article/top/json")
     fun getTopArticles(): Flowable<BeanBase<BeanPage<BeanArticle>>>
+
+    @GET("/banner/json")
+    fun getBanner(): Flowable<BeanBase<List<BeanBanner>>>
 }

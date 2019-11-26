@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <variable
+            name="item"
+            type="com.zhuzichu.android.wan.ui.home.viewmodel.ItemViewModelHomeBanner" />
+    </data>
+
+    <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:currentView="@{item.initRecycler}"
+        app:itemBinding="@{item.itemBinding}"
+        app:items="@{item.items}"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+</layout>
