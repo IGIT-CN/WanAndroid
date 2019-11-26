@@ -10,4 +10,9 @@ class FragmentMe : FragmentAnalyticsBase<FragmentMeBinding, ViewModelMe>() {
     override fun bindVariableId(): Int = BR.viewModel
 
     override fun setLayoutId(): Int = R.layout.fragment_me
+
+    override fun initLazyData() {
+        super.initLazyData()
+        viewModel.loadCoins(1)
+    }
 }

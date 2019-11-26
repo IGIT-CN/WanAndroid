@@ -11,6 +11,7 @@ import com.zhuzichu.android.wan.ActivityMain
 import com.zhuzichu.android.wan.ui.account.login.domain.UseCaseLogin
 import com.zhuzichu.android.wan.ui.account.login.entity.ParamterLogin
 import java.lang.StringBuilder
+import java.net.URLDecoder
 import javax.inject.Inject
 
 class ViewModelLogin @Inject constructor(

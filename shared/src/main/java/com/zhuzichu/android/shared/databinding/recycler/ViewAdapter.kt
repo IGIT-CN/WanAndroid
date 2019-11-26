@@ -14,7 +14,7 @@ fun bindRecyclerView(
     onScrollBottom: BindingCommand<*>?
 ) {
     recyclerView.scrollBottom()
-        .throttleFirst(1000, TimeUnit.MILLISECONDS)
+        .throttleFirst(100, TimeUnit.MILLISECONDS)
         .autoDispose(recyclerView)
         .subscribe {
             onScrollBottom?.execute()

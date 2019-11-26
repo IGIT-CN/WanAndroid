@@ -1,5 +1,6 @@
 package com.zhuzichu.android.wan.di
 
+import com.zhuzichu.android.shared.extension.logi
 import com.zhuzichu.android.shared.storage.GlobalStorage
 import com.zhuzichu.android.wan.BuildConfig
 import com.zhuzichu.android.shared.http.converter.WanGsonConverterFactory
@@ -64,6 +65,7 @@ class NetworkModule {
         return Interceptor {
             var request = it.request()
             globalStorage.cookies?.apply {
+                this.logi("hahahahah")
                 request = request.newBuilder().header("Cookie", this).build()
             }
             it.proceed(request)

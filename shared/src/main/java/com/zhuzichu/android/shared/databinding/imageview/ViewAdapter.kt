@@ -1,6 +1,7 @@
 package com.zhuzichu.android.shared.databinding.imageview
 
 import android.widget.ImageView
+import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -35,3 +36,12 @@ fun bindImageViewShap(
     }
 }
 
+@BindingAdapter(value = ["srcColor"], requireAll = false)
+fun bindImageViewSrcColor(
+    imageView: ImageView,
+    @ColorInt color: Int?
+) {
+    color?.let {
+        imageView.setColorFilter(it)
+    }
+}

@@ -13,7 +13,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/ripple_light_with_border">
+        android:background="@drawable/ripple_light_with_border"
+        app:onClickCommand="@{item.onClickItem}">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/title"
@@ -33,19 +34,6 @@
             tools:text="MultiSnapRecyclerViewMultiSnapRecyclerViewMultiSnapRecyclerViewMultiSnapRecyclerViewMultiSnapRecyclerView" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:gravity="start"
-            android:textAppearance="?attr/textAppearanceBody2"
-            app:htmlText="@{item.description}"
-            app:layout_constraintEnd_toEndOf="@id/title"
-            app:layout_constraintStart_toStartOf="@id/title"
-            app:layout_constraintTop_toBottomOf="@id/title"
-            tools:text="Android library for multiple snapping of RecyclerView" />
-
-        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/share"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,7 +43,7 @@
             app:htmlText="@{item.user}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/title"
-            app:layout_constraintTop_toBottomOf="@id/description"
+            app:layout_constraintTop_toBottomOf="@id/title"
             tools:text="分享人:zhuzichu520" />
 
 
@@ -66,9 +54,9 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:src="@drawable/ic_star"
-
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/description" />
+            app:layout_constraintEnd_toEndOf="@+id/title"
+            app:srcColor="@{item.collectColor}" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

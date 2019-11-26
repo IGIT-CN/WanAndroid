@@ -10,8 +10,4 @@ class FragmentHomeArticle : FragmentHomeChild<FragmentHomeArticleBinding, ViewMo
     override fun bindVariableId(): Int = BR.viewModel
 
     override fun setLayoutId(): Int = R.layout.fragment_home_article
-
-    override fun initFirstData() {
-        viewModel.loadArticles(0)
-    }
 }

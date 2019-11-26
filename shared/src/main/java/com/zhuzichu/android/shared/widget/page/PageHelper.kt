@@ -1,26 +1,25 @@
 package com.zhuzichu.android.shared.widget.page
 
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.zhuzichu.android.libs.internal.MainHandler
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.BR
 import com.zhuzichu.android.shared.R
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
+import com.zhuzichu.android.shared.entity.BeanPage
 import com.zhuzichu.android.shared.extension.map
 import me.tatarka.bindingcollectionadapter2.collections.AsyncDiffObservableList
+import me.tatarka.bindingcollectionadapter2.collections.DiffObservableList
 import me.tatarka.bindingcollectionadapter2.collections.MergeObservableList
 import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindClass
 import java.lang.ref.WeakReference
 
 class PageHelper(
-    private val items: AsyncDiffObservableList<Any>,
+    private val items: DiffObservableList<Any>,
     val viewModel: ViewModelAnalyticsBase,
-    private val pageSize: Int,
     private var isFirstLoad: Boolean = true,
     private val onLoadMore: ((parameter: Int) -> Unit)? = null
 ) {
     var page = 0
-    private var isLoading = false
     private var weakRefresh: WeakReference<SwipeRefreshLayout?>? = null
 
     private val onClickRetry = BindingCommand<Any>({
@@ -41,12 +40,11 @@ class PageHelper(
 
     val onScrollBottom = BindingCommand<Any>({
         if (!isFirstLoad) {
-            showFinish()
+            showDefalut()
             isFirstLoad = !isFirstLoad
             return@BindingCommand
         }
-        if (!isLoading) {
-            isLoading = true
+        if (getStatus() != ItemViewModelNetwork.STATE_LOADING) {
             showLoading()
             onLoadMore?.invoke(page)
         }
@@ -54,7 +52,7 @@ class PageHelper(
 
     val onRefresh = BindingCommand<SwipeRefreshLayout>(consumer = {
         weakRefresh = WeakReference(this)
-        if (!isLoading) {
+        if (getStatus() != ItemViewModelNetwork.STATE_LOADING) {
             page = 0
             onLoadMore?.invoke(page)
         } else {
@@ -62,28 +60,6 @@ class PageHelper(
             hideRefresh()
         }
     })
-
-
-    fun addAll(list: List<Any>?) {
-        hideRefresh()
-        if (list.isNullOrEmpty()) {
-            showEnd()
-            return
-        }
-        if (page == 0) {
-            items.update(list)
-        } else {
-            items.update(items.plus(list))
-        }
-        MainHandler.postDelayed(Runnable {
-            if (list.size < pageSize) {
-                showEnd()
-            } else {
-                showFinish()
-                page = page.inc()
-            }
-        }, 25)
-    }
 
     private fun hideRefresh() {
         weakRefresh?.get()?.isRefreshing = false
@@ -94,18 +70,46 @@ class PageHelper(
     }
 
     fun showError() {
-        isLoading = false
         networkViewModel.state.value = ItemViewModelNetwork.STATE_ERROR
         hideRefresh()
     }
 
     private fun showFinish() {
-        isLoading = false
         networkViewModel.state.value = ItemViewModelNetwork.STATE_FINISH
     }
 
     private fun showEnd() {
-        isLoading = false
         networkViewModel.state.value = ItemViewModelNetwork.STATE_END
+    }
+
+    private fun showDefalut() {
+        networkViewModel.state.value = ItemViewModelNetwork.STATE_DEFAULT
+    }
+
+    private fun getStatus(): Int {
+        return networkViewModel.state.value ?: ItemViewModelNetwork.STATE_LOADING
+    }
+
+    fun <T> put(beanPage: BeanPage<T>?, closure: T.() -> Any) {
+        hideRefresh()
+        val datas = beanPage?.datas
+        if (datas.isNullOrEmpty()) {
+            showEnd()
+            return
+        }
+        val list = datas.map {
+            closure.invoke(it)
+        }
+        if (beanPage.curPage ?: 1 >= beanPage.pageCount ?: 1) {
+            showEnd()
+        } else {
+            showFinish()
+            page = page.inc()
+        }
+        if (beanPage.curPage == 1) {
+            items.update(list)
+        } else {
+            items.update(items.plus(list))
+        }
     }
 }
