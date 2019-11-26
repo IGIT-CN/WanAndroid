@@ -1,13 +1,13 @@
 package com.zhuzichu.android.shared.widget.page
 
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.zhuzichu.android.libs.internal.MainHandler
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.BR
 import com.zhuzichu.android.shared.R
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.entity.BeanPage
 import com.zhuzichu.android.shared.extension.map
-import me.tatarka.bindingcollectionadapter2.collections.AsyncDiffObservableList
 import me.tatarka.bindingcollectionadapter2.collections.DiffObservableList
 import me.tatarka.bindingcollectionadapter2.collections.MergeObservableList
 import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindClass
@@ -17,13 +17,14 @@ class PageHelper(
     private val items: DiffObservableList<Any>,
     val viewModel: ViewModelAnalyticsBase,
     private var isFirstLoad: Boolean = true,
-    private val onLoadMore: ((parameter: Int) -> Unit)? = null
+    private val onLoadMore: (Int.() -> Unit)? = null,
+    private val onRefresh: (() -> Unit)? = null
 ) {
     var page = 0
     private var weakRefresh: WeakReference<SwipeRefreshLayout?>? = null
 
     private val onClickRetry = BindingCommand<Any>({
-        onScrollBottom.execute()
+        onRefreshConmmand.execute()
     })
 
     private val networkViewModel = ItemViewModelNetwork(viewModel, onClickRetry)
@@ -38,7 +39,7 @@ class PageHelper(
         map<ItemViewModelNull>(BR.item, R.layout.item_null)
     }
 
-    val onScrollBottom = BindingCommand<Any>({
+    val onBottomCommand = BindingCommand<Any>({
         if (!isFirstLoad) {
             showDefalut()
             isFirstLoad = !isFirstLoad
@@ -50,7 +51,7 @@ class PageHelper(
         }
     })
 
-    val onRefresh = BindingCommand<SwipeRefreshLayout>(consumer = {
+    val onRefreshConmmand = BindingCommand<SwipeRefreshLayout>(consumer = {
         weakRefresh = WeakReference(this)
         if (getStatus() != ItemViewModelNetwork.STATE_LOADING) {
             page = 0
@@ -59,6 +60,7 @@ class PageHelper(
             viewModel.toast("数据正在加载中")
             hideRefresh()
         }
+        onRefresh?.invoke()
     })
 
     private fun hideRefresh() {
@@ -100,16 +102,18 @@ class PageHelper(
         val list = datas.map {
             closure.invoke(it)
         }
-        if (beanPage.curPage ?: 1 >= beanPage.pageCount ?: 1) {
-            showEnd()
-        } else {
-            showFinish()
-            page = page.inc()
-        }
         if (beanPage.curPage == 1) {
             items.update(list)
         } else {
             items.update(items.plus(list))
         }
+        MainHandler.postDelayed(Runnable {
+            if (beanPage.curPage ?: 1 >= beanPage.pageCount ?: 1) {
+                showEnd()
+            } else {
+                showFinish()
+                page = page.inc()
+            }
+        }, 100)
     }
 }

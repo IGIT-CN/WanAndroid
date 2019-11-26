@@ -12,7 +12,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:onRefresh="@{viewModel.onRefresh}">
+        app:onRefresh="@{viewModel.onRefreshConmmand}">
 
         <FrameLayout
             android:id="@+id/refresh"
@@ -26,7 +26,7 @@
                 app:itemBinding="@{viewModel.itemBinding}"
                 app:items="@{viewModel.items}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:onScrollBottom="@{viewModel.onScrollBottom}" />
+                app:onScrollBottom="@{viewModel.onBottomCommand}" />
 
         </FrameLayout>
 

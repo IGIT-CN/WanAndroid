@@ -24,7 +24,10 @@ class ViewModelHomeArticle @Inject constructor(
         DiffObservableList(itemDiffOf<ItemViewModelHomeArticle> { oldItem, newItem -> oldItem.id == newItem.id }),
         this,
         onLoadMore = {
-            loadArticles(it)
+            loadArticles(this)
+        },
+        onRefresh = {
+            updateBanner()
         }
     )
 
@@ -35,9 +38,9 @@ class ViewModelHomeArticle @Inject constructor(
         .insertItem(ItemViewModelHomeBanner(this, itemsBanner))
         .insertList(pageHelper.pageItems)
 
-    val onScrollBottom = pageHelper.onScrollBottom
+    val onBottomCommand = pageHelper.onBottomCommand
 
-    val onRefresh = pageHelper.onRefresh
+    val onRefreshConmmand = pageHelper.onRefreshConmmand
 
     val itemBinding = pageHelper.itemBinding.apply {
         map<ItemViewModelHomeBanner>(BR.item, R.layout.item_home_banner)
