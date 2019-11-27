@@ -143,3 +143,17 @@ Tshared/src/main/java/com/zhuzichu/android/shared/widget/page/ItemViewModelNetwo
 Tshared/src/main/java/com/zhuzichu/android/shared/databinding/recycler/ViewAdapter.kt,4\3\43e3d82ff25eacfd16a0f4d7288e1a1e8980bb0e
 [
 +shared/src/main/res/layout/item_network.xml,1\7\17cf468afb2dcb487989559c9a2d4350b43c4927
+s
+Cshared/src/main/java/com/zhuzichu/android/shared/entity/BeanPage.kt,d\b\db9c6c028529a7bfbd62300285ed6efad57c649f
+U
+%shared/src/main/res/values/colors.xml,f\0\f0a3b4eb0844634f52d1d5d1b544b8af37c99209
+V
+&shared/src/main/res/values/strings.xml,a\2\a26418263eb7bbb6c721c2e533e71f522b555e76
+Y
+)shared/src/main/res/values-ar/strings.xml,e\b\eb601cfa6e4a2450912cd86e2af66f4c5a6a40d0
+Y
+)shared/src/main/res/values-zh/strings.xml,7\9\796e63ba00ce13235a55bfd353fa31cad5ca2b50
+…
+Uapp/src/main/kotlin/com/zhuzichu/android/wan/ui/home/viewmodel/ItemViewModelBanner.kt,c\9\c99ae53e1a53ec19a633ab42fe1a9a87f2ffe62d
+‰
+Yapp/src/main/kotlin/com/zhuzichu/android/wan/ui/home/viewmodel/ItemViewModelHomeBanner.kt,0\f\0f9bde4149dfab0f08ed0e10a0b39d8808b4612d

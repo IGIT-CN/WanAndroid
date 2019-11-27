@@ -18,13 +18,15 @@ class PageHelper(
     val viewModel: ViewModelAnalyticsBase,
     private var isFirstLoad: Boolean = true,
     private val onLoadMore: (Int.() -> Unit)? = null,
-    private val onRefresh: (() -> Unit)? = null
+    private val onRefresh: (() -> Unit)? = null,
+    private val onRetry: (() -> Unit)? = null
 ) {
     var page = 0
     private var weakRefresh: WeakReference<SwipeRefreshLayout?>? = null
 
     private val onClickRetry = BindingCommand<Any>({
-        onRefreshConmmand.execute()
+        onBottomCommand.execute()
+        onRetry?.invoke()
     })
 
     private val networkViewModel = ItemViewModelNetwork(viewModel, onClickRetry)

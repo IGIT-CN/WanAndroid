@@ -6,6 +6,7 @@ import androidx.annotation.DrawableRes
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.zhuzichu.android.shared.R
 import com.zhuzichu.android.widget.sharp.Sharp
 
 @BindingAdapter(value = ["url", "fadeDuration", "error"], requireAll = false)
@@ -21,6 +22,7 @@ fun bindImageViewByUrl(
                     it.transition(DrawableTransitionOptions.withCrossFade(fadeDuration))
                 }
             }
+            .placeholder(R.drawable.ic_place_holder)
             .error(error)
             .into(imageView)
     }

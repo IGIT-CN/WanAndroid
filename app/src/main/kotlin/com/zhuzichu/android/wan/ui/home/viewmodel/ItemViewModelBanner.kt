@@ -9,6 +9,5 @@ class ItemViewModelBanner(
     viewModel: BaseViewModel,
     beanBanner: BeanBanner
 ) : ItemViewModelAnalyticsBase(viewModel) {
-    val id = beanBanner.id
     val imagePath = MutableLiveData(beanBanner.imagePath)
 }

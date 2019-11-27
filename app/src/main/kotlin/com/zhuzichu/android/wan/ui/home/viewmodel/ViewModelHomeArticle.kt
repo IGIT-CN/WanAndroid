@@ -10,7 +10,6 @@ import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.ui.home.domain.UseCaseGetArticles
 import com.zhuzichu.android.wan.ui.home.domain.UseCaseGetBanner
-import me.tatarka.bindingcollectionadapter2.collections.AsyncDiffObservableList
 import me.tatarka.bindingcollectionadapter2.collections.DiffObservableList
 import me.tatarka.bindingcollectionadapter2.collections.MergeObservableList
 import javax.inject.Inject
@@ -28,11 +27,14 @@ class ViewModelHomeArticle @Inject constructor(
         },
         onRefresh = {
             updateBanner()
+        },
+        onRetry = {
+            updateBanner()
         }
     )
 
     private val itemsBanner =
-        DiffObservableList(itemDiffOf<ItemViewModelBanner> { oldItem, newItem -> oldItem.id == newItem.id })
+        DiffObservableList(itemDiffOf<ItemViewModelBanner> { _, _ -> false })
 
     val items: List<Any> = MergeObservableList<Any>()
         .insertItem(ItemViewModelHomeBanner(this, itemsBanner))
@@ -70,9 +72,10 @@ class ViewModelHomeArticle @Inject constructor(
             .subscribe(
                 {
                     it.data?.apply {
-                        itemsBanner.update(this.map { item ->
+                        val list = this.map { item ->
                             ItemViewModelBanner(this@ViewModelHomeArticle, item)
-                        })
+                        }
+                        itemsBanner.update(listOf(list[list.size - 1]) + list + list[0])
                     }
                 },
                 {
