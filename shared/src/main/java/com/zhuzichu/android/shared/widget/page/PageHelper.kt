@@ -14,8 +14,8 @@ import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindClass
 import java.lang.ref.WeakReference
 
 class PageHelper(
-    private val items: DiffObservableList<Any>,
     val viewModel: ViewModelAnalyticsBase,
+    private val items: DiffObservableList<Any>,
     private var isFirstLoad: Boolean = true,
     private val onLoadMore: (Int.() -> Unit)? = null,
     private val onRefresh: (() -> Unit)? = null,

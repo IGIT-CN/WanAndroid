@@ -20,8 +20,8 @@ class ViewModelHomeArticle @Inject constructor(
 ) : ViewModelAnalyticsBase() {
 
     private val pageHelper = PageHelper(
-        DiffObservableList(itemDiffOf<ItemViewModelHomeArticle> { oldItem, newItem -> oldItem.id == newItem.id }),
         this,
+        DiffObservableList(itemDiffOf<ItemViewModelHomeArticle> { oldItem, newItem -> oldItem.id == newItem.id }),
         onLoadMore = {
             loadArticles(this)
         },
@@ -33,11 +33,10 @@ class ViewModelHomeArticle @Inject constructor(
         }
     )
 
-    private val itemsBanner =
-        DiffObservableList(itemDiffOf<ItemViewModelBanner> { _, _ -> false })
+    private val itemViewModelHomeBanner = ItemViewModelHomeBanner(this)
 
     val items: List<Any> = MergeObservableList<Any>()
-        .insertItem(ItemViewModelHomeBanner(this, itemsBanner))
+        .insertItem(itemViewModelHomeBanner)
         .insertList(pageHelper.pageItems)
 
     val onBottomCommand = pageHelper.onBottomCommand
@@ -72,10 +71,9 @@ class ViewModelHomeArticle @Inject constructor(
             .subscribe(
                 {
                     it.data?.apply {
-                        val list = this.map { item ->
+                        itemViewModelHomeBanner.update(this.map { item ->
                             ItemViewModelBanner(this@ViewModelHomeArticle, item)
-                        }
-                        itemsBanner.update(listOf(list[list.size - 1]) + list + list[0])
+                        })
                     }
                 },
                 {
