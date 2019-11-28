@@ -13,7 +13,8 @@ import com.zhuzichu.android.widget.sharp.Sharp
 fun bindImageViewByUrl(
     imageView: ImageView,
     url: Any?,
-    fadeDuration: Int, @DrawableRes error: Int
+    fadeDuration: Int,
+    @DrawableRes error: Int
 ) {
     url?.apply {
         Glide.with(imageView)

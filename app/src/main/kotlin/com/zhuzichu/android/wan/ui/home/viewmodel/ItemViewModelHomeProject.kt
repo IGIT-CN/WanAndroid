@@ -13,8 +13,8 @@ import com.zhuzichu.android.wan.repository.entity.BeanArticle
 import com.zhuzichu.android.wan.ui.home.domain.UseCaseCollect
 import com.zhuzichu.android.wan.ui.home.domain.UseCaseUnCollect
 
-class ItemViewModelHomeArticle(
-    val viewModel: ViewModelHomeArticle,
+class ItemViewModelHomeProject(
+    val viewModel: ViewModelHomeProject,
     private val article: BeanArticle,
     private val useCaseCollect: UseCaseCollect,
     private val useCaseUnCollect: UseCaseUnCollect
@@ -24,9 +24,7 @@ class ItemViewModelHomeArticle(
 
     val title = MutableLiveData(article.title)
 
-    val topVisibility = MutableLiveData(View.GONE).apply {
-        value = if (article.type == 1) View.VISIBLE else View.GONE
-    }
+    val pic = MutableLiveData(article.envelopePic)
 
     val time = MutableLiveData("时间:".plus(article.niceDate))
 

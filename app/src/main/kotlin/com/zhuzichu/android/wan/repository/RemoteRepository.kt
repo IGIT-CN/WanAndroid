@@ -9,6 +9,8 @@ import com.zhuzichu.android.wan.repository.entity.BeanBanner
 import io.reactivex.Flowable
 import retrofit2.Response
 import retrofit2.Retrofit
+import retrofit2.http.GET
+import retrofit2.http.Path
 import javax.inject.Named
 
 interface RemoteRepository {
@@ -19,6 +21,14 @@ interface RemoteRepository {
     fun getArticles(page: Int): Flowable<BeanBase<BeanPage<BeanArticle>>>
 
     fun getBanner(): Flowable<BeanBase<List<BeanBanner>>>
+
+    fun getTopArticles(): Flowable<BeanBase<List<BeanArticle>>>
+
+    fun collect(id: Int): Flowable<BeanBase<Any>>
+
+    fun unCollect(id: Int): Flowable<BeanBase<Any>>
+
+    fun getProjects(page: Int): Flowable<BeanBase<BeanPage<BeanArticle>>>
 }
 
 class RemoteRepositoryImpl(
@@ -45,6 +55,22 @@ class RemoteRepositoryImpl(
 
     override fun getBanner(): Flowable<BeanBase<List<BeanBanner>>> {
         return app.getBanner()
+    }
+
+    override fun getTopArticles(): Flowable<BeanBase<List<BeanArticle>>> {
+        return app.getTopArticles()
+    }
+
+    override fun collect(id: Int): Flowable<BeanBase<Any>> {
+        return app.collect(id)
+    }
+
+    override fun unCollect(id: Int): Flowable<BeanBase<Any>> {
+        return app.unCollect(id)
+    }
+
+    override fun getProjects(page: Int): Flowable<BeanBase<BeanPage<BeanArticle>>> {
+        return app.getProjects(page)
     }
 
     private val app by lazy { gsonRetrofit.create(WanApi::class.java) }

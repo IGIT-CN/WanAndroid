@@ -13,5 +13,6 @@ class FragmentHomeArticle : FragmentHomeChild<FragmentHomeArticleBinding, ViewMo
 
     override fun initFirstData() {
         viewModel.updateBanner()
+        viewModel.updateTopArticles()
     }
 }

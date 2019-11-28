@@ -20,18 +20,23 @@ interface WanApi {
     ): Flowable<Response<BeanBase<BeanLogin>>>
 
     @GET("/lg/coin/list/{page}/json")
-    fun getCoins(
-        @Path("page") page: Int
-    ): Flowable<BeanBase<BeanPage<BeanCoin>>>
+    fun getCoins(@Path("page") page: Int): Flowable<BeanBase<BeanPage<BeanCoin>>>
 
     @GET("/article/list/{page}/json")
-    fun getArticles(
-        @Path("page") page: Int
-    ): Flowable<BeanBase<BeanPage<BeanArticle>>>
+    fun getArticles(@Path("page") page: Int): Flowable<BeanBase<BeanPage<BeanArticle>>>
 
     @GET("/article/top/json")
-    fun getTopArticles(): Flowable<BeanBase<BeanPage<BeanArticle>>>
+    fun getTopArticles(): Flowable<BeanBase<List<BeanArticle>>>
 
     @GET("/banner/json")
     fun getBanner(): Flowable<BeanBase<List<BeanBanner>>>
+
+    @POST("/lg/collect/{id}/json")
+    fun collect(@Path("id") id: Int): Flowable<BeanBase<Any>>
+
+    @POST("/lg/uncollect_originId/{id}/json")
+    fun unCollect(@Path("id") id: Int): Flowable<BeanBase<Any>>
+
+    @GET("/article/listproject/{page}/json")
+    fun getProjects(@Path("page") page: Int): Flowable<BeanBase<BeanPage<BeanArticle>>>
 }
