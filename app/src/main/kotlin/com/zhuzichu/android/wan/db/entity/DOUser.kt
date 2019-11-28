@@ -7,12 +7,12 @@ import java.util.*
 
 @Entity(
     tableName = "user",
-    indices = [Index("id", "username", "uid")]
+    indices = [Index("id", "username")]
 )
 data class DOUser(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     var id: Long,
     var username: String,
-    val loginTime: Calendar = Calendar.getInstance(),
-    val cookies: String
+    var cookies: String,
+    var loginTime: Calendar? = Calendar.getInstance()
 )

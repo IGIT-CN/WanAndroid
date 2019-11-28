@@ -1,14 +1,12 @@
 package com.zhuzichu.android.wan.repository
 
 import com.zhuzichu.android.shared.entity.BeanBase
-import com.zhuzichu.android.wan.repository.entity.BeanArticle
-import com.zhuzichu.android.wan.repository.entity.BeanCoin
-import com.zhuzichu.android.wan.repository.entity.BeanLogin
 import com.zhuzichu.android.shared.entity.BeanPage
-import com.zhuzichu.android.wan.repository.entity.BeanBanner
+import com.zhuzichu.android.wan.repository.entity.*
 import io.reactivex.Flowable
 import retrofit2.Response
 import retrofit2.http.*
+
 
 interface WanApi {
 
@@ -39,4 +37,7 @@ interface WanApi {
 
     @GET("/article/listproject/{page}/json")
     fun getProjects(@Path("page") page: Int): Flowable<BeanBase<BeanPage<BeanArticle>>>
+
+    @GET("lg/coin/userinfo/json")
+    fun getUserInfo(): Flowable<BeanBase<BeanUserInfo>>
 }

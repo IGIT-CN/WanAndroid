@@ -5,6 +5,7 @@ import com.zhuzichu.android.wan.di.DaggerAppComponent
 import com.zhuzichu.android.wan.ui.account.ActivityAccount
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
+import io.reactivex.plugins.RxJavaPlugins
 import timber.log.Timber
 
 class ApplicationWan : DaggerApplication() {
@@ -17,6 +18,7 @@ class ApplicationWan : DaggerApplication() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
+        RxJavaPlugins.setErrorHandler { }
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {

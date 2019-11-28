@@ -5,13 +5,11 @@ import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.autoLoading
-import com.zhuzichu.android.shared.extension.logi
 import com.zhuzichu.android.shared.storage.GlobalStorage
 import com.zhuzichu.android.wan.ActivityMain
 import com.zhuzichu.android.wan.ui.account.login.domain.UseCaseLogin
 import com.zhuzichu.android.wan.ui.account.login.entity.ParamterLogin
 import java.lang.StringBuilder
-import java.net.URLDecoder
 import javax.inject.Inject
 
 class ViewModelLogin @Inject constructor(
@@ -23,7 +21,9 @@ class ViewModelLogin @Inject constructor(
     val password = MutableLiveData("qaioasd520")
 
     val onClickLogin = BindingCommand<Any>({
-        useCaseLogin.execute(ParamterLogin(username.value ?: "", password.value ?: ""))
+        val username = username.value ?: ""
+        val password = password.value ?: ""
+        useCaseLogin.execute(ParamterLogin(username, password))
             .autoLoading(this)
             .autoDispose(this)
             .subscribe({
@@ -35,7 +35,7 @@ class ViewModelLogin @Inject constructor(
                         }
                         cookies.replace(cookies.length, cookies.length + 1, "")
                     }
-                    globalStorage.cookies = cookies.toString()
+                    globalStorage.login(cookies.toString())
                     startActivity(ActivityMain::class.java, isPop = true)
                 }
             }, {

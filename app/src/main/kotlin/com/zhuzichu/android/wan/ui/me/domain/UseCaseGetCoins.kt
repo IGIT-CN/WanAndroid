@@ -1,4 +1,4 @@
-package com.zhuzichu.android.wan.ui.account.login.domain
+package com.zhuzichu.android.wan.ui.me.domain
 
 import com.zhuzichu.android.mvvm.domain.UseCase
 import com.zhuzichu.android.shared.extension.bindToException

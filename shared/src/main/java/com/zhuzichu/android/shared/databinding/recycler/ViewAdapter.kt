@@ -13,14 +13,12 @@ fun bindRecyclerView(
     recyclerView: BottomRecyclerView,
     onScrollBottom: BindingCommand<*>?
 ) {
-    recyclerView.post {
-        recyclerView.scrollBottom()
-            .throttleFirst(100, TimeUnit.MILLISECONDS)
-            .autoDispose(recyclerView)
-            .subscribe {
-                onScrollBottom?.execute()
-            }
-    }
+    recyclerView.scrollBottom()
+        .throttleFirst(100, TimeUnit.MILLISECONDS)
+        .autoDispose(recyclerView)
+        .subscribe {
+            onScrollBottom?.execute()
+        }
 }
 
 @BindingAdapter(value = ["onRefresh"], requireAll = false)

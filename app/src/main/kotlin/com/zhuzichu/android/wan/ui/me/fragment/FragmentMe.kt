@@ -13,6 +13,7 @@ class FragmentMe : FragmentAnalyticsBase<FragmentMeBinding, ViewModelMe>() {
 
     override fun initLazyData() {
         super.initLazyData()
-        viewModel.loadCoins(1)
+        viewModel.updateUserInfo()
+
     }
 }

@@ -9,7 +9,7 @@ class UseCaseSaveUser @Inject constructor(
     private val localRepository: LocalRepository
 ) : UseCase<DOUser, Unit>() {
 
-    override fun execute(parameters: DOUser): Unit {
+    override fun execute(parameters: DOUser) {
         return localRepository.saveUser(parameters)
     }
 }

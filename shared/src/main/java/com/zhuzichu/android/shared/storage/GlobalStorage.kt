@@ -20,4 +20,11 @@ class GlobalStorage {
     var locale by StringPreference(prefs, "zh")
     var uiMode by IntPreference(prefs, defaultValue = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
 
+    fun login(cookies: String) {
+        this.cookies = cookies
+    }
+
+    fun logout() {
+        this.cookies = null
+    }
 }
