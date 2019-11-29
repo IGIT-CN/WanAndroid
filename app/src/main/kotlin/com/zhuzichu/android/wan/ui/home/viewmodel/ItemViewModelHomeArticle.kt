@@ -8,6 +8,7 @@ import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.base.ItemViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.autoLoading
 import com.zhuzichu.android.shared.extension.toColorByResId
+import com.zhuzichu.android.shared.extension.toStringByResId
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.repository.entity.BeanArticle
 import com.zhuzichu.android.wan.ui.home.domain.UseCaseCollect
@@ -28,20 +29,19 @@ class ItemViewModelHomeArticle(
         value = if (article.type == 1) View.VISIBLE else View.GONE
     }
 
-    val time = MutableLiveData("时间:".plus(article.niceDate))
+    val time = MutableLiveData(R.string.time.toStringByResId().plus(":").plus(article.niceDate))
 
     val user = MutableLiveData<String>().apply {
         value = if (!article.author.isNullOrBlank())
-            "作者:".plus(article.author)
+            R.string.author.toStringByResId().plus(":").plus(article.author)
         else if (!article.shareUser.isNullOrBlank())
-            "分享人:".plus(article.shareUser)
-        else "神秘人物"
+            R.string.share_people.toStringByResId().plus(":").plus(article.shareUser)
+        else R.string.anonymous.toStringByResId()
     }
 
     val collectColor = MutableLiveData<Int>()
 
     val onClickItem = BindingCommand<Any>({
-        toast(id.toString())
     })
 
     val onClickCollect = BindingCommand<Any>({

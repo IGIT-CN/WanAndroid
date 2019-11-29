@@ -10,14 +10,12 @@ import java.util.*
 
 abstract class ActivityAnalyticsBase : BaseActivity() {
 
-    private var globalStorage: GlobalStorage? = GlobalStorage()
-
     override fun attachBaseContext(newBase: Context?) {
         newBase?.let {
             super.attachBaseContext(
                 it.localeContextWrapper(
                     Locale(
-                        globalStorage?.locale ?: Locale.getDefault().country
+                        GlobalStorage().locale ?: Locale.getDefault().country
                     )
                 )
             )

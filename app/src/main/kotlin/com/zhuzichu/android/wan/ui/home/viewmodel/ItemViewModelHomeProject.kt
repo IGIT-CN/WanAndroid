@@ -1,7 +1,6 @@
 package com.zhuzichu.android.wan.ui.home.viewmodel
 
 import android.graphics.Color
-import android.view.View
 import androidx.lifecycle.MutableLiveData
 import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.mvvm.databinding.BindingCommand

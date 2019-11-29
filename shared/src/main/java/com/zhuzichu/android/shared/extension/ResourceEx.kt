@@ -1,9 +1,14 @@
 package com.zhuzichu.android.shared.extension
 
+import android.content.Context
 import androidx.core.content.ContextCompat
 import com.zhuzichu.android.shared.global.AppGlobal.context
 
 fun Int.toStringByResId(): String {
+    return context.getString(this)
+}
+
+fun Int.toStringByResId(context: Context): String {
     return context.getString(this)
 }
 

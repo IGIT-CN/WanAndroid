@@ -3,14 +3,14 @@
     <string name="app_name">WanAndroid</string>
     <string name="press_again_to_exit">اضغط مرة أخرى للخروج</string>
 
-    <string name="home">Home</string>
-    <string name="me">Me</string>
+    <string name="home">منزل</string>
+    <string name="me">أنا</string>
     <string name="setting">الإعدادات</string>
 
-    <string name="home_article">最新博文</string>
-    <string name="home_project">最新项目</string>
+    <string name="home_article">أحدث بلوق وظائف</string>
+    <string name="home_project">أحدث مشروع</string>
 
-    <string name="login_title">NiceHub</string>
+    <string name="login_title">WanAndroid</string>
     <string name="username">اسم المستخدم</string>
     <string name="password">كلمة المرور</string>
     <string name="login">تسجيل الدخول</string>
@@ -28,15 +28,14 @@
     <string name="settings_theme_dark">غامق</string>
     <string name="settings_theme_battery">الضبط حسب ميزة "توفير شحن البطارية"</string>
 
-    <string name="contributions">المساهمات</string>
-    <string name="repositories_search">مستودع البحث</string>
-
     <string name="no_data">لا توجد بيانات</string>
 
-    <string name="followers">المتابِعين</string>
-    <string name="following">المتابَعين</string>
+    <string name="coins">عملات معدنية</string>
+    <string name="ranking">تصنيف</string>
 
-    <string name="follow">تابع</string>
-    <string name="unfollow">ألغِ المتابعة</string>
+    <string name="time">زمن</string>
+    <string name="author">مؤلف</string>
+    <string name="share_people">مشاركة الناس</string>
+    <string name="anonymous">مجهول</string>
 
 </resources>

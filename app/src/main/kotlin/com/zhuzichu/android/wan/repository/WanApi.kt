@@ -35,6 +35,9 @@ interface WanApi {
     @POST("/lg/uncollect_originId/{id}/json")
     fun unCollect(@Path("id") id: Int): Flowable<BeanBase<Any>>
 
+    @GET("/lg/collect/list/{page}/json")
+    fun getCollections(@Path("page") page: Int): Flowable<BeanBase<BeanPage<BeanArticle>>>
+
     @GET("/article/listproject/{page}/json")
     fun getProjects(@Path("page") page: Int): Flowable<BeanBase<BeanPage<BeanArticle>>>
 

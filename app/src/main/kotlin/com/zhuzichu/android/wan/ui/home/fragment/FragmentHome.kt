@@ -1,7 +1,7 @@
 package com.zhuzichu.android.wan.ui.home.fragment
 
 import androidx.core.os.bundleOf
-import com.zhuzichu.android.shared.base.DefaultIntFragmentPagerAdapter
+import com.zhuzichu.android.shared.base.DefaultStringFragmentPagerAdapter
 import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
 import com.zhuzichu.android.shared.extension.toStringByResId
 import com.zhuzichu.android.wan.BR
@@ -19,8 +19,8 @@ class FragmentHome : FragmentAnalyticsBase<FragmentHomeBinding, ViewModelHome>()
         super.initView()
 
         val titles = listOf(
-            R.string.home_article,
-            R.string.home_project
+            R.string.home_article.toStringByResId(activityCtx),
+            R.string.home_project.toStringByResId(activityCtx)
         )
 
         val fragments = listOf<FragmentHomeChild<*, *>>(
@@ -28,14 +28,14 @@ class FragmentHome : FragmentAnalyticsBase<FragmentHomeBinding, ViewModelHome>()
             FragmentHomeProject()
         )
 
-        titles.forEachIndexed { index, id ->
+        titles.forEachIndexed { index, text ->
             fragments[index].apply {
-                arguments = bundleOf(::title.name to id.toStringByResId())
+                arguments = bundleOf(::title.name to text)
             }
         }
 
         pager.adapter =
-            DefaultIntFragmentPagerAdapter(childFragmentManager, fragments, titles.toList())
+            DefaultStringFragmentPagerAdapter(childFragmentManager, fragments, titles)
         tab.setupWithViewPager(pager)
     }
 }

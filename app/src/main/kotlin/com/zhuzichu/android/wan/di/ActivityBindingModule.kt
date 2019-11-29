@@ -9,6 +9,10 @@ import com.zhuzichu.android.wan.ui.home.module.ModuleHomeArticle
 import com.zhuzichu.android.wan.ui.home.module.ModuleHomeProject
 import com.zhuzichu.android.wan.ui.main.module.ModuleMain
 import com.zhuzichu.android.wan.ui.me.module.ModuleMe
+import com.zhuzichu.android.wan.ui.setting.animation.module.ModuleAnimation
+import com.zhuzichu.android.wan.ui.setting.languages.module.ModuleLanguages
+import com.zhuzichu.android.wan.ui.setting.main.module.ModuleSetting
+import com.zhuzichu.android.wan.ui.setting.theme.module.ModuleTheme
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -23,7 +27,11 @@ abstract class ActivityBindingModule {
             ModuleHome::class,
             ModuleMe::class,
             ModuleHomeArticle::class,
-            ModuleHomeProject::class
+            ModuleHomeProject::class,
+            ModuleSetting::class,
+            ModuleLanguages::class,
+            ModuleTheme::class,
+            ModuleAnimation::class
         ]
     )
     internal abstract fun mainActivity(): ActivityMain

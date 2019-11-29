@@ -6,10 +6,10 @@
     <string name="me">Me</string>
     <string name="setting">Settings</string>
 
-    <string name="home_article">最新博文</string>
-    <string name="home_project">最新项目</string>
+    <string name="home_article">New Article</string>
+    <string name="home_project">New Project</string>
 
-    <string name="login_title">NiceHub</string>
+    <string name="login_title">WanAndroid</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
@@ -27,15 +27,14 @@
     <string name="settings_theme_dark">Dark</string>
     <string name="settings_theme_battery">Set by Battery Saver</string>
 
-    <string name="contributions">Contributions</string>
-    <string name="repositories_search">Repositories Search</string>
 
     <string name="no_data">No Data</string>
 
-    <string name="followers">Followers</string>
-    <string name="following">Following</string>
+    <string name="coins">Coins</string>
+    <string name="ranking">Ranking</string>
 
-    <string name="follow">Follow</string>
-    <string name="unfollow">Unfollow</string>
-
+    <string name="time">Time</string>
+    <string name="author">Author</string>
+    <string name="share_people">Share people</string>
+    <string name="anonymous">Anonymous</string>
 </resources>

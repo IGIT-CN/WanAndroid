@@ -12,9 +12,9 @@ import java.util.concurrent.TimeUnit
 
 @BindingAdapter(value = ["onClickCommand", "isThrottleFirst"], requireAll = false)
 fun onClickCommand(view: View, clickCommand: BindingCommand<*>?, isThrottleFirst: Boolean?) {
-    view.post {
+    clickCommand?.apply {
         view.clicks().isThrottleFirst(isThrottleFirst ?: true).subscribe {
-            clickCommand?.execute()
+            execute()
         }
     }
 }

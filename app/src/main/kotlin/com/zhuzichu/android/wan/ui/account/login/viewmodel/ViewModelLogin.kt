@@ -5,6 +5,8 @@ import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.autoLoading
+import com.zhuzichu.android.shared.http.exception.ExceptionManager
+import com.zhuzichu.android.shared.http.exception.ResponseThrowable
 import com.zhuzichu.android.shared.storage.GlobalStorage
 import com.zhuzichu.android.wan.ActivityMain
 import com.zhuzichu.android.wan.ui.account.login.domain.UseCaseLogin
@@ -21,12 +23,12 @@ class ViewModelLogin @Inject constructor(
     val password = MutableLiveData("qaioasd520")
 
     val onClickLogin = BindingCommand<Any>({
-        val username = username.value ?: ""
-        val password = password.value ?: ""
-        useCaseLogin.execute(ParamterLogin(username, password))
+        useCaseLogin.execute(ParamterLogin(username.value ?: "", password.value ?: ""))
             .autoLoading(this)
             .autoDispose(this)
             .subscribe({
+                val beanLogin =
+                    it.body()?.data ?: throw ResponseThrowable(ExceptionManager.UNKNOWN, "用户异常")
                 val cookies = StringBuilder()
                 it.headers().values("Set-Cookie").run {
                     if (isNotEmpty()) {
@@ -35,7 +37,7 @@ class ViewModelLogin @Inject constructor(
                         }
                         cookies.replace(cookies.length, cookies.length + 1, "")
                     }
-                    globalStorage.login(cookies.toString())
+                    globalStorage.login(cookies.toString(), beanLogin.username, beanLogin.nickname)
                     startActivity(ActivityMain::class.java, isPop = true)
                 }
             }, {

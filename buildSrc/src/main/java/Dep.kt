@@ -1,6 +1,6 @@
 object Dep {
     object Version {
-        const val kotlin = "1.3.50"
+        const val kotlin = "1.3.60"
         const val buildGradle = "3.5.2"
         const val androidxCore = "1.1.0"
         const val androidxKtx = "1.1.0"
@@ -20,7 +20,7 @@ object Dep {
         const val timber = "4.7.1"
         const val swiperefreshlayout = "1..0-alpha03"
         const val libs = "1.0.27"
-        const val mvvm = "1.0.50"
+        const val mvvm = "1.0.52"
         const val widget = "1.0.31"
         const val room = "2.2.1"
         const val umengCommon = "2.0.0"
