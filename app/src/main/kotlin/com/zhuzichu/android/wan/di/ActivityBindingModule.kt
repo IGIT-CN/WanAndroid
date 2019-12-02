@@ -9,6 +9,7 @@ import com.zhuzichu.android.wan.ui.home.module.ModuleHomeArticle
 import com.zhuzichu.android.wan.ui.home.module.ModuleHomeProject
 import com.zhuzichu.android.wan.ui.main.module.ModuleMain
 import com.zhuzichu.android.wan.ui.me.module.ModuleMe
+import com.zhuzichu.android.wan.ui.search.module.ModuleSearch
 import com.zhuzichu.android.wan.ui.setting.animation.module.ModuleAnimation
 import com.zhuzichu.android.wan.ui.setting.languages.module.ModuleLanguages
 import com.zhuzichu.android.wan.ui.setting.main.module.ModuleSetting
@@ -31,7 +32,8 @@ abstract class ActivityBindingModule {
             ModuleSetting::class,
             ModuleLanguages::class,
             ModuleTheme::class,
-            ModuleAnimation::class
+            ModuleAnimation::class,
+            ModuleSearch::class
         ]
     )
     internal abstract fun mainActivity(): ActivityMain

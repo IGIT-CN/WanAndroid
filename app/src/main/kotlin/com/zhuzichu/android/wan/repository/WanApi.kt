@@ -43,4 +43,11 @@ interface WanApi {
 
     @GET("lg/coin/userinfo/json")
     fun getUserInfo(): Flowable<BeanBase<BeanUserInfo>>
+
+    @POST("article/query/{page}/json")
+    @FormUrlEncoded
+    fun search(
+        @Path("page") page: Int,
+        @Field("k") keyWord: String
+    ): Flowable<BeanBase<BeanPage<BeanArticle>>>
 }

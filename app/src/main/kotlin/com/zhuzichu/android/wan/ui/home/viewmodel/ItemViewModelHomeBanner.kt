@@ -3,6 +3,7 @@ package com.zhuzichu.android.wan.ui.home.viewmodel
 import androidx.databinding.ObservableArrayList
 import com.zhuzichu.android.shared.base.ItemViewModelAnalyticsBase
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
+import com.zhuzichu.android.shared.extension.logi
 import com.zhuzichu.android.shared.extension.map
 import com.zhuzichu.android.shared.widget.banner.BannerHelper
 import com.zhuzichu.android.wan.BR
@@ -28,4 +29,5 @@ class ItemViewModelHomeBanner(
     val recyclerCommand = bannerHelper.recyclerCommand
 
     fun update(list: List<Any>) = bannerHelper.update(list)
+
 }

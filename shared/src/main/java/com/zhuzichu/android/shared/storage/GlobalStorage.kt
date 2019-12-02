@@ -23,7 +23,7 @@ class GlobalStorage {
     var nickname by StringPreference(prefs, null)
     var cookies by StringPreference(prefs, null)
     var locale by StringPreference(prefs, "zh")
-    var animation by IntPreference(prefs, defaultValue = ANIMATION_FADE)
+    var animation by IntPreference(prefs, defaultValue = ANIMATION_SLIDE)
     var uiMode by IntPreference(prefs, defaultValue = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
 
     fun login(cookies: String?, username: String?, nickname: String?) {

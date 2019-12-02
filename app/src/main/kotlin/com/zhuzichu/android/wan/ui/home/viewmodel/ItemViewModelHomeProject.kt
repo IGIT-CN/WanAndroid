@@ -14,26 +14,18 @@ import com.zhuzichu.android.wan.ui.home.domain.UseCaseUnCollect
 
 class ItemViewModelHomeProject(
     val viewModel: ViewModelHomeProject,
-    private val article: BeanArticle,
+    private val bean: BeanArticle,
     private val useCaseCollect: UseCaseCollect,
     private val useCaseUnCollect: UseCaseUnCollect
 ) : ItemViewModelAnalyticsBase(viewModel) {
 
-    val id = article.id
+    val id = bean.id
 
-    val title = MutableLiveData(article.title)
+    val title = MutableLiveData(bean.title)
 
-    val pic = MutableLiveData(article.envelopePic)
+    val pic = MutableLiveData(bean.envelopePic)
 
-    val time = MutableLiveData("时间:".plus(article.niceDate))
-
-    val user = MutableLiveData<String>().apply {
-        value = if (!article.author.isNullOrBlank())
-            "作者:".plus(article.author)
-        else if (!article.shareUser.isNullOrBlank())
-            "分享人:".plus(article.shareUser)
-        else "神秘人物"
-    }
+    val article = MutableLiveData(bean)
 
     val collectColor = MutableLiveData<Int>()
 
@@ -42,7 +34,7 @@ class ItemViewModelHomeProject(
     })
 
     val onClickCollect = BindingCommand<Any>({
-        if (article.collect == true) {
+        if (bean.collect == true) {
             unCollect()
         } else {
             collect()
@@ -54,7 +46,7 @@ class ItemViewModelHomeProject(
     }
 
     private fun updateCollect() {
-        collectColor.value = if (article.collect == false)
+        collectColor.value = if (bean.collect == false)
             Color.parseColor("#4A4A4A")
         else
             R.color.color_primary.toColorByResId()
@@ -70,7 +62,7 @@ class ItemViewModelHomeProject(
             .autoDispose(viewModel)
             .subscribe(
                 {
-                    article.collect = true
+                    bean.collect = true
                     updateCollect()
                 },
                 {
@@ -89,7 +81,7 @@ class ItemViewModelHomeProject(
             .autoDispose(viewModel)
             .subscribe(
                 {
-                    article.collect = false
+                    bean.collect = false
                     updateCollect()
                 },
                 {

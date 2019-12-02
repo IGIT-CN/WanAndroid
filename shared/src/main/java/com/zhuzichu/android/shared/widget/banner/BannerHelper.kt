@@ -18,14 +18,9 @@ class BannerHelper(
     private val items: ObservableArrayList<Any>
 ) {
 
-
     var state = SCROLL_STATE_IDLE
 
     var position = 0
-
-    private val pagerSnapHelper by lazy {
-        PagerSnapHelper()
-    }
 
     private val scrollListener = object : RecyclerView.OnScrollListener() {
         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
@@ -33,38 +28,37 @@ class BannerHelper(
             state = newState
             val manager = (recyclerView.layoutManager as LinearLayoutManager)
             if (state == SCROLL_STATE_IDLE) {
-                val view = pagerSnapHelper.findSnapView(manager)
-                if (view != null) {
-                    position = manager.getPosition(view)
-                    if (position == 0) {
-                        position = items.size - 2
-                        manager.scrollToPositionWithOffset(position, 0)
-                    }
-                    if (position == items.size - 1) {
-                        position = 1
-                        manager.scrollToPositionWithOffset(1, 0)
-                    }
+                position = manager.findFirstVisibleItemPosition()
+                if (position == 0) {
+                    position = items.size - 2
+                    manager.scrollToPositionWithOffset(position, 0)
+                }
+                if (position == items.size - 1) {
+                    position = 1
+                    manager.scrollToPositionWithOffset(1, 0)
                 }
             }
         }
     }
 
     val recyclerCommand = BindingCommand<RecyclerView>(consumer = {
-        this?.let {
-            pagerSnapHelper.attachToRecyclerView(it)
-            it.addOnScrollListener(scrollListener)
-            it.post {
+        this?.apply {
+            onFlingListener = null
+            PagerSnapHelper().attachToRecyclerView(this)
+            this.addOnScrollListener(scrollListener)
+            this.post {
                 Flowable.interval(0, 2, TimeUnit.SECONDS)
                     .bindToSchedulers()
-                    .autoDispose(it)
-                    .subscribe { _ ->
+                    .autoDispose(this)
+                    .subscribe {
                         if (state == SCROLL_STATE_IDLE) {
-                            it.smoothScrollToPosition(position++)
+                            this.smoothScrollToPosition(position++)
                         }
                     }
             }
         }
     })
+
 
     fun update(list: List<Any>) {
         items.clear()
@@ -75,4 +69,5 @@ class BannerHelper(
         }, 100)
 
     }
+
 }

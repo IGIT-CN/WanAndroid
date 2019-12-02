@@ -10,16 +10,12 @@ import java.util.*
 
 abstract class ActivityAnalyticsBase : BaseActivity() {
 
-    override fun attachBaseContext(newBase: Context?) {
-        newBase?.let {
-            super.attachBaseContext(
-                it.localeContextWrapper(
-                    Locale(
-                        GlobalStorage().locale ?: Locale.getDefault().country
-                    )
-                )
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(
+            newBase.localeContextWrapper(
+                Locale(GlobalStorage().locale ?: Locale.getDefault().country)
             )
-        }
+        )
     }
 
     override fun applyOverrideConfiguration(overrideConfiguration: Configuration?) {

@@ -2,6 +2,7 @@ package com.zhuzichu.android.wan
 
 import androidx.appcompat.app.AppCompatDelegate
 import com.zhuzichu.android.mvvm.MvvmManager
+import com.zhuzichu.android.shared.extension.updateApplicationLanguage
 import com.zhuzichu.android.shared.global.AppGlobal
 import com.zhuzichu.android.shared.storage.GlobalStorage
 import com.zhuzichu.android.wan.di.DaggerAppComponent
@@ -11,6 +12,7 @@ import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 import io.reactivex.plugins.RxJavaPlugins
 import timber.log.Timber
+import java.util.*
 import javax.inject.Inject
 
 /**
@@ -33,10 +35,12 @@ class ApplicationWan : DaggerApplication() {
             it.printStackTrace()
         }
         AppCompatDelegate.setDefaultNightMode(globalStorage.uiMode)
+        updateApplicationLanguage(Locale(globalStorage.locale ?: Locale.getDefault().country))
         MvvmManager.animBuilder = globalStorage.animation.toAnimationBuild()
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
         return DaggerAppComponent.factory().create(this)
     }
+
 }

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import com.zhuzichu.android.shared.base.DefaultIntFragmentPagerAdapter
 import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
 import com.zhuzichu.android.shared.extension.setupWithViewPager
+import com.zhuzichu.android.shared.extension.toast
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.databinding.FragmentMainBinding
@@ -47,7 +48,7 @@ class FragmentMain : FragmentAnalyticsBase<FragmentMainBinding, ViewModelMain>()
                 requireActivity().finishAndRemoveTask()
             } else {
                 touchTime = System.currentTimeMillis()
-                viewModel.toast(R.string.press_again_to_exit)
+                R.string.press_again_to_exit.toast()
             }
         }
     }

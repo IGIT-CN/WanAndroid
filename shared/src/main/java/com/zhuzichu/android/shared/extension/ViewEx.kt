@@ -1,17 +1,15 @@
 package com.zhuzichu.android.shared.extension
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.content.ContextWrapper
 import android.content.res.Configuration
-import android.os.Build
-import android.os.LocaleList
 import android.view.View
+import android.widget.Toast
 import androidx.core.view.forEachIndexed
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.zhuzichu.android.libs.tool.showKeyboard
-import java.util.*
+import com.zhuzichu.android.shared.global.AppGlobal.context
+import com.zhuzichu.android.widget.toast.toast
 
 fun BottomNavigationView.setupWithViewPager(viewPager: ViewPager) {
     viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
@@ -39,33 +37,6 @@ fun BottomNavigationView.setupWithViewPager(viewPager: ViewPager) {
     }
 }
 
-@Suppress("DEPRECATION")
-@SuppressLint("ObsoleteSdkInt")
-fun Context.localeContextWrapper(newLocale: Locale): ContextWrapper {
-    var context: Context = this
-    val config = this.resources.configuration
-
-    when {
-        Build.VERSION.SDK_INT >= Build.VERSION_CODES.N -> {
-            Locale.setDefault(newLocale)
-            config.setLocale(newLocale)
-            val localeList = LocaleList(newLocale)
-            LocaleList.setDefault(localeList)
-            config.setLocales(localeList)
-            context = this.createConfigurationContext(config)
-        }
-        Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 -> {
-            config.setLocale(newLocale)
-            context = this.createConfigurationContext(config)
-        }
-        else -> {
-            config.locale = newLocale
-            this.resources.updateConfiguration(config, this.resources.displayMetrics)
-        }
-    }
-    return ContextWrapper(context)
-}
-
 fun View.showSoftKeyboard() {
     showKeyboard(this.context, this)
 }
@@ -73,4 +44,12 @@ fun View.showSoftKeyboard() {
 fun Context.isDark(): Boolean {
     val mode = this.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
     return mode == Configuration.UI_MODE_NIGHT_YES
+}
+
+fun String.toast(): Toast {
+    return toast(context, this)
+}
+
+fun Int.toast(): Toast {
+    return toast(context, this)
 }
