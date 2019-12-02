@@ -15,6 +15,11 @@ android {
         versionCode = Config.versionCode()
         versionName = Config.versionName()
         consumerProguardFiles("consumer-rules.pro")
+
+        val fields = Config.getBuildConfigFields()
+        fields.forEach {
+            buildConfigField(it[0], it[1], it[2])
+        }
     }
 
     sourceSets {
