@@ -20,7 +20,7 @@ class BannerHelper(
 
     var state = SCROLL_STATE_IDLE
 
-    var position = 0
+    var position = 1
 
     private val scrollListener = object : RecyclerView.OnScrollListener() {
         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
@@ -46,8 +46,12 @@ class BannerHelper(
             onFlingListener = null
             PagerSnapHelper().attachToRecyclerView(this)
             this.addOnScrollListener(scrollListener)
+            (this.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(position, 0)
             this.post {
                 Flowable.interval(0, 2, TimeUnit.SECONDS)
+                    .filter {
+                        it != 0L
+                    }
                     .bindToSchedulers()
                     .autoDispose(this)
                     .subscribe {
@@ -66,8 +70,8 @@ class BannerHelper(
         MainHandler.postDelayed(Runnable {
             items.add(list.size, list[0])
             items.add(0, list[list.size - 1])
+            position = 1
         }, 100)
-
     }
 
 }
