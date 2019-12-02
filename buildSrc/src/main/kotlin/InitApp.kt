@@ -42,6 +42,11 @@ class InitApp(project: Project) {
                 signingConfig = signingConfigs.getByName("appSign")
                 renderscriptTargetApi = 18
                 renderscriptSupportModeEnabled = true
+                externalNativeBuild {
+                    cmake {
+                        cppFlags.add("-std=c++14")
+                    }
+                }
                 resValue("string", "app_name_new", Config.appName())
                 val fields = Config.getBuildConfigFields()
                 fields.forEach {
@@ -109,6 +114,13 @@ class InitApp(project: Project) {
 
             sourceSets {
                 sourceSets.getByName("main").java.srcDir("src/main/kotlin")
+            }
+
+            externalNativeBuild {
+                cmake {
+                    setPath("src/main/cpp/CMakeLists.txt")
+                    version = "3.10.2"
+                }
             }
 
         }
