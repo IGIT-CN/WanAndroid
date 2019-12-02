@@ -1,0 +1,113 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: 'TestPlugin'
+
+Config.initJenkinsProperties(project)
+
+android {
+
+    compileSdkVersion Config.compileSdkVersion()
+
+    signingConfigs {
+        appSign {
+            keyAlias Config.keyAlias()
+            keyPassword Config.keyPassword()
+            storeFile file(Config.storeFile())
+            storePassword Config.storePassword()
+        }
+    }
+
+    defaultConfig {
+        applicationId Config.applicationId()
+        minSdkVersion Config.minSdkVersion()
+        targetSdkVersion Config.targetSdkVersion()
+        versionCode Config.versionCode()
+        versionName Config.versionName()
+        signingConfig signingConfigs.appSign
+        renderscriptTargetApi 18
+        renderscriptSupportModeEnabled true
+        resValue 'string', 'app_name_new', Config.appName()
+        def fields = Config.getBuildConfigFields()
+        fields.each {
+            defaultConfig.buildConfigField(it[0], it[1], it[2])
+        }
+    }
+
+    buildTypes {
+        release {
+            shrinkResources true
+            minifyEnabled true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+        }
+    }
+
+    flavorDimensions "channel"
+    productFlavors {
+        GooglePlay {
+            dimension "channel"
+            applicationIdSuffix = ".google"
+            addManifestPlaceholders([
+                    'CHANNEL_NAME'         : name,
+                    'ic_launcher_new'      : '@mipmap/ic_launcher_google',
+                    'ic_launcher_round_new': '@mipmap/ic_launcher_google_round'
+            ])
+        }
+        HuaWei {
+            dimension "channel"
+            applicationIdSuffix = ".huawei"
+            addManifestPlaceholders([
+                    'CHANNEL_NAME'         : name,
+                    'ic_launcher_new'      : '@mipmap/ic_launcher_huawei',
+                    'ic_launcher_round_new': '@mipmap/ic_launcher_huawei_round'
+            ])
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+
+    sourceSets {
+        main {
+            java {
+                srcDir 'src/main/kotlin'
+            }
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api project(path: ':shared')
+    kapt(Dep.kaptRoomCompiler)
+    kapt(Dep.kaptDaggerCompiler)
+    kapt(Dep.kaptDaggerProcessor)
+    kapt(Dep.kaptGlide)
+    kapt(Dep.androidxDatabinding)
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:2.0-beta-3"
+}
+
+student {
+    nickname = "小猪"
+    age = 160
+}
