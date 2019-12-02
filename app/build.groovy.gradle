@@ -29,6 +29,11 @@ android {
         signingConfig signingConfigs.appSign
         renderscriptTargetApi 18
         renderscriptSupportModeEnabled true
+        externalNativeBuild {
+            cmake {
+                cppFlags "-std=c++14"
+            }
+        }
         resValue 'string', 'app_name_new', Config.appName()
         def fields = Config.getBuildConfigFields()
         fields.each {
@@ -93,7 +98,12 @@ android {
             }
         }
     }
-
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.10.2"
+        }
+    }
 }
 
 dependencies {
