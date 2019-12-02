@@ -44,7 +44,20 @@ object Config {
         parentProject = project
         rootPath = parentProject.projectDir.toString().plus(File.separator)
         Log.init(parentProject)
-        Log.l("rootPath", rootPath)
+//        parentProject.subprojects {
+//            this.afterEvaluate {
+//                val fields = getBuildConfigFields()
+//                val android: VariantAwareProperties =
+//                    if (this.name == "app") {
+//                        extensions.getByType(AppExtension::class.java)
+//                    } else {
+//                        extensions.getByType(LibraryExtension::class.java)
+//                    }
+//                fields.forEach {
+//                    android.buildConfigField(it[0], it[1], it[2])
+//                }
+//            }
+//        }
     }
 
     private val resourcesPath by lazy {
@@ -121,7 +134,8 @@ object Config {
     @JvmStatic
     fun keyAlias(): String {
         return signatureProperties.getPropertyByKey(
-            SignKey.SIGN_KEY_ALIAS.key).apply {
+            SignKey.SIGN_KEY_ALIAS.key
+        ).apply {
             Log.l("keyAlias", this)
         }
     }
@@ -129,7 +143,8 @@ object Config {
     @JvmStatic
     fun keyPassword(): String {
         return signatureProperties.getPropertyByKey(
-            SignKey.SIGN_KEY_PASSWORD.key).apply {
+            SignKey.SIGN_KEY_PASSWORD.key
+        ).apply {
             Log.l("keyPassword", this)
         }
     }
@@ -137,7 +152,8 @@ object Config {
     @JvmStatic
     fun storeFile(): String {
         return signatureProperties.getPropertyByKey(
-            SignKey.SIGN_STORE_FILE.key).apply {
+            SignKey.SIGN_STORE_FILE.key
+        ).apply {
             Log.l("storeFile", this)
         }
     }
@@ -145,7 +161,8 @@ object Config {
     @JvmStatic
     fun storePassword(): String {
         return signatureProperties.getPropertyByKey(
-            SignKey.SIGN_STORE_PASSWORD.key).apply {
+            SignKey.SIGN_STORE_PASSWORD.key
+        ).apply {
             Log.l("storePassword", this)
         }
     }
@@ -153,7 +170,8 @@ object Config {
     @JvmStatic
     fun appName(): String {
         return configProperties.getPropertyByKey(
-            ConfigKey.APP_NAME.key).apply {
+            ConfigKey.APP_NAME.key
+        ).apply {
             Log.l("appName", this)
         }
     }
@@ -161,7 +179,8 @@ object Config {
     @JvmStatic
     fun compileSdkVersion(): Int {
         return gradleProperties.getPropertyByKey(
-            GradleKey.COMPILE_SDK_VERSION.key).toInt2().apply {
+            GradleKey.COMPILE_SDK_VERSION.key
+        ).toInt2().apply {
             Log.l("compileSdkVersion", this)
         }
     }
@@ -169,7 +188,8 @@ object Config {
     @JvmStatic
     fun applicationId(): String {
         return configProperties.getPropertyByKey(
-            ConfigKey.APPLICATION_ID.key).apply {
+            ConfigKey.APPLICATION_ID.key
+        ).apply {
             Log.l("applicationId", this)
         }
     }
@@ -177,7 +197,8 @@ object Config {
     @JvmStatic
     fun minSdkVersion(): String {
         return gradleProperties.getPropertyByKey(
-            GradleKey.MIN_SDK_VERSION.key).apply {
+            GradleKey.MIN_SDK_VERSION.key
+        ).apply {
             Log.l("minSdkVersion", this)
         }
     }
@@ -185,7 +206,8 @@ object Config {
     @JvmStatic
     fun targetSdkVersion(): String {
         return gradleProperties.getPropertyByKey(
-            GradleKey.TARGET_SDK_VERSION.key).apply {
+            GradleKey.TARGET_SDK_VERSION.key
+        ).apply {
             Log.l("targetSdkVersion", this)
         }
     }
@@ -193,7 +215,8 @@ object Config {
     @JvmStatic
     fun versionCode(): Int {
         return configProperties.getPropertyByKey(
-            ConfigKey.APP_VERSION_CODE.key).toInt2().apply {
+            ConfigKey.APP_VERSION_CODE.key
+        ).toInt2().apply {
             Log.l("versionCode", this)
         }
     }
@@ -201,7 +224,8 @@ object Config {
     @JvmStatic
     fun versionName(): String {
         return configProperties.getPropertyByKey(
-            ConfigKey.APP_VERSION_NAME.key).apply {
+            ConfigKey.APP_VERSION_NAME.key
+        ).apply {
             Log.l("versionName", this)
         }
     }
@@ -209,7 +233,8 @@ object Config {
     @JvmStatic
     fun getRunEnvironment(): String {
         return gradleProperties.getPropertyByKey(
-            GradleKey.ENVIRONMENT.key).apply {
+            GradleKey.ENVIRONMENT.key
+        ).apply {
             Log.l("getRunEnvironment", this)
         }
     }
@@ -224,7 +249,8 @@ object Config {
 
     private fun getReleaseSignPath(): String {
         return gradleProperties.getPropertyByKey(
-            GradleKey.RELEASE_SIGN_CONFIGS_PATH.key)
+            GradleKey.RELEASE_SIGN_CONFIGS_PATH.key
+        )
             .apply {
                 Log.l("getReleaseSignPath", this)
             }
