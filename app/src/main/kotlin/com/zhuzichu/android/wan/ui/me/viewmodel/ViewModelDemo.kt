@@ -11,9 +11,13 @@ import javax.inject.Inject
 class ViewModelDemo @Inject constructor(
 ) : ViewModelAnalyticsBase() {
 
+    companion object {
+        const val TYPE_OPENCV = 0
+    }
+
     val items = MutableLiveData<List<Any>>().apply {
         value = listOf(
-            ItemViewModelDemo(this@ViewModelDemo, R.string.opencv)
+            ItemViewModelDemo(this@ViewModelDemo, TYPE_OPENCV, R.string.opencv)
         )
     }
 

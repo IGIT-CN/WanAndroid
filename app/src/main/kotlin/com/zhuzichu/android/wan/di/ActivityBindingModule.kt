@@ -11,6 +11,7 @@ import com.zhuzichu.android.wan.ui.main.module.ModuleMain
 import com.zhuzichu.android.wan.ui.me.module.ModuleDemo
 import com.zhuzichu.android.wan.ui.me.module.ModuleMe
 import com.zhuzichu.android.wan.ui.opencv.ActivityOpencv
+import com.zhuzichu.android.wan.ui.opencv.main.module.ModuleGray
 import com.zhuzichu.android.wan.ui.opencv.main.module.ModuleOpencv
 import com.zhuzichu.android.wan.ui.search.module.ModuleSearch
 import com.zhuzichu.android.wan.ui.setting.animation.module.ModuleAnimation
@@ -56,7 +57,8 @@ abstract class ActivityBindingModule {
     @ContributesAndroidInjector(
         modules = [
             //fragments
-            ModuleOpencv::class
+            ModuleOpencv::class,
+            ModuleGray::class
         ]
     )
     internal abstract fun opencvActivity(): ActivityOpencv

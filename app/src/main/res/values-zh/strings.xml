@@ -9,6 +9,7 @@
 
     <string name="demo">我的Demo</string>
     <string name="opencv">OpenCv</string>
+    <string name="gray">灰度图</string>
 
     <string name="home_article">最新博文</string>
     <string name="home_project">最新项目</string>

@@ -29,10 +29,15 @@ android {
         signingConfig signingConfigs.appSign
         renderscriptTargetApi 18
         renderscriptSupportModeEnabled true
+        ndk {
+            abiFilters "armeabi-v7a"
+//            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        }
         externalNativeBuild {
             cmake {
                 cppFlags "-std=c++14"
                 abiFilters "armeabi-v7a"
+                arguments "-DANDROID_STL=c++_shared"//使用c++_shared.so
             }
         }
         resValue 'string', 'app_name_new', Config.appName()
@@ -98,6 +103,7 @@ android {
                 srcDir 'src/main/kotlin'
             }
             jniLibs.srcDirs = ["src/main/cpp/libs"]
+            res.srcDirs("src/main/res-opencv")
         }
     }
     externalNativeBuild {

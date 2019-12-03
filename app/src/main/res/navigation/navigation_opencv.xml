@@ -9,5 +9,16 @@
         android:id="@+id/fragmentOpencv"
         android:name="com.zhuzichu.android.wan.ui.opencv.main.fragment.FragmentOpencv"
         android:label="FragmentOpencv"
-        tools:layout="@layout/fragment_opencv" />
+        tools:layout="@layout/fragment_opencv">
+        <action
+            android:id="@+id/action_fragmentOpencv_to_fragmentGray"
+            app:destination="@id/fragmentGray" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentGray"
+        android:name="com.zhuzichu.android.wan.ui.opencv.main.fragment.FragmentGray"
+        android:label="FragmentGray"
+        tools:layout="@layout/fragment_gray" />
+
+
 </navigation>

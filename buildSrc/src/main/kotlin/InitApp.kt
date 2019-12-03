@@ -43,10 +43,14 @@ class InitApp(project: Project) {
                 signingConfig = signingConfigs.getByName("appSign")
                 renderscriptTargetApi = 18
                 renderscriptSupportModeEnabled = true
+                ndk {
+                    abiFilters.addAll(listOf("armeabi-v7a"))
+                }
                 externalNativeBuild {
                     cmake {
                         cppFlags.addAll(listOf("-std=c++14"))
                         abiFilters.addAll(listOf("armeabi-v7a"))
+                        arguments.addAll(listOf("-DANDROID_STL=c++_shared"))
                     }
                 }
                 resValue("string", "app_name_new", Config.appName())
@@ -118,6 +122,7 @@ class InitApp(project: Project) {
                 sourceSets["main"].apply {
                     java.srcDir("src/main/kotlin")
                     jniLibs.srcDirs("src/main/cpp/libs")
+                    res.setSrcDirs(listOf("src/main/res-opencv"))
                 }
             }
 
