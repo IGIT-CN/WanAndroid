@@ -4,6 +4,7 @@ import android.content.Context
 import com.zhuzichu.android.shared.storage.GlobalStorage
 import com.zhuzichu.android.wan.ApplicationWan
 import com.zhuzichu.android.wan.db.DaoUser
+import com.zhuzichu.android.wan.manager.NativeManager
 import com.zhuzichu.android.wan.repository.LocalRepository
 import com.zhuzichu.android.wan.repository.LocalRepositoryImpl
 import com.zhuzichu.android.wan.repository.RemoteRepository
@@ -40,4 +41,9 @@ class AppModule {
         return LocalRepositoryImpl(daoUser)
     }
 
+    @Provides
+    @Singleton
+    fun providesNativeManager(): NativeManager {
+        return NativeManager()
+    }
 }

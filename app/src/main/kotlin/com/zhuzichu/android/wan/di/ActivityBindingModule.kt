@@ -8,7 +8,10 @@ import com.zhuzichu.android.wan.ui.home.module.ModuleHome
 import com.zhuzichu.android.wan.ui.home.module.ModuleHomeArticle
 import com.zhuzichu.android.wan.ui.home.module.ModuleHomeProject
 import com.zhuzichu.android.wan.ui.main.module.ModuleMain
+import com.zhuzichu.android.wan.ui.me.module.ModuleDemo
 import com.zhuzichu.android.wan.ui.me.module.ModuleMe
+import com.zhuzichu.android.wan.ui.opencv.ActivityOpencv
+import com.zhuzichu.android.wan.ui.opencv.main.module.ModuleOpencv
 import com.zhuzichu.android.wan.ui.search.module.ModuleSearch
 import com.zhuzichu.android.wan.ui.setting.animation.module.ModuleAnimation
 import com.zhuzichu.android.wan.ui.setting.languages.module.ModuleLanguages
@@ -33,7 +36,8 @@ abstract class ActivityBindingModule {
             ModuleLanguages::class,
             ModuleTheme::class,
             ModuleAnimation::class,
-            ModuleSearch::class
+            ModuleSearch::class,
+            ModuleDemo::class
         ]
     )
     internal abstract fun mainActivity(): ActivityMain
@@ -46,4 +50,14 @@ abstract class ActivityBindingModule {
         ]
     )
     internal abstract fun accountActivity(): ActivityAccount
+
+
+    @ActivityScoped
+    @ContributesAndroidInjector(
+        modules = [
+            //fragments
+            ModuleOpencv::class
+        ]
+    )
+    internal abstract fun opencvActivity(): ActivityOpencv
 }

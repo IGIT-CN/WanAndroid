@@ -33,7 +33,8 @@ android {
         renderscriptSupportModeEnabled = true
         externalNativeBuild {
             cmake {
-                cppFlags.add("-std=c++14")
+                cppFlags.addAll(listOf("-std=c++14"))
+                abiFilters.addAll(listOf("armeabi-v7a"))
             }
         }
         resValue("string", "app_name_new", Config.appName())
@@ -98,7 +99,10 @@ android {
     }
 
     sourceSets {
-        sourceSets["main"].java.srcDir("src/main/kotlin")
+        sourceSets["main"].apply {
+            java.srcDir("src/main/kotlin")
+            jniLibs.srcDirs("src/main/cpp/libs")
+        }
     }
 
     externalNativeBuild {

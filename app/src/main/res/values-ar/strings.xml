@@ -7,6 +7,9 @@
     <string name="me">أنا</string>
     <string name="setting">الإعدادات</string>
 
+    <string name="demo">My Demo</string>
+    <string name="opencv">OpenCv</string>
+
     <string name="home_article">أحدث بلوق وظائف</string>
     <string name="home_project">أحدث مشروع</string>
 

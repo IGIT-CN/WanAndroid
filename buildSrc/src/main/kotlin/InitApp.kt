@@ -2,6 +2,7 @@ import com.android.build.gradle.AppExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.plugins.ExtensionAware
+import org.gradle.kotlin.dsl.get
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 import org.jetbrains.kotlin.gradle.internal.AndroidExtensionsExtension
 import plugin.test.ext.StudentExtension
@@ -44,7 +45,8 @@ class InitApp(project: Project) {
                 renderscriptSupportModeEnabled = true
                 externalNativeBuild {
                     cmake {
-                        cppFlags.add("-std=c++14")
+                        cppFlags.addAll(listOf("-std=c++14"))
+                        abiFilters.addAll(listOf("armeabi-v7a"))
                     }
                 }
                 resValue("string", "app_name_new", Config.appName())
@@ -113,7 +115,10 @@ class InitApp(project: Project) {
             androidExtensionsExtension.isExperimental = true
 
             sourceSets {
-                sourceSets.getByName("main").java.srcDir("src/main/kotlin")
+                sourceSets["main"].apply {
+                    java.srcDir("src/main/kotlin")
+                    jniLibs.srcDirs("src/main/cpp/libs")
+                }
             }
 
             externalNativeBuild {

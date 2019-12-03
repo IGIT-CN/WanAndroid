@@ -32,6 +32,10 @@ class ViewModelMe @Inject constructor(
 
     })
 
+    val onClickDemo = BindingCommand<Any>({
+        startFragment(R.id.action_fragmentMain_to_fragmentDemo)
+    })
+
     fun updateUserInfo() {
         username.value = globalStorage.username
         nickname.value = globalStorage.nickname

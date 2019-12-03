@@ -60,9 +60,9 @@
             <nav-graph android:value="@navigation/navigation_main" />
         </activity>
 
-        <activity android:name=".ui.account.ActivityAccount">
+        <activity android:name=".ui.account.ActivityAccount" />
 
-        </activity>
+        <activity android:name=".ui.opencv.ActivityOpencv" />
 
     </application>
 

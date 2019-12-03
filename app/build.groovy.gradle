@@ -32,6 +32,7 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags "-std=c++14"
+                abiFilters "armeabi-v7a"
             }
         }
         resValue 'string', 'app_name_new', Config.appName()
@@ -96,6 +97,7 @@ android {
             java {
                 srcDir 'src/main/kotlin'
             }
+            jniLibs.srcDirs = ["src/main/cpp/libs"]
         }
     }
     externalNativeBuild {

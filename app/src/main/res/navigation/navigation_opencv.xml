@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_opencv"
+    app:startDestination="@id/fragmentOpencv">
+
+    <fragment
+        android:id="@+id/fragmentOpencv"
+        android:name="com.zhuzichu.android.wan.ui.opencv.main.fragment.FragmentOpencv"
+        android:label="FragmentOpencv"
+        tools:layout="@layout/fragment_opencv" />
+</navigation>
