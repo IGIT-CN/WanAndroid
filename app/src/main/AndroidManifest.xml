@@ -64,6 +64,7 @@
 
         <activity android:name=".ui.opencv.ActivityOpencv" />
 
+        <activity android:name=".ui.jni.ActivityJni" />
     </application>
 
 </manifest>

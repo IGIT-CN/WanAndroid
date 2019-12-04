@@ -7,6 +7,8 @@ import com.zhuzichu.android.wan.ui.account.login.module.ModuleLogin
 import com.zhuzichu.android.wan.ui.home.module.ModuleHome
 import com.zhuzichu.android.wan.ui.home.module.ModuleHomeArticle
 import com.zhuzichu.android.wan.ui.home.module.ModuleHomeProject
+import com.zhuzichu.android.wan.ui.jni.ActivityJni
+import com.zhuzichu.android.wan.ui.jni.main.module.ModuleJni
 import com.zhuzichu.android.wan.ui.main.module.ModuleMain
 import com.zhuzichu.android.wan.ui.me.module.ModuleDemo
 import com.zhuzichu.android.wan.ui.me.module.ModuleMe
@@ -62,4 +64,14 @@ abstract class ActivityBindingModule {
         ]
     )
     internal abstract fun opencvActivity(): ActivityOpencv
+
+
+    @ActivityScoped
+    @ContributesAndroidInjector(
+        modules = [
+            //fragments
+            ModuleJni::class
+        ]
+    )
+    internal abstract fun jniActivity(): ActivityJni
 }

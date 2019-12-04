@@ -15,9 +15,21 @@ class ViewModelOpencv @Inject constructor() : ViewModelAnalyticsBase() {
         const val TYPE_GRAY = 0
     }
 
-    val items = MutableLiveData<List<Any>>().apply {
-        value = listOf(
-            ItemViewModelOpencv(this@ViewModelOpencv, TYPE_GRAY, R.string.gray)
+    private val closure: Int.() -> Unit = {
+        val id = when (this) {
+            TYPE_GRAY -> {
+                R.id.action_fragmentOpencv_to_fragmentGray
+            }
+            else -> {
+                R.id.action_fragmentOpencv_to_fragmentGray
+            }
+        }
+        startFragment(id)
+    }
+
+    val items = MutableLiveData<List<Any>>().also {
+        it.value = listOf(
+            ItemViewModelOpencv(this, TYPE_GRAY, R.string.gray, closure)
         )
     }
 

@@ -4,6 +4,7 @@ import android.content.Context
 import com.zhuzichu.android.shared.storage.GlobalStorage
 import com.zhuzichu.android.wan.ApplicationWan
 import com.zhuzichu.android.wan.db.DaoUser
+import com.zhuzichu.android.wan.manager.JniDemoManager
 import com.zhuzichu.android.wan.manager.NativeManager
 import com.zhuzichu.android.wan.repository.LocalRepository
 import com.zhuzichu.android.wan.repository.LocalRepositoryImpl
@@ -45,5 +46,11 @@ class AppModule {
     @Singleton
     fun providesNativeManager(): NativeManager {
         return NativeManager()
+    }
+
+    @Provides
+    @Singleton
+    fun providesJniDemoManager(): JniDemoManager {
+        return JniDemoManager()
     }
 }
