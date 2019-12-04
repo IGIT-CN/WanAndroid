@@ -1,6 +1,5 @@
 package com.zhuzichu.android.wan
 
-import android.app.NativeActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.zhuzichu.android.mvvm.MvvmManager
 import com.zhuzichu.android.shared.extension.updateApplicationLanguage

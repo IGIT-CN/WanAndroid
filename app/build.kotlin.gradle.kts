@@ -32,7 +32,7 @@ android {
         renderscriptTargetApi = 18
         renderscriptSupportModeEnabled = true
         ndk {
-            abiFilters.addAll(listOf("armeabi-v7a"))
+            abiFilters("armeabi-v7a")
         }
         externalNativeBuild {
             cmake {
@@ -106,7 +106,7 @@ android {
         sourceSets["main"].apply {
             java.srcDir("src/main/kotlin")
             jniLibs.srcDirs("src/main/cpp/libs")
-            res.setSrcDirs(listOf("src/main/res-opencv"))
+            res.srcDirs("src/main/res-opencv")
         }
     }
 
