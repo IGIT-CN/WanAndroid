@@ -1,5 +1,6 @@
 package com.zhuzichu.android.wan.manager
 
+import android.graphics.Bitmap
 import androidx.annotation.Keep
 
 @Keep
@@ -9,11 +10,6 @@ class NativeManager {
         System.loadLibrary("native-lib")
     }
 
-    external fun add(a: Int, b: Int): Int
+    external fun gray(bitmap: Bitmap): Bitmap
 
-    external fun sub(a: Int, b: Int): Int
-
-    external fun mul(a: Int, b: Int): Int
-
-    external fun div(a: Int, b: Int): Int
 }
