@@ -1,5 +1,6 @@
 package com.zhuzichu.android.shared.databinding.imageview
 
+import android.graphics.Bitmap
 import android.widget.ImageView
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
@@ -46,5 +47,15 @@ fun bindImageViewSrcColor(
 ) {
     color?.let {
         imageView.setColorFilter(it)
+    }
+}
+
+@BindingAdapter(value = ["srcBitmap"], requireAll = false)
+fun bindImageViewSrcColor(
+    imageView: ImageView,
+    bitmap: Bitmap?
+) {
+    bitmap?.let {
+        imageView.setImageBitmap(it)
     }
 }
