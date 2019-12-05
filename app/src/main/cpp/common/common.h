@@ -5,8 +5,8 @@
 
 using namespace cv;
 
-#ifndef WANANDROID_HELPER_H
-#define WANANDROID_HELPER_H
+#ifndef WANANDROID_COMMON_H
+#define WANANDROID_COMMON_H
 
 static const char *IOException = "java/io/IOException";
 static const char *RuntimeException = "java/io/RuntimeException";
@@ -21,4 +21,4 @@ void MatToBitmap2(JNIEnv *env, Mat &mat, jobject &bitmap, jboolean needPremultip
 
 void MatToBitmap(JNIEnv *env, Mat &mat, jobject &bitmap);
 
-#endif //WANANDROID_HELPER_H
+#endif //WANANDROID_COMMON_H
