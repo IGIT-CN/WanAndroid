@@ -7,7 +7,7 @@ import com.zhuzichu.android.shared.base.ItemViewModelAnalyticsBase
 
 class ItemViewModelJni(
     viewModel: BaseViewModel,
-    type: Int,
+    val type: Int,
     string: String,
     closure: Int.() -> Unit
 ) : ItemViewModelAnalyticsBase(viewModel) {

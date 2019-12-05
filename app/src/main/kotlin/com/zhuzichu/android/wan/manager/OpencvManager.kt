@@ -12,4 +12,7 @@ class OpencvManager {
 
     external fun gray(bitmap: Bitmap): Bitmap
 
+    external fun erode(bitmap: Bitmap, morph: Int, width: Int, height: Int): Bitmap
+
+    external fun blur(bitmap: Bitmap, width: Int, height: Int): Bitmap
 }

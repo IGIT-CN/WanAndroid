@@ -13,6 +13,8 @@ import com.zhuzichu.android.wan.ui.main.module.ModuleMain
 import com.zhuzichu.android.wan.ui.me.module.ModuleDemo
 import com.zhuzichu.android.wan.ui.me.module.ModuleMe
 import com.zhuzichu.android.wan.ui.opencv.ActivityOpencv
+import com.zhuzichu.android.wan.ui.opencv.main.module.ModuleBlur
+import com.zhuzichu.android.wan.ui.opencv.main.module.ModuleErode
 import com.zhuzichu.android.wan.ui.opencv.main.module.ModuleGray
 import com.zhuzichu.android.wan.ui.opencv.main.module.ModuleOpencv
 import com.zhuzichu.android.wan.ui.search.module.ModuleSearch
@@ -60,7 +62,9 @@ abstract class ActivityBindingModule {
         modules = [
             //fragments
             ModuleOpencv::class,
-            ModuleGray::class
+            ModuleGray::class,
+            ModuleErode::class,
+            ModuleBlur::class
         ]
     )
     internal abstract fun opencvActivity(): ActivityOpencv

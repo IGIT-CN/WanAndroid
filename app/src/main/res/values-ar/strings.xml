@@ -11,6 +11,8 @@
     <string name="opencv">OpenCv</string>
     <string name="jni">Jni</string>
     <string name="gray">Gray</string>
+    <string name="erode">Erode</string>
+    <string name="blur">blur</string>
 
     <string name="home_article">أحدث بلوق وظائف</string>
     <string name="home_project">أحدث مشروع</string>

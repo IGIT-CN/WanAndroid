@@ -31,9 +31,6 @@ android {
         signingConfig = signingConfigs.getByName("appSign")
         renderscriptTargetApi = 18
         renderscriptSupportModeEnabled = true
-        ndk {
-            abiFilters("armeabi-v7a")
-        }
         externalNativeBuild {
             cmake {
                 cppFlags.addAll(listOf("-std=c++14"))
@@ -63,7 +60,7 @@ android {
         }
     }
 
-    flavorDimensions("channel")
+    flavorDimensions("channel", "cpu")
     productFlavors {
         create("GooglePlay") {
             dimension = "channel"
@@ -81,6 +78,32 @@ android {
                 put("CHANNEL_NAME", name)
                 put("ic_launcher_new", "@mipmap/ic_launcher_huawei")
                 put("ic_launcher_round_new", "@mipmap/ic_launcher_huawei_round")
+            }
+        }
+
+        create("armeabi"){
+            dimension ="cpu"
+            ndk {
+                abiFilters("armeabi-v7a")
+            }
+            externalNativeBuild {
+                cmake {
+                    abiFilters.clear()
+                    abiFilters.addAll(listOf("armeabi-v7a"))
+                }
+            }
+        }
+
+        create("x86") {
+            dimension ="cpu"
+            ndk {
+                abiFilters("x86")
+            }
+            externalNativeBuild {
+                cmake {
+                    abiFilters.clear()
+                    abiFilters.addAll(listOf("x86"))
+                }
             }
         }
     }

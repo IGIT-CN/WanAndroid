@@ -20,6 +20,6 @@ internal abstract class ModuleGray {
     @Binds
     @IntoMap
     @ViewModelKey(ViewModelGray::class)
-    abstract fun bindViewModelOpencv(viewModel: ViewModelGray): ViewModel
+    abstract fun bindViewModelGray(viewModel: ViewModelGray): ViewModel
 
 }

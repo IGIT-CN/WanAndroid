@@ -76,9 +76,9 @@ class InitApp(project: Project) {
                 }
             }
 
-            flavorDimensions("channel")
-            this.productFlavors.apply {
-                create("GooglePlay").apply {
+            flavorDimensions("channel", "cpu")
+            productFlavors {
+                create("GooglePlay") {
                     dimension = "channel"
                     applicationIdSuffix = ".google"
                     manifestPlaceholders.apply {
@@ -87,17 +87,40 @@ class InitApp(project: Project) {
                         put("ic_launcher_round_new", "@mipmap/ic_launcher_google_round")
                     }
                 }
-
-                create("HuaWei").apply {
+                create("HuaWei") {
                     dimension = "channel"
                     applicationIdSuffix = ".huawei"
-                    addManifestPlaceholders(
-                        mapOf(
-                            "CHANNEL_NAME" to name,
-                            "ic_launcher_new" to "@mipmap/ic_launcher_huawei",
-                            "ic_launcher_round_new" to "@mipmap/ic_launcher_huawei_round"
-                        )
-                    )
+                    manifestPlaceholders.apply {
+                        put("CHANNEL_NAME", name)
+                        put("ic_launcher_new", "@mipmap/ic_launcher_huawei")
+                        put("ic_launcher_round_new", "@mipmap/ic_launcher_huawei_round")
+                    }
+                }
+
+                create("armeabi"){
+                    dimension ="cpu"
+                    ndk {
+                        abiFilters("armeabi-v7a")
+                    }
+                    externalNativeBuild {
+                        cmake {
+                            abiFilters.clear()
+                            abiFilters.addAll(listOf("armeabi-v7a"))
+                        }
+                    }
+                }
+
+                create("x86") {
+                    dimension ="cpu"
+                    ndk {
+                        abiFilters("x86")
+                    }
+                    externalNativeBuild {
+                        cmake {
+                            abiFilters.clear()
+                            abiFilters.addAll(listOf("x86"))
+                        }
+                    }
                 }
             }
 

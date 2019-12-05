@@ -8,14 +8,21 @@
 using namespace std;
 using namespace cv;
 
-jobject gray(JNIEnv *env, jclass clazz, jobject bitmap);
+JNIEXPORT jobject jgray(JNIEnv *env, jobject object, jobject bitmap);
 
-static const char *const class_NativeManager = "com/zhuzichu/android/wan/manager/NativeManager";
+JNIEXPORT jobject
+jerode(JNIEnv *env, jobject object, jobject bitmap, int morph, int width, int height);
+
+JNIEXPORT jobject jblur(JNIEnv *env, jobject object, jobject bitmap, jint width, jint height);
+
+static const char *const class_NativeManager = "com/zhuzichu/android/wan/manager/OpencvManager";
 
 static jclass myClass;
 
 static const JNINativeMethod gMethods[] = {
-        {"gray", "(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;", (jobject *) gray}
+        {"gray",  "(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;", (jobject *) jgray},
+        {"erode", "(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;", (jobject *) jerode},
+        {"blur",  "(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;", (jobject *) jblur}
 };
 
 
@@ -40,7 +47,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved) {
     return JNI_VERSION_1_6;
 }
 
-jobject gray(JNIEnv *env, jclass clazz, jobject bitmap) {
+JNIEXPORT jobject jgray(JNIEnv *env, jobject object, jobject bitmap) {
     LOGI("gray 开始了");
     Mat src;
     BitmapToMat(env, bitmap, src);
@@ -48,5 +55,29 @@ jobject gray(JNIEnv *env, jclass clazz, jobject bitmap) {
     cvtColor(src, dst, COLOR_RGBA2GRAY);
     MatToBitmap(env, dst, bitmap);
     LOGI("gray 结束了");
+    return bitmap;
+}
+
+JNIEXPORT jobject
+jerode(JNIEnv *env, jobject object, jobject bitmap, jint morph, jint width, jint height) {
+    LOGI("erode 开始了");
+    Mat src;
+    BitmapToMat(env, bitmap, src);
+    Mat dst;
+    Mat element = getStructuringElement(morph, Size(width, height));
+    erode(src, dst, element);
+    MatToBitmap(env, dst, bitmap);
+    LOGI("erode 结束了");
+    return bitmap;
+}
+
+JNIEXPORT jobject jblur(JNIEnv *env, jobject object, jobject bitmap, jint width, jint height) {
+    LOGI("blur 开始了");
+    Mat src;
+    BitmapToMat(env, bitmap, src);
+    Mat dst;
+    blur(src, dst, Size(width, height));
+    MatToBitmap(env, dst, bitmap);
+    LOGI("blur 结束了");
     return bitmap;
 }

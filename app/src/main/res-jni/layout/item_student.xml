@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.zhuzichu.android.wan.ui.jni.main.viewmodel.ItemViewModelStudent" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:background="#A77575"
+        android:foreground="@drawable/ripple_light_with_border"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.name}"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            tools:text="我的名字叫xxxx" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.age}"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            tools:text="今年xx岁了" />
+
+    </LinearLayout>
+</layout>

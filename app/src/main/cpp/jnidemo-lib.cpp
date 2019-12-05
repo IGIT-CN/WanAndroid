@@ -5,21 +5,28 @@
 using namespace std;
 
 //--------------------------函数声明------------------------start
-jstring invokeDynamicMethod(JNIEnv *env, jobject object);
+//声明JNI函数
+JNIEXPORT jstring invokeDynamicMethod(JNIEnv *env, jobject object);
 
-jint getRandNumber(JNIEnv *env, jobject object);
+JNIEXPORT jint getRandNumber(JNIEnv *env, jobject object);
+
+JNIEXPORT jobject getStudent(JNIEnv *env, jobject object);
+
+//声明普通函数
+int generateRandNumber();
 
 void onInvokeCallback(JNIEnv *env, jobject object, jint number);
 
+jstring tojstring(JNIEnv *env, string s);
 //--------------------------声明函数------------------------end
-
-
 
 static const char *const class_JniDemoManager = "com/zhuzichu/android/wan/manager/JniDemoManager";
 
 static const JNINativeMethod gMethods[] = {
         {"invokeDynamicMethod", "()Ljava/lang/String;", (jstring *) invokeDynamicMethod},
-        {"getRandNumber",       "()I",                  (jstring *) getRandNumber}
+        {"getRandNumber",       "()I",                  (jint *) getRandNumber},
+        {"getStudent",          "()Lcom/zhuzichu/android/wan/ui/jni/main/entity/BeanStudent;",
+                                                        (jobject *) getStudent}
 };
 
 /**
@@ -75,17 +82,30 @@ JNIEXPORT jstring invokeDynamicMethod(JNIEnv *env, jobject object) {
 
 
 /**
- * 获取随机数
+ * 获取随机数回调给java端
  * @param env
  * @param object
  * @return
  */
 JNIEXPORT jint getRandNumber(JNIEnv *env, jobject object) {
-    int number = rand() % 100 + 50;
+    int number = generateRandNumber();
     onInvokeCallback(env, object, number);
     return number;
 }
 
+
+/**
+ * 创建一个Student的Java对象
+ * @param env
+ * @param object
+ */
+JNIEXPORT jobject getStudent(JNIEnv *env, jobject object) {
+    jclass clazz = env->FindClass("com/zhuzichu/android/wan/ui/jni/main/entity/BeanStudent");
+    jmethodID initId = env->GetMethodID(clazz, "<init>", "(Ljava/lang/String;I)V");
+    jstring name = tojstring(env, "朱子楚" + to_string(generateRandNumber()) + "号");
+    jobject student = env->NewObject(clazz, initId, name, generateRandNumber());
+    return student;
+}
 
 /**
  * 调用java方法
@@ -101,4 +121,12 @@ void onInvokeCallback(JNIEnv *env, jobject object, jint number) {
             "(I)V"
     );
     env->CallVoidMethod(object, methodId, number);
+}
+
+int generateRandNumber() {
+    return rand() % 100 + 50;
+}
+
+jstring tojstring(JNIEnv *env, string s) {
+    return env->NewStringUTF(s.c_str());
 }

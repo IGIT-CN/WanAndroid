@@ -10,6 +10,8 @@
     <string name="opencv">OpenCv</string>
     <string name="jni">Jni</string>
     <string name="gray">Gray</string>
+    <string name="erode">Erode</string>
+    <string name="blur">blur</string>
 
     <string name="home_article">New Article</string>
     <string name="home_project">New Project</string>

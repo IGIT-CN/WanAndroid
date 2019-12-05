@@ -11,6 +11,8 @@
     <string name="opencv">OpenCv</string>
     <string name="jni">Jni</string>
     <string name="gray">灰度图</string>
+    <string name="erode">腐蚀效果</string>
+    <string name="blur">模糊效果</string>
 
     <string name="home_article">最新博文</string>
     <string name="home_project">最新项目</string>

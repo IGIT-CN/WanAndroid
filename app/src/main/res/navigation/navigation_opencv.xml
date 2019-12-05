@@ -13,12 +13,28 @@
         <action
             android:id="@+id/action_fragmentOpencv_to_fragmentGray"
             app:destination="@id/fragmentGray" />
+        <action
+            android:id="@+id/action_fragmentOpencv_to_fragmentBlur"
+            app:destination="@id/fragmentBlur" />
+        <action
+            android:id="@+id/action_fragmentOpencv_to_fragmentErode"
+            app:destination="@id/fragmentErode" />
     </fragment>
     <fragment
         android:id="@+id/fragmentGray"
         android:name="com.zhuzichu.android.wan.ui.opencv.main.fragment.FragmentGray"
         android:label="FragmentGray"
         tools:layout="@layout/fragment_gray" />
+    <fragment
+        android:id="@+id/fragmentErode"
+        android:name="com.zhuzichu.android.wan.ui.opencv.main.fragment.FragmentErode"
+        android:label="FragmentErode"
+        tools:layout="@layout/fragment_erode"/>
+    <fragment
+        android:id="@+id/fragmentBlur"
+        android:name="com.zhuzichu.android.wan.ui.opencv.main.fragment.FragmentBlur"
+        android:label="FragmentBlur"
+        tools:layout="@layout/fragment_blur"/>
 
 
 </navigation>

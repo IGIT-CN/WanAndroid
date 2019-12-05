@@ -29,14 +29,10 @@ android {
         signingConfig signingConfigs.appSign
         renderscriptTargetApi 18
         renderscriptSupportModeEnabled true
-        ndk {
-            abiFilters "armeabi-v7a"
-//            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
-        }
         externalNativeBuild {
             cmake {
                 cppFlags "-std=c++14"
-                abiFilters "armeabi-v7a"
+                abiFilters "armeabi-v7a", "x86"
                 arguments "-DANDROID_STL=c++_shared"//使用c++_shared.so
             }
         }
@@ -58,8 +54,10 @@ android {
         }
     }
 
-    flavorDimensions "channel"
+    flavorDimensions "channel", "cpu"
+
     productFlavors {
+
         GooglePlay {
             dimension "channel"
             applicationIdSuffix = ".google"
@@ -69,6 +67,7 @@ android {
                     'ic_launcher_round_new': '@mipmap/ic_launcher_google_round'
             ])
         }
+
         HuaWei {
             dimension "channel"
             applicationIdSuffix = ".huawei"
@@ -77,6 +76,32 @@ android {
                     'ic_launcher_new'      : '@mipmap/ic_launcher_huawei',
                     'ic_launcher_round_new': '@mipmap/ic_launcher_huawei_round'
             ])
+        }
+
+        armeabi {
+            dimension "cpu"
+            ndk {
+                abiFilters "armeabi-v7a"
+            }
+            externalNativeBuild {
+                cmake {
+                    abiFilters.clear()
+                    abiFilters "armeabi-v7a"
+                }
+            }
+        }
+
+        x86 {
+            dimension "cpu"
+            ndk {
+                abiFilters "x86"
+            }
+            externalNativeBuild {
+                cmake {
+                    abiFilters.clear()
+                    abiFilters "x86"
+                }
+            }
         }
     }
 
@@ -103,7 +128,7 @@ android {
                 srcDir 'src/main/kotlin'
             }
             jniLibs.srcDirs = ["src/main/cpp/libs"]
-            res.srcDirs("src/main/res-opencv","src/main/res-jni")
+            res.srcDirs("src/main/res-opencv", "src/main/res-jni")
         }
     }
     externalNativeBuild {
