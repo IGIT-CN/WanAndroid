@@ -21,8 +21,8 @@ static jclass myClass;
 
 static const JNINativeMethod gMethods[] = {
         {"gray",  "(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;", (jobject *) jgray},
-        {"erode", "(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;", (jobject *) jerode},
-        {"blur",  "(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;", (jobject *) jblur}
+        {"erode", "(Landroid/graphics/Bitmap;III)Landroid/graphics/Bitmap;", (jobject *) jerode},
+        {"blur",  "(Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;", (jobject *) jblur}
 };
 
 

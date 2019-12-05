@@ -21,7 +21,7 @@ class ViewModelErode @Inject constructor(
     }
 
     val onClickGray = BindingCommand<Any>({
-//        bitmap.value = opencvManager.erode(src)
+        bitmap.value = opencvManager.erode(src, OpencvManager.MORPH_CROSS, 20, 20)
     })
 
 }

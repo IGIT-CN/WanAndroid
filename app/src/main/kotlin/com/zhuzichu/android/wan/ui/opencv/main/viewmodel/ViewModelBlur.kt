@@ -21,7 +21,7 @@ class ViewModelBlur @Inject constructor(
     }
 
     val onClickGray = BindingCommand<Any>({
-//        bitmap.value = opencvManager.blur(src)
+        bitmap.value = opencvManager.blur(src,20,20)
     })
 
 }
