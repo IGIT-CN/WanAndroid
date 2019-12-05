@@ -9,7 +9,7 @@ class JniDemoManager {
         System.loadLibrary("jnidemo-lib")
     }
 
-    var onInvokeStaticOrDynamicLisenter: (String.() -> Unit)? = null
+    var onInvokeLisenter: (Int.() -> Unit)? = null
     /**
      * 调用静态注册的方法
      */
@@ -20,12 +20,16 @@ class JniDemoManager {
      */
     external fun invokeDynamicMethod(): String
 
+    /**
+     * 生成一个随机数
+     */
+    external fun getRandNumber(): Int
 
     /**
-     * 调用动态(静态)注册的方法后 在C层调用的方法
+     *  在C层调用的方法
      */
-    fun onInvokeStaticOrDynamicCallback(text: String) {
-        onInvokeStaticOrDynamicLisenter?.invoke(text)
+    fun onInvokeCallback(number: Int) {
+        onInvokeLisenter?.invoke(number)
     }
 
 }

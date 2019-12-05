@@ -15,17 +15,18 @@ class ViewModelJni @Inject constructor(
     private val jniDemoManager: JniDemoManager
 ) : ViewModelAnalyticsBase() {
 
-    val title = MutableLiveData<String>(R.string.jni.toStringByResId())
+    val title = MutableLiveData(R.string.jni.toStringByResId())
 
     init {
-        jniDemoManager.onInvokeStaticOrDynamicLisenter = {
-            title.value = this
+        jniDemoManager.onInvokeLisenter = {
+            title.value = R.string.jni.toStringByResId().plus(this)
         }
     }
 
     companion object {
         const val TYPE_STATIC = 0
         const val TYPE_DYNAMIC = 1
+        const val TYPE_RANDOM = 2
     }
 
     private val closure: Int.() -> Unit = {
@@ -36,6 +37,9 @@ class ViewModelJni @Inject constructor(
             TYPE_DYNAMIC -> {
                 jniDemoManager.invokeDynamicMethod().toast()
             }
+            TYPE_RANDOM -> {
+                jniDemoManager.getRandNumber().toString().toast()
+            }
             else -> {
             }
         }
@@ -44,7 +48,8 @@ class ViewModelJni @Inject constructor(
     val items = MutableLiveData<List<Any>>().also {
         it.value = listOf(
             ItemViewModelJni(this, TYPE_STATIC, "静态注册native方法", closure),
-            ItemViewModelJni(this, TYPE_DYNAMIC, "动态注册native方法", closure)
+            ItemViewModelJni(this, TYPE_DYNAMIC, "动态注册native方法", closure),
+            ItemViewModelJni(this, TYPE_RANDOM, "获取随机数 C++调用java方法", closure)
         )
     }
 

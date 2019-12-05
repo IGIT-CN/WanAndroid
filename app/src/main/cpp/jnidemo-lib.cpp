@@ -4,28 +4,30 @@
 
 using namespace std;
 
+//--------------------------函数声明------------------------start
 jstring invokeDynamicMethod(JNIEnv *env, jobject object);
 
-void callbackText(JNIEnv *env, jobject object, jstring text);
+jint getRandNumber(JNIEnv *env, jobject object);
 
-extern "C"
-JNIEXPORT jstring JNICALL
-Java_com_zhuzichu_android_wan_manager_JniDemoManager_invokeStaticMethod(
-        JNIEnv *env, jobject object
-) {
-    jstring text = env->NewStringUTF(string("invokeStaticMethod 我是静态注册的方法").c_str());
-    callbackText(env, object, text);
-    return text;
-}
+void onInvokeCallback(JNIEnv *env, jobject object, jint number);
+
+//--------------------------声明函数------------------------end
+
+
 
 static const char *const class_JniDemoManager = "com/zhuzichu/android/wan/manager/JniDemoManager";
 
-static jclass myClass;
-
 static const JNINativeMethod gMethods[] = {
-        {"invokeDynamicMethod", "()Ljava/lang/String;", (jstring *) invokeDynamicMethod}
+        {"invokeDynamicMethod", "()Ljava/lang/String;", (jstring *) invokeDynamicMethod},
+        {"getRandNumber",       "()I",                  (jstring *) getRandNumber}
 };
 
+/**
+ *
+ * @param vm
+ * @param reserved
+ * @return
+ */
 JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved) {
     LOGI("JNI_OnLoad 开始了");
     JNIEnv *env = NULL;
@@ -33,7 +35,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved) {
         return -1;
     }
     // 获取映射的java类
-    myClass = env->FindClass(class_JniDemoManager);
+    jclass myClass = env->FindClass(class_JniDemoManager);
     if (myClass == NULL) {
         LOGE("不能找到类:%s\n", class_JniDemoManager);
         return -1;
@@ -47,18 +49,56 @@ JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved) {
     return JNI_VERSION_1_6;
 }
 
-JNIEXPORT jstring invokeDynamicMethod(JNIEnv *env, jobject object) {
-    jstring text = env->NewStringUTF(string("invokeDynamicMethod 我是动态注册的方法").c_str());
-    callbackText(env, object, text);
+/**
+ * 静态注册方法
+ */
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_zhuzichu_android_wan_manager_JniDemoManager_invokeStaticMethod(
+        JNIEnv *env, jobject object
+) {
+    jstring text = env->NewStringUTF(string("invokeStaticMethod 我是静态注册的方法").c_str());
     return text;
 }
 
 
-void callbackText(JNIEnv *env, jobject object, jstring text) {
+/**
+ * 动态初测方法
+ * @param env
+ * @param object
+ * @return
+ */
+JNIEXPORT jstring invokeDynamicMethod(JNIEnv *env, jobject object) {
+    jstring text = env->NewStringUTF(string("invokeDynamicMethod 我是动态注册的方法").c_str());
+    return text;
+}
+
+
+/**
+ * 获取随机数
+ * @param env
+ * @param object
+ * @return
+ */
+JNIEXPORT jint getRandNumber(JNIEnv *env, jobject object) {
+    int number = rand() % 100 + 50;
+    onInvokeCallback(env, object, number);
+    return number;
+}
+
+
+/**
+ * 调用java方法
+ * @param env
+ * @param object
+ * @param text
+ */
+void onInvokeCallback(JNIEnv *env, jobject object, jint number) {
+    jclass clazz = env->GetObjectClass(object);
     jmethodID methodId = env->GetMethodID(
-            myClass,
-            "onInvokeStaticOrDynamicCallback",
-            "(Ljava/lang/String;)V"
+            clazz,
+            "onInvokeCallback",
+            "(I)V"
     );
-    env->CallObjectMethod(object, methodId, text);
+    env->CallVoidMethod(object, methodId, number);
 }
