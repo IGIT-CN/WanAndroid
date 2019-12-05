@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.4.1)
 
 add_library(
-        native-lib
-        SHARED
-        native-lib.cpp
-)
-
-add_library(
         jnidemo-lib
         SHARED
         jnidemo-lib.cpp
+)
+
+add_library(
+        opencv-lib
+        SHARED
+        opencv-lib.cpp
 )
 
 add_library(
@@ -36,7 +36,7 @@ find_library(
 )
 
 target_link_libraries(
-        native-lib
+        opencv-lib
         common-lib
         ${jnigraphics-lib}
         ${log-lib}

@@ -4,10 +4,10 @@ import android.graphics.Bitmap
 import androidx.annotation.Keep
 
 @Keep
-class NativeManager {
+class OpencvManager {
 
     init {
-        System.loadLibrary("native-lib")
+        System.loadLibrary("opencv-lib")
     }
 
     external fun gray(bitmap: Bitmap): Bitmap

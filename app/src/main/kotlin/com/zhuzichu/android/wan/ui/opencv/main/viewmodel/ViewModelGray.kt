@@ -7,11 +7,11 @@ import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.global.AppGlobal.context
 import com.zhuzichu.android.wan.R
-import com.zhuzichu.android.wan.manager.NativeManager
+import com.zhuzichu.android.wan.manager.OpencvManager
 import javax.inject.Inject
 
 class ViewModelGray @Inject constructor(
-    private val nativeManager: NativeManager
+    private val opencvManager: OpencvManager
 ) : ViewModelAnalyticsBase() {
 
     val src = BitmapFactory.decodeResource(context.resources, R.mipmap.guidao)
@@ -21,7 +21,7 @@ class ViewModelGray @Inject constructor(
     }
 
     val onClickGray = BindingCommand<Any>({
-        bitmap.value = nativeManager.gray(src)
+        bitmap.value = opencvManager.gray(src)
     })
 
 }
