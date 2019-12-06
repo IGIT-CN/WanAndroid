@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_fragmentOpencv_to_fragmentErode"
             app:destination="@id/fragmentErode" />
+        <action
+            android:id="@+id/action_fragmentOpencv_to_fragmentCanny"
+            app:destination="@id/fragmentCanny" />
     </fragment>
     <fragment
         android:id="@+id/fragmentGray"
@@ -29,12 +32,17 @@
         android:id="@+id/fragmentErode"
         android:name="com.zhuzichu.android.wan.ui.opencv.main.fragment.FragmentErode"
         android:label="FragmentErode"
-        tools:layout="@layout/fragment_erode"/>
+        tools:layout="@layout/fragment_erode" />
     <fragment
         android:id="@+id/fragmentBlur"
         android:name="com.zhuzichu.android.wan.ui.opencv.main.fragment.FragmentBlur"
         android:label="FragmentBlur"
-        tools:layout="@layout/fragment_blur"/>
+        tools:layout="@layout/fragment_blur" />
+    <fragment
+        android:id="@+id/fragmentCanny"
+        android:name="com.zhuzichu.android.wan.ui.opencv.main.fragment.FragmentCanny"
+        android:label="FragmentCanny"
+        tools:layout="@layout/fragment_canny" />
 
 
 </navigation>

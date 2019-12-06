@@ -3,6 +3,10 @@
 
     <data>
 
+        <import type="com.zhuzichu.android.wan.manager.OpencvManager" />
+
+        <import type="com.zhuzichu.android.wan.ui.opencv.main.viewmodel.ViewModelErode" />
+
         <variable
             name="viewModel"
             type="com.zhuzichu.android.wan.ui.opencv.main.viewmodel.ViewModelErode" />
@@ -18,30 +22,33 @@
             android:layout_height="match_parent"
             app:srcBitmap="@{viewModel.bitmap}" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/rect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="@{viewModel.morph==OpencvManager.MORPH_RECT}"
             android:text="MORPH_RECT"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/cross"
             app:layout_constraintStart_toStartOf="parent"
             app:onClickCommand="@{viewModel.onClickRect}" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/cross"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="@{viewModel.morph==OpencvManager.MORPH_CROSS}"
             android:text="MORPH_CROSS"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ellipse"
             app:layout_constraintStart_toEndOf="@+id/rect"
             app:onClickCommand="@{viewModel.onClickCross}" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/ellipse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="@{viewModel.morph==OpencvManager.MORPH_ELLIPSE}"
             android:text="MORPH_ELLIPSE"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,6 +72,37 @@
             android:progress="17"
             app:layout_constraintBottom_toTopOf="@+id/height"
             app:onSeekCommand="@{viewModel.onSeekWidthCommand}" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="还原"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:onClickCommand="@{viewModel.onClickReturn}" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/erode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:checked="@{viewModel.type==ViewModelErode.TYPE_ERODE}"
+            android:text="腐蚀效果"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:onClickCommand="@{viewModel.onClickErode}" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/dilate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:checked="@{viewModel.type==ViewModelErode.TYPE_DILATE}"
+            android:text="膨胀效果"
+            app:layout_constraintStart_toEndOf="@+id/erode"
+            app:layout_constraintTop_toTopOf="parent"
+            app:onClickCommand="@{viewModel.onClickDilate}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

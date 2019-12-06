@@ -33,5 +33,9 @@ fun logInvokeTime(closure: Unit.() -> Unit) {
     val start = System.currentTimeMillis()
     closure.invoke(Unit)
     val end = System.currentTimeMillis()
-    "运行时间为:".plus(end-start).logi()
+    "运行时间为:".plus(end - start).logi()
+}
+
+fun Any.diffEquals(item: Any): Boolean {
+    return this == item
 }

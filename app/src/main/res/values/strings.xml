@@ -7,11 +7,13 @@
     <string name="setting">Settings</string>
 
     <string name="demo">My Demo</string>
-    <string name="opencv">OpenCv</string>
     <string name="jni">Jni</string>
-    <string name="gray">Gray</string>
-    <string name="erode">Erode</string>
-    <string name="blur">blur</string>
+
+    <string name="opencv">OpenCv</string>
+    <string name="opencv_gray">Gray</string>
+    <string name="opencv_erode_dilate">Erode and dilate</string>
+    <string name="opencv_blur">Blur</string>
+    <string name="opencv_canny">Canny</string>
 
     <string name="home_article">New Article</string>
     <string name="home_project">New Project</string>

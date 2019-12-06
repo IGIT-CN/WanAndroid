@@ -12,7 +12,6 @@ open class ViewModelAnalyticsBase : BaseAutoDisposeViewModel() {
 
     internal val handleThrowableEvent: SingleLiveEvent<Payload.PayloadThrowable> = SingleLiveEvent()
 
-
     fun handleThrowable(
         throwable: Throwable,
         isToast: Boolean? = null,

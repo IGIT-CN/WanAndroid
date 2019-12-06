@@ -15,6 +15,7 @@ class ViewModelOpencv @Inject constructor() : ViewModelAnalyticsBase() {
         const val TYPE_GRAY = 0
         const val TYPE_ERODE = 1
         const val TYPE_BLUR = 2
+        const val TYPE_CANNY = 3
     }
 
     private val closure: Int.() -> Unit = {
@@ -28,6 +29,9 @@ class ViewModelOpencv @Inject constructor() : ViewModelAnalyticsBase() {
             TYPE_BLUR -> {
                 R.id.action_fragmentOpencv_to_fragmentBlur
             }
+            TYPE_CANNY -> {
+                R.id.action_fragmentOpencv_to_fragmentCanny
+            }
             else -> {
                 R.id.action_fragmentOpencv_to_fragmentGray
             }
@@ -37,9 +41,10 @@ class ViewModelOpencv @Inject constructor() : ViewModelAnalyticsBase() {
 
     val items = MutableLiveData<List<Any>>().also {
         it.value = listOf(
-            ItemViewModelOpencv(this, TYPE_GRAY, R.string.gray, closure),
-            ItemViewModelOpencv(this, TYPE_ERODE, R.string.erode, closure),
-            ItemViewModelOpencv(this, TYPE_BLUR, R.string.blur, closure)
+            ItemViewModelOpencv(this, TYPE_GRAY, R.string.opencv_gray, closure),
+            ItemViewModelOpencv(this, TYPE_ERODE, R.string.opencv_erode_dilate, closure),
+            ItemViewModelOpencv(this, TYPE_BLUR, R.string.opencv_blur, closure),
+            ItemViewModelOpencv(this, TYPE_CANNY, R.string.opencv_canny, closure)
         )
     }
 

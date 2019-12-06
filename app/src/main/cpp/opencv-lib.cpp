@@ -13,16 +13,26 @@ JNIEXPORT jobject jgray(JNIEnv *env, jobject object, jobject bitmap);
 JNIEXPORT jobject
 jerode(JNIEnv *env, jobject object, jobject bitmap, int morph, int width, int height);
 
+JNIEXPORT jobject
+jdilate(JNIEnv *env, jobject object, jobject bitmap, int morph, int width, int height);
+
 JNIEXPORT jobject jblur(JNIEnv *env, jobject object, jobject bitmap, jint width, jint height);
+
+JNIEXPORT jobject
+jcanny(JNIEnv *env, jobject object, jobject bitmap, double threshold1, double threshold2,
+       int apertureSize,
+       bool isL2);
 
 static const char *const class_NativeManager = "com/zhuzichu/android/wan/manager/OpencvManager";
 
 static jclass myClass;
 
 static const JNINativeMethod gMethods[] = {
-        {"gray",  "(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;", (jobject *) jgray},
-        {"erode", "(Landroid/graphics/Bitmap;III)Landroid/graphics/Bitmap;", (jobject *) jerode},
-        {"blur",  "(Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;", (jobject *) jblur}
+        {"gray",   "(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;",     (jobject *) jgray},
+        {"erode",  "(Landroid/graphics/Bitmap;III)Landroid/graphics/Bitmap;",  (jobject *) jerode},
+        {"blur",   "(Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;",   (jobject *) jblur},
+        {"dilate", "(Landroid/graphics/Bitmap;III)Landroid/graphics/Bitmap;",  (jobject *) jdilate},
+        {"canny",  "(Landroid/graphics/Bitmap;DDIZ)Landroid/graphics/Bitmap;", (jobject *) jcanny}
 };
 
 
@@ -71,6 +81,19 @@ jerode(JNIEnv *env, jobject object, jobject bitmap, jint morph, jint width, jint
     return bitmap;
 }
 
+JNIEXPORT jobject
+jdilate(JNIEnv *env, jobject object, jobject bitmap, jint morph, jint width, jint height) {
+    LOGI("erode 开始了");
+    Mat src;
+    BitmapToMat(env, bitmap, src);
+    Mat dst;
+    Mat element = getStructuringElement(morph, Size(width, height));
+    dilate(src, dst, element);
+    MatToBitmap(env, dst, bitmap);
+    LOGI("erode 结束了");
+    return bitmap;
+}
+
 JNIEXPORT jobject jblur(JNIEnv *env, jobject object, jobject bitmap, jint width, jint height) {
     LOGI("blur 开始了");
     Mat src;
@@ -79,5 +102,24 @@ JNIEXPORT jobject jblur(JNIEnv *env, jobject object, jobject bitmap, jint width,
     blur(src, dst, Size(width, height));
     MatToBitmap(env, dst, bitmap);
     LOGI("blur 结束了");
+    return bitmap;
+}
+
+JNIEXPORT jobject
+jcanny(JNIEnv *env, jobject object, jobject bitmap, double threshold1, double threshold2,
+       int apertureSize,
+       bool isL2) {
+    LOGI("canny 开始了");
+    Mat src;
+    BitmapToMat(env, bitmap, src);
+    Mat gray;
+    //转换灰度图
+    cvtColor(src, gray, COLOR_BGR2GRAY);
+    Mat dst;
+    //先用使用 3x3内核来降噪 让图片变的光滑
+    blur(gray, dst, Size(3, 3));
+    Canny(dst, dst, threshold1, threshold2, apertureSize);
+    MatToBitmap(env, dst, bitmap);
+    LOGI("canny 结束了");
     return bitmap;
 }

@@ -14,6 +14,6 @@ class ItemViewModelStudentOperate(
     })
 
     val onClickMinus = BindingCommand<Any>({
-        viewModel.minusStudent()
+        viewModel.dropStudent()
     })
 }

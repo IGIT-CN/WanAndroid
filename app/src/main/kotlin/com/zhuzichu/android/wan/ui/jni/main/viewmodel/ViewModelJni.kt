@@ -1,6 +1,5 @@
 package com.zhuzichu.android.wan.ui.jni.main.viewmodel
 
-import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -12,6 +11,7 @@ import com.zhuzichu.android.shared.extension.toStringByResId
 import com.zhuzichu.android.shared.extension.toast
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
+import com.zhuzichu.android.wan.extension.diffEquals
 import com.zhuzichu.android.wan.manager.JniDemoManager
 import com.zhuzichu.android.wan.ui.jni.main.entity.BeanStudent
 import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindClass
@@ -112,7 +112,7 @@ class ViewModelJni @Inject constructor(
     /**
      * 删除一个学生
      */
-    fun minusStudent() {
+    fun dropStudent() {
         itemsStudent.value?.let {
             if (it.isNotEmpty()) {
                 itemsStudent.value = it.dropLast(1)
@@ -145,9 +145,8 @@ class ViewModelJni @Inject constructor(
             return false
         }
 
-        @SuppressLint("DiffUtilEquals")
         override fun areContentsTheSame(oldItem: Any, newItem: Any): Boolean {
-            return oldItem == newItem
+            return oldItem.diffEquals(newItem)
         }
     }
 }

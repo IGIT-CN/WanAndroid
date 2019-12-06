@@ -26,7 +26,7 @@ abstract class FragmentAnalyticsBase<TBinding : ViewDataBinding, TViewModel : Vi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.handleThrowableEvent.observe(this, Observer {
+        viewModel.handleThrowableEvent.observe(viewLifecycleOwner, Observer {
             //todo 添加设计模式去掉if else
             val throwable = it.throwable
             if (throwable is ResponseThrowable) {

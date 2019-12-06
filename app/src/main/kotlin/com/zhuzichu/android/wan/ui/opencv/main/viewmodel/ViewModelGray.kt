@@ -14,7 +14,7 @@ class ViewModelGray @Inject constructor(
     private val opencvManager: OpencvManager
 ) : ViewModelAnalyticsBase() {
 
-    val src = BitmapFactory.decodeResource(context.resources, R.mipmap.guidao)
+    private val src = BitmapFactory.decodeResource(context.resources, R.mipmap.guidao)
 
     val bitmap = MutableLiveData<Bitmap>().apply {
         value = src
@@ -24,4 +24,7 @@ class ViewModelGray @Inject constructor(
         bitmap.value = opencvManager.gray(src)
     })
 
+    val onClickReturn = BindingCommand<Any>({
+        bitmap.value = src
+    })
 }

@@ -14,7 +14,7 @@ class FragmentJni : FragmentAnalyticsBase<FragmentJniBinding, ViewModelJni>() {
     override fun setLayoutId(): Int = R.layout.fragment_jni
 
     override fun initViewObservable() {
-        viewModel.onPlusStudentEvent.observe(this, Observer {
+        viewModel.onPlusStudentEvent.observe(viewLifecycleOwner, Observer {
             recycler.adapter?.let {
                 recycler.postDelayed({
                     recycler.scrollToPosition(it.itemCount - 1)

@@ -4,45 +4,44 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.lifecycle.MutableLiveData
 import com.uber.autodispose.autoDispose
+import com.zhuzichu.android.libs.tool.toDouble
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.bindToSchedulers
-import com.zhuzichu.android.shared.global.AppGlobal.context
+import com.zhuzichu.android.shared.global.AppGlobal
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.manager.OpencvManager
 import io.reactivex.Flowable
 import javax.inject.Inject
 
-class ViewModelBlur @Inject constructor(
+class ViewModelCanny @Inject constructor(
     private val opencvManager: OpencvManager
 ) : ViewModelAnalyticsBase() {
 
-    private val src = BitmapFactory.decodeResource(context.resources, R.mipmap.guidao)
+    private val src = BitmapFactory.decodeResource(AppGlobal.context.resources, R.mipmap.guidao)
 
-    var width = 17
+    private var min = 3.0
 
-    var height = 17
-
-    val min = 3
+    private var max = 9.0
 
     val bitmap = MutableLiveData<Bitmap>().apply {
         value = src
     }
 
-    val onSeekWidthCommand = BindingCommand<Int>(consumer = {
+    val onSeekMaxThresholdCommand = BindingCommand<Int>(consumer = {
         this?.let {
             if (it % 3 != 0)
                 return@BindingCommand
-            width = it + min
+            max = toDouble(it)
             updateBitmap()
         }
     })
 
-    val onSeekHeightCommand = BindingCommand<Int>(consumer = {
+    val onSeekMinThresholdCommand = BindingCommand<Int>(consumer = {
         this?.let {
             if (it % 3 != 0)
                 return@BindingCommand
-            height = it + min
+            min = toDouble(it)
             updateBitmap()
         }
     })
@@ -54,7 +53,7 @@ class ViewModelBlur @Inject constructor(
     private fun updateBitmap() {
         Flowable.just(src.copy(src.config, true))
             .map {
-                opencvManager.blur(it, width, height)
+                opencvManager.canny(it, min, max, 3, true)
             }
             .bindToSchedulers()
             .autoDispose(this)
@@ -62,4 +61,5 @@ class ViewModelBlur @Inject constructor(
                 bitmap.value = it
             }
     }
+
 }
