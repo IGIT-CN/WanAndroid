@@ -6,10 +6,10 @@ import androidx.annotation.Keep
 @Keep
 class OpencvManager {
 
-    companion object{
-        const val MORPH_RECT=0
-        const val MORPH_CROSS=0
-        const val MORPH_ELLIPSE=0
+    companion object {
+        const val MORPH_RECT = 0
+        const val MORPH_CROSS = 1
+        const val MORPH_ELLIPSE = 2
     }
 
     init {

@@ -18,14 +18,53 @@
             android:layout_height="match_parent"
             app:srcBitmap="@{viewModel.bitmap}" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/rect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/gray"
+            android:text="MORPH_RECT"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cross"
+            app:layout_constraintStart_toStartOf="parent"
+            app:onClickCommand="@{viewModel.onClickRect}" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cross"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MORPH_CROSS"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ellipse"
+            app:layout_constraintStart_toEndOf="@+id/rect"
+            app:onClickCommand="@{viewModel.onClickCross}" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/ellipse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MORPH_ELLIPSE"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:onClickCommand="@{viewModel.onClickGray}" />
+            app:layout_constraintStart_toEndOf="@+id/cross"
+            app:onClickCommand="@{viewModel.onClickEllipse}" />
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/height"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="97"
+            android:progress="17"
+            app:layout_constraintBottom_toTopOf="@+id/rect"
+            app:onSeekCommand="@{viewModel.onSeekHeightCommand}" />
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/width"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="97"
+            android:progress="17"
+            app:layout_constraintBottom_toTopOf="@+id/height"
+            app:onSeekCommand="@{viewModel.onSeekWidthCommand}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

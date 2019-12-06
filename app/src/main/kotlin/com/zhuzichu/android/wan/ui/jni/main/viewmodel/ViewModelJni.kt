@@ -23,6 +23,7 @@ class ViewModelJni @Inject constructor(
 ) : ViewModelAnalyticsBase() {
 
     val onPlusStudentEvent = SingleLiveEvent<Unit>()
+
     /**
      * 标题
      */
@@ -121,12 +122,14 @@ class ViewModelJni @Inject constructor(
 
     val diff: DiffUtil.ItemCallback<Any> = object : DiffUtil.ItemCallback<Any>() {
         override fun areItemsTheSame(oldItem: Any, newItem: Any): Boolean {
+
             //判断ItemViewModelJni是不是同条数据
             if (oldItem is ItemViewModelJni && newItem is ItemViewModelJni) {
                 if (oldItem.type == newItem.type) {
                     return true
                 }
             }
+
             //判断ItemViewModelStudentOperate是不是同条数据
             if (oldItem is ItemViewModelStudentOperate && newItem is ItemViewModelStudentOperate) {
                 return true
@@ -138,6 +141,7 @@ class ViewModelJni @Inject constructor(
                     return true
                 }
             }
+
             return false
         }
 
