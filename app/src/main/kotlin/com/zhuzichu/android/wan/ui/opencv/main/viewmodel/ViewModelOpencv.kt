@@ -16,6 +16,7 @@ class ViewModelOpencv @Inject constructor() : ViewModelAnalyticsBase() {
         const val TYPE_ERODE = 1
         const val TYPE_BLUR = 2
         const val TYPE_CANNY = 3
+        const val TYPE_IDCARD = 4
     }
 
     private val closure: Int.() -> Unit = {
@@ -32,6 +33,9 @@ class ViewModelOpencv @Inject constructor() : ViewModelAnalyticsBase() {
             TYPE_CANNY -> {
                 R.id.action_fragmentOpencv_to_fragmentCanny
             }
+            TYPE_IDCARD -> {
+                R.id.action_fragmentOpencv_to_fragmentIdcard
+            }
             else -> {
                 R.id.action_fragmentOpencv_to_fragmentGray
             }
@@ -44,7 +48,8 @@ class ViewModelOpencv @Inject constructor() : ViewModelAnalyticsBase() {
             ItemViewModelOpencv(this, TYPE_GRAY, R.string.opencv_gray, closure),
             ItemViewModelOpencv(this, TYPE_ERODE, R.string.opencv_erode_dilate, closure),
             ItemViewModelOpencv(this, TYPE_BLUR, R.string.opencv_blur, closure),
-            ItemViewModelOpencv(this, TYPE_CANNY, R.string.opencv_canny, closure)
+            ItemViewModelOpencv(this, TYPE_CANNY, R.string.opencv_canny, closure),
+            ItemViewModelOpencv(this, TYPE_IDCARD, R.string.opencv_idcard, closure)
         )
     }
 

@@ -10,18 +10,18 @@ import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.manager.OpencvManager
 import javax.inject.Inject
 
-class ViewModelGray @Inject constructor(
+class ViewModelIdcard @Inject constructor(
     private val opencvManager: OpencvManager
 ) : ViewModelAnalyticsBase() {
 
-    private val src = BitmapFactory.decodeResource(context.resources, R.mipmap.guidao)
+    private val src = BitmapFactory.decodeResource(context.resources, R.drawable.id_card0)
 
     val bitmap = MutableLiveData<Bitmap>().apply {
         value = src
     }
 
     val onClickGray = BindingCommand<Any>({
-        bitmap.value = opencvManager.gray(src.copy(src.config,true))
+        bitmap.value = opencvManager.gray(src)
     })
 
     val onClickReturn = BindingCommand<Any>({

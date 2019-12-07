@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_fragmentOpencv_to_fragmentCanny"
             app:destination="@id/fragmentCanny" />
+        <action
+            android:id="@+id/action_fragmentOpencv_to_fragmentIdcard"
+            app:destination="@id/fragmentIdcard" />
     </fragment>
     <fragment
         android:id="@+id/fragmentGray"
@@ -43,6 +46,11 @@
         android:name="com.zhuzichu.android.wan.ui.opencv.main.fragment.FragmentCanny"
         android:label="FragmentCanny"
         tools:layout="@layout/fragment_canny" />
+    <fragment
+        android:id="@+id/fragmentIdcard"
+        android:name="com.zhuzichu.android.wan.ui.opencv.main.fragment.FragmentIdcard"
+        android:label="FragmentIdcard"
+        tools:layout="@layout/fragment_idcard" />
 
 
 </navigation>

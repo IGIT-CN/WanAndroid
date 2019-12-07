@@ -14,6 +14,7 @@
     <string name="opencv_erode_dilate">Erode and dilate</string>
     <string name="opencv_blur">Blur</string>
     <string name="opencv_canny">Canny</string>
+    <string name="opencv_idcard">IdCard</string>
 
     <string name="home_article">New Article</string>
     <string name="home_project">New Project</string>

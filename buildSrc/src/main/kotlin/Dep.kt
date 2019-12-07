@@ -27,7 +27,10 @@ object Dep {
         const val umengAnalytics = "8.0.0"
         const val jsoup = "1.12.1"
         const val autoSize = "1.1.2"
+        const val tesstwo = "9.1.0"
     }
+
+    const val tesstwo = "com.rmtheis:tess-two:${Version.tesstwo}"
 
     const val autoSzie = "me.jessyan:autosize:${Version.autoSize}"
 
