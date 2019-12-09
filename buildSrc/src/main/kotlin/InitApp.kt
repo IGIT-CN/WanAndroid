@@ -97,10 +97,10 @@ class InitApp(project: Project) {
                     }
                 }
 
-                create("arm"){
-                    dimension ="cpu"
+                create("arm") {
+                    dimension = "cpu"
                     ndk {
-                        abiFilters("armeabi-v7a")
+                        setAbiFilters(listOf("armeabi-v7a"))
                     }
                     externalNativeBuild {
                         cmake {
@@ -111,9 +111,9 @@ class InitApp(project: Project) {
                 }
 
                 create("x86") {
-                    dimension ="cpu"
+                    dimension = "cpu"
                     ndk {
-                        abiFilters("x86")
+                        setAbiFilters(listOf("x86"))
                     }
                     externalNativeBuild {
                         cmake {

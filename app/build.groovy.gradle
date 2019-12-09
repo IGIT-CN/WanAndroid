@@ -81,7 +81,7 @@ android {
         arm {
             dimension "cpu"
             ndk {
-                abiFilters "armeabi-v7a"
+                setAbiFilters(["armeabi-v7a"])
             }
             externalNativeBuild {
                 cmake {
@@ -94,7 +94,7 @@ android {
         x86 {
             dimension "cpu"
             ndk {
-                abiFilters "x86"
+                setAbiFilters(["x86"])
             }
             externalNativeBuild {
                 cmake {
