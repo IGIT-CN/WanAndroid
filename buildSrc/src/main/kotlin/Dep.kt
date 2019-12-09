@@ -1,7 +1,7 @@
 object Dep {
     object Version {
         const val kotlin = "1.3.60"
-        const val buildGradle = "3.5.2"
+        const val buildGradle = "3.5.3"
         const val androidxCore = "1.1.0"
         const val androidxKtx = "1.1.0"
         const val androidxAnnotation = "1.1.0"

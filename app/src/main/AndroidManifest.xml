@@ -65,6 +65,9 @@
         <activity android:name=".ui.opencv.ActivityOpencv" />
 
         <activity android:name=".ui.jni.ActivityJni" />
+
+        <activity android:name=".ui.ffmpeg.ActivityFFmpeg" />
+
     </application>
 
 </manifest>

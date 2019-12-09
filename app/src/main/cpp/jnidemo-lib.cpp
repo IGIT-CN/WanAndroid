@@ -59,13 +59,16 @@ JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved) {
 /**
  * 静态注册方法
  */
-extern "C"
+extern "C" {
+
 JNIEXPORT jstring JNICALL
 Java_com_zhuzichu_android_wan_manager_JniDemoManager_invokeStaticMethod(
         JNIEnv *env, jobject object
 ) {
     jstring text = env->NewStringUTF(string("invokeStaticMethod 我是静态注册的方法").c_str());
     return text;
+}
+
 }
 
 

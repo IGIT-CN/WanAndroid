@@ -15,7 +15,7 @@ import com.zhuzichu.android.wan.extension.diffEquals
 import com.zhuzichu.android.wan.manager.JniDemoManager
 import com.zhuzichu.android.wan.ui.jni.main.entity.BeanStudent
 import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindClass
-import java.util.ArrayList
+import java.util.*
 import javax.inject.Inject
 
 class ViewModelJni @Inject constructor(
@@ -120,6 +120,9 @@ class ViewModelJni @Inject constructor(
         }
     }
 
+    /**
+     * 初始化diff
+     */
     val diff: DiffUtil.ItemCallback<Any> = object : DiffUtil.ItemCallback<Any>() {
         override fun areItemsTheSame(oldItem: Any, newItem: Any): Boolean {
 

@@ -9,14 +9,16 @@
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_margin="5dp"
-        android:gravity="center"
         android:background="#A77575"
         android:foreground="@drawable/ripple_light_with_border"
-        android:orientation="vertical">
+        android:gravity="center"
+        android:orientation="vertical"
+        app:onClickCommand="@{item.onClickItem}">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
@@ -24,7 +26,6 @@
             android:text="@{item.name}"
             android:textAppearance="?attr/textAppearanceSubtitle1"
             tools:text="我的名字叫xxxx" />
-
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"

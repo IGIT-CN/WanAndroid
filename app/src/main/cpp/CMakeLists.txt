@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 3.4.1)
 
 add_library(
+        ffmpeg-lib
+        SHARED
+        ffmpeg-lib.cpp
+)
+
+add_library(
         jnidemo-lib
         SHARED
         jnidemo-lib.cpp
@@ -36,6 +42,23 @@ find_library(
 )
 
 target_link_libraries(
+        jnidemo-lib
+        ${log-lib}
+)
+
+target_link_libraries(
+        ffmpeg-lib
+        common-lib
+        avcodec
+        avdevice
+        avfilter
+        avformat
+        avutil
+        swresample
+        swscale
+)
+
+target_link_libraries(
         opencv-lib
         common-lib
         ${jnigraphics-lib}
@@ -48,9 +71,4 @@ target_link_libraries(
         ${jnigraphics-lib}
         ${log-lib}
         opencv_java4
-)
-
-target_link_libraries(
-        jnidemo-lib
-        ${log-lib}
 )

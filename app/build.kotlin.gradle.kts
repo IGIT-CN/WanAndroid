@@ -129,7 +129,7 @@ android {
         sourceSets["main"].apply {
             java.srcDir("src/main/kotlin")
             jniLibs.srcDirs("src/main/cpp/libs")
-            res.srcDirs("src/main/res-opencv", "src/main/res-jni")
+            res.srcDirs("src/main/res-opencv", "src/main/res-jni","src/main/res-ffmpeg")
         }
     }
 

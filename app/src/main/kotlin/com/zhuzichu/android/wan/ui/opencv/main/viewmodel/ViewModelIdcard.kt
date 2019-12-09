@@ -14,14 +14,14 @@ class ViewModelIdcard @Inject constructor(
     private val opencvManager: OpencvManager
 ) : ViewModelAnalyticsBase() {
 
-    private val src = BitmapFactory.decodeResource(context.resources, R.drawable.id_card0)
+    private val src = BitmapFactory.decodeResource(context.resources, R.drawable.idcard)
 
     val bitmap = MutableLiveData<Bitmap>().apply {
         value = src
     }
 
-    val onClickGray = BindingCommand<Any>({
-        bitmap.value = opencvManager.gray(src)
+    val onClickGet = BindingCommand<Any>({
+        toast("点击了")
     })
 
     val onClickReturn = BindingCommand<Any>({

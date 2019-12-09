@@ -4,6 +4,7 @@ import android.content.Context
 import com.zhuzichu.android.shared.storage.GlobalStorage
 import com.zhuzichu.android.wan.ApplicationWan
 import com.zhuzichu.android.wan.db.DaoUser
+import com.zhuzichu.android.wan.manager.FFmpegManager
 import com.zhuzichu.android.wan.manager.JniDemoManager
 import com.zhuzichu.android.wan.manager.OpencvManager
 import com.zhuzichu.android.wan.repository.LocalRepository
@@ -52,5 +53,11 @@ class AppModule {
     @Singleton
     fun providesJniDemoManager(): JniDemoManager {
         return JniDemoManager()
+    }
+
+    @Provides
+    @Singleton
+    fun providesFFmpegManager(): FFmpegManager {
+        return FFmpegManager()
     }
 }

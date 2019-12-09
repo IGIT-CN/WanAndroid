@@ -16,6 +16,8 @@
     <string name="opencv_canny">Canny</string>
     <string name="opencv_idcard">IdCard</string>
 
+    <string name="ffmpeg">FFmpeg</string>
+
     <string name="home_article">New Article</string>
     <string name="home_project">New Project</string>
 

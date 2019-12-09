@@ -4,6 +4,8 @@ import com.zhuzichu.android.mvvm.di.ActivityScoped
 import com.zhuzichu.android.wan.ActivityMain
 import com.zhuzichu.android.wan.ui.account.ActivityAccount
 import com.zhuzichu.android.wan.ui.account.login.module.ModuleLogin
+import com.zhuzichu.android.wan.ui.ffmpeg.ActivityFFmpeg
+import com.zhuzichu.android.wan.ui.ffmpeg.main.module.ModuleFFmpeg
 import com.zhuzichu.android.wan.ui.home.module.ModuleHome
 import com.zhuzichu.android.wan.ui.home.module.ModuleHomeArticle
 import com.zhuzichu.android.wan.ui.home.module.ModuleHomeProject
@@ -77,4 +79,13 @@ abstract class ActivityBindingModule {
         ]
     )
     internal abstract fun jniActivity(): ActivityJni
+
+    @ActivityScoped
+    @ContributesAndroidInjector(
+        modules = [
+            //fragments
+            ModuleFFmpeg::class
+        ]
+    )
+    internal abstract fun ffmpegActivity(): ActivityFFmpeg
 }
