@@ -78,7 +78,7 @@ android {
             ])
         }
 
-        armeabi {
+        arm {
             dimension "cpu"
             ndk {
                 abiFilters "armeabi-v7a"

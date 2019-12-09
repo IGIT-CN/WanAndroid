@@ -97,7 +97,7 @@ class InitApp(project: Project) {
                     }
                 }
 
-                create("armeabi"){
+                create("arm"){
                     dimension ="cpu"
                     ndk {
                         abiFilters("armeabi-v7a")
