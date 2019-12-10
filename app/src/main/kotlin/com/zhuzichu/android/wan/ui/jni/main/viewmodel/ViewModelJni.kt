@@ -64,12 +64,6 @@ class ViewModelJni @Inject constructor(
     }
 
     /**
-     * 学生list
-     */
-    private val itemsStudent = MutableLiveData<List<ItemViewModelStudent>>().also {
-        it.value = listOf()
-    }
-    /**
      * jni操作条目list
      */
     private val itemsJni = listOf(
@@ -77,6 +71,13 @@ class ViewModelJni @Inject constructor(
         ItemViewModelJni(this, TYPE_DYNAMIC, "动态注册native方法", closure),
         ItemViewModelJni(this, TYPE_RANDOM, "获取随机数 C++调用java方法", closure)
     )
+
+    /**
+     * 学生list
+     */
+    private val itemsStudent = MutableLiveData<List<ItemViewModelStudent>>().also {
+        it.value = listOf()
+    }
 
     /**
      * 数据合并
