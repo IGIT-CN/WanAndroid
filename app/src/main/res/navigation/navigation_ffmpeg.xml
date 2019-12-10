@@ -9,5 +9,14 @@
         android:id="@+id/fragmentFFmpeg"
         android:name="com.zhuzichu.android.wan.ui.ffmpeg.main.fragment.FragmentFFmpeg"
         android:label="FragmentFFmpeg"
-        tools:layout="@layout/fragment_ffmpeg"/>
+        tools:layout="@layout/fragment_ffmpeg" >
+        <action
+            android:id="@+id/action_fragmentFFmpeg_to_fragmentAVinfo"
+            app:destination="@id/fragmentAVinfo" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAVinfo"
+        android:name="com.zhuzichu.android.wan.ui.ffmpeg.main.fragment.FragmentAVinfo"
+        android:label="FragmentAVinfo"
+        tools:layout="@layout/fragment_avinfo" />
 </navigation>

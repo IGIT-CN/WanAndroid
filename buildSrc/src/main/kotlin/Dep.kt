@@ -22,13 +22,16 @@ object Dep {
         const val libs = "1.0.27"
         const val mvvm = "1.0.52"
         const val widget = "1.0.31"
-        const val room = "2.2.1"
+        const val room = "2.2.2"
         const val umengCommon = "2.0.0"
         const val umengAnalytics = "8.0.0"
         const val jsoup = "1.12.1"
         const val autoSize = "1.1.2"
         const val tesstwo = "9.1.0"
+        const val flexbox = "1.1.0"
     }
+
+    const val flexbox = "com.google.android:flexbox:${Version.flexbox}"
 
     const val tesstwo = "com.rmtheis:tess-two:${Version.tesstwo}"
 

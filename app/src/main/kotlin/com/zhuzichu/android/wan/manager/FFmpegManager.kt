@@ -5,5 +5,13 @@ class FFmpegManager {
         System.loadLibrary("ffmpeg-lib")
     }
 
-    external fun getConfiguration(): String
+    external fun getConfigurationInfo(): String
+
+    external fun getAvFilterInfo(): String
+
+    external fun getAvCodecInfo(): String
+
+    external fun getAvFormatInfo(): String
+
+    external fun getUrlProtocolInfo(): String
 }

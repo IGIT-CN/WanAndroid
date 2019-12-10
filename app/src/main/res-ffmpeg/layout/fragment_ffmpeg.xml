@@ -8,18 +8,40 @@
             type="com.zhuzichu.android.wan.ui.ffmpeg.main.viewmodel.ViewModelFFmpeg" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <com.zhuzichu.android.widget.toolbar.NiceToolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="@{viewModel.configuration}"/>
+            app:toolbarTitle="@string/ffmpeg"
+            app:toolbarTitleTextAppearance="?attr/textAppearanceHeadline6" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="获取FFmpeg信息"
+                    app:onClickCommand="@{viewModel.onClickGetInfo}" />
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 </layout>

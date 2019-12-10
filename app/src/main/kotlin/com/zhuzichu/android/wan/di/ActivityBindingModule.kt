@@ -5,6 +5,7 @@ import com.zhuzichu.android.wan.ActivityMain
 import com.zhuzichu.android.wan.ui.account.ActivityAccount
 import com.zhuzichu.android.wan.ui.account.login.module.ModuleLogin
 import com.zhuzichu.android.wan.ui.ffmpeg.ActivityFFmpeg
+import com.zhuzichu.android.wan.ui.ffmpeg.main.module.ModuleAVinfo
 import com.zhuzichu.android.wan.ui.ffmpeg.main.module.ModuleFFmpeg
 import com.zhuzichu.android.wan.ui.home.module.ModuleHome
 import com.zhuzichu.android.wan.ui.home.module.ModuleHomeArticle
@@ -84,7 +85,8 @@ abstract class ActivityBindingModule {
     @ContributesAndroidInjector(
         modules = [
             //fragments
-            ModuleFFmpeg::class
+            ModuleFFmpeg::class,
+            ModuleAVinfo::class
         ]
     )
     internal abstract fun ffmpegActivity(): ActivityFFmpeg

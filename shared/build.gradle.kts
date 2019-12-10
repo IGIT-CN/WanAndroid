@@ -99,5 +99,6 @@ dependencies {
     api(Dep.umengAnalytics)
     api(Dep.jsoup)
     api(Dep.autoSzie)
+    api(Dep.flexbox)
     api(Dep.tesstwo)
 }

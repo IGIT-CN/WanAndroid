@@ -1,14 +1,14 @@
 package com.zhuzichu.android.wan.ui.ffmpeg.main.viewmodel
 
-import androidx.lifecycle.MutableLiveData
+import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
-import com.zhuzichu.android.wan.manager.FFmpegManager
+import com.zhuzichu.android.wan.R
 import javax.inject.Inject
 
-class ViewModelFFmpeg @Inject constructor(
-    private val ffmpegManager: FFmpegManager
-) : ViewModelAnalyticsBase() {
-    val configuration = MutableLiveData<String>().apply {
-        value = ffmpegManager.getConfiguration()
-    }
+class ViewModelFFmpeg @Inject constructor() : ViewModelAnalyticsBase() {
+
+    val onClickGetInfo = BindingCommand<Any>({
+        startFragment(R.id.action_fragmentFFmpeg_to_fragmentAVinfo)
+    })
+
 }
