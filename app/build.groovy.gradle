@@ -66,6 +66,7 @@ android {
                     'ic_launcher_new'      : '@mipmap/ic_launcher_google',
                     'ic_launcher_round_new': '@mipmap/ic_launcher_google_round'
             ])
+
         }
 
         HuaWei {
