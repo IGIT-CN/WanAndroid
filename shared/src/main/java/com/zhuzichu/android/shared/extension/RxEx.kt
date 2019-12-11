@@ -10,31 +10,29 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
 
-fun <T> schedulersTransformer(): FlowableTransformer<T, T> {
-    return FlowableTransformer { observable ->
-        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-    }
-}
-
-fun <T> exceptionTransformer(): FlowableTransformer<T, T> {
-    return FlowableTransformer { observable ->
-        observable.onErrorResumeNext(ErrorResponseFunc<T>())
-    }
-}
-
 private class ErrorResponseFunc<T> : Function<Throwable, Flowable<T>> {
     override fun apply(t: Throwable): Flowable<T> {
         return Flowable.error(handleException(t))
     }
 }
 
+fun <T> schedulersTransformer(): FlowableTransformer<T, T> =
+    FlowableTransformer { observable ->
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+    }
+
+
+fun <T> exceptionTransformer(): FlowableTransformer<T, T> =
+    FlowableTransformer { observable ->
+        observable.onErrorResumeNext(ErrorResponseFunc<T>())
+    }
+
 
 fun <T> Flowable<T>.autoLoading(
     viewModel: BaseViewModel,
     execute: (() -> Boolean)? = null
-): Flowable<T> {
-    val flag = execute?.invoke() ?: true
-    return if (flag)
+): Flowable<T> =
+    if (execute?.invoke() != false)
         this.compose<T> {
             it.doOnSubscribe { viewModel.showLoading() }
                 .doFinally { viewModel.hideLoading() }
@@ -43,23 +41,24 @@ fun <T> Flowable<T>.autoLoading(
         this.compose<T> {
             it
         }
-}
+
 
 fun <T> Flowable<T>.bindToException(): Flowable<T> =
     this.compose<T> {
         it.onErrorResumeNext(ErrorResponseFunc<T>())
     }
 
+
 fun <T> Flowable<T>.bindToSchedulers(): Flowable<T> =
     this.compose<T> {
         it.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
     }
 
+
 fun <T> createFlowable(
     mode: BackpressureStrategy = BackpressureStrategy.ERROR,
     closure: FlowableEmitter<T>.() -> Unit
-): Flowable<T> {
-    return Flowable.create({
+): Flowable<T> =
+    Flowable.create({
         closure.invoke(it)
     }, mode)
-}
