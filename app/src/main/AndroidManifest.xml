@@ -68,6 +68,8 @@
 
         <activity android:name=".ui.ffmpeg.ActivityFFmpeg" />
 
+        <activity android:name=".ui.websocket.ActivityWebsocket" />
+
     </application>
 
 </manifest>

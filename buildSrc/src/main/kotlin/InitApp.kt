@@ -145,7 +145,12 @@ class InitApp(project: Project) {
                 sourceSets["main"].apply {
                     java.srcDir("src/main/kotlin")
                     jniLibs.srcDirs("src/main/cpp/libs")
-                    res.srcDirs("src/main/res-opencv", "src/main/res-jni","src/main/res-ffmpeg")
+                    res.srcDirs(
+                        "src/main/res-opencv",
+                        "src/main/res-jni",
+                        "src/main/res-ffmpeg",
+                        "src/main/res-websocket"
+                    )
                 }
             }
 

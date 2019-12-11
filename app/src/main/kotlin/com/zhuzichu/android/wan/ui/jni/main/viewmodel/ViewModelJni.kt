@@ -4,8 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.recyclerview.widget.DiffUtil
+import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.mvvm.event.SingleLiveEvent
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
+import com.zhuzichu.android.shared.extension.autoLoading
 import com.zhuzichu.android.shared.extension.map
 import com.zhuzichu.android.shared.extension.toStringByResId
 import com.zhuzichu.android.shared.extension.toast
@@ -13,13 +15,14 @@ import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.extension.diffEquals
 import com.zhuzichu.android.wan.manager.JniDemoManager
-import com.zhuzichu.android.wan.ui.jni.main.entity.BeanStudent
+import com.zhuzichu.android.wan.ui.jni.main.domain.UseCaseGetStudent
 import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindClass
 import java.util.*
 import javax.inject.Inject
 
 class ViewModelJni @Inject constructor(
-    private val jniDemoManager: JniDemoManager
+    private val jniDemoManager: JniDemoManager,
+    private val useCaseGetStudent: UseCaseGetStudent
 ) : ViewModelAnalyticsBase() {
 
     val onPlusStudentEvent = SingleLiveEvent<Unit>()
@@ -87,7 +90,7 @@ class ViewModelJni @Inject constructor(
             val list = ArrayList<Any>()
             list.addAll(itemsJni)
             list.addAll(input)
-            list.add(ItemViewModelStudentOperate(this, jniDemoManager))
+            list.add(ItemViewModelStudentOperate(this))
             list
         }
 
@@ -103,11 +106,18 @@ class ViewModelJni @Inject constructor(
     /**
      * 添加一个学生
      */
-    fun plusSutdent(bean: BeanStudent) {
-        itemsStudent.value?.let {
-            itemsStudent.value = it.plus(ItemViewModelStudent(this, bean))
-            onPlusStudentEvent.call()
-        }
+    fun plusSutdent() {
+        useCaseGetStudent.execute(Unit)
+            .autoLoading(this)
+            .autoDispose(this)
+            .subscribe({
+                itemsStudent.value?.apply {
+                    itemsStudent.value = plus(ItemViewModelStudent(this@ViewModelJni, it))
+                    onPlusStudentEvent.call()
+                }
+            }, {
+                handleThrowable(it)
+            })
     }
 
     /**
