@@ -18,6 +18,7 @@
     <string name="opencv_idcard">IdCard</string>
 
     <string name="ffmpeg">FFmpeg</string>
+    <string name="websocket">WebSocket</string>
 
     <string name="home_article">أحدث بلوق وظائف</string>
     <string name="home_project">أحدث مشروع</string>

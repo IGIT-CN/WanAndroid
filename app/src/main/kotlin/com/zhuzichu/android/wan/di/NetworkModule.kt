@@ -1,9 +1,9 @@
 package com.zhuzichu.android.wan.di
 
 import com.zhuzichu.android.shared.extension.logi
+import com.zhuzichu.android.shared.http.converter.WanGsonConverterFactory
 import com.zhuzichu.android.shared.storage.GlobalStorage
 import com.zhuzichu.android.wan.BuildConfig
-import com.zhuzichu.android.shared.http.converter.WanGsonConverterFactory
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
@@ -18,7 +18,7 @@ import javax.inject.Singleton
 
 @Module
 class NetworkModule {
-
+    //todo Named->Qualifier
     @Provides
     @Singleton
     fun provideOkHttpClient(
@@ -65,7 +65,6 @@ class NetworkModule {
         return Interceptor {
             var request = it.request()
             globalStorage.cookies?.apply {
-                this.logi("hahahahah")
                 request = request.newBuilder().header("Cookie", this).build()
             }
             it.proceed(request)

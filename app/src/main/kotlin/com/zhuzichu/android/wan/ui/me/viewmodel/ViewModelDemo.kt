@@ -8,6 +8,7 @@ import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.ui.ffmpeg.ActivityFFmpeg
 import com.zhuzichu.android.wan.ui.jni.ActivityJni
 import com.zhuzichu.android.wan.ui.opencv.ActivityOpencv
+import com.zhuzichu.android.wan.ui.websocket.ActivityWebsocket
 import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindClass
 import javax.inject.Inject
 
@@ -18,6 +19,7 @@ class ViewModelDemo @Inject constructor(
         const val TYPE_JNI = 0
         const val TYPE_OPENCV = 1
         const val TYPE_FFMPEG = 2
+        const val TYPE_WEBSOCKET = 3
     }
 
     private val closure: Int.() -> Unit = {
@@ -31,6 +33,9 @@ class ViewModelDemo @Inject constructor(
             TYPE_FFMPEG -> {
                 startActivity(ActivityFFmpeg::class.java)
             }
+            TYPE_WEBSOCKET -> {
+                startActivity(ActivityWebsocket::class.java)
+            }
             else -> {
             }
         }
@@ -40,7 +45,8 @@ class ViewModelDemo @Inject constructor(
         value = listOf(
             ItemViewModelDemo(this@ViewModelDemo, TYPE_JNI, R.string.jni, closure),
             ItemViewModelDemo(this@ViewModelDemo, TYPE_OPENCV, R.string.opencv, closure),
-            ItemViewModelDemo(this@ViewModelDemo, TYPE_FFMPEG, R.string.ffmpeg, closure)
+            ItemViewModelDemo(this@ViewModelDemo, TYPE_FFMPEG, R.string.ffmpeg, closure),
+            ItemViewModelDemo(this@ViewModelDemo, TYPE_WEBSOCKET, R.string.websocket, closure)
         )
     }
 

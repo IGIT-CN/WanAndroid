@@ -7,6 +7,7 @@ import com.zhuzichu.android.wan.db.DaoUser
 import com.zhuzichu.android.wan.manager.FFmpegManager
 import com.zhuzichu.android.wan.manager.JniDemoManager
 import com.zhuzichu.android.wan.manager.OpencvManager
+import com.zhuzichu.android.wan.manager.WebsocketManager
 import com.zhuzichu.android.wan.repository.LocalRepository
 import com.zhuzichu.android.wan.repository.LocalRepositoryImpl
 import com.zhuzichu.android.wan.repository.RemoteRepository
@@ -59,5 +60,11 @@ class AppModule {
     @Singleton
     fun providesFFmpegManager(): FFmpegManager {
         return FFmpegManager()
+    }
+
+    @Provides
+    @Singleton
+    fun providesWebsocketManager(): WebsocketManager {
+        return WebsocketManager()
     }
 }

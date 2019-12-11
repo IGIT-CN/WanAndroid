@@ -22,6 +22,8 @@ import com.zhuzichu.android.wan.ui.setting.animation.module.ModuleAnimation
 import com.zhuzichu.android.wan.ui.setting.languages.module.ModuleLanguages
 import com.zhuzichu.android.wan.ui.setting.main.module.ModuleSetting
 import com.zhuzichu.android.wan.ui.setting.theme.module.ModuleTheme
+import com.zhuzichu.android.wan.ui.websocket.ActivityWebsocket
+import com.zhuzichu.android.wan.ui.websocket.main.module.ModuleWebsocket
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -90,4 +92,13 @@ abstract class ActivityBindingModule {
         ]
     )
     internal abstract fun ffmpegActivity(): ActivityFFmpeg
+
+    @ActivityScoped
+    @ContributesAndroidInjector(
+        modules = [
+            //fragments
+            ModuleWebsocket::class
+        ]
+    )
+    internal abstract fun websocketActivity(): ActivityWebsocket
 }
