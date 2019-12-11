@@ -5,7 +5,6 @@ import com.zhuzichu.android.shared.http.exception.ExceptionManager.handleExcepti
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import io.reactivex.FlowableEmitter
-import io.reactivex.FlowableTransformer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
@@ -15,18 +14,6 @@ private class ErrorResponseFunc<T> : Function<Throwable, Flowable<T>> {
         return Flowable.error(handleException(t))
     }
 }
-
-fun <T> schedulersTransformer(): FlowableTransformer<T, T> =
-    FlowableTransformer { observable ->
-        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-    }
-
-
-fun <T> exceptionTransformer(): FlowableTransformer<T, T> =
-    FlowableTransformer { observable ->
-        observable.onErrorResumeNext(ErrorResponseFunc<T>())
-    }
-
 
 fun <T> Flowable<T>.autoLoading(
     viewModel: BaseViewModel,
