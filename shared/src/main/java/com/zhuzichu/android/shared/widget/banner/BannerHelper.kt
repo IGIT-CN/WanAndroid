@@ -67,11 +67,11 @@ class BannerHelper(
     fun update(list: List<Any>) {
         items.clear()
         items.addAll(list)
-        MainHandler.postDelayed(Runnable {
+        MainHandler.postDelayed(100) {
             items.add(list.size, list[0])
             items.add(0, list[list.size - 1])
             position = 1
-        }, 100)
+        }
     }
 
 }

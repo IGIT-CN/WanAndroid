@@ -109,13 +109,13 @@ class PageHelper(
         } else {
             items.update(items.plus(list))
         }
-        MainHandler.postDelayed(Runnable {
+        MainHandler.postDelayed(100) {
             if (beanPage.curPage ?: 1 >= beanPage.pageCount ?: 1) {
                 showEnd()
             } else {
                 showFinish()
                 page = page.inc()
             }
-        }, 100)
+        }
     }
 }
