@@ -2,7 +2,9 @@ package com.zhuzichu.android.shared.extension
 
 import com.zhuzichu.android.mvvm.base.BaseViewModel
 import com.zhuzichu.android.shared.http.exception.ExceptionManager.handleException
+import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
+import io.reactivex.FlowableEmitter
 import io.reactivex.FlowableTransformer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Function
@@ -16,11 +18,11 @@ fun <T> schedulersTransformer(): FlowableTransformer<T, T> {
 
 fun <T> exceptionTransformer(): FlowableTransformer<T, T> {
     return FlowableTransformer { observable ->
-        observable.onErrorResumeNext(HttpResponseFunc<T>())
+        observable.onErrorResumeNext(ErrorResponseFunc<T>())
     }
 }
 
-private class HttpResponseFunc<T> : Function<Throwable, Flowable<T>> {
+private class ErrorResponseFunc<T> : Function<Throwable, Flowable<T>> {
     override fun apply(t: Throwable): Flowable<T> {
         return Flowable.error(handleException(t))
     }
@@ -45,10 +47,19 @@ fun <T> Flowable<T>.autoLoading(
 
 fun <T> Flowable<T>.bindToException(): Flowable<T> =
     this.compose<T> {
-        it.onErrorResumeNext(HttpResponseFunc<T>())
+        it.onErrorResumeNext(ErrorResponseFunc<T>())
     }
 
 fun <T> Flowable<T>.bindToSchedulers(): Flowable<T> =
     this.compose<T> {
         it.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
     }
+
+fun <T> createFlowable(
+    mode: BackpressureStrategy = BackpressureStrategy.ERROR,
+    closure: FlowableEmitter<T>.() -> Unit
+): Flowable<T> {
+    return Flowable.create({
+        closure.invoke(it)
+    }, mode)
+}
