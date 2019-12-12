@@ -13,11 +13,13 @@ JNIEXPORT jint getRandNumber(JNIEnv *env, jobject object);
 JNIEXPORT jobject getStudent(JNIEnv *env, jobject object);
 
 //声明普通函数
+
 int generateRandNumber();
 
 void onInvokeCallback(JNIEnv *env, jobject object, jint number);
 
 jstring tojstring(JNIEnv *env, string s);
+
 //--------------------------声明函数------------------------end
 
 static const char *const class_JniDemoManager = "com/zhuzichu/android/wan/manager/JniDemoManager";
