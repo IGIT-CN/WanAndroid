@@ -6,16 +6,49 @@ import androidx.databinding.BindingAdapter
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.widget.toolbar.NiceToolbar
 
-@BindingAdapter("onClickNavigation")
-fun bindToolbar(toolbar: NiceToolbar, clickCommand: BindingCommand<*>?) {
-    toolbar.onOnClickNavigationListener = View.OnClickListener {
-        clickCommand?.execute()
+@BindingAdapter(
+    value = [
+        "toolbarTitle",
+        "toolbarLeftText",
+        "toolbarLeftIcon",
+        "toolbarRightText",
+        "toolbarRightIcon",
+        "onClickStartCommand",
+        "onClickEndCommand"
+    ],
+    requireAll = false
+)
+fun bindToolbar(
+    toolbar: NiceToolbar,
+    toolbarTitle: CharSequence?,
+    toolbarStartText: CharSequence?,
+    toolbarStartIcon: Int?,
+    toolbarEndText: CharSequence?,
+    toolbarEndIcon: Int?,
+    onClickStartCommand: BindingCommand<*>?,
+    onClickEndCommand: BindingCommand<*>?
+) {
+    toolbarTitle?.let {
+        toolbar.titleText = it.toString()
     }
-}
-
-@BindingAdapter("toolbarTitle")
-fun setToolbarTitle(toolbar: NiceToolbar, text: CharSequence?) {
-    toolbar.titleText = text.toString()
+    toolbarStartText?.let {
+        toolbar.startText= it.toString()
+    }
+    toolbarStartIcon?.let {
+        toolbar.startIcon = it
+    }
+    toolbarEndText?.let {
+        toolbar.endText = it.toString()
+    }
+    toolbarEndIcon?.let {
+        toolbar.endIcon = it
+    }
+    toolbar.onClickStartListener = View.OnClickListener {
+        onClickStartCommand?.execute()
+    }
+    toolbar.onClickEndListener = View.OnClickListener {
+        onClickEndCommand?.execute()
+    }
 }
 
 @BindingAdapter(value = ["onSearchChange", "onSearchSubmit"], requireAll = false)

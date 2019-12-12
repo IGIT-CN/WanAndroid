@@ -110,7 +110,9 @@ class ViewModelErode @Inject constructor(
             .bindToSchedulers()
             .autoDispose(this)
             .subscribe {
+                temp?.recycle()
                 bitmap.value = it
+                temp = it
             }
     }
 
@@ -131,6 +133,6 @@ class ViewModelErode @Inject constructor(
     override fun onCleared() {
         super.onCleared()
         src.recycle()
+        temp?.recycle()
     }
-
 }

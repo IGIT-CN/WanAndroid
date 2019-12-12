@@ -20,8 +20,8 @@ object Dep {
         const val timber = "4.7.1"
         const val swiperefreshlayout = "1..0-alpha03"
         const val libs = "1.0.29"
-        const val mvvm = "1.0.52"
-        const val widget = "1.0.31"
+        const val mvvm = "1.0.54"
+        const val widget = "1.0.36"
         const val room = "2.2.2"
         const val umengCommon = "2.0.0"
         const val umengAnalytics = "8.0.0"
@@ -29,7 +29,10 @@ object Dep {
         const val autoSize = "1.1.2"
         const val tesstwo = "9.1.0"
         const val flexbox = "1.1.0"
+        const val drag = "2.4.0"
     }
+
+    const val drag = "com.afollestad:drag-select-recyclerview:${Version.drag}"
 
     const val flexbox = "com.google.android:flexbox:${Version.flexbox}"
 

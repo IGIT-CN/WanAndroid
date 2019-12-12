@@ -2,6 +2,7 @@ package com.zhuzichu.android.wan.ui.home.viewmodel
 
 import android.graphics.Color
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.lifecycle.MutableLiveData
 import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
@@ -12,6 +13,7 @@ import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.repository.entity.BeanArticle
 import com.zhuzichu.android.wan.ui.home.domain.UseCaseCollect
 import com.zhuzichu.android.wan.ui.home.domain.UseCaseUnCollect
+import com.zhuzichu.android.wan.ui.web.ActivityWeb
 
 class ItemViewModelHomeArticle(
     val viewModel: ViewModelHomeArticle,
@@ -33,6 +35,7 @@ class ItemViewModelHomeArticle(
     val collectColor = MutableLiveData<Int>()
 
     val onClickItem = BindingCommand<Any>({
+        startActivity(ActivityWeb::class.java, bundleOf(ActivityWeb.URL to bean.link))
     })
 
     val onClickCollect = BindingCommand<Any>({

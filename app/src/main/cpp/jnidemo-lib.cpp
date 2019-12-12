@@ -2,8 +2,6 @@
 #include <string>
 #include <log.h>
 
-using namespace std;
-
 //--------------------------函数声明------------------------start
 //声明JNI函数
 JNIEXPORT jstring invokeDynamicMethod(JNIEnv *env, jobject object);
@@ -18,7 +16,7 @@ int generateRandNumber();
 
 void onInvokeCallback(JNIEnv *env, jobject object, jint number);
 
-jstring tojstring(JNIEnv *env, string s);
+jstring tojstring(JNIEnv *env, std::string s);
 
 //--------------------------声明函数------------------------end
 
@@ -54,6 +52,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved) {
         LOGE("注册方法失败!\n");
         return -1;
     }
+    env->DeleteLocalRef(myClass);
     LOGI("JNI_OnLoad 结束了");
     return JNI_VERSION_1_6;
 }
@@ -67,7 +66,7 @@ JNIEXPORT jstring JNICALL
 Java_com_zhuzichu_android_wan_manager_JniDemoManager_invokeStaticMethod(
         JNIEnv *env, jobject object
 ) {
-    jstring text = env->NewStringUTF(string("invokeStaticMethod 我是静态注册的方法").c_str());
+    jstring text = env->NewStringUTF(std::string("invokeStaticMethod 我是静态注册的方法").c_str());
     return text;
 }
 
@@ -81,7 +80,7 @@ Java_com_zhuzichu_android_wan_manager_JniDemoManager_invokeStaticMethod(
  * @return
  */
 JNIEXPORT jstring invokeDynamicMethod(JNIEnv *env, jobject object) {
-    jstring text = env->NewStringUTF(string("invokeDynamicMethod 我是动态注册的方法").c_str());
+    jstring text = env->NewStringUTF(std::string("invokeDynamicMethod 我是动态注册的方法").c_str());
     return text;
 }
 
@@ -107,7 +106,7 @@ JNIEXPORT jint getRandNumber(JNIEnv *env, jobject object) {
 JNIEXPORT jobject getStudent(JNIEnv *env, jobject object) {
     jclass clazz = env->FindClass("com/zhuzichu/android/wan/ui/jni/main/entity/BeanStudent");
     jmethodID initId = env->GetMethodID(clazz, "<init>", "(Ljava/lang/String;I)V");
-    jstring name = tojstring(env, "朱子楚" + to_string(generateRandNumber()) + "号");
+    jstring name = tojstring(env, "朱子楚" + std::to_string(generateRandNumber()) + "号");
     jobject student = env->NewObject(clazz, initId, name, generateRandNumber());
     return student;
 }
@@ -132,6 +131,6 @@ int generateRandNumber() {
     return rand() % 100 + 50;
 }
 
-jstring tojstring(JNIEnv *env, string s) {
+jstring tojstring(JNIEnv *env, std::string s) {
     return env->NewStringUTF(s.c_str());
 }

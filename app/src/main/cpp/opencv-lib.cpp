@@ -53,6 +53,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved) {
         LOGE("注册方法失败!\n");
         return -1;
     }
+    env->DeleteLocalRef(myClass);
     LOGI("JNI_OnLoad 结束了");
     return JNI_VERSION_1_6;
 }
@@ -64,6 +65,8 @@ JNIEXPORT jobject jgray(JNIEnv *env, jobject object, jobject bitmap) {
     Mat dst;
     cvtColor(src, dst, COLOR_RGBA2GRAY);
     MatToBitmap(env, dst, bitmap);
+    src.release();
+    dst.release();
     LOGI("gray 结束了");
     return bitmap;
 }
@@ -77,6 +80,9 @@ jerode(JNIEnv *env, jobject object, jobject bitmap, jint morph, jint width, jint
     Mat element = getStructuringElement(morph, Size(width, height));
     erode(src, dst, element);
     MatToBitmap(env, dst, bitmap);
+    element.release();
+    src.release();
+    dst.release();
     LOGI("erode 结束了");
     return bitmap;
 }
@@ -90,6 +96,9 @@ jdilate(JNIEnv *env, jobject object, jobject bitmap, jint morph, jint width, jin
     Mat element = getStructuringElement(morph, Size(width, height));
     dilate(src, dst, element);
     MatToBitmap(env, dst, bitmap);
+    element.release();
+    src.release();
+    dst.release();
     LOGI("erode 结束了");
     return bitmap;
 }
@@ -101,6 +110,8 @@ JNIEXPORT jobject jblur(JNIEnv *env, jobject object, jobject bitmap, jint width,
     Mat dst;
     blur(src, dst, Size(width, height));
     MatToBitmap(env, dst, bitmap);
+    src.release();
+    dst.release();
     LOGI("blur 结束了");
     return bitmap;
 }
@@ -120,6 +131,9 @@ jcanny(JNIEnv *env, jobject object, jobject bitmap, double threshold1, double th
     blur(gray, dst, Size(3, 3));
     Canny(dst, dst, threshold1, threshold2, apertureSize);
     MatToBitmap(env, dst, bitmap);
+    src.release();
+    gray.release();
+    dst.release();
     LOGI("canny 结束了");
     return bitmap;
 }

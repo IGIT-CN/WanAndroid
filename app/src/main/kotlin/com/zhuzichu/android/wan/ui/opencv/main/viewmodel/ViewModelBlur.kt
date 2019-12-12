@@ -19,6 +19,8 @@ class ViewModelBlur @Inject constructor(
 
     private val src = BitmapFactory.decodeResource(context.resources, R.mipmap.guidao)
 
+    var temp: Bitmap? = null
+
     var width = 17
 
     var height = 17
@@ -59,7 +61,16 @@ class ViewModelBlur @Inject constructor(
             .bindToSchedulers()
             .autoDispose(this)
             .subscribe {
+                temp?.recycle()
                 bitmap.value = it
+                temp = it
             }
     }
+
+    override fun onCleared() {
+        super.onCleared()
+        src.recycle()
+        temp?.recycle()
+    }
+
 }

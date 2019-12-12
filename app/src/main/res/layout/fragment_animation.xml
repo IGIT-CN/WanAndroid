@@ -20,8 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:onClickNavigation="@{viewModel.onBackCommand}"
-            app:toolbarNavigationIcon="@drawable/ic_back"
+            app:onClickStartCommand="@{viewModel.onBackCommand}"
+            app:toolbarStartIcon="@drawable/ic_back"
             app:toolbarTitle="@string/animation"
             app:toolbarTitleTextAppearance="?attr/textAppearanceHeadline6" />
 

@@ -70,6 +70,8 @@
 
         <activity android:name=".ui.websocket.ActivityWebsocket" />
 
+        <activity android:name=".ui.web.ActivityWeb" />
+
     </application>
 
 </manifest>

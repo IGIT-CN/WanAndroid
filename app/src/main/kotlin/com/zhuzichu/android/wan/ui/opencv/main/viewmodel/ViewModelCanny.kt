@@ -20,6 +20,8 @@ class ViewModelCanny @Inject constructor(
 
     private val src = BitmapFactory.decodeResource(AppGlobal.context.resources, R.mipmap.guidao)
 
+    var temp: Bitmap? = null
+
     private var min = 3.0
 
     private var max = 9.0
@@ -58,8 +60,16 @@ class ViewModelCanny @Inject constructor(
             .bindToSchedulers()
             .autoDispose(this)
             .subscribe {
+                temp?.recycle()
                 bitmap.value = it
+                temp=it
             }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        src.recycle()
+        temp?.recycle()
     }
 
 }

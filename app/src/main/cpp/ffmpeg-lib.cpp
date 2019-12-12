@@ -46,6 +46,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved) {
         LOGE("注册方法失败!\n");
         return -1;
     }
+    env->DeleteLocalRef(myClass);
     LOGI("JNI_OnLoad 结束了");
     return JNI_VERSION_1_6;
 }
