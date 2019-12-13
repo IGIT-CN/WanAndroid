@@ -5,6 +5,7 @@ import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.autoLoading
+import com.zhuzichu.android.shared.extension.createCommand
 import com.zhuzichu.android.shared.http.exception.ExceptionManager
 import com.zhuzichu.android.shared.http.exception.ResponseThrowable
 import com.zhuzichu.android.shared.storage.GlobalStorage
@@ -22,7 +23,7 @@ class ViewModelLogin @Inject constructor(
     val username = MutableLiveData("zhuzichu520@gmail.com")
     val password = MutableLiveData("qaioasd520")
 
-    val onClickLogin = BindingCommand<Any>({
+    val onClickLogin = createCommand {
         useCaseLogin.execute(ParamterLogin(username.value ?: "", password.value ?: ""))
             .autoLoading(this)
             .autoDispose(this)
@@ -43,6 +44,6 @@ class ViewModelLogin @Inject constructor(
             }, {
                 handleThrowable(it)
             })
-    })
+    }
 
 }

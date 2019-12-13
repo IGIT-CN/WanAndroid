@@ -7,6 +7,8 @@ import com.zhuzichu.android.shared.BR
 import com.zhuzichu.android.shared.R
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.entity.BeanPage
+import com.zhuzichu.android.shared.extension.createCommand
+import com.zhuzichu.android.shared.extension.createTypeCommand
 import com.zhuzichu.android.shared.extension.map
 import me.tatarka.bindingcollectionadapter2.collections.DiffObservableList
 import me.tatarka.bindingcollectionadapter2.collections.MergeObservableList
@@ -24,10 +26,10 @@ class PageHelper(
     var page = 0
     private var weakRefresh: WeakReference<SwipeRefreshLayout?>? = null
 
-    private val onClickRetry = BindingCommand<Any>({
+    private val onClickRetry = createCommand {
         onBottomCommand.execute()
         onRetry?.invoke()
-    })
+    }
 
     private val networkViewModel = ItemViewModelNetwork(viewModel, onClickRetry)
 
@@ -41,19 +43,19 @@ class PageHelper(
         map<ItemViewModelNull>(BR.item, R.layout.item_null)
     }
 
-    val onBottomCommand = BindingCommand<Any>({
+    val onBottomCommand = createCommand{
         if (!isFirstLoad) {
             showDefalut()
             isFirstLoad = !isFirstLoad
-            return@BindingCommand
+            return@createCommand
         }
         if (getStatus() != ItemViewModelNetwork.STATE_LOADING) {
             showLoading()
             onLoadMore?.invoke(page)
         }
-    })
+    }
 
-    val onRefreshConmmand = BindingCommand<SwipeRefreshLayout>(consumer = {
+    val onRefreshConmmand = createTypeCommand<SwipeRefreshLayout> {
         weakRefresh = WeakReference(this)
         if (getStatus() != ItemViewModelNetwork.STATE_LOADING) {
             page = 0
@@ -63,7 +65,7 @@ class PageHelper(
             hideRefresh()
         }
         onRefresh?.invoke()
-    })
+    }
 
     private fun hideRefresh() {
         weakRefresh?.get()?.isRefreshing = false

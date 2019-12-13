@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.zhuzichu.android.mvvm.base.BaseViewModel
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.base.ItemViewModelAnalyticsBase
+import com.zhuzichu.android.shared.extension.createCommand
 
 class ItemViewModelOpencv(
     viewModel: BaseViewModel,
@@ -15,7 +16,7 @@ class ItemViewModelOpencv(
 
     val title = MutableLiveData(stringId)
 
-    val onClickItem = BindingCommand<Any>({
+    val onClickItem = createCommand {
         closure.invoke(type)
-    })
+    }
 }

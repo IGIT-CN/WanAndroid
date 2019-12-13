@@ -1,16 +1,19 @@
 package com.zhuzichu.android.wan.ui.home.viewmodel
 
 import android.graphics.Color
+import androidx.core.os.bundleOf
 import androidx.lifecycle.MutableLiveData
 import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.base.ItemViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.autoLoading
+import com.zhuzichu.android.shared.extension.createCommand
 import com.zhuzichu.android.shared.extension.toColorByResId
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.repository.entity.BeanArticle
 import com.zhuzichu.android.wan.ui.home.domain.UseCaseCollect
 import com.zhuzichu.android.wan.ui.home.domain.UseCaseUnCollect
+import com.zhuzichu.android.wan.ui.web.ActivityWeb
 
 class ItemViewModelHomeProject(
     val viewModel: ViewModelHomeProject,
@@ -29,17 +32,17 @@ class ItemViewModelHomeProject(
 
     val collectColor = MutableLiveData<Int>()
 
-    val onClickItem = BindingCommand<Any>({
-        toast(id.toString())
-    })
+    val onClickItem = createCommand {
+        startActivity(ActivityWeb::class.java, bundleOf(ActivityWeb.URL to bean.link))
+    }
 
-    val onClickCollect = BindingCommand<Any>({
+    val onClickCollect =createCommand {
         if (bean.collect == true) {
             unCollect()
         } else {
             collect()
         }
-    })
+    }
 
     init {
         updateCollect()

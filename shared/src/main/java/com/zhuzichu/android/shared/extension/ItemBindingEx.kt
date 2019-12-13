@@ -41,15 +41,19 @@ inline fun <reified T> OnItemBindClass<in T>.map(
     }
 }
 
-inline fun <reified T> itemDiffOf(crossinline funcation: (oldItem: T, newItem: T) -> Boolean): DiffUtil.ItemCallback<Any> {
+inline fun <reified T> itemDiffOf(crossinline closure: (oldItem: T, newItem: T) -> Boolean): DiffUtil.ItemCallback<Any> {
     return object : DiffUtil.ItemCallback<Any>() {
         override fun areItemsTheSame(oldItem: Any, newItem: Any): Boolean {
             return if (oldItem is T && newItem is T) {
-                funcation(oldItem, newItem)
+                closure(oldItem, newItem)
             } else oldItem == newItem
         }
 
-        @SuppressLint("DiffUtilEquals")
-        override fun areContentsTheSame(oldItem: Any, newItem: Any): Boolean = oldItem == newItem
+        override fun areContentsTheSame(oldItem: Any, newItem: Any): Boolean =
+            oldItem.diffEquals(newItem)
     }
+}
+
+fun Any.diffEquals(item: Any): Boolean {
+    return this == item
 }

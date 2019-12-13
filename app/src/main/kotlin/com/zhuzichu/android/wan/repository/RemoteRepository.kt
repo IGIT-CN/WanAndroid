@@ -30,6 +30,8 @@ interface RemoteRepository {
     fun getCollections(page: Int): Flowable<BeanBase<BeanPage<BeanArticle>>>
 
     fun search(page: Int, keyWord: String): Flowable<BeanBase<BeanPage<BeanArticle>>>
+
+    fun getHotKey(): Flowable<BeanBase<List<BeanKeyword>>>
 }
 
 class RemoteRepositoryImpl(
@@ -84,6 +86,10 @@ class RemoteRepositoryImpl(
 
     override fun search(page: Int, keyWord: String): Flowable<BeanBase<BeanPage<BeanArticle>>> {
         return app.search(page, keyWord)
+    }
+
+    override fun getHotKey(): Flowable<BeanBase<List<BeanKeyword>>> {
+        return app.getHotKey()
     }
 
     private val app by lazy { gsonRetrofit.create(WanApi::class.java) }

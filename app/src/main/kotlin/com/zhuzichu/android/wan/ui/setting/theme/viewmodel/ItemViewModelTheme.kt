@@ -1,7 +1,7 @@
 package com.zhuzichu.android.wan.ui.setting.theme.viewmodel
 
-import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.base.ItemViewModelAnalyticsBase
+import com.zhuzichu.android.shared.extension.createCommand
 
 data class ItemViewModelTheme(
     val viewModel: ViewModelTheme,
@@ -10,7 +10,7 @@ data class ItemViewModelTheme(
     val isSelected: Boolean
 ) : ItemViewModelAnalyticsBase(viewModel) {
 
-    val onClickItem = BindingCommand<Any>({
+    val onClickItem = createCommand {
         viewModel.themeChangeEvent.value = mode
-    })
+    }
 }

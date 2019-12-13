@@ -5,6 +5,7 @@ import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.autoLoading
+import com.zhuzichu.android.shared.extension.createCommand
 import com.zhuzichu.android.shared.storage.GlobalStorage
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.ui.me.domain.UseCaseGetUserInfo
@@ -20,21 +21,21 @@ class ViewModelMe @Inject constructor(
     val coins = MutableLiveData<String>()
     val ranking = MutableLiveData<String>()
 
-    val onClickSetting = BindingCommand<Any>({
+    val onClickSetting = createCommand{
         startFragment(R.id.action_fragmentMain_to_fragmentSetting)
-    })
+    }
 
-    val onClickCoins = BindingCommand<Any>({
+    val onClickCoins = createCommand{
 
-    })
+    }
 
-    val onClickRanking = BindingCommand<Any>({
+    val onClickRanking = createCommand{
 
-    })
+    }
 
-    val onClickDemo = BindingCommand<Any>({
+    val onClickDemo = createCommand{
         startFragment(R.id.action_fragmentMain_to_fragmentDemo)
-    })
+    }
 
     fun updateUserInfo() {
         username.value = globalStorage.username

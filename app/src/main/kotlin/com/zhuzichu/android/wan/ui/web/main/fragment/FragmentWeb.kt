@@ -8,6 +8,8 @@ import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.activity.addCallback
+import androidx.lifecycle.Observer
 import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
 import com.zhuzichu.android.shared.extension.bindArgument
 import com.zhuzichu.android.wan.BR
@@ -21,7 +23,7 @@ class FragmentWeb :
 
     val url: String? by bindArgument()
 
-    private lateinit var webSettings: WebSettings;
+    private lateinit var webSettings: WebSettings
 
     override fun setLayoutId(): Int = R.layout.fragment_web
 
@@ -30,29 +32,42 @@ class FragmentWeb :
     override fun initView() {
         super.initView()
         initWebView()
+        initBackListener()
+    }
+
+    override fun initViewObservable() {
+        viewModel.onExitEvent.observe(viewLifecycleOwner, Observer {
+            requireActivity().finish()
+        })
+    }
+
+    private fun initBackListener() {
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            if (webview.canGoBack()) {
+                showLoading()
+                webview.goBack()
+            } else {
+                requireActivity().finish()
+            }
+        }
     }
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun initWebView() {
 
         webSettings = webview.settings
-        webSettings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK//加载缓存否则网络
+
         webSettings.loadsImagesAutomatically = true
-        webview.setLayerType(View.LAYER_TYPE_SOFTWARE, null)//软件解码
-        webview.setLayerType(View.LAYER_TYPE_HARDWARE, null)//硬件解码
-        webSettings.javaScriptEnabled = true // 设置支持javascript脚本
-        webSettings.setSupportZoom(true)// 设置可以支持缩放
-        webSettings.builtInZoomControls =
-            true// 设置出现缩放工具 是否使用WebView内置的缩放组件，由浮动在窗口上的缩放控制和手势缩放控制组成，默认false
-        webSettings.displayZoomControls = false//隐藏缩放工具
-        webSettings.useWideViewPort = true// 扩大比例的缩放
+        webview.setLayerType(View.LAYER_TYPE_HARDWARE, null)
+        webSettings.javaScriptEnabled = true
+        webSettings.setSupportZoom(true)
+        webSettings.builtInZoomControls = true
+        webSettings.displayZoomControls = false
+        webSettings.useWideViewPort = true
         webSettings.loadWithOverviewMode = true
-        webSettings.databaseEnabled = true//
-        webSettings.domStorageEnabled =
-            true//是否开启本地DOM存储  鉴于它的安全特性（任何人都能读取到它，尽管有相应的限制，将敏感数据存储在这里依然不是明智之举），Android 默认是关闭该功能的。
+        webSettings.cacheMode = WebSettings.LOAD_DEFAULT
         webview.isSaveEnabled = true
         webview.keepScreenOn = true
-
 
         webview.setDownloadListener { paramAnonymousString1, _, _, _, _ ->
             val intent = Intent()
@@ -62,26 +77,31 @@ class FragmentWeb :
         }
 
         webview.webViewClient = object : WebViewClient() {
+
             override fun onPageFinished(view: WebView?, url: String?) {
                 if (!webSettings.loadsImagesAutomatically) {
                     webSettings.loadsImagesAutomatically = true
                 }
+                hideLoading()
             }
 
             override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
-                val uri = url.split("?")[0]
-                if (uri == "https://uland.taobao.com/coupon/edetail") {
-
-                    return true
-                }
+                showLoading()
                 return false
             }
+
         }
+
         webview.webChromeClient = object : WebChromeClient() {
+
             override fun onReceivedTitle(view: WebView, title: String) {
                 viewModel.title.value = title
+                hideLoading()
             }
+
         }
+
+        showLoading()
         webview.loadUrl(url)
     }
 }

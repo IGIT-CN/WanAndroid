@@ -5,6 +5,7 @@ import com.zhuzichu.android.mvvm.base.BaseViewModel
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.shared.base.ItemViewModelAnalyticsBase
+import com.zhuzichu.android.shared.extension.createCommand
 
 class ItemViewModelSetting(
     viewModel: BaseViewModel,
@@ -18,7 +19,7 @@ class ItemViewModelSetting(
         const val ANIMATION = 0x02
     }
 
-    val onClickItem = BindingCommand<Any>({
+    val onClickItem = createCommand {
         when (id) {
             LANGUAGES -> startFragment(R.id.action_fragmentSetting_to_fragmentLanguages)
             THEME -> startFragment(R.id.action_fragmentSetting_to_fragmentTheme)
@@ -26,6 +27,6 @@ class ItemViewModelSetting(
             else -> {
             }
         }
-    })
+    }
 
 }

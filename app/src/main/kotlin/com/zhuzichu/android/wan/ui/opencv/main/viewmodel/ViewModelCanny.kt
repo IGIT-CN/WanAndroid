@@ -8,6 +8,8 @@ import com.zhuzichu.android.libs.tool.toDouble
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.bindToSchedulers
+import com.zhuzichu.android.shared.extension.createCommand
+import com.zhuzichu.android.shared.extension.createTypeCommand
 import com.zhuzichu.android.shared.global.AppGlobal
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.manager.OpencvManager
@@ -30,27 +32,27 @@ class ViewModelCanny @Inject constructor(
         value = src
     }
 
-    val onSeekMaxThresholdCommand = BindingCommand<Int>(consumer = {
+    val onSeekMaxThresholdCommand = createTypeCommand<Int> {
         this?.let {
             if (it % 3 != 0)
-                return@BindingCommand
+                return@createTypeCommand
             max = toDouble(it)
             updateBitmap()
         }
-    })
+    }
 
-    val onSeekMinThresholdCommand = BindingCommand<Int>(consumer = {
+    val onSeekMinThresholdCommand = createTypeCommand<Int> {
         this?.let {
             if (it % 3 != 0)
-                return@BindingCommand
+                return@createTypeCommand
             min = toDouble(it)
             updateBitmap()
         }
-    })
+    }
 
-    val onClickReturn = BindingCommand<Any>({
+    val onClickReturn = createCommand {
         bitmap.value = src
-    })
+    }
 
     private fun updateBitmap() {
         Flowable.just(src.copy(src.config, true))
@@ -62,7 +64,7 @@ class ViewModelCanny @Inject constructor(
             .subscribe {
                 temp?.recycle()
                 bitmap.value = it
-                temp=it
+                temp = it
             }
     }
 

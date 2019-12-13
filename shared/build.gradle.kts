@@ -101,4 +101,6 @@ dependencies {
     api(Dep.autoSzie)
     api(Dep.flexbox)
     api(Dep.tesstwo)
+    api(Dep.drag)
+    api(Dep.exoplayer)
 }

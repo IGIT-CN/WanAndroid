@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.zhuzichu.android.mvvm.base.BaseViewModel
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.base.ItemViewModelAnalyticsBase
+import com.zhuzichu.android.shared.extension.createCommand
 
 class ItemViewModelJni(
     viewModel: BaseViewModel,
@@ -14,7 +15,7 @@ class ItemViewModelJni(
 
     val title = MutableLiveData(string)
 
-    val onClickItem = BindingCommand<Any>({
+    val onClickItem = createCommand {
         closure.invoke(type)
-    })
+    }
 }

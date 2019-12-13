@@ -14,6 +14,7 @@ object AppGlobal {
 
     fun init(application: Application): AppGlobal {
         AppGlobal.application = application
+        CacheGlobal.initDir()
         return this
     }
 

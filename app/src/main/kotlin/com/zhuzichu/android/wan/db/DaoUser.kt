@@ -6,6 +6,7 @@ import io.reactivex.Flowable
 
 @Dao
 interface DaoUser {
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(user: DOUser)
 

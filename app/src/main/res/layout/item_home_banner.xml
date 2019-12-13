@@ -27,6 +27,6 @@
             app:layout_constraintDimensionRatio="h,1943:1080"
             app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="1"
-            tools:listitem="@layout/item_banner" />
+            tools:listitem="@layout/item_home_banner_detail" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

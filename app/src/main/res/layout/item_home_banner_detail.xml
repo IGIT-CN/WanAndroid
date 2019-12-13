@@ -5,7 +5,7 @@
 
         <variable
             name="item"
-            type="com.zhuzichu.android.wan.ui.home.viewmodel.ItemViewModelBanner" />
+            type="com.zhuzichu.android.wan.ui.home.viewmodel.ItemViewModelHomeBannerDetail" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -20,6 +20,7 @@
             app:fadeDuration="@{500}"
             app:layout_constraintDimensionRatio="h,1943:1080"
             app:layout_constraintTop_toTopOf="parent"
+            app:onClickCommand="@{item.onClickItem}"
             app:url="@{item.imagePath}"
             tools:src="@mipmap/ic_launcher" />
 

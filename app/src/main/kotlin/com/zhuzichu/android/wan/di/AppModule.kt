@@ -3,6 +3,8 @@ package com.zhuzichu.android.wan.di
 import android.content.Context
 import com.zhuzichu.android.shared.storage.GlobalStorage
 import com.zhuzichu.android.wan.ApplicationWan
+import com.zhuzichu.android.wan.db.AppDatabase
+import com.zhuzichu.android.wan.db.DaoKeyword
 import com.zhuzichu.android.wan.db.DaoUser
 import com.zhuzichu.android.wan.manager.FFmpegManager
 import com.zhuzichu.android.wan.manager.JniDemoManager
@@ -40,8 +42,8 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun providesLocalRepository(daoUser: DaoUser): LocalRepository {
-        return LocalRepositoryImpl(daoUser)
+    fun providesLocalRepository(): LocalRepository {
+        return LocalRepositoryImpl()
     }
 
     @Provides

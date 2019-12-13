@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory
 import androidx.lifecycle.MutableLiveData
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
+import com.zhuzichu.android.shared.extension.createCommand
 import com.zhuzichu.android.shared.global.AppGlobal.context
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.manager.OpencvManager
@@ -20,11 +21,11 @@ class ViewModelIdcard @Inject constructor(
         value = src
     }
 
-    val onClickGet = BindingCommand<Any>({
+    val onClickGet = createCommand {
         toast("点击了")
-    })
+    }
 
-    val onClickReturn = BindingCommand<Any>({
+    val onClickReturn = createCommand {
         bitmap.value = src
-    })
+    }
 }

@@ -7,6 +7,8 @@ import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.bindToSchedulers
+import com.zhuzichu.android.shared.extension.createCommand
+import com.zhuzichu.android.shared.extension.createTypeCommand
 import com.zhuzichu.android.shared.global.AppGlobal.context
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.manager.OpencvManager
@@ -31,27 +33,27 @@ class ViewModelBlur @Inject constructor(
         value = src
     }
 
-    val onSeekWidthCommand = BindingCommand<Int>(consumer = {
+    val onSeekWidthCommand = createTypeCommand<Int> {
         this?.let {
             if (it % 3 != 0)
-                return@BindingCommand
+                return@createTypeCommand
             width = it + min
             updateBitmap()
         }
-    })
+    }
 
-    val onSeekHeightCommand = BindingCommand<Int>(consumer = {
+    val onSeekHeightCommand = createTypeCommand<Int> {
         this?.let {
             if (it % 3 != 0)
-                return@BindingCommand
+                return@createTypeCommand
             height = it + min
             updateBitmap()
         }
-    })
+    }
 
-    val onClickReturn = BindingCommand<Any>({
+    val onClickReturn = createCommand {
         bitmap.value = src
-    })
+    }
 
     private fun updateBitmap() {
         Flowable.just(src.copy(src.config, true))

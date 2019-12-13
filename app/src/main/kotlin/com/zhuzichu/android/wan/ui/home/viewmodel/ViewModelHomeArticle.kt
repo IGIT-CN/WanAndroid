@@ -1,7 +1,6 @@
 package com.zhuzichu.android.wan.ui.home.viewmodel
 
 import com.uber.autodispose.autoDispose
-import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.itemDiffOf
 import com.zhuzichu.android.shared.extension.map
@@ -61,10 +60,6 @@ class ViewModelHomeArticle @Inject constructor(
         map<ItemViewModelHomeArticle>(BR.item, R.layout.item_home_article)
     }
 
-    val onClickSearch = BindingCommand<Any>({
-
-    })
-
     private fun loadArticles(page: Int) {
         useCaseGetArticles.execute(page)
             .autoDispose(this)
@@ -108,7 +103,7 @@ class ViewModelHomeArticle @Inject constructor(
                 {
                     it.data?.apply {
                         itemViewModelHomeBanner.update(this.map { item ->
-                            ItemViewModelBanner(this@ViewModelHomeArticle, item)
+                            ItemViewModelHomeBannerDetail(this@ViewModelHomeArticle, item)
                         })
                     }
                 },

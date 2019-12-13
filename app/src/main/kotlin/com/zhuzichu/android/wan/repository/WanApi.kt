@@ -44,6 +44,9 @@ interface WanApi {
     @GET("lg/coin/userinfo/json")
     fun getUserInfo(): Flowable<BeanBase<BeanUserInfo>>
 
+    @POST("/hotkey/json")
+    fun getHotKey(): Flowable<BeanBase<List<BeanKeyword>>>
+
     @POST("article/query/{page}/json")
     @FormUrlEncoded
     fun search(

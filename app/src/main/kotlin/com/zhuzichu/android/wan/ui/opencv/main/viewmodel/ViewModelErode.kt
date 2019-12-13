@@ -7,6 +7,8 @@ import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.bindToSchedulers
+import com.zhuzichu.android.shared.extension.createCommand
+import com.zhuzichu.android.shared.extension.createTypeCommand
 import com.zhuzichu.android.shared.global.AppGlobal.context
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.extension.logInvokeTime
@@ -41,62 +43,62 @@ class ViewModelErode @Inject constructor(
         value = src
     }
 
-    val onClickRect = BindingCommand<Any>({
+    val onClickRect = createCommand {
         logInvokeTime {
             morph.value = OpencvManager.MORPH_RECT
             updateBitmap()
         }
-    })
+    }
 
-    val onClickCross = BindingCommand<Any>({
+    val onClickCross = createCommand {
         logInvokeTime {
             morph.value = OpencvManager.MORPH_CROSS
             updateBitmap()
         }
-    })
+    }
 
-    val onClickEllipse = BindingCommand<Any>({
+    val onClickEllipse = createCommand {
         logInvokeTime {
             morph.value = OpencvManager.MORPH_ELLIPSE
             updateBitmap()
         }
-    })
+    }
 
-    val onSeekWidthCommand = BindingCommand<Int>(consumer = {
+    val onSeekWidthCommand = createTypeCommand<Int> {
         this?.let {
             if (it % 3 != 0)
-                return@BindingCommand
+                return@createTypeCommand
             width = it + min
             updateBitmap()
         }
-    })
+    }
 
-    val onSeekHeightCommand = BindingCommand<Int>(consumer = {
+    val onSeekHeightCommand = createTypeCommand<Int> {
         this?.let {
             if (it % 3 != 0)
-                return@BindingCommand
+                return@createTypeCommand
             height = it + min
             updateBitmap()
         }
-    })
+    }
 
-    val onClickErode = BindingCommand<Any>({
+    val onClickErode = createCommand {
         logInvokeTime {
             type.value = TYPE_ERODE
             updateBitmap()
         }
-    })
+    }
 
-    val onClickDilate = BindingCommand<Any>({
+    val onClickDilate = createCommand {
         logInvokeTime {
             type.value = TYPE_DILATE
             updateBitmap()
         }
-    })
+    }
 
-    val onClickReturn = BindingCommand<Any>({
+    val onClickReturn = createCommand {
         bitmap.value = src
-    })
+    }
 
     private fun updateBitmap() {
         Flowable.just(src.copy(src.config, true))

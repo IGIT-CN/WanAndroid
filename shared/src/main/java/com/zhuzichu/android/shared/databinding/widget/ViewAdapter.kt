@@ -3,6 +3,7 @@ package com.zhuzichu.android.shared.databinding.widget
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.databinding.BindingAdapter
+import com.google.android.material.chip.Chip
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.widget.toolbar.NiceToolbar
 
@@ -68,4 +69,11 @@ fun bindSearchView(
             return true
         }
     })
+}
+
+@BindingAdapter("onCloaseCommand")
+fun onCloaseCommand(chip: Chip, onCloaseCommand: BindingCommand<Any>? = null) {
+    chip.setOnCloseIconClickListener {
+        onCloaseCommand?.execute()
+    }
 }

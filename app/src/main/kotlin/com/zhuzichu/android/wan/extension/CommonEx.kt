@@ -8,17 +8,17 @@ import com.zhuzichu.android.shared.storage.GlobalStorage
 
 fun Int?.toAnimationBuild(): AnimBuilder.() -> Unit {
     return when (this) {
-        GlobalStorage.ANIMATION_FADE -> ({
+        GlobalStorage.ANIMATION_SLIDE -> ({
             enter = R.anim.default_enter
             exit = R.anim.default_exit
             popEnter = R.anim.default_pop_enter
             popExit = R.anim.default_pop_exit
         })
-        GlobalStorage.ANIMATION_SLIDE -> ({
-            enter = R.anim.slide_enter
-            exit = R.anim.slide_exit
-            popEnter = R.anim.slide_pop_enter
-            popExit = R.anim.slide_pop_exit
+        GlobalStorage.ANIMATION_FADE -> ({
+            enter = R.anim.fragment_fade_enter
+            exit = R.anim.fragment_fade_exit
+            popEnter = R.anim.fragment_fade_enter
+            popExit = R.anim.fragment_fade_pop_exit
         })
         else -> ({
             enter = R.anim.default_enter
@@ -34,8 +34,4 @@ fun logInvokeTime(closure: Unit.() -> Unit) {
     closure.invoke(Unit)
     val end = System.currentTimeMillis()
     "运行时间为:".plus(end - start).logi()
-}
-
-fun Any.diffEquals(item: Any): Boolean {
-    return this == item
 }

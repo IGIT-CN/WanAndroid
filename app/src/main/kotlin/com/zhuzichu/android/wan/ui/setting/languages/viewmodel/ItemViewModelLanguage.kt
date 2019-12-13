@@ -1,7 +1,7 @@
 package com.zhuzichu.android.wan.ui.setting.languages.viewmodel
 
 import com.zhuzichu.android.mvvm.base.ItemViewModel
-import com.zhuzichu.android.mvvm.databinding.BindingCommand
+import com.zhuzichu.android.shared.extension.createCommand
 
 data class ItemViewModelLanguage(
     val viewModel: ViewModelLanguages,
@@ -10,7 +10,7 @@ data class ItemViewModelLanguage(
     val isSelected: Boolean
 ) : ItemViewModel(viewModel) {
 
-    val onClickItem = BindingCommand<Any>({
+    val onClickItem = createCommand {
         viewModel.languagesChangeEvent.value = locale
-    })
+    }
 }

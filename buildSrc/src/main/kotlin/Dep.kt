@@ -20,7 +20,7 @@ object Dep {
         const val timber = "4.7.1"
         const val swiperefreshlayout = "1..0-alpha03"
         const val libs = "1.0.29"
-        const val mvvm = "1.0.54"
+        const val mvvm = "1.0.55"
         const val widget = "1.0.36"
         const val room = "2.2.2"
         const val umengCommon = "2.0.0"
@@ -30,7 +30,10 @@ object Dep {
         const val tesstwo = "9.1.0"
         const val flexbox = "1.1.0"
         const val drag = "2.4.0"
+        const val exoplayer = "2.11.0"
     }
+
+    const val exoplayer= "com.google.android.exoplayer:exoplayer:${Version.exoplayer}"
 
     const val drag = "com.afollestad:drag-select-recyclerview:${Version.drag}"
 

@@ -5,9 +5,9 @@ import android.widget.ImageView
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.databinding.BindingAdapter
-import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.zhuzichu.android.shared.R
+import com.zhuzichu.android.shared.global.GlideApp
 import com.zhuzichu.android.widget.sharp.Sharp
 
 @BindingAdapter(value = ["url", "fadeDuration", "error"], requireAll = false)
@@ -18,7 +18,7 @@ fun bindImageViewByUrl(
     @DrawableRes error: Int
 ) {
     url?.apply {
-        Glide.with(imageView)
+        GlideApp.with(imageView)
             .load(this).also {
                 if (fadeDuration != 0) {
                     it.transition(DrawableTransitionOptions.withCrossFade(fadeDuration))

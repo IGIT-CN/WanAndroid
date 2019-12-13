@@ -3,6 +3,7 @@ package com.zhuzichu.android.wan.ui.ffmpeg.main.viewmodel
 import androidx.lifecycle.MutableLiveData
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
+import com.zhuzichu.android.shared.extension.createCommand
 import com.zhuzichu.android.wan.manager.FFmpegManager
 import javax.inject.Inject
 
@@ -11,24 +12,24 @@ class ViewModelAVinfo @Inject constructor(
 ) : ViewModelAnalyticsBase() {
     val info = MutableLiveData<String>()
 
-    val onClickConfiguration = BindingCommand<Any>({
+    val onClickConfiguration = createCommand {
         info.value = ffmpegManager.getConfigurationInfo()
-    })
+    }
 
-    val onClickProtocol = BindingCommand<Any>({
+    val onClickProtocol = createCommand {
         info.value = ffmpegManager.getUrlProtocolInfo()
-    })
+    }
 
-    val onClickFormat = BindingCommand<Any>({
+    val onClickFormat = createCommand {
         info.value = ffmpegManager.getAvFormatInfo()
-    })
+    }
 
-    val onClickCodec = BindingCommand<Any>({
+    val onClickCodec = createCommand {
         info.value = ffmpegManager.getAvCodecInfo()
-    })
+    }
 
-    val onClickFilter = BindingCommand<Any>({
+    val onClickFilter = createCommand {
         info.value = ffmpegManager.getAvFilterInfo()
-    })
+    }
 
 }

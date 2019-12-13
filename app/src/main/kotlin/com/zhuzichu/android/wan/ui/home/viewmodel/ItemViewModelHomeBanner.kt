@@ -3,7 +3,6 @@ package com.zhuzichu.android.wan.ui.home.viewmodel
 import androidx.databinding.ObservableArrayList
 import com.zhuzichu.android.shared.base.ItemViewModelAnalyticsBase
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
-import com.zhuzichu.android.shared.extension.logi
 import com.zhuzichu.android.shared.extension.map
 import com.zhuzichu.android.shared.widget.banner.BannerHelper
 import com.zhuzichu.android.wan.BR
@@ -18,7 +17,7 @@ class ItemViewModelHomeBanner(
     val items = ObservableArrayList<Any>()
 
     val itemBinding = OnItemBindClass<Any>().apply {
-        map<ItemViewModelBanner>(BR.item, R.layout.item_banner)
+        map<ItemViewModelHomeBannerDetail>(BR.item, R.layout.item_home_banner_detail)
     }
 
     private val bannerHelper = BannerHelper(
