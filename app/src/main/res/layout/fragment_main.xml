@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             app:labelVisibilityMode="selected"
+            app:itemIconSize="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:menu="@menu/navigation" />
 

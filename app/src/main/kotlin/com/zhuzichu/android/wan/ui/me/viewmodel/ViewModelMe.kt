@@ -6,6 +6,8 @@ import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.autoLoading
 import com.zhuzichu.android.shared.extension.createCommand
+import com.zhuzichu.android.shared.extension.logi
+import com.zhuzichu.android.shared.extension.toast
 import com.zhuzichu.android.shared.storage.GlobalStorage
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.ui.me.domain.UseCaseGetUserInfo
@@ -53,4 +55,5 @@ class ViewModelMe @Inject constructor(
                 }
             )
     }
+
 }

@@ -1,7 +1,7 @@
 package com.zhuzichu.android.wan.ui.home.module
 
 import androidx.lifecycle.ViewModel
-import com.zhuzichu.android.mvvm.di.FragmentScoped
+import com.zhuzichu.android.mvvm.di.ChildFragmentScoped
 import com.zhuzichu.android.mvvm.di.ViewModelKey
 import com.zhuzichu.android.wan.ui.home.fragment.FragmentHome
 import com.zhuzichu.android.wan.ui.home.viewmodel.ViewModelHome
@@ -13,7 +13,7 @@ import dagger.multibindings.IntoMap
 @Module
 internal abstract class ModuleHome {
 
-    @FragmentScoped
+    @ChildFragmentScoped
     @ContributesAndroidInjector
     internal abstract fun contributeFragmentHome(): FragmentHome
 

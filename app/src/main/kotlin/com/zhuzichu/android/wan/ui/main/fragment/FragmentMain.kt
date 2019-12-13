@@ -9,6 +9,7 @@ import com.zhuzichu.android.shared.extension.toast
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.databinding.FragmentMainBinding
+import com.zhuzichu.android.wan.ui.category.fragment.FragmentCategory
 import com.zhuzichu.android.wan.ui.home.fragment.FragmentHome
 import com.zhuzichu.android.wan.ui.main.viewmodel.ViewModelMain
 import com.zhuzichu.android.wan.ui.me.fragment.FragmentMe
@@ -27,15 +28,16 @@ class FragmentMain : FragmentAnalyticsBase<FragmentMainBinding, ViewModelMain>()
     override fun initView() {
         val fragments = listOf<Fragment>(
             FragmentHome(),
+            FragmentCategory(),
             FragmentMe()
         )
 
         val titles = listOf(
             R.string.home,
+            R.string.category,
             R.string.me
         )
 
-        content.offscreenPageLimit = fragments.size
         content.adapter = DefaultIntFragmentPagerAdapter(childFragmentManager, fragments, titles)
         bottom.setupWithViewPager(content)
         initBackListener()

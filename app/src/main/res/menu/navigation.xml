@@ -8,6 +8,12 @@
         android:title="@string/home" />
 
     <item
+        android:id="@+id/main_tab_category"
+        android:enabled="true"
+        android:icon="@drawable/ic_main_category"
+        android:title="@string/category" />
+
+    <item
         android:id="@+id/main_tab_me"
         android:enabled="true"
         android:icon="@drawable/ic_main_me"
