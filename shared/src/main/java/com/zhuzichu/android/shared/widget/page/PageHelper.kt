@@ -10,6 +10,7 @@ import com.zhuzichu.android.shared.entity.BeanPage
 import com.zhuzichu.android.shared.extension.createCommand
 import com.zhuzichu.android.shared.extension.createTypeCommand
 import com.zhuzichu.android.shared.extension.map
+import com.zhuzichu.android.shared.extension.toast
 import me.tatarka.bindingcollectionadapter2.collections.DiffObservableList
 import me.tatarka.bindingcollectionadapter2.collections.MergeObservableList
 import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindClass
@@ -43,7 +44,7 @@ class PageHelper(
         map<ItemViewModelNull>(BR.item, R.layout.item_null)
     }
 
-    val onBottomCommand = createCommand{
+    val onBottomCommand = createCommand {
         if (!isFirstLoad) {
             showDefalut()
             isFirstLoad = !isFirstLoad
@@ -61,7 +62,7 @@ class PageHelper(
             page = 0
             onLoadMore?.invoke(page)
         } else {
-            viewModel.toast("数据正在加载中")
+            "数据正在加载中".toast()
             hideRefresh()
         }
         onRefresh?.invoke()

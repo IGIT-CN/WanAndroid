@@ -9,6 +9,7 @@ import com.zhuzichu.android.shared.base.ItemViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.autoLoading
 import com.zhuzichu.android.shared.extension.createCommand
 import com.zhuzichu.android.shared.extension.toColorByResId
+import com.zhuzichu.android.shared.extension.toast
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.repository.entity.BeanArticle
 import com.zhuzichu.android.wan.ui.home.domain.UseCaseCollect
@@ -59,7 +60,7 @@ class ItemViewModelHomeArticle(
 
     private fun collect() {
         if (id == null) {
-            toast("not id")
+           "not id".toast()
             return
         }
         useCaseCollect.execute(id)
@@ -78,7 +79,7 @@ class ItemViewModelHomeArticle(
 
     private fun unCollect() {
         if (id == null) {
-            toast("not id")
+           "not id".toast()
             return
         }
         useCaseUnCollect.execute(id)

@@ -7,6 +7,7 @@ import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.databinding.FragmentThemeBinding
 import com.zhuzichu.android.wan.ui.setting.theme.viewmodel.ViewModelTheme
 import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
+import com.zhuzichu.android.shared.extension.toast
 import com.zhuzichu.android.shared.storage.GlobalStorage
 
 import javax.inject.Inject
@@ -21,13 +22,13 @@ class FragmentTheme : FragmentAnalyticsBase<FragmentThemeBinding, ViewModelTheme
     override fun bindVariableId(): Int = BR.viewModel
 
     override fun initData() {
-        viewModel.loadSectionLable()
+        viewModel.updateTheme()
     }
 
     override fun initVariable() {
         viewModel.themeChangeEvent.observe(this, Observer {
-            activityCtx.window.setWindowAnimations(R.style.WindowFade)
             globalStorage.uiMode = it
+            activityCtx.window.setWindowAnimations(R.style.WindowFade)
             AppCompatDelegate.setDefaultNightMode(globalStorage.uiMode)
             activityCtx.recreate()
         })

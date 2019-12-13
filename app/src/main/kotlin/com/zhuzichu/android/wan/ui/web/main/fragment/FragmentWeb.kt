@@ -12,6 +12,7 @@ import androidx.activity.addCallback
 import androidx.lifecycle.Observer
 import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
 import com.zhuzichu.android.shared.extension.bindArgument
+import com.zhuzichu.android.shared.extension.isDark
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.databinding.FragmentWebBinding
@@ -33,6 +34,15 @@ class FragmentWeb :
         super.initView()
         initWebView()
         initBackListener()
+        initWebAlpha()
+    }
+
+    private fun initWebAlpha() {
+        if (requireContext().isDark()) {
+            viewModel.alpha.value = 0.5f
+        } else {
+            viewModel.alpha.value = 0.0f
+        }
     }
 
     override fun initViewObservable() {
@@ -73,7 +83,7 @@ class FragmentWeb :
             val intent = Intent()
             intent.action = "android.intent.action.VIEW"
             intent.data = Uri.parse(paramAnonymousString1)
-            requireContext().startActivity(intent)
+            activity?.startActivity(intent)
         }
 
         webview.webViewClient = object : WebViewClient() {
@@ -103,5 +113,6 @@ class FragmentWeb :
 
         showLoading()
         webview.loadUrl(url)
+
     }
 }

@@ -7,6 +7,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import com.umeng.analytics.MobclickAgent
 import com.zhuzichu.android.mvvm.base.BaseFragment
+import com.zhuzichu.android.shared.extension.toast
 import com.zhuzichu.android.shared.global.AppGlobal
 import com.zhuzichu.android.shared.http.exception.ResponseThrowable
 import  com.zhuzichu.android.libs.tool.startActivity as startActivity2
@@ -41,10 +42,10 @@ abstract class FragmentAnalyticsBase<TBinding : ViewDataBinding, TViewModel : Vi
                     }
                 }
                 if (it.isToast != false)
-                    toast(throwable.message)
+                    throwable.message.toast()
                 it.closure?.invoke(throwable)
             } else {
-                toast("未知错误")
+                "未知错误".toast()
             }
         })
     }

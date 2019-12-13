@@ -21,7 +21,7 @@ class ViewModelTheme @Inject constructor() : ViewModelAnalyticsBase() {
 
     val themeChangeEvent = SingleLiveEvent<Int>()
 
-    fun loadSectionLable() {
+    fun updateTheme() {
         items.value = listOf(
             ItemViewModelTheme(
                 this,

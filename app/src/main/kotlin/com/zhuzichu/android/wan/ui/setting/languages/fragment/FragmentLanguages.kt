@@ -25,8 +25,8 @@ class FragmentLanguages :
     override fun initVariable() {
         viewModel.languagesChangeEvent.observe(this, Observer {
             globalStorage.locale = it
-            activityCtx.window.setWindowAnimations(R.style.WindowFade)
             updateApplicationLanguage(Locale(globalStorage.locale ?: Locale.getDefault().country))
+            activityCtx.window.setWindowAnimations(R.style.WindowFade)
             ActivityCompat.recreate(activityCtx)
         })
     }
