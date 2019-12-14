@@ -6,27 +6,6 @@
     app:startDestination="@id/fragmentOpencv">
 
     <fragment
-        android:id="@+id/fragmentOpencv"
-        android:name="com.zhuzichu.android.wan.ui.opencv.main.fragment.FragmentOpencv"
-        android:label="FragmentOpencv"
-        tools:layout="@layout/fragment_opencv">
-        <action
-            android:id="@+id/action_fragmentOpencv_to_fragmentGray"
-            app:destination="@id/fragmentGray" />
-        <action
-            android:id="@+id/action_fragmentOpencv_to_fragmentBlur"
-            app:destination="@id/fragmentBlur" />
-        <action
-            android:id="@+id/action_fragmentOpencv_to_fragmentErode"
-            app:destination="@id/fragmentErode" />
-        <action
-            android:id="@+id/action_fragmentOpencv_to_fragmentCanny"
-            app:destination="@id/fragmentCanny" />
-        <action
-            android:id="@+id/action_fragmentOpencv_to_fragmentIdcard"
-            app:destination="@id/fragmentIdcard" />
-    </fragment>
-    <fragment
         android:id="@+id/fragmentGray"
         android:name="com.zhuzichu.android.wan.ui.opencv.main.fragment.FragmentGray"
         android:label="FragmentGray"
@@ -52,5 +31,26 @@
         android:label="FragmentIdcard"
         tools:layout="@layout/fragment_idcard" />
 
+    <fragment
+        android:id="@+id/fragmentOpencv"
+        android:name="com.zhuzichu.android.wan.ui.opencv.main.fragment.FragmentOpencv"
+        android:label="FragmentOpencv"
+        tools:layout="@layout/fragment_opencv">
+        <action
+            android:id="@+id/action_fragmentOpencv_to_fragmentGray"
+            app:destination="@id/fragmentGray" />
+        <action
+            android:id="@+id/action_fragmentOpencv_to_fragmentBlur"
+            app:destination="@id/fragmentBlur" />
+        <action
+            android:id="@+id/action_fragmentOpencv_to_fragmentErode"
+            app:destination="@id/fragmentErode" />
+        <action
+            android:id="@+id/action_fragmentOpencv_to_fragmentCanny"
+            app:destination="@id/fragmentCanny" />
+        <action
+            android:id="@+id/action_fragmentOpencv_to_fragmentIdcard"
+            app:destination="@id/fragmentIdcard" />
+    </fragment>
 
 </navigation>

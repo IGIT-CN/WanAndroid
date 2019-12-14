@@ -50,7 +50,11 @@ class PageHelper(
             isFirstLoad = !isFirstLoad
             return@createCommand
         }
-        if (getStatus() != ItemViewModelNetwork.STATE_LOADING) {
+        val state = getStatus()
+        if (
+            state != ItemViewModelNetwork.STATE_LOADING &&
+            state != ItemViewModelNetwork.STATE_END
+        ) {
             showLoading()
             onLoadMore?.invoke(page)
         }

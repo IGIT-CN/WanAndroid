@@ -62,6 +62,8 @@
 
         <activity android:name=".ui.account.ActivityAccount" />
 
+        <activity android:name=".ui.search.ActivitySearch" />
+
         <activity android:name=".ui.opencv.ActivityOpencv" />
 
         <activity android:name=".ui.jni.ActivityJni" />

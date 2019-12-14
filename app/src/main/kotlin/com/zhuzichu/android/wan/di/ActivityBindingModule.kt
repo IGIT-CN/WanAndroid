@@ -18,7 +18,9 @@ import com.zhuzichu.android.wan.ui.me.module.ModuleDemo
 import com.zhuzichu.android.wan.ui.me.module.ModuleMe
 import com.zhuzichu.android.wan.ui.opencv.ActivityOpencv
 import com.zhuzichu.android.wan.ui.opencv.main.module.*
-import com.zhuzichu.android.wan.ui.search.module.ModuleSearch
+import com.zhuzichu.android.wan.ui.search.ActivitySearch
+import com.zhuzichu.android.wan.ui.search.list.module.ModuleSearchList
+import com.zhuzichu.android.wan.ui.search.main.module.ModuleSearch
 import com.zhuzichu.android.wan.ui.setting.animation.module.ModuleAnimation
 import com.zhuzichu.android.wan.ui.setting.languages.module.ModuleLanguages
 import com.zhuzichu.android.wan.ui.setting.main.module.ModuleSetting
@@ -115,4 +117,14 @@ abstract class ActivityBindingModule {
         ]
     )
     internal abstract fun webActivity(): ActivityWeb
+
+    @ActivityScoped
+    @ContributesAndroidInjector(
+        modules = [
+            //fragments
+            ModuleSearch::class,
+            ModuleSearchList::class
+        ]
+    )
+    internal abstract fun searchActivity(): ActivitySearch
 }

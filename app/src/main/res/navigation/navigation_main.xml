@@ -14,9 +14,6 @@
             android:id="@+id/action_fragmentMain_to_fragmentSetting"
             app:destination="@id/fragmentSetting" />
         <action
-            android:id="@+id/action_fragmentMain_to_fragmentSearch"
-            app:destination="@id/fragmentSearch" />
-        <action
             android:id="@+id/action_fragmentMain_to_fragmentDemo"
             app:destination="@id/fragmentDemo" />
     </fragment>
@@ -50,11 +47,6 @@
         android:name="com.zhuzichu.android.wan.ui.setting.animation.fragment.FragmentAnimation"
         android:label="FragmentAnimation"
         tools:layout="@layout/fragment_animation" />
-    <fragment
-        android:id="@+id/fragmentSearch"
-        android:name="com.zhuzichu.android.wan.ui.search.fragment.FragmentSearch"
-        android:label="FragmentSearch"
-        tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/fragmentDemo"
         android:name="com.zhuzichu.android.wan.ui.me.fragment.FragmentDemo"

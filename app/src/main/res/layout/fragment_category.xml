@@ -9,9 +9,70 @@
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <com.zhuzichu.android.widget.toolbar.NiceToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:toolbarTitle="@string/category"
+            app:toolbarTitleTextAppearance="?attr/textAppearanceHeadline6" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_divider" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:onRefreshCommand="@{viewModel.onRefreshCommand}">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_satrt"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2.5"
+                    android:orientation="vertical"
+                    app:diffConfig="@{viewModel.diffStart}"
+                    app:itemBinding="@{viewModel.itemBindingStart}"
+                    app:items="@{viewModel.itemsStart}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_divider" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_end"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7.5"
+                    android:orientation="vertical"
+                    app:itemBinding="@{viewModel.itemBindingEnd}"
+                    app:items="@{viewModel.itemsEnd}"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:lineManager="@{viewModel.both(5)}"
+                    app:spanCount="3" />
+
+            </LinearLayout>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </LinearLayout>
 </layout>

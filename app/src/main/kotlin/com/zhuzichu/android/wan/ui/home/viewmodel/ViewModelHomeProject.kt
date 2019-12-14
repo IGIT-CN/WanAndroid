@@ -21,7 +21,7 @@ class ViewModelHomeProject @Inject constructor(
 
     private val pageHelper = PageHelper(
         this,
-        DiffObservableList(itemDiffOf<ItemViewModelHomeArticle>
+        DiffObservableList(itemDiffOf<ItemViewModelHomeProject>
         { oldItem, newItem ->
             oldItem.id == newItem.id
         }),

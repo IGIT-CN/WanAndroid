@@ -12,4 +12,10 @@ class FragmentCategory : FragmentAnalyticsBase<FragmentCategoryBinding, ViewMode
 
     override fun setLayoutId(): Int = R.layout.fragment_category
 
+    override fun initLazyData() {
+        super.initLazyData()
+        viewModel.showLoading()
+        viewModel.updateTree()
+    }
+
 }

@@ -1,18 +1,20 @@
 package com.zhuzichu.android.shared.databinding.recycler
 
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.rxbinding.scrollBottom
+import com.zhuzichu.android.shared.widget.recycler.LineManager
 import com.zhuzichu.android.widget.recycler.BottomRecyclerView
 import java.util.concurrent.TimeUnit
 
-@BindingAdapter(value = ["onScrollBottom"], requireAll = false)
+@BindingAdapter(value = ["onBottomCommand"], requireAll = false)
 fun bindRecyclerView(
     recyclerView: BottomRecyclerView,
-    onScrollBottom: BindingCommand<*>?
+    onBottomCommand: BindingCommand<*>?
 ) {
-    onScrollBottom?.apply {
+    onBottomCommand?.apply {
         recyclerView.scrollBottom()
             .throttleFirst(100, TimeUnit.MILLISECONDS)
             .subscribe {
@@ -21,13 +23,21 @@ fun bindRecyclerView(
     }
 }
 
-@BindingAdapter(value = ["onRefresh"], requireAll = false)
+@BindingAdapter(value = ["onRefreshCommand"], requireAll = false)
 fun bindSwipeRefreshLayout(
     swipeRefreshLayout: SwipeRefreshLayout,
-    onRefresh: BindingCommand<SwipeRefreshLayout>?
+    onRefreshCommand: BindingCommand<SwipeRefreshLayout>?
 ) {
     swipeRefreshLayout.setOnRefreshListener {
-        onRefresh?.execute(swipeRefreshLayout)
+        onRefreshCommand?.execute(swipeRefreshLayout)
     }
 }
 
+
+@BindingAdapter("lineManager")
+fun setLineManager(
+    recyclerView: RecyclerView,
+    factory: LineManager.Factory
+) {
+    recyclerView.addItemDecoration(factory.create(recyclerView))
+}

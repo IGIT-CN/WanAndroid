@@ -53,4 +53,7 @@ interface WanApi {
         @Path("page") page: Int,
         @Field("k") keyWord: String
     ): Flowable<BeanBase<BeanPage<BeanArticle>>>
+
+    @GET("tree/json")
+    fun getTree(): Flowable<BeanBase<List<BeanNode>>>
 }

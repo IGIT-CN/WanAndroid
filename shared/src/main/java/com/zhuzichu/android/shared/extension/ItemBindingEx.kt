@@ -1,6 +1,5 @@
 package com.zhuzichu.android.shared.extension
 
-import android.annotation.SuppressLint
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.DiffUtil
 import me.tatarka.bindingcollectionadapter2.ItemBinding

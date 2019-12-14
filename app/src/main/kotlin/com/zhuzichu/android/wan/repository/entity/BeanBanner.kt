@@ -1,12 +1,23 @@
 package com.zhuzichu.android.wan.repository.entity
 
+import com.google.gson.annotations.SerializedName
+
+
 data class BeanBanner(
-    var desc: String = "",
-    var id: Int = 0,
-    var imagePath: String = "",
-    var isVisible: Int = 0,
-    var order: Int = 0,
-    var title: String = "",
-    var type: Int = 0,
-    var url: String = ""
+    @SerializedName("desc")
+    var desc: String? = null,
+    @SerializedName("id")
+    var id: Int? = null,
+    @SerializedName("imagePath")
+    var imagePath: String? = null,
+    @SerializedName("isVisible")
+    var isVisible: Int? = null,
+    @SerializedName("order")
+    var order: Int? = null,
+    @SerializedName("title")
+    var title: String? = null,
+    @SerializedName("type")
+    var type: Int? = null,
+    @SerializedName("url")
+    var url: String? = null
 )

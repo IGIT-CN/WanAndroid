@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.zhuzichu.android.wan.ui.search.viewmodel.ItemViewModelSearchKeytype" />
+            type="com.zhuzichu.android.wan.ui.search.main.viewmodel.ItemViewModelSearchKeytype" />
     </data>
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"

@@ -5,7 +5,7 @@
 
         <variable
             name="item"
-            type="com.zhuzichu.android.wan.ui.search.viewmodel.ItemViewModelSearchKeyword" />
+            type="com.zhuzichu.android.wan.ui.search.main.viewmodel.ItemViewModelSearchKeyword" />
     </data>
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:singleLine="true"
+            app:onClickCommand="@{item.onClickItem}"
             android:text="@{item.keyword}"
             android:textAppearance="?attr/textAppearanceBody2"
             app:closeIconVisible="@{item.showClose}"
