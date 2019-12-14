@@ -22,13 +22,13 @@ open class ViewModelAnalyticsBase : BaseAutoDisposeViewModel() {
     }
 
 
-    @JvmOverloads
-    fun both(dividerSize: Int = 1): LineManager.Factory = LineManager.both(dividerSize)
+    fun both(): LineManager.Factory = LineManager.both(1)
+
+    fun horizontal(): LineManager.Factory = LineManager.horizontal(1)
+
+    fun vertical(): LineManager.Factory = LineManager.vertical(1)
 
     @JvmOverloads
-    fun horizontal(dividerSize: Int = 1): LineManager.Factory = LineManager.horizontal(dividerSize)
-
-    @JvmOverloads
-    fun vertical(dividerSize: Int = 1): LineManager.Factory = LineManager.vertical(dividerSize)
-
+    fun gridSpacing(spanCount: Int, spacing: Int = 5): LineManager.Factory =
+        LineManager.gridSpacing(spanCount, spacing)
 }

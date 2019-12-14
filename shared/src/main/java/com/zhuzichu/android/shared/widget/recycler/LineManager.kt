@@ -47,5 +47,17 @@ class LineManager {
             }
         }
 
+        fun gridSpacing(spanCount: Int, spacing: Int): Factory {
+            return object : Factory {
+                override fun create(recyclerView: RecyclerView): ItemDecoration {
+                    return GridSpacingDecoration(
+                        spanCount,
+                        spacing,
+                        false
+                    )
+                }
+            }
+        }
+
     }
 }

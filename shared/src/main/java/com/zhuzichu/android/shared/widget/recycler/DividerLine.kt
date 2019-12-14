@@ -19,10 +19,6 @@ class DividerLine(
 
     private var dividerDrawable: Drawable? = ColorDrawable(R.color.color_divider.toColorByResId())
 
-    companion object {
-        private const val DEFAULT_DIVIDER_SIZE = 1
-    }
-
     enum class LineDrawMode {
         HORIZONTAL, VERTICAL, BOTH
     }

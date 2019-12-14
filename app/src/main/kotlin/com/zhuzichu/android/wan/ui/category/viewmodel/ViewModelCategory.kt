@@ -21,17 +21,13 @@ class ViewModelCategory @Inject constructor(
     private val useCaseGetTree: UseCaseGetTree
 ) : ViewModelAnalyticsBase() {
 
-    private val currentIndex = MutableLiveData<Int>()
+     val currentIndex = MutableLiveData<Int>()
 
     val itemBindingStart = OnItemBindClass<Any>().apply {
         map<ItemViewModelCategoryStart>(BR.item, R.layout.item_category_start)
     }
 
     val itemsStart = MutableLiveData<List<Any>>()
-
-    val diffStart = itemDiffOf<ItemViewModelCategoryStart> { oldItem, newItem ->
-        oldItem.bean.id == newItem.bean.id
-    }
 
     val onRefreshCommand = createTypeCommand<SwipeRefreshLayout> {
         updateTree(this)
