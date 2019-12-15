@@ -20,6 +20,12 @@ fun Int?.toAnimationBuild(): AnimBuilder.() -> Unit {
             popEnter = R.anim.fragment_fade_enter
             popExit = R.anim.fragment_fade_pop_exit
         })
+        GlobalStorage.ANIMATION_NO -> ({
+            enter = -1
+            exit = -1
+            popEnter = -1
+            popExit = -1
+        })
         else -> ({
             enter = R.anim.default_enter
             exit = R.anim.default_exit

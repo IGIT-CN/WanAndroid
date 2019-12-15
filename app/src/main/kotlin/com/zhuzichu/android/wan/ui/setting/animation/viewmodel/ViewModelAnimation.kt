@@ -33,6 +33,12 @@ class ViewModelAnimation @Inject constructor(
                 GlobalStorage.ANIMATION_SLIDE,
                 R.string.slide,
                 globalStorage.animation == GlobalStorage.ANIMATION_SLIDE
+            ),
+            ItemViewModelAnimation(
+                this,
+                GlobalStorage.ANIMATION_NO,
+                R.string.noanim,
+                globalStorage.animation == GlobalStorage.ANIMATION_NO
             )
         )
     }

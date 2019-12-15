@@ -35,6 +35,7 @@
     <string name="animation">حيوية</string>
     <string name="fade">تلاشى</string>
     <string name="slide">الانزلاق</string>
+    <string name="noanim">NoAnim</string>
 
     <string name="settings_theme_title">اختيار تصميم</string>
     <string name="settings_theme_system">إعداد تلقائي للنظام</string>

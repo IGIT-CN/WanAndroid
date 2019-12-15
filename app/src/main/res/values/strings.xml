@@ -34,6 +34,7 @@
     <string name="animation">Animation</string>
     <string name="fade">Fade</string>
     <string name="slide">Slide</string>
+    <string name="noanim">NoAnim</string>
 
     <string name="settings_theme_title">Choose theme</string>
     <string name="settings_theme_system">System default</string>
