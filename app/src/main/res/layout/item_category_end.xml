@@ -5,7 +5,7 @@
 
         <variable
             name="item"
-            type="com.zhuzichu.android.wan.ui.category.viewmodel.ItemViewModelCategoryEnd" />
+            type="com.zhuzichu.android.wan.ui.category.main.viewmodel.ItemViewModelCategoryEnd" />
     </data>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"

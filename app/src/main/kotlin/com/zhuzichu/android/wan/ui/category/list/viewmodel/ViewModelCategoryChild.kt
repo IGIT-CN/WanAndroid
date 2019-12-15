@@ -1,30 +1,31 @@
-package com.zhuzichu.android.wan.ui.search.list.viewmodel
+package com.zhuzichu.android.wan.ui.category.list.viewmodel
 
-import androidx.lifecycle.MutableLiveData
 import com.uber.autodispose.autoDispose
+import com.zhuzichu.android.libs.tool.toInt
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.itemDiffOf
 import com.zhuzichu.android.shared.extension.map
+import com.zhuzichu.android.shared.extension.toast
 import com.zhuzichu.android.shared.widget.page.PageHelper
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
+import com.zhuzichu.android.wan.ui.category.list.domain.UseCaseGetArticlesByCid
+import com.zhuzichu.android.wan.ui.category.list.entity.ParamterCategory
 import com.zhuzichu.android.wan.ui.home.domain.UseCaseCollect
 import com.zhuzichu.android.wan.ui.home.domain.UseCaseUnCollect
 import com.zhuzichu.android.wan.ui.home.viewmodel.BaseItemViewModelAricle
 import com.zhuzichu.android.wan.ui.home.viewmodel.ItemViewModelHomeArticle
 import com.zhuzichu.android.wan.ui.home.viewmodel.ItemViewModelHomeProject
-import com.zhuzichu.android.wan.ui.search.list.domain.UseCaseSearchArticle
-import com.zhuzichu.android.wan.ui.search.main.entity.ParamterSearch
 import me.tatarka.bindingcollectionadapter2.collections.DiffObservableList
 import javax.inject.Inject
 
-class ViewModelSearchList @Inject constructor(
-    private val useCaseSearchArticle: UseCaseSearchArticle,
+class ViewModelCategoryChild @Inject constructor(
+    private val useCaseGetArticlesByCid: UseCaseGetArticlesByCid,
     private val useCaseCollect: UseCaseCollect,
     private val useCaseUnCollect: UseCaseUnCollect
 ) : ViewModelAnalyticsBase() {
 
-    val keyword = MutableLiveData<String>()
+    var cid: Int? = null
 
     private val pageHelper = PageHelper(
         this,
@@ -33,7 +34,7 @@ class ViewModelSearchList @Inject constructor(
             oldItem.id == newItem.id
         }),
         onLoadMore = {
-            loadAricles(this)
+            loadArticles(this)
         }
     )
 
@@ -48,26 +49,28 @@ class ViewModelSearchList @Inject constructor(
         map<ItemViewModelHomeArticle>(BR.item, R.layout.item_home_article)
     }
 
-    private fun loadAricles(page: Int) {
-        useCaseSearchArticle.execute(ParamterSearch(page, keyword.value.toString()))
+    fun loadArticles(page: Int) {
+        useCaseGetArticlesByCid.execute(ParamterCategory(page, toInt(cid)))
             .autoDispose(this)
-            .subscribe({
-                pageHelper.put(it.data) {
-                    if (superChapterId == 294)
-                        ItemViewModelHomeProject(
-                            this@ViewModelSearchList, this, useCaseCollect,
-                            useCaseUnCollect
-                        )
-                    else
-                        ItemViewModelHomeArticle(
-                            this@ViewModelSearchList, this, useCaseCollect,
-                            useCaseUnCollect
-                        )
+            .subscribe(
+                {
+                    pageHelper.put(it.data) {
+                        if (superChapterId == 294)
+                            ItemViewModelHomeProject(
+                                this@ViewModelCategoryChild, this, useCaseCollect,
+                                useCaseUnCollect
+                            )
+                        else
+                            ItemViewModelHomeArticle(
+                                this@ViewModelCategoryChild, this, useCaseCollect,
+                                useCaseUnCollect
+                            )
+                    }
+                },
+                {
+                    handleThrowable(it)
                 }
-            }, {
-                pageHelper.showError()
-                handleThrowable(it)
-            })
+            )
     }
 
 }

@@ -13,7 +13,7 @@ interface RemoteRepository {
 
     fun getCoins(page: Int): Flowable<BeanBase<BeanPage<BeanCoin>>>
 
-    fun getArticles(page: Int): Flowable<BeanBase<BeanPage<BeanArticle>>>
+    fun getArticles(page: Int, cid: Int?): Flowable<BeanBase<BeanPage<BeanArticle>>>
 
     fun getBanner(): Flowable<BeanBase<List<BeanBanner>>>
 
@@ -54,8 +54,8 @@ class RemoteRepositoryImpl(
         return app.getCoins(page)
     }
 
-    override fun getArticles(page: Int): Flowable<BeanBase<BeanPage<BeanArticle>>> {
-        return app.getArticles(page)
+    override fun getArticles(page: Int, cid: Int?): Flowable<BeanBase<BeanPage<BeanArticle>>> {
+        return app.getArticles(page, cid)
     }
 
     override fun getBanner(): Flowable<BeanBase<List<BeanBanner>>> {

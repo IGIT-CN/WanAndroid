@@ -8,6 +8,8 @@ import javax.inject.Inject
 
 class ViewModelHome @Inject constructor() : ViewModelAnalyticsBase() {
 
+    var isInit = false
+
     val onClickSearch = createCommand {
         startActivity(ActivitySearch::class.java)
     }

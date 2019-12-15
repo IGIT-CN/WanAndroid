@@ -15,7 +15,7 @@ class UseCaseGetArticles @Inject constructor(
 ) : UseCase<Int, Flowable<BeanBase<BeanPage<BeanArticle>>>>() {
 
     override fun execute(parameters: Int): Flowable<BeanBase<BeanPage<BeanArticle>>> {
-        return remoteRepository.getArticles(parameters)
+        return remoteRepository.getArticles(parameters, null)
             .bindToSchedulers()
             .bindToException()
     }

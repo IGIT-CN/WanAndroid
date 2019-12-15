@@ -9,7 +9,7 @@ import com.zhuzichu.android.shared.extension.toast
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.databinding.FragmentMainBinding
-import com.zhuzichu.android.wan.ui.category.fragment.FragmentCategory
+import com.zhuzichu.android.wan.ui.category.main.fragment.FragmentCategory
 import com.zhuzichu.android.wan.ui.home.fragment.FragmentHome
 import com.zhuzichu.android.wan.ui.main.viewmodel.ViewModelMain
 import com.zhuzichu.android.wan.ui.me.fragment.FragmentMe

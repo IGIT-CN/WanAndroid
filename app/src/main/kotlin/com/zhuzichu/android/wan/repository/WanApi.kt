@@ -21,7 +21,10 @@ interface WanApi {
     fun getCoins(@Path("page") page: Int): Flowable<BeanBase<BeanPage<BeanCoin>>>
 
     @GET("/article/list/{page}/json")
-    fun getArticles(@Path("page") page: Int): Flowable<BeanBase<BeanPage<BeanArticle>>>
+    fun getArticles(
+        @Path("page") page: Int,
+        @Query("cid") cid: Int?
+    ): Flowable<BeanBase<BeanPage<BeanArticle>>>
 
     @GET("/article/top/json")
     fun getTopArticles(): Flowable<BeanBase<List<BeanArticle>>>
@@ -56,4 +59,6 @@ interface WanApi {
 
     @GET("tree/json")
     fun getTree(): Flowable<BeanBase<List<BeanNode>>>
+
+
 }

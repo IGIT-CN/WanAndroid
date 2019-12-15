@@ -1,4 +1,4 @@
-package com.zhuzichu.android.wan.ui.category.domain
+package com.zhuzichu.android.wan.ui.category.main.domain
 
 import com.zhuzichu.android.mvvm.domain.UseCase
 import com.zhuzichu.android.shared.extension.bindToException

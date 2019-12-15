@@ -1,4 +1,4 @@
-package com.zhuzichu.android.wan.ui.category.viewmodel
+package com.zhuzichu.android.wan.ui.category.main.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,7 +12,7 @@ import com.zhuzichu.android.shared.extension.itemDiffOf
 import com.zhuzichu.android.shared.extension.map
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
-import com.zhuzichu.android.wan.ui.category.domain.UseCaseGetTree
+import com.zhuzichu.android.wan.ui.category.main.domain.UseCaseGetTree
 import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindClass
 import javax.inject.Inject
 
@@ -21,7 +21,7 @@ class ViewModelCategory @Inject constructor(
     private val useCaseGetTree: UseCaseGetTree
 ) : ViewModelAnalyticsBase() {
 
-     val currentIndex = MutableLiveData<Int>()
+    val currentIndex = MutableLiveData<Int>()
 
     val itemBindingStart = OnItemBindClass<Any>().apply {
         map<ItemViewModelCategoryStart>(BR.item, R.layout.item_category_start)
@@ -35,8 +35,15 @@ class ViewModelCategory @Inject constructor(
 
     val itemsEnd: LiveData<List<Any>> =
         Transformations.map<Int, List<Any>>(currentIndex) {
-            (itemsStart.value?.get(it) as? ItemViewModelCategoryStart)?.bean?.children?.map { item ->
-                ItemViewModelCategoryEnd(this, item)
+            (itemsStart.value?.get(it) as? ItemViewModelCategoryStart)?.bean?.let { parent ->
+                parent.children?.mapIndexed { index, item ->
+                    ItemViewModelCategoryEnd(
+                        this,
+                        item,
+                        parent,
+                        index
+                    )
+                }
             }
         }
 

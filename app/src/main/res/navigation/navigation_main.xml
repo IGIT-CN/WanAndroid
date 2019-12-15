@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_fragmentMain_to_fragmentDemo"
             app:destination="@id/fragmentDemo" />
+        <action
+            android:id="@+id/action_fragmentMain_to_fragmentCategoryList"
+            app:destination="@id/fragmentCategoryList" />
     </fragment>
     <fragment
         android:id="@+id/fragmentSetting"
@@ -52,5 +55,17 @@
         android:name="com.zhuzichu.android.wan.ui.me.fragment.FragmentDemo"
         android:label="FragmentDemo"
         tools:layout="@layout/fragment_demo" />
+    <fragment
+        android:id="@+id/fragmentCategoryList"
+        android:name="com.zhuzichu.android.wan.ui.category.list.fragment.FragmentCategoryList"
+        android:label="FragmentCategoryList"
+        tools:layout="@layout/fragment_category_list">
+        <argument
+            android:name="beanNode"
+            app:argType="com.zhuzichu.android.wan.repository.entity.BeanNode" />
+        <argument
+            android:name="index"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>

@@ -4,6 +4,7 @@ import androidx.core.os.bundleOf
 import com.zhuzichu.android.shared.base.DefaultStringFragmentPagerAdapter
 import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
 import com.zhuzichu.android.shared.extension.toStringByResId
+import com.zhuzichu.android.shared.extension.toast
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.databinding.FragmentHomeBinding
@@ -15,8 +16,7 @@ class FragmentHome : FragmentAnalyticsBase<FragmentHomeBinding, ViewModelHome>()
 
     override fun setLayoutId(): Int = R.layout.fragment_home
 
-    override fun initView() {
-        super.initView()
+    override fun initLazyView() {
 
         val titles = listOf(
             R.string.home_article.toStringByResId(activityCtx),
@@ -37,5 +37,7 @@ class FragmentHome : FragmentAnalyticsBase<FragmentHomeBinding, ViewModelHome>()
         pager.adapter =
             DefaultStringFragmentPagerAdapter(childFragmentManager, fragments, titles)
         tab.setupWithViewPager(pager)
+
     }
+
 }

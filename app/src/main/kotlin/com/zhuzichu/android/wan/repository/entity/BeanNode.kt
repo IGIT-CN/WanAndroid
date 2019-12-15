@@ -1,8 +1,11 @@
 package com.zhuzichu.android.wan.repository.entity
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
 
+@Parcelize
 data class BeanNode(
     @SerializedName("children")
     var children: List<BeanNode>? = null,
@@ -20,4 +23,4 @@ data class BeanNode(
     var userControlSetTop: Boolean? = null,
     @SerializedName("visible")
     var visible: Int? = null
-)
+) : Parcelable

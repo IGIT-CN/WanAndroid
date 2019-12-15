@@ -1,10 +1,10 @@
-package com.zhuzichu.android.wan.ui.category.module
+package com.zhuzichu.android.wan.ui.category.main.module
 
 import androidx.lifecycle.ViewModel
 import com.zhuzichu.android.mvvm.di.ChildFragmentScoped
 import com.zhuzichu.android.mvvm.di.ViewModelKey
-import com.zhuzichu.android.wan.ui.category.fragment.FragmentCategory
-import com.zhuzichu.android.wan.ui.category.viewmodel.ViewModelCategory
+import com.zhuzichu.android.wan.ui.category.main.fragment.FragmentCategory
+import com.zhuzichu.android.wan.ui.category.main.viewmodel.ViewModelCategory
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

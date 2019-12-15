@@ -4,7 +4,9 @@ import com.zhuzichu.android.mvvm.di.ActivityScoped
 import com.zhuzichu.android.wan.ActivityMain
 import com.zhuzichu.android.wan.ui.account.ActivityAccount
 import com.zhuzichu.android.wan.ui.account.login.module.ModuleLogin
-import com.zhuzichu.android.wan.ui.category.module.ModuleCategory
+import com.zhuzichu.android.wan.ui.category.list.module.ModuleCategoryChild
+import com.zhuzichu.android.wan.ui.category.list.module.ModuleCategoryList
+import com.zhuzichu.android.wan.ui.category.main.module.ModuleCategory
 import com.zhuzichu.android.wan.ui.ffmpeg.ActivityFFmpeg
 import com.zhuzichu.android.wan.ui.ffmpeg.main.module.ModuleAVinfo
 import com.zhuzichu.android.wan.ui.ffmpeg.main.module.ModuleFFmpeg
@@ -50,7 +52,9 @@ abstract class ActivityBindingModule {
             ModuleTheme::class,
             ModuleAnimation::class,
             ModuleSearch::class,
-            ModuleDemo::class
+            ModuleDemo::class,
+            ModuleCategoryList::class,
+            ModuleCategoryChild::class
         ]
     )
     internal abstract fun mainActivity(): ActivityMain

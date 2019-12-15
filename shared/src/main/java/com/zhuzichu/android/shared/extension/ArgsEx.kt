@@ -14,7 +14,8 @@ private class IntentDelegate<in U, out T> : ReadOnlyProperty<U, T?> {
     override fun getValue(thisRef: U, property: KProperty<*>): T? {
         return when (thisRef) {
             is Fragment -> thisRef.arguments?.get(property.name)?.toCast()
-            else -> (thisRef as Activity).intent?.extras?.get(property.name)?.toCast()
+            is Activity -> thisRef.intent.extras?.get(property.name)?.toCast()
+            else -> null
         }
     }
 
