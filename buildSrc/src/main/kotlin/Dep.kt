@@ -32,9 +32,20 @@ object Dep {
         const val flexbox = "1.1.0"
         const val drag = "2.4.0"
         const val exoplayer = "2.11.0"
+        const val zxing = "3.4.0"
+        const val androidZxing = "3.3.0"
+        const val camerax = "1.0.0-alpha05"
     }
 
-    const val exoplayer= "com.google.android.exoplayer:exoplayer:${Version.exoplayer}"
+    const val camerax = "androidx.camera:camera-core:${Version.camerax}"
+
+    const val camerax2 = "androidx.camera:camera-camera2:${Version.camerax}"
+
+    const val zxing = "com.google.zxing:core:${Version.zxing}"
+
+    const val androidZxing = "com.google.zxing:android-core:${Version.androidZxing}"
+
+    const val exoplayer = "com.google.android.exoplayer:exoplayer:${Version.exoplayer}"
 
     const val drag = "com.afollestad:drag-select-recyclerview:${Version.drag}"
 

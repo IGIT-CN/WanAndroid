@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_camera"
+    app:startDestination="@id/fragmentCamera">
+
+    <fragment
+        android:id="@+id/fragmentCamera"
+        android:name="com.zhuzichu.android.wan.ui.camera.main.fragment.FragmentCamera"
+        android:label="FragmentCamera"
+        tools:layout="@layout/fragment_camera" >
+        <action
+            android:id="@+id/action_fragmentCamera_to_fragmentCameraBasic"
+            app:destination="@id/fragmentCameraBasic" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentCameraBasic"
+        android:name="com.zhuzichu.android.wan.ui.camera.main.fragment.FragmentCameraBasic"
+        android:label="FragmentCameraBasic"
+        tools:layout="@layout/fragment_camera_basic"/>
+</navigation>

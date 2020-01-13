@@ -5,6 +5,7 @@ import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.map
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
+import com.zhuzichu.android.wan.ui.camera.ActivityCamera
 import com.zhuzichu.android.wan.ui.ffmpeg.ActivityFFmpeg
 import com.zhuzichu.android.wan.ui.jni.ActivityJni
 import com.zhuzichu.android.wan.ui.opencv.ActivityOpencv
@@ -20,6 +21,7 @@ class ViewModelDemo @Inject constructor(
         const val TYPE_OPENCV = 1
         const val TYPE_FFMPEG = 2
         const val TYPE_WEBSOCKET = 3
+        const val TYPE_CAMERA = 4
     }
 
     private val closure: Int.() -> Unit = {
@@ -36,6 +38,9 @@ class ViewModelDemo @Inject constructor(
             TYPE_WEBSOCKET -> {
                 startActivity(ActivityWebsocket::class.java)
             }
+            TYPE_CAMERA -> {
+                startActivity(ActivityCamera::class.java)
+            }
             else -> {
             }
         }
@@ -46,7 +51,8 @@ class ViewModelDemo @Inject constructor(
             ItemViewModelDemo(this@ViewModelDemo, TYPE_JNI, R.string.jni, closure),
             ItemViewModelDemo(this@ViewModelDemo, TYPE_OPENCV, R.string.opencv, closure),
             ItemViewModelDemo(this@ViewModelDemo, TYPE_FFMPEG, R.string.ffmpeg, closure),
-            ItemViewModelDemo(this@ViewModelDemo, TYPE_WEBSOCKET, R.string.websocket, closure)
+            ItemViewModelDemo(this@ViewModelDemo, TYPE_WEBSOCKET, R.string.websocket, closure),
+            ItemViewModelDemo(this@ViewModelDemo, TYPE_CAMERA, R.string.camera, closure)
         )
     }
 

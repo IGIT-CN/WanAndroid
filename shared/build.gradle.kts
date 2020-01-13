@@ -103,4 +103,8 @@ dependencies {
     api(Dep.tesstwo)
     api(Dep.drag)
     api(Dep.exoplayer)
+    api(Dep.camerax)
+    api(Dep.camerax2)
+    api(Dep.zxing)
+    api(Dep.androidZxing)
 }

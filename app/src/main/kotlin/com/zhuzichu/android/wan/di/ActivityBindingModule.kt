@@ -4,6 +4,9 @@ import com.zhuzichu.android.mvvm.di.ActivityScoped
 import com.zhuzichu.android.wan.ActivityMain
 import com.zhuzichu.android.wan.ui.account.ActivityAccount
 import com.zhuzichu.android.wan.ui.account.login.module.ModuleLogin
+import com.zhuzichu.android.wan.ui.camera.ActivityCamera
+import com.zhuzichu.android.wan.ui.camera.main.moduel.ModuleCamera
+import com.zhuzichu.android.wan.ui.camera.main.moduel.ModuleCameraBasic
 import com.zhuzichu.android.wan.ui.category.list.module.ModuleCategoryChild
 import com.zhuzichu.android.wan.ui.category.list.module.ModuleCategoryList
 import com.zhuzichu.android.wan.ui.category.main.module.ModuleCategory
@@ -131,4 +134,14 @@ abstract class ActivityBindingModule {
         ]
     )
     internal abstract fun searchActivity(): ActivitySearch
+
+    @ActivityScoped
+    @ContributesAndroidInjector(
+        modules = [
+            //fragments
+            ModuleCamera::class,
+            ModuleCameraBasic::class
+        ]
+    )
+    internal abstract fun cameraActivity(): ActivityCamera
 }
