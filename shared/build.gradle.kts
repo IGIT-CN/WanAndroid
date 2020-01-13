@@ -107,4 +107,6 @@ dependencies {
     api(Dep.camerax2)
     api(Dep.zxing)
     api(Dep.androidZxing)
+    api(Dep.rxpermissions)
+
 }

@@ -35,7 +35,10 @@ object Dep {
         const val zxing = "3.4.0"
         const val androidZxing = "3.3.0"
         const val camerax = "1.0.0-alpha05"
+        const val permissions = "0.10.2"
     }
+
+    const val rxpermissions = "com.github.tbruyelle:rxpermissions:${Version.permissions}"
 
     const val camerax = "androidx.camera:camera-core:${Version.camerax}"
 
