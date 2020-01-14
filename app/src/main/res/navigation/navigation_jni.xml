@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragmentJni"
-        android:name="com.zhuzichu.android.wan.ui.jni.main.fragment.FragmentJni"
+        android:name="com.zhuzichu.android.wan.ui.demo.jni.main.fragment.FragmentJni"
         android:label="FragmentJni"
         tools:layout="@layout/fragment_jni" />
 </navigation>

@@ -5,11 +5,11 @@
 
         <import type="com.zhuzichu.android.wan.manager.OpencvManager" />
 
-        <import type="com.zhuzichu.android.wan.ui.opencv.main.viewmodel.ViewModelErode" />
+        <import type="com.zhuzichu.android.wan.ui.demo.opencv.main.viewmodel.ViewModelErode" />
 
         <variable
             name="viewModel"
-            type="com.zhuzichu.android.wan.ui.opencv.main.viewmodel.ViewModelErode" />
+            type="ViewModelErode" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

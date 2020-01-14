@@ -52,7 +52,7 @@
         tools:layout="@layout/fragment_animation" />
     <fragment
         android:id="@+id/fragmentDemo"
-        android:name="com.zhuzichu.android.wan.ui.me.fragment.FragmentDemo"
+        android:name="com.zhuzichu.android.wan.ui.demo.main.fragment.FragmentDemo"
         android:label="FragmentDemo"
         tools:layout="@layout/fragment_demo" />
     <fragment

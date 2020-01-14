@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragmentCamera"
-        android:name="com.zhuzichu.android.wan.ui.camera.main.fragment.FragmentCamera"
+        android:name="com.zhuzichu.android.wan.ui.demo.camera.main.fragment.FragmentCamera"
         android:label="FragmentCamera"
         tools:layout="@layout/fragment_camera" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentCameraBasic"
-        android:name="com.zhuzichu.android.wan.ui.camera.main.fragment.FragmentCameraBasic"
+        android:name="com.zhuzichu.android.wan.ui.demo.camera.main.fragment.FragmentCameraQRcode"
         android:label="FragmentCameraBasic"
-        tools:layout="@layout/fragment_camera_basic"/>
+        tools:layout="@layout/fragment_camera_qrcode"/>
 </navigation>

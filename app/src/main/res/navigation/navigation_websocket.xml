@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragmentWebsocket"
-        android:name="com.zhuzichu.android.wan.ui.websocket.main.fragment.FragmentWebsocket"
+        android:name="com.zhuzichu.android.wan.ui.demo.websocket.main.fragment.FragmentWebsocket"
         android:label="FragmentWebsocket"
         tools:layout="@layout/fragment_websocket" />
 

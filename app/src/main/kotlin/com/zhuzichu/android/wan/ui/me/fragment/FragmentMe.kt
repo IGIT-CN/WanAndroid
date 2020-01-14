@@ -1,4 +1,4 @@
-package com.zhuzichu.android.wan.ui.me.fragment
+package com.zhuzichu.android.wan.ui.demo.main.fragment
 
 import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
 import com.zhuzichu.android.shared.extension.toast

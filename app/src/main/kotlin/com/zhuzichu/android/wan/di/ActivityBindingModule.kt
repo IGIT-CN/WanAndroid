@@ -4,25 +4,28 @@ import com.zhuzichu.android.mvvm.di.ActivityScoped
 import com.zhuzichu.android.wan.ActivityMain
 import com.zhuzichu.android.wan.ui.account.ActivityAccount
 import com.zhuzichu.android.wan.ui.account.login.module.ModuleLogin
-import com.zhuzichu.android.wan.ui.camera.ActivityCamera
-import com.zhuzichu.android.wan.ui.camera.main.moduel.ModuleCamera
-import com.zhuzichu.android.wan.ui.camera.main.moduel.ModuleCameraBasic
 import com.zhuzichu.android.wan.ui.category.list.module.ModuleCategoryChild
 import com.zhuzichu.android.wan.ui.category.list.module.ModuleCategoryList
 import com.zhuzichu.android.wan.ui.category.main.module.ModuleCategory
-import com.zhuzichu.android.wan.ui.ffmpeg.ActivityFFmpeg
-import com.zhuzichu.android.wan.ui.ffmpeg.main.module.ModuleAVinfo
-import com.zhuzichu.android.wan.ui.ffmpeg.main.module.ModuleFFmpeg
+import com.zhuzichu.android.wan.ui.demo.camera.ActivityCamera
+import com.zhuzichu.android.wan.ui.demo.camera.main.activity.ActivityCameraQRcode
+import com.zhuzichu.android.wan.ui.demo.camera.main.moduel.ModuleCamera
+import com.zhuzichu.android.wan.ui.demo.camera.main.moduel.ModuleCameraQRcode
+import com.zhuzichu.android.wan.ui.demo.ffmpeg.ActivityFFmpeg
+import com.zhuzichu.android.wan.ui.demo.ffmpeg.main.module.ModuleAVinfo
+import com.zhuzichu.android.wan.ui.demo.ffmpeg.main.module.ModuleFFmpeg
+import com.zhuzichu.android.wan.ui.demo.jni.ActivityJni
+import com.zhuzichu.android.wan.ui.demo.jni.main.module.ModuleJni
+import com.zhuzichu.android.wan.ui.demo.main.module.ModuleDemo
+import com.zhuzichu.android.wan.ui.demo.opencv.ActivityOpencv
+import com.zhuzichu.android.wan.ui.demo.opencv.main.module.*
+import com.zhuzichu.android.wan.ui.demo.websocket.ActivityWebsocket
+import com.zhuzichu.android.wan.ui.demo.websocket.main.module.ModuleWebsocket
 import com.zhuzichu.android.wan.ui.home.module.ModuleHome
 import com.zhuzichu.android.wan.ui.home.module.ModuleHomeArticle
 import com.zhuzichu.android.wan.ui.home.module.ModuleHomeProject
-import com.zhuzichu.android.wan.ui.jni.ActivityJni
-import com.zhuzichu.android.wan.ui.jni.main.module.ModuleJni
 import com.zhuzichu.android.wan.ui.main.module.ModuleMain
-import com.zhuzichu.android.wan.ui.me.module.ModuleDemo
 import com.zhuzichu.android.wan.ui.me.module.ModuleMe
-import com.zhuzichu.android.wan.ui.opencv.ActivityOpencv
-import com.zhuzichu.android.wan.ui.opencv.main.module.*
 import com.zhuzichu.android.wan.ui.search.ActivitySearch
 import com.zhuzichu.android.wan.ui.search.list.module.ModuleSearchList
 import com.zhuzichu.android.wan.ui.search.main.module.ModuleSearch
@@ -32,8 +35,6 @@ import com.zhuzichu.android.wan.ui.setting.main.module.ModuleSetting
 import com.zhuzichu.android.wan.ui.setting.theme.module.ModuleTheme
 import com.zhuzichu.android.wan.ui.web.ActivityWeb
 import com.zhuzichu.android.wan.ui.web.main.module.ModuleWeb
-import com.zhuzichu.android.wan.ui.websocket.ActivityWebsocket
-import com.zhuzichu.android.wan.ui.websocket.main.module.ModuleWebsocket
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -140,8 +141,18 @@ abstract class ActivityBindingModule {
         modules = [
             //fragments
             ModuleCamera::class,
-            ModuleCameraBasic::class
+            ModuleCameraQRcode::class
         ]
     )
     internal abstract fun cameraActivity(): ActivityCamera
+
+
+    @ActivityScoped
+    @ContributesAndroidInjector(
+        modules = [
+            //fragments
+            ModuleCameraQRcode::class
+        ]
+    )
+    internal abstract fun cameraQRcodeActivity(): ActivityCameraQRcode
 }

@@ -3,7 +3,7 @@ package com.zhuzichu.android.wan.ui.me.module
 import androidx.lifecycle.ViewModel
 import com.zhuzichu.android.mvvm.di.ChildFragmentScoped
 import com.zhuzichu.android.mvvm.di.ViewModelKey
-import com.zhuzichu.android.wan.ui.me.fragment.FragmentMe
+import com.zhuzichu.android.wan.ui.demo.main.fragment.FragmentMe
 import com.zhuzichu.android.wan.ui.me.viewmodel.ViewModelMe
 import dagger.Binds
 import dagger.Module

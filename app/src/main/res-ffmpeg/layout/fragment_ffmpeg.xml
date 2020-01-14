@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.zhuzichu.android.wan.ui.ffmpeg.main.viewmodel.ViewModelFFmpeg" />
+            type="com.zhuzichu.android.wan.ui.demo.ffmpeg.main.viewmodel.ViewModelFFmpeg" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

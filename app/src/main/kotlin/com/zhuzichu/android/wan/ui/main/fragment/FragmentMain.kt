@@ -12,7 +12,7 @@ import com.zhuzichu.android.wan.databinding.FragmentMainBinding
 import com.zhuzichu.android.wan.ui.category.main.fragment.FragmentCategory
 import com.zhuzichu.android.wan.ui.home.fragment.FragmentHome
 import com.zhuzichu.android.wan.ui.main.viewmodel.ViewModelMain
-import com.zhuzichu.android.wan.ui.me.fragment.FragmentMe
+import com.zhuzichu.android.wan.ui.demo.main.fragment.FragmentMe
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class FragmentMain : FragmentAnalyticsBase<FragmentMainBinding, ViewModelMain>() {

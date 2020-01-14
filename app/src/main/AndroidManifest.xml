@@ -64,17 +64,19 @@
 
         <activity android:name=".ui.search.ActivitySearch" />
 
-        <activity android:name=".ui.opencv.ActivityOpencv" />
+        <activity android:name="com.zhuzichu.android.wan.ui.demo.opencv.ActivityOpencv" />
 
-        <activity android:name=".ui.jni.ActivityJni" />
+        <activity android:name=".ui.demo.jni.ActivityJni" />
 
-        <activity android:name=".ui.ffmpeg.ActivityFFmpeg" />
+        <activity android:name=".ui.demo.ffmpeg.ActivityFFmpeg" />
 
-        <activity android:name=".ui.websocket.ActivityWebsocket" />
+        <activity android:name="com.zhuzichu.android.wan.ui.demo.websocket.ActivityWebsocket" />
 
         <activity android:name=".ui.web.ActivityWeb" />
 
-        <activity android:name=".ui.camera.ActivityCamera" />
+        <activity android:name=".ui.demo.camera.ActivityCamera" />
+
+        <activity android:name=".ui.demo.camera.main.activity.ActivityCameraQRcode" />
 
     </application>
 

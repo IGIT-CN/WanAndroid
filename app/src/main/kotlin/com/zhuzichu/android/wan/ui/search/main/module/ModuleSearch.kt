@@ -3,7 +3,7 @@ package com.zhuzichu.android.wan.ui.search.main.module
 import androidx.lifecycle.ViewModel
 import com.zhuzichu.android.mvvm.di.FragmentScoped
 import com.zhuzichu.android.mvvm.di.ViewModelKey
-import com.zhuzichu.android.wan.ui.me.fragment.FragmentMe
+import com.zhuzichu.android.wan.ui.demo.main.fragment.FragmentMe
 import com.zhuzichu.android.wan.ui.search.main.fragment.FragmentSearch
 import com.zhuzichu.android.wan.ui.search.main.viewmodel.ViewModelSearch
 import dagger.Binds

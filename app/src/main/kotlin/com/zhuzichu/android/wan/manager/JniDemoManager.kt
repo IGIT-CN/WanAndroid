@@ -1,7 +1,7 @@
 package com.zhuzichu.android.wan.manager
 
 import androidx.annotation.Keep
-import com.zhuzichu.android.wan.ui.jni.main.entity.BeanStudent
+import com.zhuzichu.android.wan.ui.demo.jni.main.entity.BeanStudent
 
 @Keep
 class JniDemoManager {

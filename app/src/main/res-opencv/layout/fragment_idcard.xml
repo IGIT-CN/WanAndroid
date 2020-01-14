@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.zhuzichu.android.wan.ui.opencv.main.viewmodel.ViewModelIdcard" />
+            type="com.zhuzichu.android.wan.ui.demo.opencv.main.viewmodel.ViewModelIdcard" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

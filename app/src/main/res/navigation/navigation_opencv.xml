@@ -7,33 +7,33 @@
 
     <fragment
         android:id="@+id/fragmentGray"
-        android:name="com.zhuzichu.android.wan.ui.opencv.main.fragment.FragmentGray"
+        android:name="com.zhuzichu.android.wan.ui.demo.opencv.main.fragment.FragmentGray"
         android:label="FragmentGray"
         tools:layout="@layout/fragment_gray" />
     <fragment
         android:id="@+id/fragmentErode"
-        android:name="com.zhuzichu.android.wan.ui.opencv.main.fragment.FragmentErode"
+        android:name="com.zhuzichu.android.wan.ui.demo.opencv.main.fragment.FragmentErode"
         android:label="FragmentErode"
         tools:layout="@layout/fragment_erode" />
     <fragment
         android:id="@+id/fragmentBlur"
-        android:name="com.zhuzichu.android.wan.ui.opencv.main.fragment.FragmentBlur"
+        android:name="com.zhuzichu.android.wan.ui.demo.opencv.main.fragment.FragmentBlur"
         android:label="FragmentBlur"
         tools:layout="@layout/fragment_blur" />
     <fragment
         android:id="@+id/fragmentCanny"
-        android:name="com.zhuzichu.android.wan.ui.opencv.main.fragment.FragmentCanny"
+        android:name="com.zhuzichu.android.wan.ui.demo.opencv.main.fragment.FragmentCanny"
         android:label="FragmentCanny"
         tools:layout="@layout/fragment_canny" />
     <fragment
         android:id="@+id/fragmentIdcard"
-        android:name="com.zhuzichu.android.wan.ui.opencv.main.fragment.FragmentIdcard"
+        android:name="com.zhuzichu.android.wan.ui.demo.opencv.main.fragment.FragmentIdcard"
         android:label="FragmentIdcard"
         tools:layout="@layout/fragment_idcard" />
 
     <fragment
         android:id="@+id/fragmentOpencv"
-        android:name="com.zhuzichu.android.wan.ui.opencv.main.fragment.FragmentOpencv"
+        android:name="com.zhuzichu.android.wan.ui.demo.opencv.main.fragment.FragmentOpencv"
         android:label="FragmentOpencv"
         tools:layout="@layout/fragment_opencv">
         <action
