@@ -19,6 +19,8 @@ import com.zhuzichu.android.wan.ui.demo.jni.main.module.ModuleJni
 import com.zhuzichu.android.wan.ui.demo.main.module.ModuleDemo
 import com.zhuzichu.android.wan.ui.demo.opencv.ActivityOpencv
 import com.zhuzichu.android.wan.ui.demo.opencv.main.module.*
+import com.zhuzichu.android.wan.ui.demo.vxposed.ActivityVxposed
+import com.zhuzichu.android.wan.ui.demo.vxposed.main.module.ModuleVxposed
 import com.zhuzichu.android.wan.ui.demo.websocket.ActivityWebsocket
 import com.zhuzichu.android.wan.ui.demo.websocket.main.module.ModuleWebsocket
 import com.zhuzichu.android.wan.ui.home.module.ModuleHome
@@ -155,4 +157,14 @@ abstract class ActivityBindingModule {
         ]
     )
     internal abstract fun cameraQRcodeActivity(): ActivityCameraQRcode
+
+    @ActivityScoped
+    @ContributesAndroidInjector(
+        modules = [
+            //fragments
+            ModuleVxposed::class
+        ]
+    )
+    internal abstract fun vxposedActivity(): ActivityVxposed
+
 }
