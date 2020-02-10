@@ -34,15 +34,30 @@ object Dep {
         const val exoplayer = "2.11.0"
         const val zxing = "3.4.0"
         const val androidZxing = "3.3.0"
-        const val camerax = "1.0.0-alpha09"
+        const val camerax = "1.0.0-alpha05"
+        const val cameraxLifecycle = "1.0.0-alpha03"
+        const val cameraxView = "1.0.0-alpha06"
         const val permissions = "0.10.2"
+        const val logback = "2.0.0"
+        const val slf4j = "1.7.25"
+        const val once = "1.3.0"
     }
+
+    const val once = "com.jonathanfinerty.once:once:${Version.once}"
+
+    const val logback = "com.github.tony19:logback-android:${Version.logback}"
+
+    const val slf4j = "org.slf4j:slf4j-api:${Version.slf4j}"
 
     const val rxpermissions = "com.github.tbruyelle:rxpermissions:${Version.permissions}"
 
     const val camerax = "androidx.camera:camera-core:${Version.camerax}"
 
     const val camerax2 = "androidx.camera:camera-camera2:${Version.camerax}"
+
+    const val cameraxView = "androidx.camera:camera-view:${Version.cameraxView}"
+
+    const val cameraxLifecycle = "androidx.camera:camera-lifecycle:${Version.cameraxLifecycle}"
 
     const val zxing = "com.google.zxing:core:${Version.zxing}"
 

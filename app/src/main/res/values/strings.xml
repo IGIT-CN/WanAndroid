@@ -20,6 +20,7 @@
     <string name="ffmpeg">FFmpeg</string>
     <string name="websocket">WebSocket</string>
     <string name="camera">CameraX</string>
+    <string name="vsposed">VirtualXposed</string>
 
     <string name="home_article">New Article</string>
     <string name="home_project">New Project</string>

@@ -108,5 +108,9 @@ dependencies {
     api(Dep.zxing)
     api(Dep.androidZxing)
     api(Dep.rxpermissions)
-
+//    api(Dep.cameraxLifecycle)
+//    api(Dep.cameraxView)
+    api(Dep.logback)
+    api(Dep.slf4j)
+    api(Dep.once)
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.zhuzichu.android.wan">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -37,7 +38,8 @@
         android:roundIcon="${ic_launcher_round_new}"
         android:supportsRtl="true"
         android:theme="@style/MyTheme.DayNight"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        tools:replace="android:icon,android:label,android:allowBackup">
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
@@ -77,6 +79,8 @@
         <activity android:name=".ui.demo.camera.ActivityCamera" />
 
         <activity android:name=".ui.demo.camera.main.activity.ActivityCameraQRcode" />
+
+        <activity android:name=".ui.demo.vxposed.ActivityVxposed" />
 
     </application>
 

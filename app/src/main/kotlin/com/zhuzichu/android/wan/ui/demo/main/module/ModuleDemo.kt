@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.zhuzichu.android.mvvm.di.FragmentScoped
 import com.zhuzichu.android.mvvm.di.ViewModelKey
 import com.zhuzichu.android.wan.ui.demo.main.fragment.FragmentDemo
-import com.zhuzichu.android.wan.ui.me.viewmodel.ViewModelDemo
+import com.zhuzichu.android.wan.ui.demo.main.viewmodel.ViewModelDemo
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

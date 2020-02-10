@@ -137,5 +137,15 @@ dependencies {
 
     implementation "androidx.camera:camera-core:1.0.0-alpha05"
 
+    implementation "androidx.camera:camera-lifecycle:1.0.0-alpha02"
+
+    implementation "androidx.camera:camera-view:1.0.0-alpha06"
+
     implementation "com.github.tbruyelle:rxpermissions:0.10.2"
+
+    implementation 'org.slf4j:slf4j-api:1.7.25'
+
+    implementation 'com.jonathanfinerty.once:once:1.0.3'
+
+    implementation 'com.github.tony19:logback-android:2.0.0'
 }

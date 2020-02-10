@@ -25,7 +25,7 @@ static const char *const class_JniDemoManager = "com/zhuzichu/android/wan/manage
 static const JNINativeMethod gMethods[] = {
         {"invokeDynamicMethod", "()Ljava/lang/String;", (jstring *) invokeDynamicMethod},
         {"getRandNumber",       "()I",                  (jint *) getRandNumber},
-        {"getStudent",          "()Lcom/zhuzichu/android/wan/ui/jni/main/entity/BeanStudent;",
+        {"getStudent",          "()Lcom/zhuzichu/android/wan/ui/demo/jni/main/entity/BeanStudent;",
                                                         (jobject *) getStudent}
 };
 
@@ -104,7 +104,7 @@ JNIEXPORT jint getRandNumber(JNIEnv *env, jobject object) {
  * @param object
  */
 JNIEXPORT jobject getStudent(JNIEnv *env, jobject object) {
-    jclass clazz = env->FindClass("com/zhuzichu/android/wan/ui/jni/main/entity/BeanStudent");
+    jclass clazz = env->FindClass("com/zhuzichu/android/wan/ui/demo/jni/main/entity/BeanStudent");
     jmethodID initId = env->GetMethodID(clazz, "<init>", "(Ljava/lang/String;I)V");
     jstring name = tojstring(env, "朱子楚" + std::to_string(generateRandNumber()) + "号");
     jobject student = env->NewObject(clazz, initId, name, generateRandNumber());

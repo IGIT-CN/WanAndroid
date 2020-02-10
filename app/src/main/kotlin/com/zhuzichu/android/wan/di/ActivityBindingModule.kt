@@ -7,6 +7,7 @@ import com.zhuzichu.android.wan.ui.account.login.module.ModuleLogin
 import com.zhuzichu.android.wan.ui.category.list.module.ModuleCategoryChild
 import com.zhuzichu.android.wan.ui.category.list.module.ModuleCategoryList
 import com.zhuzichu.android.wan.ui.category.main.module.ModuleCategory
+import com.zhuzichu.android.wan.ui.demo.AppList.applist.module.ModuleAppList
 import com.zhuzichu.android.wan.ui.demo.camera.ActivityCamera
 import com.zhuzichu.android.wan.ui.demo.camera.main.activity.ActivityCameraQRcode
 import com.zhuzichu.android.wan.ui.demo.camera.main.moduel.ModuleCamera
@@ -162,7 +163,8 @@ abstract class ActivityBindingModule {
     @ContributesAndroidInjector(
         modules = [
             //fragments
-            ModuleVxposed::class
+            ModuleVxposed::class,
+            ModuleAppList::class
         ]
     )
     internal abstract fun vxposedActivity(): ActivityVxposed

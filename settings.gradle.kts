@@ -1,4 +1,4 @@
-include(":app", ":shared")
+include(":app", ":shared", ":vxposed")
 rootProject.name = "WanAndroid"
 
 val fileName = "build.groovy.gradle"

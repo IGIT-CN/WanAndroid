@@ -4,19 +4,21 @@ import androidx.databinding.ObservableList
 import androidx.lifecycle.MutableLiveData
 import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
-import com.zhuzichu.android.shared.extension.*
+import com.zhuzichu.android.shared.extension.createCommand
+import com.zhuzichu.android.shared.extension.itemDiffOf
+import com.zhuzichu.android.shared.extension.map
+import com.zhuzichu.android.shared.extension.toast
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.db.entity.DOKeyword
 import com.zhuzichu.android.wan.ui.search.main.domain.UseCaseDropHistoryKey
-import com.zhuzichu.android.wan.ui.search.main.domain.UseCaseGetHotKey
 import com.zhuzichu.android.wan.ui.search.main.domain.UseCaseGetHistoryKey
+import com.zhuzichu.android.wan.ui.search.main.domain.UseCaseGetHotKey
 import com.zhuzichu.android.wan.ui.search.main.domain.UseCasePlusHistoryKey
 import com.zhuzichu.android.wan.ui.search.main.fragment.FragmentSearchDirections
 import me.tatarka.bindingcollectionadapter2.collections.AsyncDiffObservableList
 import me.tatarka.bindingcollectionadapter2.collections.MergeObservableList
 import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindClass
-
 import javax.inject.Inject
 
 class ViewModelSearch @Inject constructor(
@@ -113,7 +115,7 @@ class ViewModelSearch @Inject constructor(
             )
     }
 
-    fun plusHistoryKeyword(keyword: String?) {
+    private fun plusHistoryKeyword(keyword: String?) {
         if (keyword.isNullOrBlank())
             return
         useCasePlusHistoryKey.execute(DOKeyword(keyword))

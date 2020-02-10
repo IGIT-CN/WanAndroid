@@ -13,3 +13,7 @@ fun <T> createTypeCommand(closure: T?.() -> Unit): BindingCommand<T?> {
         closure.invoke(this)
     })
 }
+
+fun Any.className(): String {
+    return this.javaClass.simpleName
+}

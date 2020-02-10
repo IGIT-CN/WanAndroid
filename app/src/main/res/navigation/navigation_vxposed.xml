@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation_vxposed">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_vxposed"
+    app:startDestination="@id/fragmentVxposed">
+
+    <fragment
+        android:id="@+id/fragmentVxposed"
+        android:name="com.zhuzichu.android.wan.ui.demo.vxposed.main.fragment.FragmentVxposed"
+        android:label="FragmentVxposed"
+        tools:layout="@layout/fragment_vxposed">
+        <action
+            android:id="@+id/action_fragmentVxposed_to_fragmentAppList"
+            app:destination="@id/fragmentAppList" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAppList"
+        android:name="com.zhuzichu.android.wan.ui.demo.vxposed.applist.fragment.FragmentAppList"
+        android:label="FragmentAppList"
+        tools:layout="@layout/fragment_app_list" />
 
 </navigation>

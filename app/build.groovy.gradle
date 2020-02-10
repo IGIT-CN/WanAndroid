@@ -146,6 +146,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api project(path: ':shared')
+    implementation project(path: ':vxposed')
     kapt(Dep.kaptRoomCompiler)
     kapt(Dep.kaptDaggerCompiler)
     kapt(Dep.kaptDaggerProcessor)
