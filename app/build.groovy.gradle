@@ -54,12 +54,12 @@ android {
         }
     }
 
-    flavorDimensions "channel", "cpu"
+    flavorDimensions "CHANNEL", "CPU"
 
     productFlavors {
 
         GooglePlay {
-            dimension "channel"
+            dimension "CHANNEL"
             applicationIdSuffix = ".google"
             addManifestPlaceholders([
                     'CHANNEL_NAME'         : name,
@@ -70,7 +70,7 @@ android {
         }
 
         HuaWei {
-            dimension "channel"
+            dimension "CHANNEL"
             applicationIdSuffix = ".huawei"
             addManifestPlaceholders([
                     'CHANNEL_NAME'         : name,
@@ -80,7 +80,7 @@ android {
         }
 
         arm {
-            dimension "cpu"
+            dimension "CPU"
             ndk {
                 setAbiFilters(["armeabi-v7a"])
             }
@@ -93,7 +93,7 @@ android {
         }
 
         x86 {
-            dimension "cpu"
+            dimension "CPU"
             ndk {
                 setAbiFilters(["x86"])
             }

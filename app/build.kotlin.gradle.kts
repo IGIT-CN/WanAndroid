@@ -60,10 +60,10 @@ android {
         }
     }
 
-    flavorDimensions("channel", "cpu")
+    flavorDimensions("CHANNEL", "CPU")
     productFlavors {
         create("GooglePlay") {
-            dimension = "channel"
+            dimension = "CHANNEL"
             applicationIdSuffix = ".google"
             manifestPlaceholders.apply {
                 put("CHANNEL_NAME", name)
@@ -72,7 +72,7 @@ android {
             }
         }
         create("HuaWei") {
-            dimension = "channel"
+            dimension = "CHANNEL"
             applicationIdSuffix = ".huawei"
             manifestPlaceholders.apply {
                 put("CHANNEL_NAME", name)
@@ -82,7 +82,7 @@ android {
         }
 
         create("arm") {
-            dimension = "cpu"
+            dimension = "CPU"
             ndk {
                 setAbiFilters(listOf("armeabi-v7a"))
             }
@@ -95,7 +95,7 @@ android {
         }
 
         create("x86") {
-            dimension = "cpu"
+            dimension = "CPU"
             ndk {
                 setAbiFilters(listOf("x86"))
             }
@@ -133,7 +133,9 @@ android {
                 "src/main/res-opencv",
                 "src/main/res-jni",
                 "src/main/res-ffmpeg",
-                "src/main/res-websocket"
+                "src/main/res-websocket",
+                "src/main/res-camera",
+                "src/main/res-vxposed"
             )
         }
     }

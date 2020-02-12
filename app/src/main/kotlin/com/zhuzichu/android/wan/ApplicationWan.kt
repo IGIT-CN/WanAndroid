@@ -1,11 +1,10 @@
 package com.zhuzichu.android.wan
 
 import android.content.Context
-import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
-import com.lody.virtual.client.NativeEngine
 import com.lody.virtual.client.core.VirtualCore
 import com.lody.virtual.client.stub.VASettings
+import com.umeng.commonsdk.UMConfigure
 import com.zhuzichu.android.mvvm.MvvmManager
 import com.zhuzichu.android.shared.extension.className
 import com.zhuzichu.android.shared.extension.logi
@@ -42,6 +41,14 @@ class ApplicationWan : DaggerApplication() {
             loginClazz = ActivityAccount::class.java
         }
 
+        UMConfigure.init(
+            this,
+            "5e4286750feb474e621fb119",
+            BuildConfig.FLAVOR_CHANNEL,
+            UMConfigure.DEVICE_TYPE_PHONE,
+            null
+        )
+
         RxJavaPlugins.setErrorHandler {
             it.printStackTrace()
         }
@@ -52,19 +59,16 @@ class ApplicationWan : DaggerApplication() {
         MvvmManager.animBuilder = globalStorage.animation.toAnimationBuild()
 
         val virtualCore = VirtualCore.get()
-        virtualCore.initialize(WanVirtualInitializer(this, virtualCore))
+        virtualCore.initialize(WanVirtualInitializer(virtualCore))
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
         return DaggerAppComponent.factory().create(this)
     }
 
-    override fun attachBaseContext(base: Context?) {
+    override fun attachBaseContext(base: Context) {
         initLog()
         super.attachBaseContext(base)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            NativeEngine.disableJit(Build.VERSION.SDK_INT)
-        }
         VASettings.ENABLE_IO_REDIRECT = true
         VASettings.ENABLE_INNER_SHORTCUT = false
         try {

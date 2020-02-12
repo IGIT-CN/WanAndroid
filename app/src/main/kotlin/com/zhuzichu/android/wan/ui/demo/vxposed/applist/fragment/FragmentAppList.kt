@@ -1,5 +1,8 @@
 package com.zhuzichu.android.wan.ui.demo.vxposed.applist.fragment
 
+import android.Manifest
+import com.tbruyelle.rxpermissions2.RxPermissions
+import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
@@ -14,7 +17,15 @@ class FragmentAppList : FragmentAnalyticsBase<FragmentAppListBinding, ViewModelA
 
     override fun initFirstData() {
         super.initFirstData()
-        viewModel.loadData()
+        RxPermissions(this).request(Manifest.permission.READ_EXTERNAL_STORAGE)
+            .autoDispose(viewModel)
+            .subscribe {
+                if (it) {
+                    viewModel.loadData()
+                } else {
+                    back()
+                }
+            }
     }
 
 }

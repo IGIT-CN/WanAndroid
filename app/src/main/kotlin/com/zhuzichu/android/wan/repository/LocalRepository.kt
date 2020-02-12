@@ -14,6 +14,7 @@ import com.zhuzichu.android.wan.repository.entity.EntityApp
 import io.reactivex.Flowable
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.util.*
 
 interface LocalRepository {
 
@@ -74,14 +75,11 @@ class LocalRepositoryImpl : LocalRepository {
         pkgList: List<PackageInfo>,
         fastOpen: Boolean
     ): List<EntityApp> {
-        val packageManager = context.packageManager
-        val list = mutableListOf<EntityApp>()
+        val pm = context.packageManager
+        val list: MutableList<EntityApp> = ArrayList(pkgList.size)
         val hostPkg = VirtualCore.get().hostPkg
-        for (pkg in pkgList) {
+        for (pkg in pkgList) { // ignore the host package
             if (hostPkg == pkg.packageName) {
-                continue
-            }
-            if (VirtualCore.TAICHI_PACKAGE == pkg.packageName) {
                 continue
             }
             if (isSystemApplication(pkg)) {
@@ -95,17 +93,11 @@ class LocalRepositoryImpl : LocalRepository {
             info.packageName = pkg.packageName
             info.fastOpen = fastOpen
             info.path = path
-            info.icon = null
-            info.name = ai.loadLabel(packageManager)
-            info.version = pkg.versionName
-            val installedAppInfo =
-                VirtualCore.get().getInstalledAppInfo(pkg.packageName, 0)
+            info.icon = ai.loadIcon(pm)
+            info.name = ai.loadLabel(pm)
+            val installedAppInfo = VirtualCore.get().getInstalledAppInfo(pkg.packageName, 0)
             if (installedAppInfo != null) {
                 info.cloneCount = installedAppInfo.installedUsers.size
-            }
-            if (ai.metaData != null && ai.metaData.containsKey("xposedmodule")) {
-                info.disableMultiVersion = true
-                info.cloneCount = 0
             }
             list.add(info)
         }
