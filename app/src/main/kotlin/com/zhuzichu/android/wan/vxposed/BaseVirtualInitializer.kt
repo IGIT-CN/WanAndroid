@@ -7,7 +7,7 @@ open class BaseVirtualInitializer(
 ) : VirtualCore.VirtualInitializer() {
 
     override fun onVirtualProcess() {
-        virtualCore.setCrashHandler(BaseCrashHandler())
+        virtualCore.setCrashHandler(WanCrashHandler())
         virtualCore.componentDelegate = WanComponentDelegate()
         virtualCore.phoneInfoDelegate = WanPhoneInfoDelegate()
         virtualCore.taskDescriptionDelegate = WanTaskDescDelegate()

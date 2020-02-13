@@ -27,6 +27,8 @@ import com.zhuzichu.android.wan.ui.demo.websocket.main.module.ModuleWebsocket
 import com.zhuzichu.android.wan.ui.home.module.ModuleHome
 import com.zhuzichu.android.wan.ui.home.module.ModuleHomeArticle
 import com.zhuzichu.android.wan.ui.home.module.ModuleHomeProject
+import com.zhuzichu.android.wan.ui.launcher.ActivityLauncher
+import com.zhuzichu.android.wan.ui.launcher.module.ModuleLauncher
 import com.zhuzichu.android.wan.ui.main.module.ModuleMain
 import com.zhuzichu.android.wan.ui.me.module.ModuleMe
 import com.zhuzichu.android.wan.ui.search.ActivitySearch
@@ -169,4 +171,12 @@ abstract class ActivityBindingModule {
     )
     internal abstract fun vxposedActivity(): ActivityVxposed
 
+    @ActivityScoped
+    @ContributesAndroidInjector(
+        modules = [
+            //fragments
+            ModuleLauncher::class
+        ]
+    )
+    internal abstract fun launcherActivity(): ActivityLauncher
 }

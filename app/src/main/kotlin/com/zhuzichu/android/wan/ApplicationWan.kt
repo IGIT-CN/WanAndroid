@@ -2,6 +2,7 @@ package com.zhuzichu.android.wan
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.multidex.MultiDex
 import com.lody.virtual.client.core.VirtualCore
 import com.lody.virtual.client.stub.VASettings
 import com.umeng.commonsdk.UMConfigure
@@ -43,7 +44,7 @@ class ApplicationWan : DaggerApplication() {
 
         UMConfigure.init(
             this,
-            "5e4286750feb474e621fb119",
+            BuildConfig.UMENG_APPKEY,
             BuildConfig.FLAVOR_CHANNEL,
             UMConfigure.DEVICE_TYPE_PHONE,
             null
@@ -69,6 +70,7 @@ class ApplicationWan : DaggerApplication() {
     override fun attachBaseContext(base: Context) {
         initLog()
         super.attachBaseContext(base)
+        MultiDex.install(this)
         VASettings.ENABLE_IO_REDIRECT = true
         VASettings.ENABLE_INNER_SHORTCUT = false
         try {

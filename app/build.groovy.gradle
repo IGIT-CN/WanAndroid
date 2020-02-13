@@ -29,6 +29,7 @@ android {
         signingConfig signingConfigs.appSign
         renderscriptTargetApi 18
         renderscriptSupportModeEnabled true
+        multiDexEnabled true
         externalNativeBuild {
             cmake {
                 cppFlags "-std=c++14"

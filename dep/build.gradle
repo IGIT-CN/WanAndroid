@@ -148,4 +148,6 @@ dependencies {
     implementation 'com.jonathanfinerty.once:once:1.0.3'
 
     implementation 'com.github.tony19:logback-android:2.0.0'
+
+    implementation "androidx.multidex:multidex:2.0.0"
 }

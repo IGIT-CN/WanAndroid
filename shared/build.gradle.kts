@@ -113,4 +113,5 @@ dependencies {
     api(Dep.logback)
     api(Dep.slf4j)
     api(Dep.once)
+    api(Dep.multidex)
 }

@@ -163,3 +163,11 @@
     public static **[] values();
     public static ** valueOf(java.lang.String);
 }
+
+#---------------------------------log-----------------------------------
+-keep class ch.qos.logback.** {*;}
+-keep class org.slf4j.** {*;}
+
+#---------------------------------log-----------------------------------
+-keep class com.lody.virtual.** {*;}
+-keep class mirror.** {*;}
