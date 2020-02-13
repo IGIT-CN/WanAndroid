@@ -1,8 +1,10 @@
 package com.zhuzichu.android.wan
 
 import android.content.Context
+import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.multidex.MultiDex
+import com.lody.virtual.client.NativeEngine
 import com.lody.virtual.client.core.VirtualCore
 import com.lody.virtual.client.stub.VASettings
 import com.umeng.commonsdk.UMConfigure
@@ -71,6 +73,9 @@ class ApplicationWan : DaggerApplication() {
         initLog()
         super.attachBaseContext(base)
         MultiDex.install(this)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            NativeEngine.disableJit(Build.VERSION.SDK_INT)
+        }
         VASettings.ENABLE_IO_REDIRECT = true
         VASettings.ENABLE_INNER_SHORTCUT = false
         try {

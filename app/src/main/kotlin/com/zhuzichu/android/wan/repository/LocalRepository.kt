@@ -5,9 +5,7 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import com.lody.virtual.GmsSupport
 import com.lody.virtual.client.core.VirtualCore
-import com.zhuzichu.android.shared.extension.className
 import com.zhuzichu.android.shared.extension.createFlowable
-import com.zhuzichu.android.shared.extension.logi
 import com.zhuzichu.android.shared.global.AppGlobal.context
 import com.zhuzichu.android.wan.db.AppDatabase
 import com.zhuzichu.android.wan.db.entity.DOKeyword
@@ -97,14 +95,14 @@ class LocalRepositoryImpl : LocalRepository {
             info.path = path
             info.icon = ai.loadIcon(pm)
             info.name = ai.loadLabel(pm)
-            try {
-                val installedAppInfo = VirtualCore.get().getInstalledAppInfo(pkg.packageName, 0)
-                if (installedAppInfo != null) {
-                    info.cloneCount = installedAppInfo.installedUsers.size
-                }
-            } catch (e: Exception) {
-                "getInstalledAppInfo 异常了".logi(className(), e)
+//            try {
+            val installedAppInfo = VirtualCore.get().getInstalledAppInfo(pkg.packageName, 0)
+            if (installedAppInfo != null) {
+                info.cloneCount = installedAppInfo.installedUsers.size
             }
+//            } catch (e: Exception) {
+//                "getInstalledAppInfo 异常了".logi(className(), e)
+//            }
             list.add(info)
         }
         return list

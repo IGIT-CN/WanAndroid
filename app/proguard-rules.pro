@@ -171,3 +171,4 @@
 #---------------------------------log-----------------------------------
 -keep class com.lody.virtual.** {*;}
 -keep class mirror.** {*;}
+-keep class android.** {*;}
