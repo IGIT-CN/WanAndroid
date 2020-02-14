@@ -7,6 +7,8 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import com.umeng.analytics.MobclickAgent
 import com.zhuzichu.android.mvvm.base.BaseFragment
+import com.zhuzichu.android.shared.extension.className
+import com.zhuzichu.android.shared.extension.logi
 import com.zhuzichu.android.shared.extension.toast
 import com.zhuzichu.android.shared.global.AppGlobal
 import com.zhuzichu.android.shared.http.exception.ResponseThrowable
@@ -30,6 +32,7 @@ abstract class FragmentAnalyticsBase<TBinding : ViewDataBinding, TViewModel : Vi
         viewModel.handleThrowableEvent.observe(viewLifecycleOwner, Observer {
             //todo 添加设计模式去掉if else
             val throwable = it.throwable
+            "异常错误统一处理:".logi(className(), throwable)
             if (throwable is ResponseThrowable) {
                 when (throwable.code) {
                     -1001 -> {

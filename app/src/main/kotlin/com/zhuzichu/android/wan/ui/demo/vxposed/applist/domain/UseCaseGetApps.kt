@@ -21,6 +21,5 @@ class UseCaseGetApps @Inject constructor(
                 }
             }
             .bindToSchedulers()
-            .bindToException()
     }
 }

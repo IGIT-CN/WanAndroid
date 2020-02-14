@@ -12,4 +12,9 @@ class FragmentVxposed : FragmentAnalyticsBase<FragmentVxposedBinding, ViewModelV
 
     override fun setLayoutId(): Int = R.layout.fragment_vxposed
 
+    override fun initFirstData() {
+        super.initFirstData()
+        viewModel.loadData()
+    }
+
 }

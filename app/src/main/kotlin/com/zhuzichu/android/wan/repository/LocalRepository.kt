@@ -5,6 +5,7 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import com.lody.virtual.GmsSupport
 import com.lody.virtual.client.core.VirtualCore
+import com.lody.virtual.remote.InstalledAppInfo
 import com.zhuzichu.android.shared.extension.createFlowable
 import com.zhuzichu.android.shared.global.AppGlobal.context
 import com.zhuzichu.android.wan.db.AppDatabase
@@ -27,6 +28,8 @@ interface LocalRepository {
     fun deleteKeyword(list: List<DOKeyword>)
 
     fun getInstalledApps(): Flowable<List<EntityApp>>
+
+    fun getVirtualApps(): Flowable<List<InstalledAppInfo>>
 }
 
 class LocalRepositoryImpl : LocalRepository {
@@ -67,6 +70,13 @@ class LocalRepositoryImpl : LocalRepository {
                     true
                 )
             )
+            onComplete()
+        }
+    }
+
+    override fun getVirtualApps(): Flowable<List<InstalledAppInfo>> {
+        return createFlowable {
+            onNext(VirtualCore.get().getInstalledApps(0))
             onComplete()
         }
     }

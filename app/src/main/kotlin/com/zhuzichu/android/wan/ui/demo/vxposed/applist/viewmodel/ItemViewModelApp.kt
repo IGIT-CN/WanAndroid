@@ -21,11 +21,9 @@ class ItemViewModelApp(
 
     val onClickClone = createCommand {
         val installedAppInfo = VirtualCore.get().getInstalledAppInfo(entityApp.packageName, 0)
-        showLoading()
         if (installedAppInfo == null) {
             val res: InstallResult = addVirtualApp()
             if (res.isSuccess) {
-                hideLoading()
             }
         } else {
 
