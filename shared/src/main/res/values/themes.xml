@@ -3,12 +3,6 @@
 
     <style name="MyTheme.DayNight" parent="Base.MyTheme" />
 
-    <style name="Launcher" parent="Theme.AppCompat.NoActionBar">
-        <item name="windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">false</item>
-        <item name="android:textAllCaps">false</item>
-    </style>
-
     <style name="Base.MyTheme" parent="Base.MaterialThemeBuilder">
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryVariant">@color/color_primary_variant</item>

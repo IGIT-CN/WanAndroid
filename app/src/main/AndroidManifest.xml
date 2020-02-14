@@ -63,9 +63,7 @@
             <nav-graph android:value="@navigation/navigation_main" />
         </activity>
 
-        <activity
-            android:name=".ui.launcher.ActivityLauncher"
-            android:theme="@style/Launcher">
+        <activity android:name=".ui.launcher.ActivityLauncher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

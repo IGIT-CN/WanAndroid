@@ -23,6 +23,8 @@
     <string name="camera">CameraX</string>
     <string name="vsposed">VirtualXposed</string>
 
+    <string name="clone_apps">استنساخ التطبيق</string>
+
     <string name="home_article">أحدث بلوق وظائف</string>
     <string name="home_project">أحدث مشروع</string>
 
