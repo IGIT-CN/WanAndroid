@@ -19,6 +19,7 @@ class ItemViewModelVirtualApp(
     val name = MutableLiveData<String>(name)
 
     val onClickApp = createCommand {
+
     }
 
 }

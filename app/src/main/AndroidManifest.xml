@@ -90,6 +90,8 @@
 
         <activity android:name=".ui.demo.vxposed.ActivityVxposed" />
 
+        <activity android:name=".ui.demo.vxposed.loading.ActivityVirtualLoading" />
+
     </application>
 
 </manifest>

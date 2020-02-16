@@ -21,6 +21,8 @@ import com.zhuzichu.android.wan.ui.demo.main.module.ModuleDemo
 import com.zhuzichu.android.wan.ui.demo.opencv.ActivityOpencv
 import com.zhuzichu.android.wan.ui.demo.opencv.main.module.*
 import com.zhuzichu.android.wan.ui.demo.vxposed.ActivityVxposed
+import com.zhuzichu.android.wan.ui.demo.vxposed.loading.ActivityVirtualLoading
+import com.zhuzichu.android.wan.ui.demo.vxposed.loading.module.ModuleVirtualLoading
 import com.zhuzichu.android.wan.ui.demo.vxposed.main.module.ModuleVxposed
 import com.zhuzichu.android.wan.ui.demo.websocket.ActivityWebsocket
 import com.zhuzichu.android.wan.ui.demo.websocket.main.module.ModuleWebsocket
@@ -179,4 +181,13 @@ abstract class ActivityBindingModule {
         ]
     )
     internal abstract fun launcherActivity(): ActivityLauncher
+
+    @ActivityScoped
+    @ContributesAndroidInjector(
+        modules = [
+            //fragments
+            ModuleVirtualLoading::class
+        ]
+    )
+    internal abstract fun virtualLoadingActivity(): ActivityVirtualLoading
 }
