@@ -10,9 +10,9 @@ import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.databinding.FragmentMainBinding
 import com.zhuzichu.android.wan.ui.category.main.fragment.FragmentCategory
+import com.zhuzichu.android.wan.ui.demo.main.fragment.FragmentMe
 import com.zhuzichu.android.wan.ui.home.fragment.FragmentHome
 import com.zhuzichu.android.wan.ui.main.viewmodel.ViewModelMain
-import com.zhuzichu.android.wan.ui.demo.main.fragment.FragmentMe
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class FragmentMain : FragmentAnalyticsBase<FragmentMainBinding, ViewModelMain>() {
@@ -47,7 +47,7 @@ class FragmentMain : FragmentAnalyticsBase<FragmentMainBinding, ViewModelMain>()
         requireActivity().onBackPressedDispatcher.addCallback(this) {
             if (System.currentTimeMillis() - touchTime < waitTime) {
                 //退出app并清除任务栈
-                requireActivity().finishAndRemoveTask()
+                requireActivity().finish()
             } else {
                 touchTime = System.currentTimeMillis()
                 R.string.press_again_to_exit.toast()
