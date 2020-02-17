@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
 import com.zhuzichu.android.shared.bus.RxBus
+import com.zhuzichu.android.shared.extension.toast
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.databinding.FragmentVxposedBinding
@@ -44,13 +45,16 @@ class FragmentVxposed : FragmentAnalyticsBase<FragmentVxposedBinding, ViewModelV
                 BitmapFactory.decodeResource(resources, R.drawable.ic_launcher_background)
             }
 
-            ActivityVirtualLoading.launch(
+            val launch = ActivityVirtualLoading.launch(
                 requireContext(),
                 it.installedAppInfo.packageName,
                 it.name.value,
                 bitmap,
                 0
             )
+            if (!launch) {
+                "无法打开该App".toast()
+            }
         })
 
         RxBus.toObservable(EventClone.OnSuccessEvent::class.java)
