@@ -1,5 +1,6 @@
 package com.zhuzichu.android.wan.ui.main.fragment
 
+import android.content.Intent
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import com.zhuzichu.android.shared.base.DefaultIntFragmentPagerAdapter
@@ -10,10 +11,12 @@ import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.databinding.FragmentMainBinding
 import com.zhuzichu.android.wan.ui.category.main.fragment.FragmentCategory
-import com.zhuzichu.android.wan.ui.demo.main.fragment.FragmentMe
+import com.zhuzichu.android.wan.ui.demo.main.fragment.FragmentDemo
 import com.zhuzichu.android.wan.ui.home.fragment.FragmentHome
 import com.zhuzichu.android.wan.ui.main.viewmodel.ViewModelMain
+import com.zhuzichu.android.wan.ui.me.fragment.FragmentMe
 import kotlinx.android.synthetic.main.fragment_main.*
+
 
 class FragmentMain : FragmentAnalyticsBase<FragmentMainBinding, ViewModelMain>() {
 
@@ -29,12 +32,14 @@ class FragmentMain : FragmentAnalyticsBase<FragmentMainBinding, ViewModelMain>()
         val fragments = listOf<Fragment>(
             FragmentHome(),
             FragmentCategory(),
+            FragmentDemo(),
             FragmentMe()
         )
 
         val titles = listOf(
             R.string.home,
             R.string.category,
+            R.string.demo,
             R.string.me
         )
 
@@ -47,7 +52,10 @@ class FragmentMain : FragmentAnalyticsBase<FragmentMainBinding, ViewModelMain>()
         requireActivity().onBackPressedDispatcher.addCallback(this) {
             if (System.currentTimeMillis() - touchTime < waitTime) {
                 //退出app并清除任务栈
-                requireActivity().finish()
+                val intent = Intent(Intent.ACTION_MAIN)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                intent.addCategory(Intent.CATEGORY_HOME)
+                startActivity(intent)
             } else {
                 touchTime = System.currentTimeMillis()
                 R.string.press_again_to_exit.toast()

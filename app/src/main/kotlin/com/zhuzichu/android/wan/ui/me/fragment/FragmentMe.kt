@@ -1,7 +1,6 @@
-package com.zhuzichu.android.wan.ui.demo.main.fragment
+package com.zhuzichu.android.wan.ui.me.fragment
 
 import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
-import com.zhuzichu.android.shared.extension.toast
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.databinding.FragmentMeBinding
