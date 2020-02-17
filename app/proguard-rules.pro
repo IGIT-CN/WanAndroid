@@ -166,9 +166,17 @@
 
 #---------------------------------log-----------------------------------
 -keep class ch.qos.logback.** {*;}
+-keep interface ch.qos.logback.** {*;}
+
 -keep class org.slf4j.** {*;}
+-keep interface org.slf4j.** {*;}
 
 #---------------------------------log-----------------------------------
 -keep class com.lody.virtual.** {*;}
+-keep interface com.lody.virtual.** {*;}
+
 -keep class mirror.** {*;}
+-keep interface mirror.** {*;}
+
 -keep class android.** {*;}
+-keep interface android.** {*;}

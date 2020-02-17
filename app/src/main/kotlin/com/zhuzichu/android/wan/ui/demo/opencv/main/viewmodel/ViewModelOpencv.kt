@@ -48,8 +48,7 @@ class ViewModelOpencv @Inject constructor() : ViewModelAnalyticsBase() {
             ItemViewModelOpencv(this, TYPE_GRAY, R.string.opencv_gray, closure),
             ItemViewModelOpencv(this, TYPE_ERODE, R.string.opencv_erode_dilate, closure),
             ItemViewModelOpencv(this, TYPE_BLUR, R.string.opencv_blur, closure),
-            ItemViewModelOpencv(this, TYPE_CANNY, R.string.opencv_canny, closure),
-            ItemViewModelOpencv(this, TYPE_IDCARD, R.string.opencv_idcard, closure)
+            ItemViewModelOpencv(this, TYPE_CANNY, R.string.opencv_canny, closure)
         )
     }
 
