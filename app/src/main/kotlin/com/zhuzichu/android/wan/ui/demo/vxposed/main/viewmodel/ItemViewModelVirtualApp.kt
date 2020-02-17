@@ -9,7 +9,7 @@ import com.zhuzichu.android.shared.extension.createCommand
 
 class ItemViewModelVirtualApp(
     viewModel: BaseViewModel,
-    installedAppInfo: InstalledAppInfo,
+    val installedAppInfo: InstalledAppInfo,
     icon: Drawable,
     name: String
 ) : ItemViewModelAnalyticsBase(viewModel) {
@@ -19,7 +19,9 @@ class ItemViewModelVirtualApp(
     val name = MutableLiveData<String>(name)
 
     val onClickApp = createCommand {
-
+        if (viewModel is ViewModelVxposed) {
+            viewModel.onClickItemEvent.value = this
+        }
     }
 
 }

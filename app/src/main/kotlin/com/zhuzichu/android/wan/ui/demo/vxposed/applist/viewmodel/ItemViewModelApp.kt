@@ -5,13 +5,16 @@ import com.lody.virtual.client.core.InstallStrategy
 import com.lody.virtual.client.core.VirtualCore
 import com.lody.virtual.helper.utils.DeviceUtil
 import com.lody.virtual.remote.InstallResult
-import com.zhuzichu.android.mvvm.base.BaseViewModel
+import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.shared.base.ItemViewModelAnalyticsBase
-import com.zhuzichu.android.shared.extension.createCommand
+import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
+import com.zhuzichu.android.shared.bus.RxBus
+import com.zhuzichu.android.shared.extension.*
+import com.zhuzichu.android.wan.event.EventClone
 import com.zhuzichu.android.wan.repository.entity.EntityApp
 
 class ItemViewModelApp(
-    viewModel: BaseViewModel,
+    viewModel: ViewModelAnalyticsBase,
     private val entityApp: EntityApp
 ) : ItemViewModelAnalyticsBase(viewModel) {
 
@@ -22,9 +25,24 @@ class ItemViewModelApp(
     val onClickClone = createCommand {
         val installedAppInfo = VirtualCore.get().getInstalledAppInfo(entityApp.packageName, 0)
         if (installedAppInfo == null) {
-            val res: InstallResult = addVirtualApp()
-            if (res.isSuccess) {
-            }
+            createFlowable<InstallResult> {
+                onNext(addVirtualApp())
+                onComplete()
+            }.bindToSchedulers()
+                .bindToException()
+                .autoLoading(viewModel)
+                .autoDispose(viewModel)
+                .subscribe(
+                    {
+                        if (it.isSuccess) {
+                            "克隆成功".toast()
+                            RxBus.post(EventClone.OnSuccessEvent())
+                        }
+                    }, {
+                        viewModel.handleThrowable(it)
+                    }
+                )
+
         } else {
 
         }
@@ -44,4 +62,5 @@ class ItemViewModelApp(
         }
         return VirtualCore.get().installPackage(entityApp.path, flags)
     }
+
 }

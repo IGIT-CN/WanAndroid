@@ -90,7 +90,13 @@
 
         <activity android:name=".ui.demo.vxposed.ActivityVxposed" />
 
-        <activity android:name=".ui.demo.vxposed.loading.ActivityVirtualLoading" />
+        <activity
+            android:name=".ui.demo.vxposed.loading.ActivityVirtualLoading"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:taskAffinity="com.zhuzichu.wan.loading"
+            android:theme="@style/MyTheme.TransparentTheme" />
 
     </application>
 

@@ -2,7 +2,7 @@ package com.zhuzichu.android.wan.ui.demo.vxposed.applist.domain
 
 import com.zhuzichu.android.mvvm.base.BaseViewModel
 import com.zhuzichu.android.mvvm.domain.UseCase
-import com.zhuzichu.android.shared.extension.bindToException
+import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.bindToSchedulers
 import com.zhuzichu.android.wan.repository.LocalRepository
 import com.zhuzichu.android.wan.ui.demo.vxposed.applist.viewmodel.ItemViewModelApp
@@ -16,8 +16,8 @@ class UseCaseGetApps @Inject constructor(
     override fun execute(parameters: BaseViewModel): Flowable<List<ItemViewModelApp>> {
         return localRepository.getInstalledApps()
             .map {
-                it.map {item->
-                    ItemViewModelApp(parameters, item)
+                it.map { item ->
+                    ItemViewModelApp(parameters as ViewModelAnalyticsBase, item)
                 }
             }
             .bindToSchedulers()
