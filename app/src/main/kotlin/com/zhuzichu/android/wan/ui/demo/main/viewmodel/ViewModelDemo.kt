@@ -24,6 +24,7 @@ class ViewModelDemo @Inject constructor(
         const val TYPE_WEBSOCKET = 3
         const val TYPE_CAMERA = 4
         const val TYPE_VXPOSED = 5
+        const val TYPE_FLUTTER = 6
     }
 
     private val closure: Int.() -> Unit = {
@@ -87,6 +88,12 @@ class ViewModelDemo @Inject constructor(
                 this@ViewModelDemo,
                 TYPE_VXPOSED,
                 R.string.vsposed,
+                closure
+            ),
+            ItemViewModelDemo(
+                this@ViewModelDemo,
+                TYPE_FLUTTER,
+                R.string.flutter,
                 closure
             )
         )

@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_fragmentMain_to_fragmentCategoryList"
             app:destination="@id/fragmentCategoryList" />
+        <action
+            android:id="@+id/action_fragmentMain_to_fragmentFlutter"
+            app:destination="@id/fragmentFlutter" />
     </fragment>
     <fragment
         android:id="@+id/fragmentSetting"
@@ -67,5 +70,10 @@
             android:name="index"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentFlutter"
+        android:name="com.zhuzichu.android.wan.ui.flutter.fragment.FragmentFlutter"
+        android:label="FragmentFlutter"
+        tools:layout="@layout/fragment_flutter" />
 
 </navigation>

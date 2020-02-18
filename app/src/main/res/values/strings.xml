@@ -22,6 +22,7 @@
     <string name="websocket">WebSocket</string>
     <string name="camera">CameraX</string>
     <string name="vsposed">VirtualXposed</string>
+    <string name="flutter">Flutter</string>
 
     <string name="clone_apps">Clone Apps</string>
 
