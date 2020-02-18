@@ -114,4 +114,5 @@ dependencies {
     api(Dep.slf4j)
     api(Dep.once)
     api(Dep.multidex)
+    api(Dep.agentweb)
 }

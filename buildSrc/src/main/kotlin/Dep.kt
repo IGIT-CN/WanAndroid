@@ -42,6 +42,7 @@ object Dep {
         const val slf4j = "1.7.25"
         const val once = "1.3.0"
         const val multidex = "2.0.1"
+        const val agentweb = "4.1.2"
     }
 
     const val once = "com.jonathanfinerty.once:once:${Version.once}"
@@ -209,5 +210,9 @@ object Dep {
     const val timber =
         "com.jakewharton.timber:timber:${Version.timber}"
 
-    const val multidex = "androidx.multidex:multidex:${Version.multidex}"
+    const val multidex =
+        "androidx.multidex:multidex:${Version.multidex}"
+
+    const val agentweb =
+        "com.just.agentweb:agentweb:${Version.agentweb}"
 }

@@ -175,3 +175,9 @@
 -keep class de.robv.android.** {*;}
 -keep class epic.me.weishu.** {*;}
 -keep class me.weishu.** {*;}
+
+#---------------------------------webview-----------------------------------
+-keep class com.just.agentweb.** {
+    *;
+}
+-dontwarn com.just.agentweb.**

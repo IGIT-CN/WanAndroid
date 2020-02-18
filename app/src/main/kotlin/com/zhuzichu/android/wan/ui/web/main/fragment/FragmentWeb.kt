@@ -1,22 +1,24 @@
 package com.zhuzichu.android.wan.ui.web.main.fragment
 
 import android.annotation.SuppressLint
-import android.content.Intent
-import android.net.Uri
-import android.view.View
-import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.widget.FrameLayout
 import androidx.activity.addCallback
 import androidx.lifecycle.Observer
+import com.just.agentweb.AgentWeb
+import com.just.agentweb.NestedScrollAgentWebView
+import com.just.agentweb.WebChromeClient
 import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
 import com.zhuzichu.android.shared.extension.bindArgument
+import com.zhuzichu.android.shared.extension.getAgentWeb
 import com.zhuzichu.android.shared.extension.isDark
+import com.zhuzichu.android.shared.extension.toColorByResId
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.databinding.FragmentWebBinding
 import com.zhuzichu.android.wan.ui.web.main.viewmodel.ViewModelWeb
+import com.zhuzichu.android.wan.webclient.WebClientFactory
 import kotlinx.android.synthetic.main.fragment_web.*
 
 class FragmentWeb :
@@ -24,7 +26,7 @@ class FragmentWeb :
 
     val url: String? by bindArgument()
 
-    private lateinit var webSettings: WebSettings
+    private var agentWeb: AgentWeb? = null
 
     override fun setLayoutId(): Int = R.layout.fragment_web
 
@@ -33,7 +35,6 @@ class FragmentWeb :
     override fun initView() {
         super.initView()
         initWebView()
-        initBackListener()
         initWebAlpha()
     }
 
@@ -51,68 +52,45 @@ class FragmentWeb :
         })
     }
 
-    private fun initBackListener() {
+    @SuppressLint("SetJavaScriptEnabled")
+    private fun initWebView() {
+        val webView = NestedScrollAgentWebView(requireContext())
+        val layoutParams = FrameLayout.LayoutParams(-1, -1)
+        agentWeb = url.getAgentWeb(
+            requireActivity(),
+            content,
+            layoutParams,
+            webView,
+            WebClientFactory.create(url.toString()),
+            mWebChromeClient,
+            R.color.color_primary.toColorByResId()
+        )
+
+        agentWeb?.webCreator?.webView?.apply {
+            overScrollMode = WebView.OVER_SCROLL_NEVER
+            settings.domStorageEnabled = true
+            settings.javaScriptEnabled = true
+            settings.loadsImagesAutomatically = true
+            settings.useWideViewPort = true
+            settings.loadWithOverviewMode = true
+            settings.layoutAlgorithm = WebSettings.LayoutAlgorithm.SINGLE_COLUMN
+            settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
+        }
+
         requireActivity().onBackPressedDispatcher.addCallback(this) {
-            if (webview.canGoBack()) {
-                showLoading()
-                webview.goBack()
+            if (webView.canGoBack()) {
+                webView.goBack()
             } else {
                 requireActivity().finish()
             }
         }
     }
 
-    @SuppressLint("SetJavaScriptEnabled")
-    private fun initWebView() {
 
-        webSettings = webview.settings
-
-        webSettings.loadsImagesAutomatically = true
-        webview.setLayerType(View.LAYER_TYPE_HARDWARE, null)
-        webSettings.javaScriptEnabled = true
-        webSettings.setSupportZoom(true)
-        webSettings.builtInZoomControls = true
-        webSettings.displayZoomControls = false
-        webSettings.useWideViewPort = true
-        webSettings.loadWithOverviewMode = true
-        webSettings.cacheMode = WebSettings.LOAD_DEFAULT
-        webview.isSaveEnabled = true
-        webview.keepScreenOn = true
-
-        webview.setDownloadListener { paramAnonymousString1, _, _, _, _ ->
-            val intent = Intent()
-            intent.action = "android.intent.action.VIEW"
-            intent.data = Uri.parse(paramAnonymousString1)
-            activity?.startActivity(intent)
+    private val mWebChromeClient = object : WebChromeClient() {
+        override fun onReceivedTitle(view: WebView, title: String) {
+            super.onReceivedTitle(view, title)
+            viewModel.title.value = title
         }
-
-        webview.webViewClient = object : WebViewClient() {
-
-            override fun onPageFinished(view: WebView?, url: String?) {
-                if (!webSettings.loadsImagesAutomatically) {
-                    webSettings.loadsImagesAutomatically = true
-                }
-                hideLoading()
-            }
-
-            override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
-                showLoading()
-                return false
-            }
-
-        }
-
-        webview.webChromeClient = object : WebChromeClient() {
-
-            override fun onReceivedTitle(view: WebView, title: String) {
-                viewModel.title.value = title
-                hideLoading()
-            }
-
-        }
-
-        showLoading()
-        webview.loadUrl(url)
-
     }
 }
