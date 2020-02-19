@@ -1,7 +1,7 @@
 package com.zhuzichu.android.wan.ui.home.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
+import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.wan.repository.entity.BeanArticle
 import com.zhuzichu.android.wan.ui.home.domain.UseCaseCollect
 import com.zhuzichu.android.wan.ui.home.domain.UseCaseUnCollect

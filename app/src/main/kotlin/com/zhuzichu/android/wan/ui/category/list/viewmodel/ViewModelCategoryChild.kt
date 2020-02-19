@@ -2,10 +2,9 @@ package com.zhuzichu.android.wan.ui.category.list.viewmodel
 
 import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.libs.tool.toInt
-import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
+import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.itemDiffOf
 import com.zhuzichu.android.shared.extension.map
-import com.zhuzichu.android.shared.extension.toast
 import com.zhuzichu.android.shared.widget.page.PageHelper
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R

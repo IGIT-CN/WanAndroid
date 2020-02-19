@@ -3,7 +3,7 @@ package com.zhuzichu.android.wan.ui.account
 import android.os.Bundle
 import com.zhuzichu.android.wan.ActivityMain
 import com.zhuzichu.android.wan.R
-import com.zhuzichu.android.shared.base.ActivityAnalyticsBase
+import com.zhuzichu.android.wan.base.ActivityAnalyticsBase
 import com.zhuzichu.android.shared.storage.GlobalStorage
 import javax.inject.Inject
 

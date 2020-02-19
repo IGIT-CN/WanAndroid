@@ -6,7 +6,7 @@ import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import com.zhuzichu.android.libs.internal.MainHandler
 import com.zhuzichu.android.libs.tool.showKeyboard
-import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
+import com.zhuzichu.android.wan.base.FragmentAnalyticsBase
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.databinding.FragmentSearchBinding

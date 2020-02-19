@@ -1,7 +1,7 @@
 package com.zhuzichu.android.wan.ui.demo.vxposed.loading.fragment
 
 import android.graphics.Bitmap
-import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
+import com.zhuzichu.android.wan.base.FragmentAnalyticsBase
 import com.zhuzichu.android.shared.extension.bindArgument
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R

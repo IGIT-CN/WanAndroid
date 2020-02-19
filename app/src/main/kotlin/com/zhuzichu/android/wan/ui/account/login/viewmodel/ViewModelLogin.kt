@@ -2,8 +2,7 @@ package com.zhuzichu.android.wan.ui.account.login.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.uber.autodispose.autoDispose
-import com.zhuzichu.android.mvvm.databinding.BindingCommand
-import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
+import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.autoLoading
 import com.zhuzichu.android.shared.extension.createCommand
 import com.zhuzichu.android.shared.http.exception.ExceptionManager

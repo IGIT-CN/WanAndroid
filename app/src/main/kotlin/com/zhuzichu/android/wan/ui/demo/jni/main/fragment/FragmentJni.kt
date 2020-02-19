@@ -1,7 +1,7 @@
 package com.zhuzichu.android.wan.ui.demo.jni.main.fragment
 
 import androidx.lifecycle.Observer
-import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
+import com.zhuzichu.android.wan.base.FragmentAnalyticsBase
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.databinding.FragmentJniBinding

@@ -1,4 +1,4 @@
-package com.zhuzichu.android.shared.base
+package com.zhuzichu.android.wan.base
 
 import com.zhuzichu.android.shared.http.exception.ResponseThrowable
 
@@ -8,6 +8,10 @@ internal sealed class Payload {
         var throwable: Throwable,
         var isToast: Boolean? = null,
         var closure: (ResponseThrowable.() -> Unit)? = null
+    )
+
+    internal data class PayloadFlutter(
+        var route: String? = null
     )
 
 }

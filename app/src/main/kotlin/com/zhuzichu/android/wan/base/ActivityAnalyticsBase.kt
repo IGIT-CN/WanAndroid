@@ -1,4 +1,4 @@
-package com.zhuzichu.android.shared.base
+package com.zhuzichu.android.wan.base
 
 import android.content.Context
 import android.content.res.Configuration

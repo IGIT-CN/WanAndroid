@@ -5,7 +5,7 @@ import android.graphics.BitmapFactory
 import androidx.lifecycle.MutableLiveData
 import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.libs.tool.toDouble
-import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
+import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.bindToSchedulers
 import com.zhuzichu.android.shared.extension.createCommand
 import com.zhuzichu.android.shared.extension.createTypeCommand

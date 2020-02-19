@@ -100,6 +100,8 @@
             android:taskAffinity="com.zhuzichu.wan.loading"
             android:theme="@style/MyTheme.TransparentTheme" />
 
+        <activity android:name="io.flutter.embedding.android.FlutterActivity" />
+
     </application>
 
 </manifest>

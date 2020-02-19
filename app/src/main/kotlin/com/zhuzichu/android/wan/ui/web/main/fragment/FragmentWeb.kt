@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import com.just.agentweb.AgentWeb
 import com.just.agentweb.NestedScrollAgentWebView
 import com.just.agentweb.WebChromeClient
-import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
+import com.zhuzichu.android.wan.base.FragmentAnalyticsBase
 import com.zhuzichu.android.shared.extension.bindArgument
 import com.zhuzichu.android.shared.extension.getAgentWeb
 import com.zhuzichu.android.shared.extension.isDark

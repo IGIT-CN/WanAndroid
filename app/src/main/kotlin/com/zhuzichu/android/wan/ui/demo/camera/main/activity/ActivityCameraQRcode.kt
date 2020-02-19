@@ -1,6 +1,6 @@
 package com.zhuzichu.android.wan.ui.demo.camera.main.activity
 
-import com.zhuzichu.android.shared.base.ActivityAnalyticsBase
+import com.zhuzichu.android.wan.base.ActivityAnalyticsBase
 import com.zhuzichu.android.wan.R
 
 class ActivityCameraQRcode : ActivityAnalyticsBase() {

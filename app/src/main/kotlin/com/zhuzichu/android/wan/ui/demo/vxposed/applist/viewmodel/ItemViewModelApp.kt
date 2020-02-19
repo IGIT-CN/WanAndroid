@@ -6,8 +6,8 @@ import com.lody.virtual.client.core.VirtualCore
 import com.lody.virtual.helper.utils.DeviceUtil
 import com.lody.virtual.remote.InstallResult
 import com.uber.autodispose.autoDispose
-import com.zhuzichu.android.shared.base.ItemViewModelAnalyticsBase
-import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
+import com.zhuzichu.android.wan.base.ItemViewModelAnalyticsBase
+import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.bus.RxBus
 import com.zhuzichu.android.shared.extension.*
 import com.zhuzichu.android.wan.event.EventClone

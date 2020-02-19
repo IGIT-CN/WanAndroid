@@ -3,7 +3,7 @@ package com.zhuzichu.android.wan.ui.demo.vxposed.applist.fragment
 import android.Manifest
 import com.tbruyelle.rxpermissions2.RxPermissions
 import com.uber.autodispose.autoDispose
-import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
+import com.zhuzichu.android.wan.base.FragmentAnalyticsBase
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.databinding.FragmentAppListBinding

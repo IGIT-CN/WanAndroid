@@ -1,12 +1,11 @@
 package com.zhuzichu.android.wan.ui.home.viewmodel
 
 import android.graphics.Color
-import android.view.View
 import androidx.core.os.bundleOf
 import androidx.lifecycle.MutableLiveData
 import com.uber.autodispose.autoDispose
-import com.zhuzichu.android.shared.base.ItemViewModelAnalyticsBase
-import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
+import com.zhuzichu.android.wan.base.ItemViewModelAnalyticsBase
+import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.autoLoading
 import com.zhuzichu.android.shared.extension.createCommand
 import com.zhuzichu.android.shared.extension.toColorByResId

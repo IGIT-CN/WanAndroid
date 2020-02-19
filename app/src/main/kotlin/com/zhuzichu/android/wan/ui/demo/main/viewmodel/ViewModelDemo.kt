@@ -1,10 +1,10 @@
 package com.zhuzichu.android.wan.ui.demo.main.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.map
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
+import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.wan.ui.demo.camera.ActivityCamera
 import com.zhuzichu.android.wan.ui.demo.ffmpeg.ActivityFFmpeg
 import com.zhuzichu.android.wan.ui.demo.jni.ActivityJni
@@ -47,7 +47,11 @@ class ViewModelDemo @Inject constructor(
             TYPE_VXPOSED -> {
                 startActivity(ActivityVxposed::class.java)
             }
+            TYPE_FLUTTER -> {
+                startFlutterActivity("123")
+            }
             else -> {
+
             }
         }
     }

@@ -6,9 +6,8 @@ import androidx.lifecycle.Transformations
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.libs.tool.doNotEmpty
-import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
+import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.createTypeCommand
-import com.zhuzichu.android.shared.extension.itemDiffOf
 import com.zhuzichu.android.shared.extension.map
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R

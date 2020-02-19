@@ -2,9 +2,8 @@ package com.zhuzichu.android.wan.ui.setting.main.viewmodel
 
 import androidx.annotation.StringRes
 import com.zhuzichu.android.mvvm.base.BaseViewModel
-import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.wan.R
-import com.zhuzichu.android.shared.base.ItemViewModelAnalyticsBase
+import com.zhuzichu.android.wan.base.ItemViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.createCommand
 
 class ItemViewModelSetting(

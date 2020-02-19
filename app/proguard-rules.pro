@@ -181,3 +181,5 @@
     *;
 }
 -dontwarn com.just.agentweb.**
+
+-keep class io.flutter.** { *; }

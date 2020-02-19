@@ -3,7 +3,7 @@ package com.zhuzichu.android.wan.ui.demo.vxposed.main.viewmodel
 import androidx.lifecycle.MutableLiveData
 import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.mvvm.event.SingleLiveEvent
-import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
+import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.createCommand
 import com.zhuzichu.android.shared.extension.map
 import com.zhuzichu.android.wan.BR

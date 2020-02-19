@@ -1,6 +1,6 @@
 package com.zhuzichu.android.wan.ui.demo.websocket
 
-import com.zhuzichu.android.shared.base.ActivityAnalyticsBase
+import com.zhuzichu.android.wan.base.ActivityAnalyticsBase
 import com.zhuzichu.android.wan.R
 
 class ActivityWebsocket : ActivityAnalyticsBase() {

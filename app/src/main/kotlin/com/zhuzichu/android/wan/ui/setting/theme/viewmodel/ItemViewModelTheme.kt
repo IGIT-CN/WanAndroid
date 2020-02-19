@@ -1,6 +1,6 @@
 package com.zhuzichu.android.wan.ui.setting.theme.viewmodel
 
-import com.zhuzichu.android.shared.base.ItemViewModelAnalyticsBase
+import com.zhuzichu.android.wan.base.ItemViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.createCommand
 
 data class ItemViewModelTheme(

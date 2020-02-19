@@ -3,7 +3,7 @@ package com.zhuzichu.android.wan.ui.setting.animation.viewmodel
 import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.MutableLiveData
 import com.zhuzichu.android.wan.R
-import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
+import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.map
 import com.zhuzichu.android.shared.storage.GlobalStorage
 import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindClass

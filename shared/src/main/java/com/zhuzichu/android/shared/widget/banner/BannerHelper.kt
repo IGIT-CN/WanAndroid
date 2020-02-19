@@ -1,6 +1,7 @@
 package com.zhuzichu.android.shared.widget.banner
 
 import androidx.databinding.ObservableArrayList
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -8,13 +9,12 @@ import androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_IDLE
 import com.uber.autodispose.android.autoDispose
 import com.zhuzichu.android.libs.internal.MainHandler
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
-import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.bindToSchedulers
 import io.reactivex.Flowable
 import java.util.concurrent.TimeUnit
 
 class BannerHelper(
-    val viewModel: ViewModelAnalyticsBase,
+    val viewModel: ViewModel,
     private val items: ObservableArrayList<Any>
 ) {
 

@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import com.zhuzichu.android.shared.base.DefaultIntFragmentPagerAdapter
-import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
+import com.zhuzichu.android.wan.base.FragmentAnalyticsBase
 import com.zhuzichu.android.shared.extension.setupWithViewPager
 import com.zhuzichu.android.shared.extension.toast
 import com.zhuzichu.android.wan.BR

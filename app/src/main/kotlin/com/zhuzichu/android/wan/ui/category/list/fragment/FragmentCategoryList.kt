@@ -1,12 +1,10 @@
 package com.zhuzichu.android.wan.ui.category.list.fragment
 
 import androidx.core.os.bundleOf
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.zhuzichu.android.libs.tool.doNotEmpty
-import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
-import com.zhuzichu.android.shared.extension.toast
+import com.zhuzichu.android.wan.base.FragmentAnalyticsBase
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.databinding.FragmentCategoryListBinding

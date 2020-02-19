@@ -1,6 +1,6 @@
 package com.zhuzichu.android.shared.widget.page
 
 import com.zhuzichu.android.mvvm.base.BaseViewModel
-import com.zhuzichu.android.shared.base.ItemViewModelAnalyticsBase
+import com.zhuzichu.android.mvvm.base.ItemViewModel
 
-class ItemViewModelNull(viewModel: BaseViewModel) : ItemViewModelAnalyticsBase(viewModel)
+class ItemViewModelNull(viewModel: BaseViewModel) : ItemViewModel(viewModel)

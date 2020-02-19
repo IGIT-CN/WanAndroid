@@ -4,7 +4,7 @@ import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.databinding.FragmentSettingBinding
 import com.zhuzichu.android.wan.ui.setting.main.viewmodel.ViewModelSetting
-import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
+import com.zhuzichu.android.wan.base.FragmentAnalyticsBase
 
 
 class FragmentSetting :

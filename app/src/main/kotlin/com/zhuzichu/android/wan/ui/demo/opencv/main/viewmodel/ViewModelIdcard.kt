@@ -3,7 +3,7 @@ package com.zhuzichu.android.wan.ui.demo.opencv.main.viewmodel
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.lifecycle.MutableLiveData
-import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
+import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.createCommand
 import com.zhuzichu.android.shared.extension.toast
 import com.zhuzichu.android.shared.global.AppGlobal.context

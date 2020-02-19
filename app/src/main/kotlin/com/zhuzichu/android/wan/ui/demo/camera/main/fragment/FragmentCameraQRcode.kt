@@ -18,7 +18,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.zxing.Result
 import com.tbruyelle.rxpermissions2.RxPermissions
 import com.uber.autodispose.autoDispose
-import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
+import com.zhuzichu.android.wan.base.FragmentAnalyticsBase
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.databinding.FragmentCameraQrcodeBinding
 import com.zhuzichu.android.wan.ui.demo.camera.main.viewmodel.ViewModelCameraQRcode

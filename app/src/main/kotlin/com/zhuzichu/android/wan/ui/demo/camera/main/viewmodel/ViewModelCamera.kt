@@ -1,6 +1,6 @@
 package com.zhuzichu.android.wan.ui.demo.camera.main.viewmodel
 
-import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
+import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.createCommand
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.ui.demo.camera.main.activity.ActivityCameraQRcode

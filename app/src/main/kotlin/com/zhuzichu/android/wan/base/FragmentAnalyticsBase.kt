@@ -1,4 +1,4 @@
-package com.zhuzichu.android.shared.base
+package com.zhuzichu.android.wan.base
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,7 +12,8 @@ import com.zhuzichu.android.shared.extension.logi
 import com.zhuzichu.android.shared.extension.toast
 import com.zhuzichu.android.shared.global.AppGlobal
 import com.zhuzichu.android.shared.http.exception.ResponseThrowable
-import  com.zhuzichu.android.libs.tool.startActivity as startActivity2
+import io.flutter.embedding.android.FlutterActivity
+import com.zhuzichu.android.libs.tool.startActivity as startActivity2
 
 abstract class FragmentAnalyticsBase<TBinding : ViewDataBinding, TViewModel : ViewModelAnalyticsBase> :
     BaseFragment<TBinding, TViewModel>() {
@@ -29,7 +30,7 @@ abstract class FragmentAnalyticsBase<TBinding : ViewDataBinding, TViewModel : Vi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.handleThrowableEvent.observe(viewLifecycleOwner, Observer {
+        viewModel.event.handleThrowableEvent.observe(viewLifecycleOwner, Observer {
             //todo 添加设计模式去掉if else
             val throwable = it.throwable
             "异常错误统一处理:".logi(className(), throwable)
@@ -51,6 +52,11 @@ abstract class FragmentAnalyticsBase<TBinding : ViewDataBinding, TViewModel : Vi
                 "未知错误".toast()
             }
         })
-    }
 
+        viewModel.event.startFlutterActivityEvent.observe(viewLifecycleOwner, Observer {
+            val intent = FlutterActivity.withNewEngine().initialRoute(it.route.toString())
+                .build(requireContext())
+            startActivity(intent)
+        })
+    }
 }

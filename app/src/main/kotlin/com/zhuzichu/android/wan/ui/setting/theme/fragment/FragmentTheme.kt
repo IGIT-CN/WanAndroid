@@ -6,8 +6,7 @@ import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.databinding.FragmentThemeBinding
 import com.zhuzichu.android.wan.ui.setting.theme.viewmodel.ViewModelTheme
-import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
-import com.zhuzichu.android.shared.extension.toast
+import com.zhuzichu.android.wan.base.FragmentAnalyticsBase
 import com.zhuzichu.android.shared.storage.GlobalStorage
 
 import javax.inject.Inject

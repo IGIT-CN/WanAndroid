@@ -4,10 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.zhuzichu.android.mvvm.base.BaseViewModel
-import com.zhuzichu.android.shared.base.ItemViewModelAnalyticsBase
+import com.zhuzichu.android.wan.base.ItemViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.createCommand
 import com.zhuzichu.android.wan.repository.entity.BeanNode
-import com.zhuzichu.android.wan.ui.category.list.viewmodel.ViewModelCategoryList
 
 class ItemViewModelCategoryStart(
     viewModel: BaseViewModel,

@@ -18,7 +18,7 @@ import com.lody.virtual.client.ipc.VActivityManager
 import com.lody.virtual.client.ipc.VPackageManager
 import com.lody.virtual.server.pm.parser.VPackage
 import com.zhuzichu.android.libs.internal.MainHandler
-import com.zhuzichu.android.shared.base.ActivityAnalyticsBase
+import com.zhuzichu.android.wan.base.ActivityAnalyticsBase
 import com.zhuzichu.android.shared.extension.className
 import com.zhuzichu.android.shared.extension.logi
 import com.zhuzichu.android.shared.extension.toast

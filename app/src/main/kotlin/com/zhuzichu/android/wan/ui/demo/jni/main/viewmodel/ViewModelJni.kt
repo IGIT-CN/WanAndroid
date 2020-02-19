@@ -6,7 +6,7 @@ import androidx.lifecycle.Transformations
 import androidx.recyclerview.widget.DiffUtil
 import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.mvvm.event.SingleLiveEvent
-import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
+import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.*
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
