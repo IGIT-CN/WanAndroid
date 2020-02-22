@@ -3,4 +3,8 @@
     <dimen name="alpha_emphasis_high">@dimen/material_emphasis_high_type</dimen>
     <dimen name="alpha_emphasis_medium">@dimen/material_emphasis_medium</dimen>
     <dimen name="alpha_emphasis_disabled">@dimen/material_emphasis_disabled</dimen>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="error_activity_error_details_text_size">12sp</dimen>
 </resources>

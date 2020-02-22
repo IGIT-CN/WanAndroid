@@ -43,7 +43,10 @@ object Dep {
         const val once = "1.3.0"
         const val multidex = "2.0.1"
         const val agentweb = "4.1.2"
+        const val mmkv = "1.0.24"
     }
+
+    const val mmkv = "com.tencent:mmkv-static:${Version.mmkv}"
 
     const val once = "com.jonathanfinerty.once:once:${Version.once}"
 

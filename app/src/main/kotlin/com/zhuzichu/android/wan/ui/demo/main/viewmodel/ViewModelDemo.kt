@@ -25,6 +25,7 @@ class ViewModelDemo @Inject constructor(
         const val TYPE_CAMERA = 4
         const val TYPE_VXPOSED = 5
         const val TYPE_FLUTTER = 6
+        const val TYPE_CRASH = 7
     }
 
     private val closure: Int.() -> Unit = {
@@ -48,7 +49,10 @@ class ViewModelDemo @Inject constructor(
                 startActivity(ActivityVxposed::class.java)
             }
             TYPE_FLUTTER -> {
-                startFlutterActivity("123")
+                startFlutterActivity()
+            }
+            TYPE_CRASH -> {
+                1 / 0
             }
             else -> {
 
@@ -98,6 +102,12 @@ class ViewModelDemo @Inject constructor(
                 this@ViewModelDemo,
                 TYPE_FLUTTER,
                 R.string.flutter,
+                closure
+            ),
+            ItemViewModelDemo(
+                this@ViewModelDemo,
+                TYPE_CRASH,
+                R.string.crash,
                 closure
             )
         )

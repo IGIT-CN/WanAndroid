@@ -9,6 +9,7 @@ import com.lody.virtual.client.core.VirtualCore
 import com.lody.virtual.client.stub.VASettings
 import com.umeng.commonsdk.UMConfigure
 import com.zhuzichu.android.mvvm.MvvmManager
+import com.zhuzichu.android.shared.crash.CrashConfig
 import com.zhuzichu.android.shared.extension.className
 import com.zhuzichu.android.shared.extension.logi
 import com.zhuzichu.android.shared.extension.updateApplicationLanguage
@@ -22,7 +23,6 @@ import com.zhuzichu.android.wan.vxposed.WanVirtualInitializer
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 import io.flutter.view.FlutterMain
-import io.reactivex.plugins.RxJavaPlugins
 import jonathanfinerty.once.Once
 import timber.log.Timber
 import java.util.*
@@ -53,9 +53,9 @@ class ApplicationWan : DaggerApplication() {
             null
         )
 
-        RxJavaPlugins.setErrorHandler {
-            it.printStackTrace()
-        }
+//        RxJavaPlugins.setErrorHandler {
+//            it.printStackTrace()
+//        }
 
         AppCompatDelegate.setDefaultNightMode(globalStorage.uiMode)
         updateApplicationLanguage(Locale(globalStorage.locale ?: Locale.getDefault().country))
@@ -66,6 +66,8 @@ class ApplicationWan : DaggerApplication() {
 
         val virtualCore = VirtualCore.get()
         virtualCore.initialize(WanVirtualInitializer(virtualCore))
+
+        CrashConfig.Builder.create().apply()
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {

@@ -23,6 +23,7 @@
     <string name="camera">CameraX</string>
     <string name="vsposed">VirtualXposed</string>
     <string name="flutter">Flutter</string>
+    <string name="crash">Crash</string>
 
     <string name="clone_apps">استنساخ التطبيق</string>
 

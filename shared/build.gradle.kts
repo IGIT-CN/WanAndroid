@@ -115,4 +115,5 @@ dependencies {
     api(Dep.once)
     api(Dep.multidex)
     api(Dep.agentweb)
+    api(Dep.mmkv)
 }
