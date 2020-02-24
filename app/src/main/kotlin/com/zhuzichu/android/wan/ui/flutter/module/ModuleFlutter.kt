@@ -15,11 +15,11 @@ internal abstract class ModuleFlutter {
 
     @ChildFragmentScoped
     @ContributesAndroidInjector
-    internal abstract fun contributeFragmentHome(): FragmentFlutter
+    internal abstract fun contributeFragmentFlutter(): FragmentFlutter
 
     @Binds
     @IntoMap
     @ViewModelKey(ViewModelFlutter::class)
-    abstract fun bindViewModelHome(viewModel: ViewModelFlutter): ViewModel
+    abstract fun bindViewModelFlutter(viewModel: ViewModelFlutter): ViewModel
 
 }

@@ -44,7 +44,12 @@ object Dep {
         const val multidex = "2.0.1"
         const val agentweb = "4.1.2"
         const val mmkv = "1.0.24"
+        const val dialog = "3.3.0"
     }
+
+    const val dialog = "com.afollestad.material-dialogs:core:${Version.dialog}"
+
+    const val dialogFile = "com.afollestad.material-dialogs:files:${Version.dialog}"
 
     const val mmkv = "com.tencent:mmkv-static:${Version.mmkv}"
 

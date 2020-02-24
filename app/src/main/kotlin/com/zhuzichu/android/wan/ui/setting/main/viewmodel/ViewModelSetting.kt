@@ -9,12 +9,11 @@ import com.zhuzichu.android.wan.ui.setting.main.viewmodel.ItemViewModelSetting.C
 import com.zhuzichu.android.wan.ui.setting.main.viewmodel.ItemViewModelSetting.Companion.THEME
 import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.map
-import com.zhuzichu.android.shared.storage.GlobalStorage
 import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindClass
 import javax.inject.Inject
 
 class ViewModelSetting @Inject constructor(
-    val globalStorage: GlobalStorage
+
 ) : ViewModelAnalyticsBase() {
 
     val items = MutableLiveData<List<Any>>().also {

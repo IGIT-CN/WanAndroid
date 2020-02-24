@@ -125,7 +125,7 @@ android {
     }
 
     sourceSets {
-        def resDirs = ['res-opencv', 'res-jni', 'res-ffmpeg', 'res-websocket', 'res-camera', 'res-vxposed']
+        def resDirs = ['res-opencv', 'res-jni', 'res-ffmpeg', 'res-websocket', 'res-camera', 'res-vxposed', 'res-file']
         main {
             java {
                 srcDir 'src/main/kotlin'

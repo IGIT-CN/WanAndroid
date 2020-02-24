@@ -25,6 +25,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.zip.ZipEntry
 import java.util.zip.ZipFile
+import kotlin.system.exitProcess
 
 
 object CrashManager {
@@ -364,7 +365,7 @@ object CrashManager {
 
     @NonNull
     private fun capitalize(@Nullable s: String?): String {
-        if (s == null || s.length == 0) {
+        if (s == null || s.isEmpty()) {
             return ""
         }
         val first = s[0]
@@ -468,7 +469,7 @@ object CrashManager {
 
     private fun killCurrentProcess() {
         Process.killProcess(Process.myPid())
-        System.exit(10)
+        exitProcess(10)
     }
 
     @SuppressLint("ApplySharedPref") //This must be done immediately since we are killing the app

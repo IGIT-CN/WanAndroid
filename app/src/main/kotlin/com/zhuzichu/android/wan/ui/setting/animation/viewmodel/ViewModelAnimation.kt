@@ -2,16 +2,15 @@ package com.zhuzichu.android.wan.ui.setting.animation.viewmodel
 
 import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.MutableLiveData
-import com.zhuzichu.android.wan.R
-import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.map
 import com.zhuzichu.android.shared.storage.GlobalStorage
+import com.zhuzichu.android.wan.R
+import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
 import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindClass
 import javax.inject.Inject
 
 
 class ViewModelAnimation @Inject constructor(
-    val globalStorage: GlobalStorage
 ) : ViewModelAnalyticsBase() {
 
     val items = MutableLiveData<List<Any>>()
@@ -26,19 +25,19 @@ class ViewModelAnimation @Inject constructor(
                 this,
                 GlobalStorage.ANIMATION_FADE,
                 R.string.fade,
-                globalStorage.animation == GlobalStorage.ANIMATION_FADE
+                GlobalStorage.animation == GlobalStorage.ANIMATION_FADE
             ),
             ItemViewModelAnimation(
                 this,
                 GlobalStorage.ANIMATION_SLIDE,
                 R.string.slide,
-                globalStorage.animation == GlobalStorage.ANIMATION_SLIDE
+                GlobalStorage.animation == GlobalStorage.ANIMATION_SLIDE
             ),
             ItemViewModelAnimation(
                 this,
                 GlobalStorage.ANIMATION_NO,
                 R.string.noanim,
-                globalStorage.animation == GlobalStorage.ANIMATION_NO
+                GlobalStorage.animation == GlobalStorage.ANIMATION_NO
             )
         )
     }

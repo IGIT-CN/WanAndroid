@@ -25,6 +25,8 @@
     <string name="flutter">Flutter</string>
     <string name="crash">Crash</string>
 
+    <string name="file_manager">File Manager</string>
+
     <string name="clone_apps">استنساخ التطبيق</string>
 
     <string name="home_article">أحدث بلوق وظائف</string>

@@ -1,37 +1,37 @@
 package com.zhuzichu.android.shared.extension
 
-import timber.log.Timber
+import com.zhuzichu.android.shared.log.lumberjack.L
 
 private const val TAG = "Nice"
 
 fun Any.logi(tag: String = TAG, throwable: Throwable? = null) {
     throwable?.let {
-        Timber.tag(tag).i(throwable, this.toString())
+        L.tag(tag).i(throwable) { this.toString() }
     } ?: let {
-        Timber.tag(tag).i(this.toString())
+        L.tag(tag).i { this.toString() }
     }
 }
 
 fun Any.logd(tag: String = TAG, throwable: Throwable? = null) {
     throwable?.let {
-        Timber.tag(tag).d(throwable, this.toString())
+        L.tag(tag).d(throwable) { this.toString() }
     } ?: let {
-        Timber.tag(tag).d(this.toString())
+        L.tag(tag).d { this.toString() }
     }
 }
 
 fun Any.loge(tag: String = TAG, throwable: Throwable? = null) {
     throwable?.let {
-        Timber.tag(tag).e(throwable, this.toString())
+        L.tag(tag).e(throwable) { this.toString() }
     } ?: let {
-        Timber.tag(tag).e(this.toString())
+        L.tag(tag).e { this.toString() }
     }
 }
 
 fun Any.logw(tag: String = TAG, throwable: Throwable? = null) {
     throwable?.let {
-        Timber.tag(tag).w(throwable, this.toString())
+        L.tag(tag).w(throwable) { this.toString() }
     } ?: let {
-        Timber.tag(tag).w(this.toString())
+        L.tag(tag).w { this.toString() }
     }
 }

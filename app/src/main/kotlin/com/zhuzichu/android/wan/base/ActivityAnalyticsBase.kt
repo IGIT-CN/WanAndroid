@@ -13,7 +13,7 @@ abstract class ActivityAnalyticsBase : BaseActivity() {
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(
             newBase.localeContextWrapper(
-                Locale(GlobalStorage().locale ?: Locale.getDefault().country)
+                Locale(GlobalStorage.locale ?: Locale.getDefault().country)
             )
         )
     }

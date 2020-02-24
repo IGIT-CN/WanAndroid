@@ -10,13 +10,9 @@ import com.zhuzichu.android.wan.databinding.FragmentLanguagesBinding
 import com.zhuzichu.android.wan.ui.setting.languages.viewmodel.ViewModelLanguages
 import com.zhuzichu.android.shared.storage.GlobalStorage
 import java.util.*
-import javax.inject.Inject
 
 class FragmentLanguages :
     BaseFragment<FragmentLanguagesBinding, ViewModelLanguages>() {
-
-    @Inject
-    lateinit var globalStorage: GlobalStorage
 
     override fun setLayoutId(): Int = R.layout.fragment_languages
 
@@ -24,8 +20,8 @@ class FragmentLanguages :
 
     override fun initVariable() {
         viewModel.languagesChangeEvent.observe(this, Observer {
-            globalStorage.locale = it
-            updateApplicationLanguage(Locale(globalStorage.locale ?: Locale.getDefault().country))
+            GlobalStorage.locale = it
+            updateApplicationLanguage(Locale(GlobalStorage.locale ?: Locale.getDefault().country))
             activityCtx.window.setWindowAnimations(R.style.WindowFade)
             ActivityCompat.recreate(activityCtx)
         })

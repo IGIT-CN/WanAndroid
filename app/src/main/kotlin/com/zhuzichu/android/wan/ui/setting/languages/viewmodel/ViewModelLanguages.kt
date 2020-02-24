@@ -2,16 +2,15 @@ package com.zhuzichu.android.wan.ui.setting.languages.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.zhuzichu.android.mvvm.event.SingleLiveEvent
+import com.zhuzichu.android.shared.extension.map
+import com.zhuzichu.android.shared.storage.GlobalStorage
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
-import com.zhuzichu.android.shared.extension.map
-import com.zhuzichu.android.shared.storage.GlobalStorage
 import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindClass
 import javax.inject.Inject
 
 class ViewModelLanguages @Inject constructor(
-    private val globalStorage: GlobalStorage
 ) : ViewModelAnalyticsBase() {
 
     companion object {
@@ -25,7 +24,7 @@ class ViewModelLanguages @Inject constructor(
     val items = MutableLiveData<List<Any>>()
 
     fun loadSectionLable() {
-        val locale = globalStorage.locale
+        val locale = GlobalStorage.locale
         items.value = listOf(
             ItemViewModelLanguage(this, "English", LOCAL_EN, locale == LOCAL_EN),
             ItemViewModelLanguage(this, "中文", LOCAL_ZH, locale == LOCAL_ZH),

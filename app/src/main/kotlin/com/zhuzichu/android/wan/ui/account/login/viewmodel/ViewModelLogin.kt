@@ -2,20 +2,18 @@ package com.zhuzichu.android.wan.ui.account.login.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.uber.autodispose.autoDispose
-import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.autoLoading
 import com.zhuzichu.android.shared.extension.createCommand
 import com.zhuzichu.android.shared.http.exception.ExceptionManager
 import com.zhuzichu.android.shared.http.exception.ResponseThrowable
 import com.zhuzichu.android.shared.storage.GlobalStorage
 import com.zhuzichu.android.wan.ActivityMain
+import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.wan.ui.account.login.domain.UseCaseLogin
 import com.zhuzichu.android.wan.ui.account.login.entity.ParamterLogin
-import java.lang.StringBuilder
 import javax.inject.Inject
 
 class ViewModelLogin @Inject constructor(
-    private val globalStorage: GlobalStorage,
     private val useCaseLogin: UseCaseLogin
 ) : ViewModelAnalyticsBase() {
 
@@ -37,7 +35,7 @@ class ViewModelLogin @Inject constructor(
                         }
                         cookies.replace(cookies.length, cookies.length + 1, "")
                     }
-                    globalStorage.login(cookies.toString(), beanLogin.username, beanLogin.nickname)
+                    GlobalStorage.login(cookies.toString(), beanLogin.username, beanLogin.nickname)
                     startActivity(ActivityMain::class.java, isPop = true)
                 }
             }, {

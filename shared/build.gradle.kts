@@ -116,4 +116,6 @@ dependencies {
     api(Dep.multidex)
     api(Dep.agentweb)
     api(Dep.mmkv)
+    api(Dep.dialog)
+    api(Dep.dialogFile)
 }

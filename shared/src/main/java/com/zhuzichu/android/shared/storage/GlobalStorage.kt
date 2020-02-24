@@ -1,23 +1,18 @@
 package com.zhuzichu.android.shared.storage
 
-import android.content.Context
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
-import com.zhuzichu.android.shared.global.AppGlobal.context
+import com.tencent.mmkv.MMKV
 
-class GlobalStorage {
-    companion object {
-        const val PREFS_NAME = "global-preference"
+object GlobalStorage {
 
-        const val ANIMATION_FADE = 0
-        const val ANIMATION_SLIDE = 1
-        const val ANIMATION_NO = 2
-    }
+    private const val PREFS_NAME = "global"
 
-    private val prefs: Lazy<SharedPreferences> = lazy {
-        context.applicationContext.getSharedPreferences(
-            PREFS_NAME, Context.MODE_PRIVATE
-        )
+    const val ANIMATION_FADE = 0
+    const val ANIMATION_SLIDE = 1
+    const val ANIMATION_NO = 2
+
+    private val prefs: Lazy<MMKV> = lazy {
+        MMKV.mmkvWithID(PREFS_NAME)
     }
 
     var username by StringPreference(prefs, null)

@@ -8,8 +8,20 @@ object CacheGlobal {
 
     private const val CACHE_GLIDE_DIR = "/cache_glide"
 
+    private const val CACHE_MMKV_DIR = "/cache_mmkv"
+
+    private const val CACHE_LOG_DIR = "/cache_log"
+
     fun initDir() {
         getGlideCacheDir()
+    }
+
+    fun getLogCacheDir(): String {
+        return getDiskCacheDir(CACHE_LOG_DIR).absolutePath
+    }
+
+    fun getMmkvCacheDir(): String {
+        return getDiskCacheDir(CACHE_MMKV_DIR).absolutePath
     }
 
     fun getGlideCacheDir(): String {

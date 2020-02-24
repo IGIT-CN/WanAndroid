@@ -1,5 +1,6 @@
 package com.zhuzichu.android.wan.ui.demo.main.viewmodel
 
+import android.os.Environment
 import androidx.lifecycle.MutableLiveData
 import com.zhuzichu.android.shared.extension.map
 import com.zhuzichu.android.wan.BR
@@ -11,6 +12,7 @@ import com.zhuzichu.android.wan.ui.demo.jni.ActivityJni
 import com.zhuzichu.android.wan.ui.demo.opencv.ActivityOpencv
 import com.zhuzichu.android.wan.ui.demo.vxposed.ActivityVxposed
 import com.zhuzichu.android.wan.ui.demo.websocket.ActivityWebsocket
+import com.zhuzichu.android.wan.ui.main.fragment.FragmentMainDirections
 import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindClass
 import javax.inject.Inject
 
@@ -26,6 +28,7 @@ class ViewModelDemo @Inject constructor(
         const val TYPE_VXPOSED = 5
         const val TYPE_FLUTTER = 6
         const val TYPE_CRASH = 7
+        const val TYPE_FILE = 8
     }
 
     private val closure: Int.() -> Unit = {
@@ -53,6 +56,11 @@ class ViewModelDemo @Inject constructor(
             }
             TYPE_CRASH -> {
                 1 / 0
+            }
+            TYPE_FILE -> {
+                val directions =
+                    FragmentMainDirections.actionFragmentMainToFragmentFile(Environment.getExternalStorageDirectory().absolutePath)
+                startFragment(directions)
             }
             else -> {
 
@@ -108,6 +116,12 @@ class ViewModelDemo @Inject constructor(
                 this@ViewModelDemo,
                 TYPE_CRASH,
                 R.string.crash,
+                closure
+            ),
+            ItemViewModelDemo(
+                this@ViewModelDemo,
+                TYPE_FILE,
+                R.string.file_manager,
                 closure
             )
         )

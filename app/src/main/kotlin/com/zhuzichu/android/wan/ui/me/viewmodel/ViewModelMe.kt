@@ -11,7 +11,6 @@ import com.zhuzichu.android.wan.ui.me.domain.UseCaseGetUserInfo
 import javax.inject.Inject
 
 class ViewModelMe @Inject constructor(
-    private val globalStorage: GlobalStorage,
     private val useCaseGetUserInfo: UseCaseGetUserInfo
 ) : ViewModelAnalyticsBase() {
 
@@ -37,8 +36,8 @@ class ViewModelMe @Inject constructor(
     }
 
     fun updateUserInfo() {
-        username.value = globalStorage.username
-        nickname.value = globalStorage.nickname
+        username.value = GlobalStorage.username
+        nickname.value = GlobalStorage.nickname
         useCaseGetUserInfo.execute(Unit)
             .autoLoading(this)
             .autoDispose(this)

@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_fragmentMain_to_fragmentFlutter"
             app:destination="@id/fragmentFlutter" />
+        <action
+            android:id="@+id/action_fragmentMain_to_fragmentFile"
+            app:destination="@id/fragmentFile" />
     </fragment>
     <fragment
         android:id="@+id/fragmentSetting"
@@ -75,5 +78,14 @@
         android:name="com.zhuzichu.android.wan.ui.flutter.fragment.FragmentFlutter"
         android:label="FragmentFlutter"
         tools:layout="@layout/fragment_flutter" />
+    <fragment
+        android:id="@+id/fragmentFile"
+        android:name="com.zhuzichu.android.wan.ui.file.fragment.FragmentFile"
+        android:label="FragmentFile"
+        tools:layout="@layout/fragment_file">
+        <argument
+            android:name="path"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

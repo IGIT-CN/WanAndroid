@@ -1,11 +1,7 @@
 package com.zhuzichu.android.wan.di
 
 import android.content.Context
-import com.zhuzichu.android.shared.storage.GlobalStorage
 import com.zhuzichu.android.wan.ApplicationWan
-import com.zhuzichu.android.wan.db.AppDatabase
-import com.zhuzichu.android.wan.db.DaoKeyword
-import com.zhuzichu.android.wan.db.DaoUser
 import com.zhuzichu.android.wan.manager.FFmpegManager
 import com.zhuzichu.android.wan.manager.JniDemoManager
 import com.zhuzichu.android.wan.manager.OpencvManager
@@ -22,14 +18,11 @@ import javax.inject.Singleton
 
 @Module
 class AppModule {
+
     @Provides
     fun provideContext(application: ApplicationWan): Context {
         return application.applicationContext
     }
-
-    @Singleton
-    @Provides
-    fun providesGlobalStorage(): GlobalStorage = GlobalStorage()
 
     @Provides
     @Singleton
@@ -69,4 +62,5 @@ class AppModule {
     fun providesWebsocketManager(): WebsocketManager {
         return WebsocketManager()
     }
+
 }
