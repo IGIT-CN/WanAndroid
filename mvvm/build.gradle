@@ -53,8 +53,8 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:2.3.0-alpha02"
     implementation "com.google.dagger:dagger-android:2.24"
     implementation "com.google.dagger:dagger-android-support:2.24"
-    implementation 'com.github.zhuzichu520:libs:1.0.30'
-    implementation 'com.github.zhuzichu520:widget:1.0.39'
+    implementation project(path: ':libs')
+    implementation project(path: ':widget')
 }
 
 buildscript {
