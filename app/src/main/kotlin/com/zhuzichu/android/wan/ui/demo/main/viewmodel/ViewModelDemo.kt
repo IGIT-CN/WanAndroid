@@ -3,7 +3,6 @@ package com.zhuzichu.android.wan.ui.demo.main.viewmodel
 import android.os.Environment
 import androidx.lifecycle.MutableLiveData
 import com.zhuzichu.android.shared.extension.map
-import com.zhuzichu.android.shared.extension.toast
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
@@ -53,7 +52,7 @@ class ViewModelDemo @Inject constructor(
                 startActivity(ActivityVxposed::class.java)
             }
             TYPE_FLUTTER -> {
-                "敬请期待".toast()
+                startFlutterActivity()
             }
             TYPE_CRASH -> {
                 1 / 0

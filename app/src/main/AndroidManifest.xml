@@ -66,10 +66,7 @@
         <activity
             android:name=".ui.launcher.ActivityLauncher"
             android:theme="@style/MyTheme.TransparentTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
 
         <activity android:name=".ui.account.ActivityAccount" />
@@ -91,6 +88,13 @@
         <activity android:name=".ui.demo.camera.main.activity.ActivityCameraQRcode" />
 
         <activity android:name=".ui.demo.vxposed.ActivityVxposed" />
+
+        <activity android:name=".ActivityMainNew">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".ui.demo.vxposed.loading.ActivityVirtualLoading"

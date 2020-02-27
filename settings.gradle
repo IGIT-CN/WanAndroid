@@ -1,11 +1,11 @@
 rootProject.name = "WanAndroid"
-include(":app", ":shared", ":vxposed", ":libs", ":mvvm", ":widget")
+include(":app", ":shared", ":vxposed")
 
-//setBinding(new Binding([gradle: this]))
-//evaluate(new File(
-//        settingsDir,
-//        'wan_flutter/.android/include_flutter.groovy'
-//))
+setBinding(new Binding([gradle: this]))
+evaluate(new File(
+        settingsDir,
+        'wan_flutter/.android/include_flutter.groovy'
+))
 
 String fileName = "build.groovy.gradle"
 //val fileName = "build.kotlin.gradle.kts"

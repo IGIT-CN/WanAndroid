@@ -2,6 +2,7 @@ package com.zhuzichu.android.wan.di
 
 import com.zhuzichu.android.mvvm.di.ActivityScoped
 import com.zhuzichu.android.wan.ActivityMain
+import com.zhuzichu.android.wan.ActivityMainNew
 import com.zhuzichu.android.wan.ui.account.ActivityAccount
 import com.zhuzichu.android.wan.ui.account.login.module.ModuleLogin
 import com.zhuzichu.android.wan.ui.category.list.module.ModuleCategoryChild
@@ -27,6 +28,7 @@ import com.zhuzichu.android.wan.ui.demo.vxposed.main.module.ModuleVxposed
 import com.zhuzichu.android.wan.ui.demo.websocket.ActivityWebsocket
 import com.zhuzichu.android.wan.ui.demo.websocket.main.module.ModuleWebsocket
 import com.zhuzichu.android.wan.ui.file.module.ModuleFile
+import com.zhuzichu.android.wan.ui.flutter.module.ModuleFlutter
 import com.zhuzichu.android.wan.ui.home.module.ModuleHome
 import com.zhuzichu.android.wan.ui.home.module.ModuleHomeArticle
 import com.zhuzichu.android.wan.ui.home.module.ModuleHomeProject
@@ -67,10 +69,36 @@ abstract class ActivityBindingModule {
             ModuleDemo::class,
             ModuleCategoryList::class,
             ModuleCategoryChild::class,
+            ModuleFlutter::class,
             ModuleFile::class
         ]
     )
     internal abstract fun mainActivity(): ActivityMain
+
+
+    @ActivityScoped
+    @ContributesAndroidInjector(
+        modules = [
+            //fragments
+            ModuleMain::class,
+            ModuleHome::class,
+            ModuleCategory::class,
+            ModuleMe::class,
+            ModuleHomeArticle::class,
+            ModuleHomeProject::class,
+            ModuleSetting::class,
+            ModuleLanguages::class,
+            ModuleTheme::class,
+            ModuleAnimation::class,
+            ModuleSearch::class,
+            ModuleDemo::class,
+            ModuleCategoryList::class,
+            ModuleCategoryChild::class,
+            ModuleFlutter::class,
+            ModuleFile::class
+        ]
+    )
+    internal abstract fun newMainActivity(): ActivityMainNew
 
     @ActivityScoped
     @ContributesAndroidInjector(

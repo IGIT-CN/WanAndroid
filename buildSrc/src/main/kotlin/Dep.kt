@@ -1,13 +1,13 @@
 object Dep {
 
     object Version {
-        const val kotlin = "1.3.61"
+        const val kotlin = "1.3.60"
         const val buildGradle = "3.5.3"
         const val androidxCore = "1.1.0"
-        const val androidxKtx = "1.2.0"
+        const val androidxKtx = "1.1.0"
         const val androidxAnnotation = "1.1.0"
         const val androidxConstraintlayout = "2.0.0-beta4"
-        const val androidxNavigation = "2.3.0-alpha02"
+        const val androidxNavigation = "2.2.0"
         const val dagger = "2.24"
         const val material = "1.2.0-alpha04"
         const val retrofit = "2.5.0"

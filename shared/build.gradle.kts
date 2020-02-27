@@ -61,9 +61,9 @@ dependencies {
     kapt(Dep.kaptDaggerProcessor)
     kapt(Dep.kaptGlide)
     kapt(Dep.androidxDatabinding)
-//    api(Dep.mvvm)
-//    api(Dep.widget)
-//    api(Dep.libs)
+    api(Dep.mvvm)
+    api(Dep.widget)
+    api(Dep.libs)
     api(Dep.kotlinStadlibJdk8)
     api(Dep.androidxCore)
     api(Dep.androidxKtx)
@@ -118,8 +118,4 @@ dependencies {
     api(Dep.mmkv)
     api(Dep.dialog)
     api(Dep.dialogFile)
-
-    api(project(":libs"))
-    api(project(":widget"))
-    api(project(":mvvm"))
 }
