@@ -1,10 +1,12 @@
 package com.zhuzichu.android.wan.ui.file.fragment
 
 import android.Manifest
+import androidx.activity.addCallback
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.tbruyelle.rxpermissions2.RxPermissions
 import com.uber.autodispose.autoDispose
+import com.zhuzichu.android.libs.internal.MainHandler
 import com.zhuzichu.android.shared.extension.toast
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
@@ -38,13 +40,19 @@ class FragmentFile : FragmentAnalyticsBase<FragmentFileBinding, ViewModelFile>()
                     "权限被拒绝".toast()
                 }
             }
+        initBackListener()
+    }
 
+    private fun initBackListener() {
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+
+        }
     }
 
     override fun initViewObservable() {
         viewModel.onAddFileNavEvent.observe(viewLifecycleOwner, Observer {
-            nav.post {
-                nav.scrollToPosition(viewModel.navList.value!!.size)
+            MainHandler.postDelayed(50) {
+                nav.scrollToPosition(viewModel.navList.value!!.size - 1)
             }
         })
     }

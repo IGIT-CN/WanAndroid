@@ -1,6 +1,7 @@
 Config.init(project)
 
 buildscript {
+
     repositories {
         google()
         jcenter()
@@ -11,6 +12,7 @@ buildscript {
         classpath(Dep.pluginkotlinGradle)
         classpath(Dep.pluginNavigationSafe)
     }
+
 }
 
 allprojects {
