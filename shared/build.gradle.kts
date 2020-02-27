@@ -119,7 +119,7 @@ dependencies {
     api(Dep.dialog)
     api(Dep.dialogFile)
 
-    api(project(":lib"))
+    api(project(":libs"))
     api(project(":widget"))
     api(project(":mvvm"))
 }

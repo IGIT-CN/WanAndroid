@@ -1,5 +1,5 @@
 rootProject.name = "WanAndroid"
-include(":app", ":shared", ":vxposed", ":lib", ":mvvm", ":widget")
+include(":app", ":shared", ":vxposed", ":libs", ":mvvm", ":widget")
 
 setBinding(new Binding([gradle: this]))
 evaluate(new File(
