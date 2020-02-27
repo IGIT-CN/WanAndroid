@@ -27,7 +27,6 @@ import com.zhuzichu.android.wan.ui.demo.vxposed.main.module.ModuleVxposed
 import com.zhuzichu.android.wan.ui.demo.websocket.ActivityWebsocket
 import com.zhuzichu.android.wan.ui.demo.websocket.main.module.ModuleWebsocket
 import com.zhuzichu.android.wan.ui.file.module.ModuleFile
-import com.zhuzichu.android.wan.ui.flutter.module.ModuleFlutter
 import com.zhuzichu.android.wan.ui.home.module.ModuleHome
 import com.zhuzichu.android.wan.ui.home.module.ModuleHomeArticle
 import com.zhuzichu.android.wan.ui.home.module.ModuleHomeProject
@@ -68,7 +67,6 @@ abstract class ActivityBindingModule {
             ModuleDemo::class,
             ModuleCategoryList::class,
             ModuleCategoryChild::class,
-            ModuleFlutter::class,
             ModuleFile::class
         ]
     )

@@ -10,8 +10,4 @@ internal sealed class Payload {
         var closure: (ResponseThrowable.() -> Unit)? = null
     )
 
-    internal data class PayloadFlutter(
-        var route: String? = null
-    )
-
 }

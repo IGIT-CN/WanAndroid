@@ -13,8 +13,6 @@ open class ViewModelAnalyticsBase : BaseAutoDisposeViewModel() {
     inner class UIChangeLiveData {
         internal val handleThrowableEvent: SingleLiveEvent<Payload.PayloadThrowable> =
             SingleLiveEvent()
-        internal val startFlutterActivityEvent: SingleLiveEvent<Payload.PayloadFlutter> =
-            SingleLiveEvent()
     }
 
     val onBackCommand = createCommand {
@@ -34,13 +32,6 @@ open class ViewModelAnalyticsBase : BaseAutoDisposeViewModel() {
                 closure
             )
     }
-
-    fun startFlutterActivity(
-        route: String? = null
-    ) {
-        event.startFlutterActivityEvent.value = Payload.PayloadFlutter(route)
-    }
-
 
     fun both(): LineManager.Factory = LineManager.both(1)
 

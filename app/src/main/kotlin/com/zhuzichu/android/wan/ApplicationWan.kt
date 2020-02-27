@@ -22,7 +22,6 @@ import com.zhuzichu.android.wan.ui.account.ActivityAccount
 import com.zhuzichu.android.wan.vxposed.WanVirtualInitializer
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
-import io.flutter.view.FlutterMain
 import io.reactivex.plugins.RxJavaPlugins
 import jonathanfinerty.once.Once
 import java.util.*
@@ -62,8 +61,6 @@ class ApplicationWan : DaggerApplication() {
         updateApplicationLanguage(Locale(GlobalStorage.locale ?: Locale.getDefault().country))
 
         MvvmManager.animBuilder = GlobalStorage.animation.toAnimationBuild()
-
-        FlutterMain.startInitialization(applicationContext)
 
         val virtualCore = VirtualCore.get()
         virtualCore.initialize(WanVirtualInitializer(virtualCore))
