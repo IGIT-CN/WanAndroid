@@ -8,7 +8,8 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'com.github.dcendents.android-maven'
 
-group='com.zhuzichu.android'
+group = 'com.zhuzichu.android'
+version = '1.0.0'
 
 android {
     compileSdkVersion 29
