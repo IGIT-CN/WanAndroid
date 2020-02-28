@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.zhuzichu.android.mvvm.event.SingleLiveEvent
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
-import com.zhuzichu.android.shared.extension.map
+import com.zhuzichu.android.shared.ext.map
 
 import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindClass
 import javax.inject.Inject

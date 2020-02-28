@@ -2,7 +2,7 @@ package com.zhuzichu.android.wan.ui.file.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.zhuzichu.android.mvvm.event.SingleLiveEvent
-import com.zhuzichu.android.shared.extension.itemBindingOf
+import com.zhuzichu.android.shared.ext.itemBindingOf
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase

@@ -2,7 +2,7 @@ package com.zhuzichu.android.wan.ui.demo.ffmpeg.main.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
-import com.zhuzichu.android.shared.extension.createCommand
+import com.zhuzichu.android.shared.ext.createCommand
 import com.zhuzichu.android.wan.manager.FFmpegManager
 import javax.inject.Inject
 

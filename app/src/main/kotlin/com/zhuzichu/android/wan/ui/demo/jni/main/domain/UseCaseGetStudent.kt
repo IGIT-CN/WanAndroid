@@ -1,9 +1,9 @@
 package com.zhuzichu.android.wan.ui.demo.jni.main.domain
 
 import com.zhuzichu.android.mvvm.domain.UseCase
-import com.zhuzichu.android.shared.extension.bindToException
-import com.zhuzichu.android.shared.extension.bindToSchedulers
-import com.zhuzichu.android.shared.extension.createFlowable
+import com.zhuzichu.android.shared.ext.bindToException
+import com.zhuzichu.android.shared.ext.bindToSchedulers
+import com.zhuzichu.android.shared.ext.createFlowable
 import com.zhuzichu.android.wan.manager.JniDemoManager
 import com.zhuzichu.android.wan.ui.demo.jni.main.entity.BeanStudent
 import io.reactivex.Flowable

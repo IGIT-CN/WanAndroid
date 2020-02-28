@@ -8,7 +8,7 @@ import androidx.lifecycle.Observer
 import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.wan.base.FragmentAnalyticsBase
 import com.zhuzichu.android.shared.bus.RxBus
-import com.zhuzichu.android.shared.extension.toast
+import com.zhuzichu.android.shared.ext.toast
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.databinding.FragmentVxposedBinding

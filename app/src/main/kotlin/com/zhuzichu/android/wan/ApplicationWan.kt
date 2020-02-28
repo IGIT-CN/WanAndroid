@@ -7,17 +7,16 @@ import androidx.multidex.MultiDex
 import com.lody.virtual.client.NativeEngine
 import com.lody.virtual.client.core.VirtualCore
 import com.lody.virtual.client.stub.VASettings
-import com.tencent.mmkv.MMKVLogLevel
 import com.umeng.commonsdk.UMConfigure
 import com.zhuzichu.android.mvvm.MvvmManager
 import com.zhuzichu.android.shared.crash.CrashConfig
-import com.zhuzichu.android.shared.extension.className
-import com.zhuzichu.android.shared.extension.loge
-import com.zhuzichu.android.shared.extension.updateApplicationLanguage
+import com.zhuzichu.android.shared.ext.className
+import com.zhuzichu.android.shared.ext.loge
+import com.zhuzichu.android.shared.ext.updateApplicationLanguage
 import com.zhuzichu.android.shared.global.AppGlobal
 import com.zhuzichu.android.shared.storage.GlobalStorage
 import com.zhuzichu.android.wan.di.DaggerAppComponent
-import com.zhuzichu.android.wan.extension.toAnimationBuild
+import com.zhuzichu.android.wan.ext.toAnimationBuild
 import com.zhuzichu.android.wan.ui.account.ActivityAccount
 import com.zhuzichu.android.wan.vxposed.WanVirtualInitializer
 import dagger.android.AndroidInjector
@@ -41,9 +40,6 @@ class ApplicationWan : DaggerApplication() {
         }
 
         Once.initialise(this)
-
-        MMKVLogLevel.LevelDebug
-
 
         UMConfigure.init(
             this,

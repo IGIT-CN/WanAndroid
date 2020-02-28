@@ -3,7 +3,7 @@ package com.zhuzichu.android.wan.ui.home.fragment
 import androidx.core.os.bundleOf
 import com.zhuzichu.android.shared.base.DefaultStringFragmentPagerAdapter
 import com.zhuzichu.android.wan.base.FragmentAnalyticsBase
-import com.zhuzichu.android.shared.extension.toStringByResId
+import com.zhuzichu.android.shared.ext.toStringByResId
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.databinding.FragmentHomeBinding

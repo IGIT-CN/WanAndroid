@@ -3,8 +3,8 @@ package com.zhuzichu.android.wan.ui.demo.jni.main.viewmodel
 import androidx.lifecycle.MutableLiveData
 import com.zhuzichu.android.mvvm.base.BaseViewModel
 import com.zhuzichu.android.wan.base.ItemViewModelAnalyticsBase
-import com.zhuzichu.android.shared.extension.createCommand
-import com.zhuzichu.android.shared.extension.toast
+import com.zhuzichu.android.shared.ext.createCommand
+import com.zhuzichu.android.shared.ext.toast
 import com.zhuzichu.android.wan.ui.demo.jni.main.entity.BeanStudent
 
 class ItemViewModelStudent(

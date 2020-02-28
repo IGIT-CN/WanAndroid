@@ -19,9 +19,9 @@ import com.lody.virtual.client.ipc.VPackageManager
 import com.lody.virtual.server.pm.parser.VPackage
 import com.zhuzichu.android.libs.internal.MainHandler
 import com.zhuzichu.android.wan.base.ActivityAnalyticsBase
-import com.zhuzichu.android.shared.extension.className
-import com.zhuzichu.android.shared.extension.logi
-import com.zhuzichu.android.shared.extension.toast
+import com.zhuzichu.android.shared.ext.className
+import com.zhuzichu.android.shared.ext.logi
+import com.zhuzichu.android.shared.ext.toast
 import com.zhuzichu.android.wan.R
 import jonathanfinerty.once.Once
 import java.util.*

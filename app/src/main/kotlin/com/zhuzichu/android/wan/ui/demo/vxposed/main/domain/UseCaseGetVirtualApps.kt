@@ -2,7 +2,7 @@ package com.zhuzichu.android.wan.ui.demo.vxposed.main.domain
 
 import com.zhuzichu.android.mvvm.base.BaseViewModel
 import com.zhuzichu.android.mvvm.domain.UseCase
-import com.zhuzichu.android.shared.extension.bindToSchedulers
+import com.zhuzichu.android.shared.ext.bindToSchedulers
 import com.zhuzichu.android.shared.global.AppGlobal.context
 import com.zhuzichu.android.wan.repository.LocalRepository
 import com.zhuzichu.android.wan.ui.demo.vxposed.main.viewmodel.ItemViewModelVirtualApp

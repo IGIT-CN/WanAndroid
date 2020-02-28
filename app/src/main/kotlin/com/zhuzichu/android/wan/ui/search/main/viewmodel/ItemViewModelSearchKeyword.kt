@@ -2,7 +2,7 @@ package com.zhuzichu.android.wan.ui.search.main.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.zhuzichu.android.wan.base.ItemViewModelAnalyticsBase
-import com.zhuzichu.android.shared.extension.createCommand
+import com.zhuzichu.android.shared.ext.createCommand
 
 class ItemViewModelSearchKeyword(
     viewModel: ViewModelSearch,

@@ -4,7 +4,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.lifecycle.MutableLiveData
 import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
-import com.zhuzichu.android.shared.extension.createCommand
+import com.zhuzichu.android.shared.ext.createCommand
 import com.zhuzichu.android.shared.global.AppGlobal.context
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.manager.OpencvManager

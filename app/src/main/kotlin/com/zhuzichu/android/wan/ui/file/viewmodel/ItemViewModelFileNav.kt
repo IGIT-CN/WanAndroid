@@ -1,7 +1,7 @@
 package com.zhuzichu.android.wan.ui.file.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import com.zhuzichu.android.shared.extension.createCommand
+import com.zhuzichu.android.shared.ext.createCommand
 import com.zhuzichu.android.wan.base.ItemViewModelAnalyticsBase
 import java.io.File
 

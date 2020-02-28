@@ -6,7 +6,7 @@ import android.content.pm.PackageManager
 import com.lody.virtual.GmsSupport
 import com.lody.virtual.client.core.VirtualCore
 import com.lody.virtual.remote.InstalledAppInfo
-import com.zhuzichu.android.shared.extension.createFlowable
+import com.zhuzichu.android.shared.ext.createFlowable
 import com.zhuzichu.android.shared.global.AppGlobal.context
 import com.zhuzichu.android.wan.db.AppDatabase
 import com.zhuzichu.android.wan.db.entity.DOKeyword

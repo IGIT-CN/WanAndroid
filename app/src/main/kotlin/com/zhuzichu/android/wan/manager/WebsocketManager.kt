@@ -1,7 +1,7 @@
 package com.zhuzichu.android.wan.manager
 
-import com.zhuzichu.android.shared.extension.logi
-import com.zhuzichu.android.shared.extension.toast
+import com.zhuzichu.android.shared.ext.logi
+import com.zhuzichu.android.shared.ext.toast
 import okhttp3.*
 import okio.ByteString
 import java.util.concurrent.TimeUnit

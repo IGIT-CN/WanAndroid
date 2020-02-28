@@ -7,9 +7,9 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import com.umeng.analytics.MobclickAgent
 import com.zhuzichu.android.mvvm.base.BaseFragment
-import com.zhuzichu.android.shared.extension.className
-import com.zhuzichu.android.shared.extension.logi
-import com.zhuzichu.android.shared.extension.toast
+import com.zhuzichu.android.shared.ext.className
+import com.zhuzichu.android.shared.ext.logi
+import com.zhuzichu.android.shared.ext.toast
 import com.zhuzichu.android.shared.global.AppGlobal
 import com.zhuzichu.android.shared.http.exception.ResponseThrowable
 import io.flutter.embedding.android.FlutterActivity

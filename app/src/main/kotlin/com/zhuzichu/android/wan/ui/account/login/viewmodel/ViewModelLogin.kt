@@ -2,8 +2,8 @@ package com.zhuzichu.android.wan.ui.account.login.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.uber.autodispose.autoDispose
-import com.zhuzichu.android.shared.extension.autoLoading
-import com.zhuzichu.android.shared.extension.createCommand
+import com.zhuzichu.android.shared.ext.autoLoading
+import com.zhuzichu.android.shared.ext.createCommand
 import com.zhuzichu.android.shared.http.exception.ExceptionManager
 import com.zhuzichu.android.shared.http.exception.ResponseThrowable
 import com.zhuzichu.android.shared.storage.GlobalStorage

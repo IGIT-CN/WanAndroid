@@ -2,7 +2,7 @@ package com.zhuzichu.android.wan.base
 
 import com.zhuzichu.android.mvvm.event.SingleLiveEvent
 import com.zhuzichu.android.shared.base.BaseAutoDisposeViewModel
-import com.zhuzichu.android.shared.extension.createCommand
+import com.zhuzichu.android.shared.ext.createCommand
 import com.zhuzichu.android.shared.http.exception.ResponseThrowable
 import com.zhuzichu.android.shared.widget.recycler.LineManager
 

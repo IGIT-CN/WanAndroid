@@ -10,10 +10,10 @@ import com.just.agentweb.AgentWeb
 import com.just.agentweb.NestedScrollAgentWebView
 import com.just.agentweb.WebChromeClient
 import com.zhuzichu.android.wan.base.FragmentAnalyticsBase
-import com.zhuzichu.android.shared.extension.bindArgument
-import com.zhuzichu.android.shared.extension.getAgentWeb
-import com.zhuzichu.android.shared.extension.isDark
-import com.zhuzichu.android.shared.extension.toColorByResId
+import com.zhuzichu.android.shared.ext.bindArgument
+import com.zhuzichu.android.shared.ext.getAgentWeb
+import com.zhuzichu.android.shared.ext.isDark
+import com.zhuzichu.android.shared.ext.toColorByResId
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.databinding.FragmentWebBinding

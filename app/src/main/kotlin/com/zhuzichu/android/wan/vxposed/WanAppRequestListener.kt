@@ -3,7 +3,7 @@ package com.zhuzichu.android.wan.vxposed
 import com.lody.virtual.client.core.InstallStrategy
 import com.lody.virtual.client.core.VirtualCore
 import com.lody.virtual.client.core.VirtualCore.AppRequestListener
-import com.zhuzichu.android.shared.extension.toast
+import com.zhuzichu.android.shared.ext.toast
 import java.io.IOException
 
 class WanAppRequestListener : AppRequestListener {

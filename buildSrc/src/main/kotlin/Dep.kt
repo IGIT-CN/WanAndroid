@@ -1,8 +1,8 @@
 object Dep {
 
     object Version {
-        const val kotlin = "1.3.60"
-        const val buildGradle = "3.5.3"
+        const val kotlin = "1.3.61"
+        const val buildGradle = "3.6.0"
         const val androidxCore = "1.1.0"
         const val androidxKtx = "1.1.0"
         const val androidxAnnotation = "1.1.0"
@@ -20,9 +20,9 @@ object Dep {
         const val glide = "4.10.0"
         const val timber = "4.7.1"
         const val swiperefreshlayout = "1.1.0-alpha03"
-        const val libs = "1.0.30"
-        const val mvvm = "1.0.59"
-        const val widget = "1.0.39"
+        const val libs = "1.0.0"
+        const val mvvm = "1.0.0"
+        const val widget = "1.0.0"
         const val room = "2.2.3"
         const val umengCommon = "2.0.0"
         const val umengAnalytics = "8.0.0"
@@ -116,9 +116,6 @@ object Dep {
     const val pluginNavigationSafe =
         "androidx.navigation:navigation-safe-args-gradle-plugin:${Version.androidxNavigation}"
 
-    const val androidxDatabinding =
-        "androidx.databinding:databinding-compiler:${Version.buildGradle}"
-
     const val androidxCore =
         "androidx.appcompat:appcompat:${Version.androidxCore}"
 
@@ -138,13 +135,13 @@ object Dep {
         "androidx.navigation:navigation-ui-ktx:${Version.androidxNavigation}"
 
     const val widget =
-        "com.github.zhuzichu520:widget:${Version.widget}"
+        "com.github.zhuzichu520.MvvmSimple:widget:${Version.widget}"
 
     const val libs =
-        "com.github.zhuzichu520:libs:${Version.libs}"
+        "com.github.zhuzichu520.MvvmSimple:libs:${Version.libs}"
 
     const val mvvm =
-        "com.github.zhuzichu520:mvvm:${Version.mvvm}"
+        "com.github.zhuzichu520.MvvmSimple:mvvm:${Version.mvvm}"
 
     const val daggerAndroid =
         "com.google.dagger:dagger-android:${Version.dagger}"

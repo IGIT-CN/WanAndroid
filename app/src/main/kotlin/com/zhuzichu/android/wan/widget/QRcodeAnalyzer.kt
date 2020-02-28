@@ -5,7 +5,7 @@ import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
 import com.google.zxing.*
 import com.google.zxing.common.HybridBinarizer
-import com.zhuzichu.android.shared.extension.logi
+import com.zhuzichu.android.shared.ext.logi
 
 //todo 内存泄漏
 class QRcodeAnalyzer(

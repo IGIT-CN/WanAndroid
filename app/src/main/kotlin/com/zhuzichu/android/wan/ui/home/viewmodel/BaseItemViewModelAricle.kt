@@ -6,10 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.wan.base.ItemViewModelAnalyticsBase
 import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
-import com.zhuzichu.android.shared.extension.autoLoading
-import com.zhuzichu.android.shared.extension.createCommand
-import com.zhuzichu.android.shared.extension.toColorByResId
-import com.zhuzichu.android.shared.extension.toast
+import com.zhuzichu.android.shared.ext.autoLoading
+import com.zhuzichu.android.shared.ext.createCommand
+import com.zhuzichu.android.shared.ext.toColorByResId
+import com.zhuzichu.android.shared.ext.toast
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.repository.entity.BeanArticle
 import com.zhuzichu.android.wan.ui.home.domain.UseCaseCollect

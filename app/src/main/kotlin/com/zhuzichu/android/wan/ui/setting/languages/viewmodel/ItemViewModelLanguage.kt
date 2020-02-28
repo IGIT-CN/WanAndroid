@@ -1,7 +1,7 @@
 package com.zhuzichu.android.wan.ui.setting.languages.viewmodel
 
 import com.zhuzichu.android.mvvm.base.ItemViewModel
-import com.zhuzichu.android.shared.extension.createCommand
+import com.zhuzichu.android.shared.ext.createCommand
 
 data class ItemViewModelLanguage(
     val viewModel: ViewModelLanguages,

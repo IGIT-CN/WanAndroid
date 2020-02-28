@@ -3,8 +3,8 @@ package com.zhuzichu.android.wan.ui.launcher.fragment
 import com.lody.virtual.client.core.VirtualCore
 import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.wan.base.FragmentAnalyticsBase
-import com.zhuzichu.android.shared.extension.bindToSchedulers
-import com.zhuzichu.android.shared.extension.createFlowable
+import com.zhuzichu.android.shared.ext.bindToSchedulers
+import com.zhuzichu.android.shared.ext.createFlowable
 import com.zhuzichu.android.wan.ActivityMain
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R

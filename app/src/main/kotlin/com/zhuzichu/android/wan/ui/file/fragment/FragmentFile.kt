@@ -7,7 +7,7 @@ import androidx.navigation.fragment.navArgs
 import com.tbruyelle.rxpermissions2.RxPermissions
 import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.libs.internal.MainHandler
-import com.zhuzichu.android.shared.extension.toast
+import com.zhuzichu.android.shared.ext.toast
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.base.FragmentAnalyticsBase
@@ -15,7 +15,6 @@ import com.zhuzichu.android.wan.databinding.FragmentFileBinding
 import com.zhuzichu.android.wan.ui.file.viewmodel.ViewModelFile
 import kotlinx.android.synthetic.main.fragment_file.*
 import java.io.File
-
 
 class FragmentFile : FragmentAnalyticsBase<FragmentFileBinding, ViewModelFile>() {
 
@@ -40,7 +39,7 @@ class FragmentFile : FragmentAnalyticsBase<FragmentFileBinding, ViewModelFile>()
                     "权限被拒绝".toast()
                 }
             }
-        initBackListener()
+//        initBackListener()
     }
 
     private fun initBackListener() {

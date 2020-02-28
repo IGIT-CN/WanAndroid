@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.res.Configuration
 import com.umeng.analytics.MobclickAgent
 import com.zhuzichu.android.mvvm.base.BaseActivity
-import com.zhuzichu.android.shared.extension.localeContextWrapper
+import com.zhuzichu.android.shared.ext.localeContextWrapper
 import com.zhuzichu.android.shared.storage.GlobalStorage
 import java.util.*
 

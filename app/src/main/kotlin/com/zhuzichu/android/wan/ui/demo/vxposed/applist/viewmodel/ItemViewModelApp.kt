@@ -9,7 +9,7 @@ import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.wan.base.ItemViewModelAnalyticsBase
 import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.bus.RxBus
-import com.zhuzichu.android.shared.extension.*
+import com.zhuzichu.android.shared.ext.*
 import com.zhuzichu.android.wan.event.EventClone
 import com.zhuzichu.android.wan.repository.entity.EntityApp
 

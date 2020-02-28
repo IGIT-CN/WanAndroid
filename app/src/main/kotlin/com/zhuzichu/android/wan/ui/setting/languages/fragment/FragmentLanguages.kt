@@ -3,7 +3,7 @@ package com.zhuzichu.android.wan.ui.setting.languages.fragment
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import com.zhuzichu.android.mvvm.base.BaseFragment
-import com.zhuzichu.android.shared.extension.updateApplicationLanguage
+import com.zhuzichu.android.shared.ext.updateApplicationLanguage
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.databinding.FragmentLanguagesBinding

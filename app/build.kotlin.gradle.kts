@@ -157,7 +157,6 @@ dependencies {
     kapt(Dep.kaptDaggerCompiler)
     kapt(Dep.kaptDaggerProcessor)
     kapt(Dep.kaptGlide)
-    kapt(Dep.androidxDatabinding)
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.0-beta-3")
 }
 

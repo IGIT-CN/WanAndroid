@@ -4,7 +4,7 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.MutableLiveData
 import com.zhuzichu.android.mvvm.base.BaseViewModel
 import com.zhuzichu.android.wan.base.ItemViewModelAnalyticsBase
-import com.zhuzichu.android.shared.extension.createCommand
+import com.zhuzichu.android.shared.ext.createCommand
 import com.zhuzichu.android.wan.repository.entity.BeanBanner
 import com.zhuzichu.android.wan.ui.web.ActivityWeb
 

@@ -173,7 +173,6 @@ class InitApp(project: Project) {
             add("kapt", Dep.kaptDaggerProcessor)
             add("kapt", Dep.kaptGlide)
             add("kapt", Dep.kaptGlide)
-            add("kapt", Dep.androidxDatabinding)
             add("debugImplementation", "com.squareup.leakcanary:leakcanary-android:2.0-beta-3")
             add("debugImplementation", "com.didichuxing.doraemonkit:doraemonkit:2.0.1")
         }

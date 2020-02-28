@@ -2,7 +2,7 @@ package com.zhuzichu.android.wan.vxposed
 
 import android.os.Looper
 import com.lody.virtual.client.core.CrashHandler
-import com.zhuzichu.android.shared.extension.logi
+import com.zhuzichu.android.shared.ext.logi
 import kotlin.system.exitProcess
 
 open class WanCrashHandler : CrashHandler {

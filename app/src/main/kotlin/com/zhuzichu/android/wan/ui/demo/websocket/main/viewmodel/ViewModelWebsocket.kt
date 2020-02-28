@@ -1,7 +1,7 @@
 package com.zhuzichu.android.wan.ui.demo.websocket.main.viewmodel
 
 import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
-import com.zhuzichu.android.shared.extension.createCommand
+import com.zhuzichu.android.shared.ext.createCommand
 import com.zhuzichu.android.wan.manager.WebsocketManager
 import javax.inject.Inject
 

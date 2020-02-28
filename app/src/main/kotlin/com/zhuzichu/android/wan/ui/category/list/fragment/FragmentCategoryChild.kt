@@ -1,7 +1,7 @@
 package com.zhuzichu.android.wan.ui.category.list.fragment
 
 import com.zhuzichu.android.wan.base.FragmentAnalyticsBase
-import com.zhuzichu.android.shared.extension.bindArgument
+import com.zhuzichu.android.shared.ext.bindArgument
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.databinding.FragmentCategoryChildBinding

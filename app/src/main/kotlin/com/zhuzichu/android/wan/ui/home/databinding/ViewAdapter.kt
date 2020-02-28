@@ -2,7 +2,7 @@ package com.zhuzichu.android.wan.ui.home.databinding
 
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import com.zhuzichu.android.shared.extension.toStringByResId
+import com.zhuzichu.android.shared.ext.toStringByResId
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.repository.entity.BeanArticle
 

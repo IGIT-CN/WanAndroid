@@ -2,7 +2,7 @@ package com.zhuzichu.android.wan.ui.category.list.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
-import com.zhuzichu.android.shared.extension.map
+import com.zhuzichu.android.shared.ext.map
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
 import com.zhuzichu.android.wan.repository.entity.BeanNode

@@ -60,7 +60,6 @@ dependencies {
     kapt(Dep.kaptDaggerCompiler)
     kapt(Dep.kaptDaggerProcessor)
     kapt(Dep.kaptGlide)
-    kapt(Dep.androidxDatabinding)
     api(Dep.mvvm)
     api(Dep.widget)
     api(Dep.libs)

@@ -5,12 +5,12 @@ import android.graphics.BitmapFactory
 import androidx.lifecycle.MutableLiveData
 import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.wan.base.ViewModelAnalyticsBase
-import com.zhuzichu.android.shared.extension.bindToSchedulers
-import com.zhuzichu.android.shared.extension.createCommand
-import com.zhuzichu.android.shared.extension.createTypeCommand
+import com.zhuzichu.android.shared.ext.bindToSchedulers
+import com.zhuzichu.android.shared.ext.createCommand
+import com.zhuzichu.android.shared.ext.createTypeCommand
 import com.zhuzichu.android.shared.global.AppGlobal.context
 import com.zhuzichu.android.wan.R
-import com.zhuzichu.android.wan.extension.logInvokeTime
+import com.zhuzichu.android.wan.ext.logInvokeTime
 import com.zhuzichu.android.wan.manager.OpencvManager
 import io.reactivex.Flowable
 import javax.inject.Inject

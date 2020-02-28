@@ -2,7 +2,7 @@ package com.zhuzichu.android.wan.ui.setting.languages.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.zhuzichu.android.mvvm.event.SingleLiveEvent
-import com.zhuzichu.android.shared.extension.map
+import com.zhuzichu.android.shared.ext.map
 import com.zhuzichu.android.shared.storage.GlobalStorage
 import com.zhuzichu.android.wan.BR
 import com.zhuzichu.android.wan.R
